@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Dummy name"
+        android:id="@+id/textView_name_profile"
+        android:layout_below="@+id/imageView_profilepic"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Asst. Engg at IBM"
+        android:id="@+id/textView_designation_profile"
+        android:layout_below="@+id/textView_name_profile"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Mumbai"
+        android:id="@+id/textView_location_profile"
+        android:layout_below="@+id/textView_brach"
+        android:layout_alignRight="@+id/textView_fblink"
+        android:layout_alignEnd="@+id/textView_fblink" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageView_profilepic"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/image"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Jaipur"
+        android:id="@+id/textView_home_profile"
+        android:layout_below="@+id/textView_location_profile"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO "
+        android:id="@+id/textView_notfound"
+        android:layout_below="@+id/textView_home_profile"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="FB_LINK"
+        android:id="@+id/textView_fblink"
+        android:layout_below="@+id/textView_otherlink"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="LinkedIn"
+        android:id="@+id/textView_inlink"
+        android:layout_below="@+id/textView_fblink"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Twitter"
+        android:id="@+id/textView_twlink"
+        android:layout_below="@+id/textView_inlink"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="www.ashishsurana.in"
+        android:id="@+id/textView_otherlink"
+        android:layout_below="@+id/textView_notfound"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Branch - CSE"
+        android:id="@+id/textView_brach"
+        android:layout_below="@+id/textView_designation_profile"
+        android:layout_centerHorizontal="true" />
+    <View
+        android:id="@+id/myRectangleView"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@drawable/box"
+        android:layout_below="@+id/textView_twlink"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
