@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="5dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="More"
+        android:textSize="25dp"
+        android:id="@+id/textView_more"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:id="@+id/cardView_edit"
+        android:layout_below="@id/textView_more">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/info"
+                android:id="@+id/imageView2"
+                android:layout_alignTop="@+id/textView_Convocation"
+                android:layout_alignLeft="@+id/imageView"
+                android:layout_alignStart="@+id/imageView"
+                android:layout_marginTop="10dp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:text="Convocation"
+                style="?android:attr/borderlessButtonStyle"
+                android:clickable="true"
+                android:layout_marginTop="5dp"
+                android:id="@+id/textView_Convocation"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/imageView2"
+                android:layout_toEndOf="@+id/imageView2"
+                android:layout_marginLeft="10dp" />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/profile"
+                android:layout_alignTop="@+id/textView_myprofile"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/imageView" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:text="My Profile"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_marginTop="5dp"
+                android:id="@+id/textView_myprofile"
+                android:layout_below="@+id/textView_Convocation"
+                android:layout_alignLeft="@+id/textView_Convocation"
+                android:layout_alignStart="@+id/textView_Convocation" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cardView_contactus"
+        android:layout_below="@id/cardView_edit"
+        android:layout_marginTop="5dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact"
+
+                android:textAppearance="?android:textAppearanceLarge"
+                android:id="@+id/textView_contactus"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About Alumni"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/textView_contactus"
+                style="?android:attr/borderlessButtonStyle"
+                android:id="@+id/button_about_alumni"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About App"
+                android:id="@+id/button_about_app"
+                android:layout_marginLeft="5dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_below="@id/button_about_alumni"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rate Us"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/button_rate_us"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_below="@id/button_about_app"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FAQs"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/button_faq"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_below="@id/button_rate_us"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_logout"
+        android:text="Log Out"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_above="@+id/include"
+        android:drawableLeft="@drawable/log_out"
+
+    ></Button>
+    <include
+        layout="@layout/menu"
+        android:id="@+id/include"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    </include>
+</RelativeLayout>
