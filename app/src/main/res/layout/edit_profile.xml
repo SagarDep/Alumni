@@ -1,6 +1,321 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:scrollbars="none"
+    android:padding="5dp">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</LinearLayout>
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/imageView_profile"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/image" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView_profile"
+            android:id="@+id/cardView_name"
+            android:layout_marginTop="5dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Name"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/editText_name"
+                    android:background="@drawable/line"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:singleLine="true"
+                    android:windowSoftInputMode="stateHidden"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView_desc"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Description" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/Edittext_desc"
+                    android:background="@drawable/line"
+                    android:layout_weight="1.05"
+                    android:singleLine="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView_branch"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Branch" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/spinner_branch"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Year of Passing"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/edit_textView_year"/>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:id="@+id/spinner_year"
+                    android:layout_height="30dp"
+                    android:layout_toRightOf="@+id/edit_textView_year"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="4dp"
+            android:padding="0dp"
+            android:layout_gravity="left|center"
+            android:layout_below="@+id/cardView_name"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Work"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/textView_work"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView_work"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Designation "
+                    android:id="@+id/textView_desig"
+                    android:layout_marginTop="5dp" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/line"
+                    android:id="@+id/editText3"
+                    android:singleLine="true"
+                    android:layout_below="@+id/textView_desig"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/editText3"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Company"
+                    android:id="@+id/textView_company"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/editText4"
+                    android:background="@drawable/line"
+                    android:layout_below="@+id/textView_company"
+                    android:singleLine="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp" />
+                <TextView
+                    android:id="@+id/info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_below="@id/editText4"
+                    android:text="Location"
+                    android:layout_marginTop="5dp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/line"
+                    android:hint="JAIPUR"
+                    android:singleLine="true"
+                    android:id="@+id/ediText_home"
+                    android:layout_below="@+id/info_text"
+                    android:layout_alignLeft="@+id/textView_location_profile"
+                    android:layout_alignStart="@+id/textView_location_profile"
+                    android:layout_marginTop="5dp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/imageView_work"
+                    android:src="@drawable/work"
+                    android:padding="0dp"
+                    android:layout_below="@+id/ediText_home"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/imageView_home"
+                    android:src="@drawable/home"
+                    android:layout_below="@+id/info_text"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/textView_location_profile"
+                    android:layout_below="@+id/ediText_home"
+                    android:layout_toRightOf="@+id/imageView_work"
+                    android:layout_toEndOf="@+id/imageView_work"
+                    android:singleLine="true"
+                    android:background="@drawable/line"
+                    android:layout_marginLeft="10dp"
+                    android:hint="Mumbai"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_contact"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="4dp"
+            android:paddingLeft="10dp"
+            android:layout_below="@+id/card_view_location"
+            android:layout_alignLeft="@+id/card_view_location"
+            android:layout_alignStart="@+id/card_view_location"
+            android:layout_marginTop="5dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_view_location"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:nestedScrollingEnabled="false"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Contact"
+                    android:id="@+id/textView_fblink2"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp" />
+
+                <!-- Edit text of new twitter -->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="https://twitter.com/"
+                    android:id="@+id/textView_twlink"
+                    android:singleLine="true"
+                    android:background="@drawable/line"
+                    android:layout_below="@+id/textView_fblink2"
+                    android:layout_toRightOf="@+id/imageView_fb"
+                    android:layout_toEndOf="@+id/imageView_fb"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp" />
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:hint="Email"
+                    android:singleLine="true"
+                    android:inputType="textEmailAddress"
+                    android:id="@+id/textView_email"
+                    android:background="@drawable/line"
+                    android:layout_below="@+id/textView_twlink"
+                    android:layout_alignLeft="@+id/textView_twlink"
+                    android:layout_alignStart="@+id/textView_twlink"
+                    android:layout_marginTop="5dp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:singleLine="true"
+                    android:hint="Contact"
+                    android:inputType="phone"
+                    android:background="@drawable/line"
+                    android:id="@+id/textView_contact"
+                    android:layout_below="@+id/textView_email"
+                    android:layout_toRightOf="@+id/imageView_fb"
+                    android:layout_toEndOf="@+id/imageView_fb"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp" />
+
+
+                <!-- image of new twitter -->
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/imageView_fb"
+                    android:src="@drawable/tw"
+                    android:layout_alignTop="@+id/textView_twlink"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/imageView_tw"
+                    android:src="@drawable/ph"
+                    android:layout_alignTop="@+id/textView_contact"
+                    android:layout_alignLeft="@+id/imageView_in"
+                    android:layout_alignStart="@+id/imageView_in"
+                    android:layout_marginTop="5dp" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/imageView_in"
+                    android:src="@drawable/mail"
+                    android:layout_alignBottom="@+id/textView_email"
+                    android:layout_toLeftOf="@+id/textView_contact"
+                    android:layout_toStartOf="@+id/textView_contact"
+                    android:layout_marginBottom="5dp" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+    </RelativeLayout>
+</ScrollView>

@@ -3,11 +3,12 @@ package com.example.ashish.alumini;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -44,26 +45,18 @@ public class onClickMember extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(onClickMember.this, profile.class);
                 startActivity(intent);
-                overridePendingTransition( R.anim.slide_out,R.anim.slide_in);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
             }
         });
-        Button button5 = (Button) findViewById(R.id.button5);
-        button5.setOnClickListener(new View.OnClickListener() {
+        ImageButton button_jobs = (ImageButton) findViewById(R.id.button_jobs);
+        button_jobs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listView.setVisibility(View.VISIBLE);
-                listView2.setVisibility(View.GONE);
+                Intent intent = new Intent(onClickMember.this,onClickJob.class);
+                startActivity(intent);
             }
         });
-        Button button6 = (Button) findViewById(R.id.button6);
-        button6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listView.setVisibility(View.GONE);
-                listView2.setVisibility(View.VISIBLE);
-            }
-        });
-        Button setting = (Button) findViewById(R.id.button_setting);
+        final ImageButton setting = (ImageButton) findViewById(R.id.button_setting);
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +64,7 @@ public class onClickMember extends Activity {
                 startActivity(intent);
             }
         });
-        Button filter  = (Button) findViewById(R.id.button_filter);
+        ImageButton filter  = (ImageButton) findViewById(R.id.button_filter);
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

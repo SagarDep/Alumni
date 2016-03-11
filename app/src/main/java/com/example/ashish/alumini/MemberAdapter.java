@@ -1,22 +1,10 @@
 package com.example.ashish.alumini;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,10 +20,6 @@ public class MemberAdapter extends ArrayAdapter<ListVar>{
         List_members=list;
     }
 
-    @Override
-    public ListVar getItem(int position) {
-        return List_members.get(position);
-    }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ListVar  temp = getItem(position);
@@ -65,6 +49,10 @@ public class MemberAdapter extends ArrayAdapter<ListVar>{
         holder.tv_location.setText("Somewhere");
 
         return convertView;
+    }
+    @Override
+    public ListVar getItem(int position) {
+        return List_members.get(position);
     }
     public static class Holder{
         public TextView tv_name ;

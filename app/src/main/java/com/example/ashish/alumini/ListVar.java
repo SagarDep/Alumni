@@ -1,5 +1,6 @@
 package com.example.ashish.alumini;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -27,10 +28,7 @@ public class ListVar {
     public ListVar(String name2, Bitmap bitmap2){
         name = name2;
        this.bitmap= Bitmap.createBitmap(bitmap2);
-        if (bitmap==null)
-            Log.d("WTF","WTF");
-        if (bitmap!=null)
-            Log.d("WTF","BITMAP Not null" );
+
     }
     public static Bitmap getCircleBitmap(Bitmap bitmap) {
         final Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
