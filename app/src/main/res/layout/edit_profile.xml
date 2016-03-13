@@ -148,22 +148,69 @@
                     android:layout_below="@+id/textView_company"
                     android:singleLine="true"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp" />
+                     />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Post Graduation"
+                    android:id="@+id/pg"
+                    android:layout_marginTop="5dp"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:layout_below="@id/editText4"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Course"
+                    android:id="@+id/textView_Course"
+                    android:layout_marginTop="5dp"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:layout_below="@id/pg"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText_course"
+                    android:singleLine="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/textView_Course"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Institution"
+                    android:id="@+id/textView_univ"
+                    android:layout_marginTop="5dp"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:layout_below="@id/editText_course"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText_univ"
+                    android:singleLine="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/textView_univ"/>
+
+
+
+
+
+
                 <TextView
                     android:id="@+id/info_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_below="@id/editText4"
+                    android:layout_below="@id/editText_univ"
                     android:text="Location"
                     android:layout_marginTop="5dp" />
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/line"
                     android:hint="JAIPUR"
                     android:singleLine="true"
+                    android:textAppearance="?android:textAppearanceMedium"
                     android:id="@+id/ediText_home"
                     android:layout_below="@+id/info_text"
                     android:layout_alignLeft="@+id/textView_location_profile"
@@ -176,24 +223,22 @@
                     android:id="@+id/imageView_work"
                     android:src="@drawable/work"
                     android:padding="0dp"
-                    android:layout_below="@+id/ediText_home"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="10dp" />
+                    android:layout_alignBottom="@+id/textView_location_profile"
+                    android:layout_alignLeft="@+id/imageView_home"
+                    android:layout_alignStart="@+id/imageView_home" />
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:id="@+id/imageView_home"
                     android:src="@drawable/home"
-                    android:layout_below="@+id/info_text"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="10dp" />
+                    android:layout_above="@+id/textView_location_profile"
+                    android:layout_alignLeft="@+id/info_text"
+                    android:layout_alignStart="@+id/info_text" />
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:id="@+id/textView_location_profile"
                     android:layout_below="@+id/ediText_home"
                     android:layout_toRightOf="@+id/imageView_work"
@@ -243,7 +288,7 @@
                 <!-- Edit text of new twitter -->
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:text="https://twitter.com/"
                     android:id="@+id/textView_twlink"
                     android:singleLine="true"
@@ -257,7 +302,7 @@
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:hint="Email"
                     android:singleLine="true"
                     android:inputType="textEmailAddress"
@@ -270,7 +315,7 @@
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:hint="Contact"
                     android:inputType="phone"
@@ -291,27 +336,24 @@
                     android:id="@+id/imageView_fb"
                     android:src="@drawable/tw"
                     android:layout_alignTop="@+id/textView_twlink"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="5dp" />
+                    android:layout_alignLeft="@+id/textView_fblink2"
+                    android:layout_alignStart="@+id/textView_fblink2" />
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:id="@+id/imageView_tw"
                     android:src="@drawable/ph"
                     android:layout_alignTop="@+id/textView_contact"
-                    android:layout_alignLeft="@+id/imageView_in"
-                    android:layout_alignStart="@+id/imageView_in"
-                    android:layout_marginTop="5dp" />
+                    android:layout_toLeftOf="@+id/textView_contact"
+                    android:layout_toStartOf="@+id/textView_contact" />
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:id="@+id/imageView_in"
                     android:src="@drawable/mail"
-                    android:layout_alignBottom="@+id/textView_email"
-                    android:layout_toLeftOf="@+id/textView_contact"
-                    android:layout_toStartOf="@+id/textView_contact"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_alignTop="@+id/textView_email"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
