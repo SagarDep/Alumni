@@ -31,7 +31,9 @@ public class JobListAdapter extends ArrayAdapter<JobListVar> {
         Holder holder = new Holder();
         holder.tv_name = (TextView) convertView.findViewById(R.id.textView2);
         holder.tv_location = (TextView) convertView.findViewById(R.id.textView_joblocation);
+        holder.imageView_profilePic = (ImageView) convertView.findViewById(R.id.imageView_job_profile);
 
+        holder.imageView_profilePic.setImageBitmap(ListVar.getCircleBitmap(temp.logo));
         holder.tv_name.setText("Dummy Name");
         holder.tv_location.setText("Bharat");
         return convertView;

@@ -304,7 +304,7 @@
                         android:src="@drawable/log_out"
                         android:id="@+id/imageView_logout"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="18dp" />
+                        android:layout_marginTop="13dp" />
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -314,7 +314,6 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:clickable="true"
                         android:textColor="#ff1744"
-                        android:layout_marginTop="5dp"
                         android:layout_alignParentTop="true"
                         android:layout_toRightOf="@+id/imageView_logout"
                         android:layout_toEndOf="@+id/imageView_logout"

@@ -68,6 +68,7 @@ public class onSettingClicked extends AppCompatActivity{
                 Intent intent = new Intent(onSettingClicked.this,About_app.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+
             }
         });
         Button button_contact_us = (Button) findViewById(R.id.button_contact_us);
@@ -77,6 +78,7 @@ public class onSettingClicked extends AppCompatActivity{
                 Intent intent = new Intent(onSettingClicked.this,Contact_us.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+
             }
         });
         Button button_faq = (Button) findViewById(R.id.button_faq);
@@ -93,6 +95,6 @@ public class onSettingClicked extends AppCompatActivity{
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        this.finish();
+        finish();
     }
 }

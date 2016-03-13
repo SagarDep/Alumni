@@ -9,7 +9,7 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OnMemberClick">
+        <activity android:name=".OnMemberClick" android:label="Discover People">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +19,7 @@
         <activity android:name=".profile" />
         <activity android:name=".Edit_Profile" />
         <activity android:name=".onSearch" />
-        <activity android:name=".onFilterClick" />
+        <activity android:name=".onFilterClick" android:label="Filter" />
         <activity android:name=".onSettingClicked" android:label="More" />
         <activity android:name=".onClickJob" android:label="Job Offerings"></activity>
         <activity android:name=".About_app" android:label="About App"/>
