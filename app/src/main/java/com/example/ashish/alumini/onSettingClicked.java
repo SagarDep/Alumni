@@ -2,6 +2,7 @@ package com.example.ashish.alumini;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,14 +18,17 @@ public class onSettingClicked extends AppCompatActivity{
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.on_setting_click);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
         Button button_viewprofile = (Button) findViewById(R.id.textView_myprofile);
         ImageButton imageButton = (ImageButton) findViewById(R.id.button_setting);
         imageButton.setBackgroundColor(Color.parseColor("#f5f5f5"));
+        imageButton.setClickable(false);
         button_viewprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(onSettingClicked.this, profile.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
             }
         });
         ImageButton filter = (ImageButton) findViewById(R.id.button_filter);
@@ -33,6 +37,7 @@ public class onSettingClicked extends AppCompatActivity{
             public void onClick(View view) {
                 Intent intent = new Intent(onSettingClicked.this, onFilterClick.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
                 finish();
             }
         });
@@ -43,6 +48,7 @@ public class onSettingClicked extends AppCompatActivity{
                 Uri uri = Uri.parse("http://www.google.com");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
             }
         });
         Button button_aboutapp = (Button) findViewById(R.id.button_about_cllege);
@@ -52,6 +58,7 @@ public class onSettingClicked extends AppCompatActivity{
                 Uri uri = Uri.parse("http://www.google.com");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
             }
         });
         Button button_aboutclg = (Button) findViewById(R.id.button_about_app);
@@ -60,6 +67,7 @@ public class onSettingClicked extends AppCompatActivity{
             public void onClick(View v) {
                 Intent intent = new Intent(onSettingClicked.this,About_app.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
             }
         });
         Button button_contact_us = (Button) findViewById(R.id.button_contact_us);
@@ -68,6 +76,16 @@ public class onSettingClicked extends AppCompatActivity{
             public void onClick(View v) {
                 Intent intent = new Intent(onSettingClicked.this,Contact_us.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+            }
+        });
+        Button button_faq = (Button) findViewById(R.id.button_faq);
+        button_faq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(onSettingClicked.this, Faq.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
             }
         });
     }
@@ -75,6 +93,6 @@ public class onSettingClicked extends AppCompatActivity{
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        setContentView(R.layout.on_setting_click);
+        this.finish();
     }
 }

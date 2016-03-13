@@ -23,7 +23,8 @@
         <activity android:name=".onSettingClicked" android:label="More" />
         <activity android:name=".onClickJob" android:label="Job Offerings"></activity>
         <activity android:name=".About_app" android:label="About App"/>
-        <activity android:name=".Contact_us" android:label="Conract Us"/>
+        <activity android:name=".Contact_us" android:label="Contact Us"/>
+        <activity android:name=".Faq" android:label="FAQs"/>
     </application>
 
 </manifest>

@@ -2,19 +2,24 @@ package com.example.ashish.alumini;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 /**
  * Created by ashish on 12/3/16.
  */
-public class Contact_us extends Activity {
+public class Contact_us extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contact_us);
+
         Button button_website = (Button) findViewById(R.id.website);
         button_website.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,10 +41,18 @@ public class Contact_us extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("plain/text");
                 intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "some@email.address" });
                 startActivity(Intent.createChooser(intent, ""));
             }
         });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home)
+        this.finish();
+        return true;
     }
 }
