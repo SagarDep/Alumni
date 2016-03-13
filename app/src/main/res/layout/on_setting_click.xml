@@ -3,20 +3,10 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="More"
-        android:textColor="@color/cardview_light_background"
-        android:padding="10dp"
-        android:background="#E53935"
-        android:textAppearance="@android:style/TextAppearance.Large"
-        android:id="@+id/title_bar"/>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_below="@id/title_bar"
+        android:layout_height="wrap_content"
         android:scrollbars="none"
         android:paddingRight="5dp"
         android:layout_above="@+id/include">
@@ -91,15 +81,15 @@
                         android:layout_height="1dp"
                         android:background="#cccccc"
                         android:layout_below="@id/textView_myprofile"
-                        android:layout_alignLeft="@+id/button_contactus"
-                        android:layout_alignStart="@+id/button_contactus" />
+                        android:layout_alignLeft="@+id/button_fbPage"
+                        android:layout_alignStart="@+id/button_fbPage" />
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Facebook"
                         android:textAppearance="?android:textAppearanceMedium"
                         style="?android:attr/borderlessButtonStyle"
-                        android:id="@+id/button_contactus"
+                        android:id="@+id/button_fbPage"
                         android:textAlignment="viewStart"
                         android:layout_below="@+id/textView_myprofile"
                         android:layout_alignLeft="@+id/textView_myprofile"
@@ -108,41 +98,41 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="#cccccc"
-                        android:layout_below="@id/button_contactus" />
+                        android:layout_below="@id/button_fbPage" />
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="About Arya Alumni"
+                        android:text="About Arya Alumni App"
                         android:textAppearance="?android:textAppearanceMedium"
                         style="?android:attr/borderlessButtonStyle"
-                        android:id="@+id/button_about_alumni"
+                        android:id="@+id/button_about_app"
                         android:textAlignment="viewStart"
-                        android:layout_below="@+id/button_contactus"
-                        android:layout_alignLeft="@+id/button_contactus"
-                        android:layout_alignStart="@+id/button_contactus" />
+                        android:layout_below="@+id/button_fbPage"
+                        android:layout_alignLeft="@+id/button_fbPage"
+                        android:layout_alignStart="@+id/button_fbPage" />
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="#cccccc"
-                        android:layout_below="@id/button_about_alumni"
-                        android:layout_alignLeft="@+id/button_contactus"
-                        android:layout_alignStart="@+id/button_contactus" />
+                        android:layout_below="@id/button_about_app"
+                        android:layout_alignLeft="@+id/button_fbPage"
+                        android:layout_alignStart="@+id/button_fbPage" />
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="About College"
-                        android:id="@+id/button_about_app"
+                        android:id="@+id/button_about_cllege"
                         android:textAlignment="viewStart"
                         android:textAppearance="?android:textAppearanceMedium"
                         style="?android:attr/borderlessButtonStyle"
-                        android:layout_below="@+id/button_about_alumni"
-                        android:layout_alignLeft="@+id/button_about_alumni"
-                        android:layout_alignStart="@+id/button_about_alumni" />
+                        android:layout_below="@+id/button_about_app"
+                        android:layout_alignLeft="@+id/button_about_app"
+                        android:layout_alignStart="@+id/button_about_app" />
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="#cccccc"
-                        android:layout_below="@id/button_about_app"/>
+                        android:layout_below="@id/button_about_cllege"/>
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -151,16 +141,16 @@
                         android:textAlignment="viewStart"
                         android:textAppearance="?android:textAppearanceMedium"
                         style="?android:attr/borderlessButtonStyle"
-                        android:layout_below="@+id/button_about_app"
-                        android:layout_alignLeft="@+id/button_about_alumni"
-                        android:layout_alignStart="@+id/button_about_alumni" />
+                        android:layout_below="@+id/button_about_cllege"
+                        android:layout_alignLeft="@+id/button_about_app"
+                        android:layout_alignStart="@+id/button_about_app" />
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="#cccccc"
                         android:layout_below="@id/button_support"
-                        android:layout_alignLeft="@+id/button_about_alumni"
-                        android:layout_alignStart="@+id/button_about_alumni" />
+                        android:layout_alignLeft="@+id/button_about_app"
+                        android:layout_alignStart="@+id/button_about_app" />
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -170,8 +160,8 @@
                         android:textAppearance="?android:textAppearanceMedium"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_below="@+id/button_support"
-                        android:layout_alignLeft="@+id/button_about_alumni"
-                        android:layout_alignStart="@+id/button_about_alumni" />
+                        android:layout_alignLeft="@+id/button_about_app"
+                        android:layout_alignStart="@+id/button_about_app" />
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -193,8 +183,8 @@
                         android:layout_height="1dp"
                         android:background="#cccccc"
                         android:layout_below="@id/button_faq"
-                        android:layout_alignLeft="@+id/button_contactus"
-                        android:layout_alignStart="@+id/button_contactus" />
+                        android:layout_alignLeft="@+id/button_fbPage"
+                        android:layout_alignStart="@+id/button_fbPage" />
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -204,8 +194,8 @@
                         android:textAlignment="viewStart"
                         style="?android:attr/borderlessButtonStyle"
                         android:textAppearance="?android:textAppearanceMedium"
-                        android:layout_alignLeft="@+id/button_about_app"
-                        android:layout_alignStart="@+id/button_about_app" />
+                        android:layout_alignLeft="@+id/button_about_cllege"
+                        android:layout_alignStart="@+id/button_about_cllege" />
 
                     <ImageView
                         android:layout_width="20dp"
@@ -221,7 +211,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:id="@+id/imageView7"
-                        android:layout_below="@+id/button_contactus"
+                        android:layout_below="@+id/button_fbPage"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true" />
 
@@ -240,7 +230,7 @@
                         android:layout_height="20dp"
                         android:src="@drawable/info"
                         android:id="@+id/imageView9"
-                        android:layout_alignTop="@+id/button_about_app"
+                        android:layout_alignTop="@+id/button_about_cllege"
                         android:layout_toLeftOf="@+id/textView_Convocation"
                         android:layout_toStartOf="@+id/textView_Convocation"
                         android:layout_marginTop="13dp" />
@@ -249,7 +239,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:id="@+id/imageView10"
-                        android:layout_below="@+id/button_about_app"
+                        android:layout_below="@+id/button_about_cllege"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true" />
 

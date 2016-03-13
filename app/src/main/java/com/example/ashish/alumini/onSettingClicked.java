@@ -1,21 +1,18 @@
 package com.example.ashish.alumini;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 /**
  * Created by ashish on 9/3/16.
  */
-public class onSettingClicked extends Activity {
+public class onSettingClicked extends AppCompatActivity{
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +34,40 @@ public class onSettingClicked extends Activity {
                 Intent intent = new Intent(onSettingClicked.this, onFilterClick.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+        Button button_fbpage = (Button) findViewById(R.id.button_fbPage);
+        button_fbpage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("http://www.google.com");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        Button button_aboutapp = (Button) findViewById(R.id.button_about_cllege);
+        button_aboutapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("http://www.google.com");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        Button button_aboutclg = (Button) findViewById(R.id.button_about_app);
+        button_aboutclg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(onSettingClicked.this,About_app.class);
+                startActivity(intent);
+            }
+        });
+        Button button_contact_us = (Button) findViewById(R.id.button_contact_us);
+        button_contact_us.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(onSettingClicked.this,Contact_us.class);
+                startActivity(intent);
             }
         });
     }

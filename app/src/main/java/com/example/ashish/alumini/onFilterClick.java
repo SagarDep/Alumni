@@ -13,7 +13,7 @@ public class onFilterClick extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.onfilterclick);
+        setContentView(R.layout.on_filter_click);
         ImageButton settings = (ImageButton) findViewById(R.id.button_setting);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override

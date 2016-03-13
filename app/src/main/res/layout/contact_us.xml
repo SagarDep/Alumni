@@ -30,7 +30,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:id="@+id/imageView16"
-                android:src="@drawable/ph"
+                android:src="@drawable/website"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="19dp"
@@ -40,7 +40,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="9784878727"
+                android:text="Call on 9784878727"
                 android:id="@+id/phone"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textAlignment="viewStart"

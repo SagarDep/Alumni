@@ -2,6 +2,7 @@ package com.example.ashish.alumini;
 
 import android.app.ActionBar;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,20 +23,19 @@ public class onClickJob extends AppCompatActivity {
         ActionBar actionBar = getActionBar();
         actionBar.show();
         actionBar.setTitle("More");
-        ImageButton imageButton_searchjob = (ImageButton) findViewById(R.id.search_jobs);
-        imageButton_searchjob.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setContentView(R.layout.job_search);
-                SearchView searchView_job = (SearchView) findViewById(R.id.searchView_job);
-                searchView_job.setIconified(false);
-            }
-        });
-        ListView listJob = (ListView) findViewById(R.id.listView_jobpost);
-        ArrayList <JobListVar> list ;
-        for (int i = 0; i<10; i++){
-            ListVar listVar = new ListVar(" Name " + i, BitmapFactory.decodeResource(getResources(), R.drawable.image));
-        }
 
+        ListView listJob = (ListView) findViewById(R.id.listView_jobpost);
+        ArrayList <JobListVar> list = null;
+        for (int i = 0; i<10; i++){
+            JobListVar listVar = new JobListVar(" Name " + i, BitmapFactory.decodeResource(getResources(), R.drawable.image));
+            list.add(listVar);
+        }
+        JobListAdapter memberAdapter= new JobListAdapter(this,R.layout.simple_list_item,list);
+        listJob.setAdapter(memberAdapter);
+
+
+        ImageButton button = (ImageButton) findViewById(R.id.button_jobs);
+        button.setBackgroundColor(Color.parseColor("#f5f5f5"));
+        button.setClickable(false);
     }
 }
