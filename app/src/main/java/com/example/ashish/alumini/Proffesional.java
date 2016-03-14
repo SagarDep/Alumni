@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 /**
  * Created by ashish on 14/3/16.
  */
-public class Prof extends Fragment {
+public class Proffesional extends Fragment {
 
-    public Prof() {
+    public Proffesional() {
         // Required empty public constructor
     }
 

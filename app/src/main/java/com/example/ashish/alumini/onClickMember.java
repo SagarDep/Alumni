@@ -24,7 +24,7 @@ public class onClickMember extends Activity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.on_click_members);
+//        setContentView(R.layout.on_click_members);
         listView = (ListView) findViewById(R.id.listView);
         listView2 = (ListView) findViewById(R.id.listView2);
         listView2.setVisibility(View.GONE);

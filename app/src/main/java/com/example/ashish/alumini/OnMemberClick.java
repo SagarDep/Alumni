@@ -1,7 +1,5 @@
 package com.example.ashish.alumini;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -18,9 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.SearchView;
 
-import java.security.KeyStore;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,47 +24,16 @@ import java.util.List;
  * Created by ashish on 11/3/16.
  */
 public class OnMemberClick extends AppCompatActivity{
-    private TabLayout tabLayout;
+    private TabLayout tabLayout_top;
     private ViewPager viewPager;
+    private TabLayout tabLayout_bottom;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.on_click_member);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
-        buttons();
-
-
-
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
-
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
-
-    }
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new All(), "ALL");
-        adapter.addFragment(new PG(), "PROFESSIONALS");
-        adapter.addFragment(new Prof(), "Post Grads.");
-        viewPager.setAdapter(adapter);
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the options menu from XML
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.search_menu, menu);
-
-        // Get the SearchView and set the searchable configuration
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-//        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        // Assumes current activity is the searchable activity
-//        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-
-        return true;
-    }
-
-    public void buttons(){
         ImageButton button_jobs = (ImageButton) findViewById(R.id.button_jobs);
         button_jobs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +61,41 @@ public class OnMemberClick extends AppCompatActivity{
                 overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
             }
         });
+
+
+
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager,null);
+
+        tabLayout_top = (TabLayout) findViewById(R.id.tabs);
+        tabLayout_top.setupWithViewPager(viewPager);
+
+
+//        tabLayout_bottom = (TabLayout) findViewById(R.id.tabs_bottom);
+//        tabLayout_bottom.setupWithViewPager(viewPager);
     }
+    private void setupViewPager(ViewPager viewPager,String where) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new All(), "ALL");
+        adapter.addFragment(new Proffesional(),"PROFESSIONALS");
+        adapter.addFragment(new PG(),  "Post Grads.");
+        viewPager.setAdapter(adapter);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the options menu from XML
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+
+        // Get the SearchView and set the searchable configuration
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+//        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        // Assumes current activity is the searchable activity
+//        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+        return true;
+    }
+
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();

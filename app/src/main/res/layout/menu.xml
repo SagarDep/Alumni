@@ -5,82 +5,157 @@
     >
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:weightSum="4">
-        <ImageButton
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_home"
-            android:src="@drawable/home"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="0dp"
-            android:layout_gravity="left|bottom" />
-        <View
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:background="#d60d0d"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp" />
-        <ImageButton
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_filter"
-        android:src="@drawable/filter" style="?android:attr/borderlessButtonStyle"
-         />
-        <View
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:background="#d60d0d"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp" />
-        <ImageButton
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_jobs"
-        style="?android:attr/borderlessButtonStyle"
-        android:src="@drawable/work"
-         />
-        <!--<View-->
-            <!--android:layout_width="0dp"-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="#FFFFFF"-->
+        <!--android:weightSum="4">-->
+        <!--<ImageButton-->
             <!--android:layout_weight="1"-->
-            <!--android:id="@+id/temp"-->
-            <!--android:layout_height="5dp"-->
-            <!--android:background="#d60d0d" />-->
-        <View
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:background="#d60d0d"
-        android:padding="0dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp" />
-        <ImageButton
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_setting"
-        android:src="@drawable/more"
-        style="?android:attr/borderlessButtonStyle"
-         />
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/button_home"-->
+            <!--android:src="@drawable/home"-->
+            <!--style="?android:attr/borderlessButtonStyle"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_gravity="left|bottom" />-->
+        <!--<View-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="#d60d0d"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_marginBottom="5dp" />-->
+        <!--<ImageButton-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/button_filter"-->
+        <!--android:src="@drawable/filter" style="?android:attr/borderlessButtonStyle"-->
+         <!--/>-->
+        <!--<View-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="#d60d0d"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_marginTop="5dp" />-->
+        <!--<ImageButton-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/button_jobs"-->
+        <!--style="?android:attr/borderlessButtonStyle"-->
+        <!--android:src="@drawable/work"-->
+         <!--/>-->
+        <!--&lt;!&ndash;<View&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/temp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="5dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:background="#d60d0d" />&ndash;&gt;-->
+        <!--<View-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="#d60d0d"-->
+        <!--android:padding="0dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_marginBottom="5dp" />-->
+        <!--<ImageButton-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/button_setting"-->
+        <!--android:src="@drawable/more"-->
+        <!--style="?android:attr/borderlessButtonStyle"-->
+         <!--/>-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="4"
-        android:layout_gravity="right|bottom">
+        android:layout_gravity="end|bottom" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/view2"
+            android:id="@+id/relativeLayout">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2">
+            <ImageButton
+                android:layout_height="wrap_content"
+                android:id="@+id/button_jobs"
+                android:src="@drawable/work"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="start|bottom" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#d60d0d"
+                android:id="@+id/view3"
+                android:layout_toRightOf="@+id/button_home"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" />
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_setting"
+                android:src="@drawable/more" style="?android:attr/borderlessButtonStyle"
+                />
+        </LinearLayout>
+        </RelativeLayout>
         <View
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:id="@+id/temp"
-            android:layout_height="5dp"
-            android:background="#d60d0d" />
-    </LinearLayout>
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:background="#d60d0d"
+            android:padding="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/view2"
+            android:layout_alignBottom="@+id/relativeLayout"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/view2"
+            android:id="@+id/relativeLayout2">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+                <ImageButton
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_home"
+                    android:src="@drawable/home"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="start|bottom" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#d60d0d"
+                    android:id="@+id/view1"
+                    android:layout_toRightOf="@+id/button_home"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp" />
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_filter"
+                    android:src="@drawable/filter" style="?android:attr/borderlessButtonStyle"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
 
 
 </FrameLayout>
