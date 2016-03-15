@@ -2,7 +2,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:scrollbars="none"
     android:padding="5dp">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -34,12 +33,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Name"
+                    android:text="Name of Company"
                     />
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText_name"
+                    android:id="@+id/editText_com_name"
                     android:background="@drawable/line"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
@@ -53,39 +52,13 @@
                     android:text="Description" />
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/Edittext_desc"
+                    android:layout_height="60dp"
+                    android:id="@+id/Edittext_com_description"
                     android:background="@drawable/line"
                     android:layout_weight="1.05"
-                    android:singleLine="true"
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView_branch"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Branch" />
 
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/spinner_branch"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Year of Passing"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/edit_textView_year"/>
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:id="@+id/spinner_year"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/edit_textView_year"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -113,87 +86,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Work"
+                    android:text="Job Description"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/textView_work"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textView_work"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Designation "
-                    android:id="@+id/textView_desig"
-                    android:layout_marginTop="5dp" />
+
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
                     android:background="@drawable/line"
                     android:id="@+id/editText3"
-                    android:singleLine="true"
-                    android:layout_below="@+id/textView_desig"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/editText3"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Company"
-                    android:id="@+id/textView_company"/>
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editText4"
-                    android:background="@drawable/line"
-                    android:layout_below="@+id/textView_company"
-                    android:singleLine="true"
-                    android:layout_marginTop="5dp"
-                     />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Post Graduation"
-                    android:id="@+id/pg"
-                    android:layout_marginTop="5dp"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:layout_below="@id/editText4"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Course"
-                    android:id="@+id/textView_Course"
-                    android:layout_marginTop="5dp"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:layout_below="@id/pg"/>
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editText_course"
-                    android:singleLine="true"
-                    android:layout_marginTop="5dp"
-                    android:layout_below="@id/textView_Course"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Institution"
-                    android:id="@+id/textView_univ"
-                    android:layout_marginTop="5dp"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:layout_below="@id/editText_course"/>
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editText_univ"
-                    android:singleLine="true"
-                    android:layout_marginTop="5dp"
-                    android:layout_below="@id/textView_univ"/>
-
-
-
-
+                    android:layout_marginBottom="5dp"
+                    android:layout_below="@id/textView_work" />
 
 
                 <TextView
@@ -201,55 +105,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_below="@id/editText_univ"
                     android:text="Location"
-                    android:layout_marginTop="5dp" />
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/editText3" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/line"
-                    android:hint="JAIPUR"
-                    android:singleLine="true"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:id="@+id/ediText_home"
-                    android:layout_below="@+id/info_text"
-                    android:layout_alignLeft="@+id/textView_location_profile"
-                    android:layout_alignStart="@+id/textView_location_profile"
-                    android:layout_marginTop="5dp" />
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:id="@+id/imageView_work"
-                    android:src="@drawable/work"
+                    android:src="@drawable/location"
                     android:padding="0dp"
-                    android:layout_alignBottom="@+id/textView_location_profile"
-                    android:layout_alignLeft="@+id/imageView_home"
-                    android:layout_alignStart="@+id/imageView_home" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:id="@+id/imageView_home"
-                    android:src="@drawable/home"
-                    android:layout_above="@+id/textView_location_profile"
+                    android:layout_below="@+id/info_text"
                     android:layout_alignLeft="@+id/info_text"
-                    android:layout_alignStart="@+id/info_text" />
+                    android:layout_alignStart="@+id/info_text"
+                    android:layout_marginTop="12dp" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView_location_profile"
-                    android:layout_below="@+id/ediText_home"
+                    android:id="@+id/editText"
+                    android:layout_below="@+id/info_text"
                     android:layout_toRightOf="@+id/imageView_work"
                     android:layout_toEndOf="@+id/imageView_work"
-                    android:singleLine="true"
-                    android:background="@drawable/line"
                     android:layout_marginLeft="10dp"
-                    android:hint="Mumbai"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_marginTop="5dp" />
+
 
             </RelativeLayout>
         </android.support.v7.widget.CardView>
@@ -355,23 +236,38 @@
                     android:layout_alignTop="@+id/textView_email"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/imageView3"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/website"
+                    android:layout_below="@+id/imageView_tw"
+                    android:layout_toLeftOf="@+id/textView_contact"
+                    android:layout_toStartOf="@+id/textView_contact" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText2"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/imageView_tw"
+                    android:layout_alignLeft="@+id/textView_contact"
+                    android:layout_alignStart="@+id/textView_contact"
+                    android:text="www." />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_marginTop="5dp"
-            android:layout_below="@id/card_view_contact"
-            android:layout_height="wrap_content"
-            card_view:cardCornerRadius="2dp"
-
-            android:padding="5dp">
+            android:layout_below="@+id/card_view_contact"
+            android:layout_height="wrap_content">
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:text="Update the Database"
-                style="?android:attr/borderlessButtonStyle"
-                android:textAlignment="center"/>
+                android:id="@+id/button_send_jobpost"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:text="Send to Database"/>
         </android.support.v7.widget.CardView>
 
 

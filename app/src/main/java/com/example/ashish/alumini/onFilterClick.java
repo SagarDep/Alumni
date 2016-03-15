@@ -22,6 +22,7 @@ public class onFilterClick extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.on_filter_click);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ImageButton settings = (ImageButton) findViewById(R.id.button_setting);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override

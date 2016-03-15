@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
@@ -27,6 +28,7 @@ public class onClickJob extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.on_job_click);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
 
         ListView listJob = (ListView) findViewById(R.id.listView_jobpost);
@@ -71,6 +73,7 @@ public class onClickJob extends AppCompatActivity {
                 Intent intent = new Intent(onClickJob.this, onFilterClick.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+                finish();
             }
         });
     }
@@ -86,6 +89,12 @@ public class onClickJob extends AppCompatActivity {
         // Assumes current activity is the searchable activity
 //        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home)
+            this.finish();
         return true;
     }
 

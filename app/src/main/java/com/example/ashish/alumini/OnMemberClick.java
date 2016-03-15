@@ -1,5 +1,6 @@
 package com.example.ashish.alumini;
 
+import android.support.v4.app.ListFragment;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -26,14 +28,17 @@ import java.util.List;
 public class OnMemberClick extends AppCompatActivity{
     private TabLayout tabLayout_top;
     private ViewPager viewPager;
-    private TabLayout tabLayout_bottom;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.on_click_member);
+
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setElevation(0);
         ImageButton button_jobs = (ImageButton) findViewById(R.id.button_jobs);
         button_jobs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +46,7 @@ public class OnMemberClick extends AppCompatActivity{
                 Intent intent = new Intent(OnMemberClick.this, onClickJob.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+                finish();
             }
         });
         ImageButton setting = (ImageButton) findViewById(R.id.button_setting);
@@ -50,6 +56,7 @@ public class OnMemberClick extends AppCompatActivity{
                 Intent intent = new Intent(OnMemberClick.this, onSettingClicked.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+                finish();
             }
         });
         ImageButton filter  = (ImageButton) findViewById(R.id.button_filter);
@@ -59,6 +66,7 @@ public class OnMemberClick extends AppCompatActivity{
                 Intent intent = new Intent(OnMemberClick.this, onFilterClick.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+                finish();
             }
         });
 
@@ -115,7 +123,7 @@ public class OnMemberClick extends AppCompatActivity{
             return mFragmentList.size();
         }
 
-        public void addFragment(Fragment fragment, String title) {
+        public void addFragment(ListFragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }

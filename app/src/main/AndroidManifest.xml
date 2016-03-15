@@ -25,6 +25,8 @@
         <activity android:name=".About_app" android:label="About App"/>
         <activity android:name=".Contact_us" android:label="Contact Us"/>
         <activity android:name=".Faq" android:label="FAQs"/>
+        <activity android:name=".jobProfile" android:label="Company Profile"/>
+        <activity android:name=".jobPost" android:label="Post A Job"/>
     </application>
 
 </manifest>

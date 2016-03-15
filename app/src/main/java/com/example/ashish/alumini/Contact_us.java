@@ -41,8 +41,8 @@ public class Contact_us extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "some@email.address" });
-                startActivity(Intent.createChooser(intent, ""));
+                intent.putExtra(Intent.EXTRA_EMAIL, "abc@mail.com");
+                startActivity(Intent.createChooser(intent, "Choose an Email client :"));
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

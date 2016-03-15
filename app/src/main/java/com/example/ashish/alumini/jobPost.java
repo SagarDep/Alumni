@@ -7,13 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 /**
- * Created by ashish on 12/3/16.
+ * Created by ashish on 14/3/16.
  */
-public class jobProfile extends AppCompatActivity {
+public class jobPost extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.job_profile);
+        setContentView(R.layout.post_job);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
     }
@@ -23,4 +23,5 @@ public class jobProfile extends AppCompatActivity {
             this.finish();
         return true;
     }
+
 }

@@ -36,12 +36,9 @@ public class MemberAdapter extends ArrayAdapter<ListVar>{
         holder.tv_location = (TextView) convertView.findViewById(R.id.textView_location);
         holder.tv_passing_year = (TextView) convertView.findViewById(R.id.textView_passing_year);
         holder.imageView_profilePic= (ImageView) convertView.findViewById(R.id.profileimage);
-
-
         // -----------------------PROFILE PIC-------------------
 
-        holder.imageView_profilePic.setImageBitmap(ListVar.getCircleBitmap(temp.bitmap));
-
+//        holder.imageView_profilePic.setImageBitmap(ListVar.getCircleBitmap(temp.bitmap));
 
         holder.tv_name.setText(temp.name);
         holder.tv_designation.setText("Sr. Engineer" + " at " + "Dummy Company");

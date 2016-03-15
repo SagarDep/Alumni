@@ -30,9 +30,9 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/info"
+                        android:src="@drawable/work"
                         android:id="@+id/imageView2"
-                        android:layout_alignTop="@+id/textView_Convocation"
+                        android:layout_alignTop="@+id/button_postjob"
                         android:layout_alignLeft="@+id/imageView"
                         android:layout_alignStart="@+id/imageView"
                         android:layout_marginTop="13dp" />
@@ -40,21 +40,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:textAppearanceMedium"
-                        android:text="Convocation"
+                        android:text="Post A Job"
                         android:textAlignment="viewStart"
                         style="?android:attr/borderlessButtonStyle"
                         android:clickable="true"
                         android:layout_marginTop="5dp"
-                        android:id="@+id/textView_Convocation"
+                        android:id="@+id/button_postjob"
                         android:layout_alignParentTop="true"
                         android:layout_toRightOf="@+id/imageView2"
                         android:layout_toEndOf="@+id/imageView2"
                         android:layout_marginLeft="10dp" />
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#cccccc"
-                        android:layout_below="@id/textView_Convocation"/>
+                        android:layout_height="1px"
+                        android:background="#a6a6a6"
+                        android:layout_below="@id/button_postjob"/>
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -73,13 +73,13 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:textAlignment="viewStart"
                         android:id="@+id/textView_myprofile"
-                        android:layout_below="@+id/textView_Convocation"
-                        android:layout_alignLeft="@+id/textView_Convocation"
-                        android:layout_alignStart="@+id/textView_Convocation" />
+                        android:layout_below="@+id/button_postjob"
+                        android:layout_alignLeft="@+id/button_postjob"
+                        android:layout_alignStart="@+id/button_postjob" />
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#cccccc"
+                        android:layout_height="1px"
+                        android:background="#a6a6a6"
                         android:layout_below="@id/textView_myprofile"
                         android:layout_alignLeft="@+id/button_fbPage"
                         android:layout_alignStart="@+id/button_fbPage" />
@@ -96,8 +96,8 @@
                         android:layout_alignStart="@+id/textView_myprofile" />
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#cccccc"
+                        android:layout_height="1px"
+                        android:background="#a6a6a6"
                         android:layout_below="@id/button_fbPage" />
                     <Button
                         android:layout_width="match_parent"
@@ -112,8 +112,8 @@
                         android:layout_alignStart="@+id/button_fbPage" />
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#cccccc"
+                        android:layout_height="1px"
+                        android:background="#a6a6a6"
                         android:layout_below="@id/button_about_app"
                         android:layout_alignLeft="@+id/button_fbPage"
                         android:layout_alignStart="@+id/button_fbPage" />
@@ -130,8 +130,8 @@
                         android:layout_alignStart="@+id/button_about_app" />
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#cccccc"
+                        android:layout_height="1px"
+                        android:background="#a6a6a6"
                         android:layout_below="@id/button_about_cllege"/>
                     <Button
                         android:layout_width="match_parent"
@@ -146,8 +146,8 @@
                         android:layout_alignStart="@+id/button_about_app" />
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#cccccc"
+                        android:layout_height="1px"
+                        android:background="#a6a6a6"
                         android:layout_below="@id/button_support"
                         android:layout_alignLeft="@+id/button_about_app"
                         android:layout_alignStart="@+id/button_about_app" />
@@ -164,8 +164,8 @@
                         android:layout_alignStart="@+id/button_about_app" />
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#cccccc"
+                        android:layout_height="1px"
+                        android:background="#a6a6a6"
                         android:layout_below="@id/button_contact_us"/>
                     <Button
                         android:layout_width="match_parent"
@@ -180,8 +180,8 @@
                         android:layout_alignStart="@+id/button_rate_us" />
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#cccccc"
+                        android:layout_height="1px"
+                        android:background="#a6a6a6"
                         android:layout_below="@id/button_faq"
                         android:layout_alignLeft="@+id/button_fbPage"
                         android:layout_alignStart="@+id/button_fbPage" />
@@ -203,8 +203,8 @@
                         android:id="@+id/imageView6"
                         android:src="@drawable/fb"
                         android:layout_below="@+id/textView_myprofile"
-                        android:layout_toLeftOf="@+id/textView_Convocation"
-                        android:layout_toStartOf="@+id/textView_Convocation"
+                        android:layout_toLeftOf="@+id/button_postjob"
+                        android:layout_toStartOf="@+id/button_postjob"
                         android:layout_marginTop="13dp" />
 
                     <ImageView
@@ -231,8 +231,8 @@
                         android:src="@drawable/info"
                         android:id="@+id/imageView9"
                         android:layout_alignTop="@+id/button_about_cllege"
-                        android:layout_toLeftOf="@+id/textView_Convocation"
-                        android:layout_toStartOf="@+id/textView_Convocation"
+                        android:layout_toLeftOf="@+id/button_postjob"
+                        android:layout_toStartOf="@+id/button_postjob"
                         android:layout_marginTop="13dp" />
 
                     <ImageView
@@ -287,7 +287,7 @@
 
             <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/cardView_logout"
                 android:layout_below="@+id/card1"
                 android:layout_marginLeft="5dp"
@@ -298,12 +298,17 @@
                     android:layout_width="match_parent"
                     android:padding="5dp"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/log_out"
                         android:id="@+id/imageView_logout"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_alignTop="@+id/button"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
                         android:layout_marginTop="13dp" />
                     <Button
                         android:layout_width="match_parent"
@@ -314,10 +319,11 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:clickable="true"
                         android:textColor="#ff1744"
-                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="17dp"
+                        android:id="@+id/button"
                         android:layout_toRightOf="@+id/imageView_logout"
                         android:layout_toEndOf="@+id/imageView_logout"
-                        android:layout_marginLeft="10dp" />
+                        android:layout_marginStart="17dp" />
 
                 </RelativeLayout>
 

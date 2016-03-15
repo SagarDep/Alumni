@@ -22,7 +22,7 @@ public class Edit_Profile extends Activity {
         spinner_branch.setAdapter(adapter_branch);
 
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.image);
-        ImageView mImage = (ImageView) findViewById(R.id.imageView_profile);
+        ImageView mImage = (ImageView) findViewById(R.id.imageView_com_logo);
         mImage.setImageBitmap(ListVar.getCircleBitmap(bm));
 
         Spinner spinner_year  = (Spinner) findViewById(R.id.spinner_year);

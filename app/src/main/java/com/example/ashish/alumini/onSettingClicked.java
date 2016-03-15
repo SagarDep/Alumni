@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -19,6 +20,7 @@ public class onSettingClicked extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.on_setting_click);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Button button_viewprofile = (Button) findViewById(R.id.textView_myprofile);
         ImageButton imageButton = (ImageButton) findViewById(R.id.button_setting);
         imageButton.setBackgroundColor(Color.parseColor("#f5f5f5"));
@@ -41,12 +43,31 @@ public class onSettingClicked extends AppCompatActivity{
                 finish();
             }
         });
+        ImageButton jobs = (ImageButton) findViewById(R.id.button_jobs);
+        jobs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(onSettingClicked.this, onClickJob.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+                finish();
+            }
+        });
         Button button_fbpage = (Button) findViewById(R.id.button_fbPage);
         button_fbpage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Uri uri = Uri.parse("http://www.google.com");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+            }
+        });
+        Button button_postjob = (Button) findViewById(R.id.button_postjob);
+        button_postjob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(onSettingClicked.this,jobPost.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
             }
@@ -93,8 +114,9 @@ public class onSettingClicked extends AppCompatActivity{
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home)
+            this.finish();
+        return true;
     }
 }
