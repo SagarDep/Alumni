@@ -1,6 +1,7 @@
 package com.example.ashish.alumini;
 
 import android.app.Activity;
+import android.app.ExpandableListActivity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -11,12 +12,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.ImageButton;
+
+import java.util.ArrayList;
 
 /**
  * Created by ashish on 9/3/16.
  */
 public class onFilterClick extends AppCompatActivity{
+
+    private ArrayList<String> parentItems = new ArrayList<String>();
+    private ArrayList<Object> childItems = new ArrayList<Object>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +52,22 @@ public class onFilterClick extends AppCompatActivity{
         });
         ImageButton filter  = (ImageButton) findViewById(R.id.button_filter);
         filter.setBackgroundColor(Color.parseColor("#f5f5f5"));
+
+
+
+        ExpandableListView expandableList = (ExpandableListView) findViewById(R.id.expandableListView);
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 
