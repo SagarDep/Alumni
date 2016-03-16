@@ -13,9 +13,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -25,10 +26,9 @@ import java.util.List;
 /**
  * Created by ashish on 11/3/16.
  */
-public class OnMemberClick extends AppCompatActivity{
+public class OnMemberClick extends AppCompatActivity implements View.OnClickListener{
     private TabLayout tabLayout_top;
     private ViewPager viewPager;
-
 
 
     @Override
@@ -39,48 +39,26 @@ public class OnMemberClick extends AppCompatActivity{
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setElevation(0);
-        ImageButton button_jobs = (ImageButton) findViewById(R.id.button_jobs);
-        button_jobs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(OnMemberClick.this, onClickJob.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
-                finish();
-            }
-        });
-        ImageButton setting = (ImageButton) findViewById(R.id.button_setting);
-        setting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(OnMemberClick.this, onSettingClicked.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
-                finish();
-            }
-        });
-        ImageButton filter  = (ImageButton) findViewById(R.id.button_filter);
-        filter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(OnMemberClick.this, onFilterClick.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
-                finish();
-            }
-        });
+
+
 
 
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager,null);
+        setupViewPager(viewPager, null);
 
         tabLayout_top = (TabLayout) findViewById(R.id.tabs);
         tabLayout_top.setupWithViewPager(viewPager);
+        ImageButton imageButton_home , imageButton_job , imageButton_filter, imageButton_setting;
+        imageButton_home = (ImageButton) findViewById(R.id.button_home);
+        imageButton_job = (ImageButton) findViewById(R.id.button_jobs);
+        imageButton_filter = (ImageButton) findViewById(R.id.button_filter);
+        imageButton_setting = (ImageButton) findViewById(R.id.button_setting);
+        imageButton_filter.setOnClickListener(this);
+        imageButton_home.setOnClickListener(this);
+        imageButton_setting.setOnClickListener(this);
+        imageButton_job.setOnClickListener(this);
 
-
-//        tabLayout_bottom = (TabLayout) findViewById(R.id.tabs_bottom);
-//        tabLayout_bottom.setupWithViewPager(viewPager);
     }
     private void setupViewPager(ViewPager viewPager,String where) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -134,4 +112,41 @@ public class OnMemberClick extends AppCompatActivity{
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        Log.d("WTF","I'm Here");
+     switch (v.getId()){
+         case R.id.button_jobs:
+             Intent intent = new Intent(OnMemberClick.this, OnJobClick.class);
+             startActivity(intent);
+             overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+
+             break;
+         case R.id.button_setting:
+             Intent intent2 = new Intent(OnMemberClick.this, onSettingClicked.class);
+             startActivity(intent2);
+             overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+
+             break;
+         case R.id.button_filter:
+             Intent intent3 = new Intent(OnMemberClick.this, onFilterClick.class);
+             startActivity(intent3);
+             overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+
+             break;
+         case R.id.button_home:
+             Intent intent4 = new Intent(OnMemberClick.this,MainScreen.class);
+             startActivity(intent4);
+             overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+
+             break;
+     }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home)
+            this.finish();
+        return true;
+    }
 }

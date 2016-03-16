@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.hp.signupdegin.R;
+import com.example.ashish.alumini.R;
 
 public class Splash extends AppCompatActivity {
 

@@ -1,9 +1,5 @@
 package com.example.ashish.alumini;
 
-import android.app.Activity;
-import android.app.ExpandableListActivity;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -20,7 +16,7 @@ import java.util.ArrayList;
 /**
  * Created by ashish on 9/3/16.
  */
-public class onFilterClick extends AppCompatActivity{
+public class onFilterClick extends AppCompatActivity implements View.OnClickListener{
 
     private ArrayList<String> parentItems = new ArrayList<String>();
     private ArrayList<Object> childItems = new ArrayList<Object>();
@@ -30,28 +26,10 @@ public class onFilterClick extends AppCompatActivity{
         setContentView(R.layout.on_filter_click);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ImageButton settings = (ImageButton) findViewById(R.id.button_setting);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(onFilterClick.this, onSettingClicked.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
-                finish();
-            }
-        });
-        ImageButton button_jobs = (ImageButton) findViewById(R.id.button_jobs);
-        button_jobs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(onFilterClick.this,onClickJob.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
-                finish();
-            }
-        });
+
         ImageButton filter  = (ImageButton) findViewById(R.id.button_filter);
         filter.setBackgroundColor(Color.parseColor("#f5f5f5"));
+        filter.setClickable(false);
 
 
 
@@ -61,7 +39,13 @@ public class onFilterClick extends AppCompatActivity{
 
 
 
-
+        ImageButton imageButton_home ,  imageButton_job, imageButton_setting;
+        imageButton_home = (ImageButton) findViewById(R.id.button_home);
+        imageButton_job = (ImageButton) findViewById(R.id.button_jobs);
+        imageButton_setting = (ImageButton) findViewById(R.id.button_setting);
+        imageButton_job.setOnClickListener(this);
+        imageButton_home.setOnClickListener(this);
+        imageButton_setting.setOnClickListener(this);
 
 
 
@@ -84,5 +68,30 @@ public class onFilterClick extends AppCompatActivity{
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.button_jobs:
+                Intent intent = new Intent(onFilterClick.this, OnJobClick.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+                finish();
+                break;
+            case R.id.button_setting:
+                Intent intent2 = new Intent(onFilterClick.this, onSettingClicked.class);
+                startActivity(intent2);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+                finish();
+                break;
+
+            case R.id.button_home:
+                Intent intent4 = new Intent(onFilterClick.this,MainScreen.class);
+                startActivity(intent4);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+                finish();
+                break;
+        }
     }
 }

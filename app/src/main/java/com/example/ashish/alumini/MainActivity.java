@@ -10,7 +10,7 @@ import android.util.TypedValue;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.example.hp.signupdegin.R;
+import com.example.ashish.alumini.R;
 
 public class MainActivity extends TabActivity {
     /** Called when the activity is first created. */

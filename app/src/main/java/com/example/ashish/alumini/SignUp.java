@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.hp.signupdegin.R;
+import com.example.ashish.alumini.R;
 
 public class SignUp extends Activity
 {

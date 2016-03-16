@@ -1,6 +1,5 @@
 package com.example.ashish.alumini;
 
-import android.app.ActionBar;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -16,14 +15,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.SearchView;
 
 import java.util.ArrayList;
 
 /**
  * Created by ashish on 11/3/16.
  */
-public class onClickJob extends AppCompatActivity {
+public class OnJobClick extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +31,7 @@ public class onClickJob extends AppCompatActivity {
 
         ListView listJob = (ListView) findViewById(R.id.listView_jobpost);
         ArrayList <JobListVar> list = new ArrayList<>();
-        for (int i = 0; i<7; i++){
+        for (int i = 0; i<6; i++){
             JobListVar listVar = new JobListVar(" Name " + i, BitmapFactory.decodeResource(getResources(), R.drawable.image));
             list.add(listVar);
         }
@@ -43,39 +41,25 @@ public class onClickJob extends AppCompatActivity {
         listJob.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(onClickJob.this, jobProfile.class);
+                Intent intent = new Intent(OnJobClick.this, jobProfile.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
             }
         });
 
-        ImageButton button = (ImageButton) findViewById(R.id.button_jobs);
-        button.setBackgroundColor(Color.parseColor("#f5f5f5"));
-        button.setClickable(false);
 
 
         ImageButton button_jobs = (ImageButton) findViewById(R.id.button_jobs);
         button_jobs.setClickable(false);
         button_jobs.setBackgroundColor(Color.parseColor("#f5f5f5"));
-        final ImageButton setting = (ImageButton) findViewById(R.id.button_setting);
-        setting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(onClickJob.this, onSettingClicked.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
-            }
-        });
-        ImageButton filter  = (ImageButton) findViewById(R.id.button_filter);
-        filter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(onClickJob.this, onFilterClick.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
-                finish();
-            }
-        });
+        ImageButton imageButton_home ,  imageButton_filter, imageButton_setting;
+        imageButton_home = (ImageButton) findViewById(R.id.button_home);
+        imageButton_filter = (ImageButton) findViewById(R.id.button_filter);
+        imageButton_setting = (ImageButton) findViewById(R.id.button_setting);
+        imageButton_filter.setOnClickListener(this);
+        imageButton_home.setOnClickListener(this);
+        imageButton_setting.setOnClickListener(this);
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -98,4 +82,28 @@ public class onClickJob extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.button_setting:
+                Intent intent2 = new Intent(OnJobClick.this, onSettingClicked.class);
+                startActivity(intent2);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+                finish();
+                break;
+            case R.id.button_filter:
+                Intent intent3 = new Intent(OnJobClick.this, onFilterClick.class);
+                startActivity(intent3);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+                finish();
+                break;
+            case R.id.button_home:
+                Intent intent4 = new Intent(OnJobClick.this, MainScreen.class);
+                startActivity(intent4);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+                finish();
+                break;
+        }
+    }
 }

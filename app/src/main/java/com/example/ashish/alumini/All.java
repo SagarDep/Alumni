@@ -44,7 +44,7 @@ public class All extends android.support.v4.app.ListFragment {
         super.onActivityCreated(savedInstanceState);
 
         ArrayList<ListVar> list_members = new ArrayList<>();
-        for (int i = 0; i<15; i++){
+        for (int i = 0; i<5; i++){
             ListVar listVar = new ListVar(" Name " + i,BitmapFactory.decodeResource(getResources(),R.drawable.image));
             list_members.add(listVar);
         } //------TEMP

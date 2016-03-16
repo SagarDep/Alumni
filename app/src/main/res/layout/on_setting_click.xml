@@ -61,7 +61,7 @@
                         android:layout_marginTop="13dp"
                         android:layout_marginLeft="10dp"
                         android:src="@drawable/profile"
-                        android:layout_alignTop="@+id/textView_myprofile"
+                        android:layout_alignTop="@+id/button_myprofile"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:id="@+id/imageView" />
@@ -72,7 +72,7 @@
                         android:text="My Profile"
                         style="?android:attr/borderlessButtonStyle"
                         android:textAlignment="viewStart"
-                        android:id="@+id/textView_myprofile"
+                        android:id="@+id/button_myprofile"
                         android:layout_below="@+id/button_postjob"
                         android:layout_alignLeft="@+id/button_postjob"
                         android:layout_alignStart="@+id/button_postjob" />
@@ -80,7 +80,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="1px"
                         android:background="#a6a6a6"
-                        android:layout_below="@id/textView_myprofile"
+                        android:layout_below="@id/button_myprofile"
                         android:layout_alignLeft="@+id/button_fbPage"
                         android:layout_alignStart="@+id/button_fbPage" />
                     <Button
@@ -91,9 +91,9 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:id="@+id/button_fbPage"
                         android:textAlignment="viewStart"
-                        android:layout_below="@+id/textView_myprofile"
-                        android:layout_alignLeft="@+id/textView_myprofile"
-                        android:layout_alignStart="@+id/textView_myprofile" />
+                        android:layout_below="@+id/button_myprofile"
+                        android:layout_alignLeft="@+id/button_myprofile"
+                        android:layout_alignStart="@+id/button_myprofile" />
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1px"
@@ -121,7 +121,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="About College"
-                        android:id="@+id/button_about_cllege"
+                        android:id="@+id/button_about_college"
                         android:textAlignment="viewStart"
                         android:textAppearance="?android:textAppearanceMedium"
                         style="?android:attr/borderlessButtonStyle"
@@ -132,7 +132,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="1px"
                         android:background="#a6a6a6"
-                        android:layout_below="@id/button_about_cllege"/>
+                        android:layout_below="@id/button_about_college"/>
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
                         android:textAlignment="viewStart"
                         android:textAppearance="?android:textAppearanceMedium"
                         style="?android:attr/borderlessButtonStyle"
-                        android:layout_below="@+id/button_about_cllege"
+                        android:layout_below="@+id/button_about_college"
                         android:layout_alignLeft="@+id/button_about_app"
                         android:layout_alignStart="@+id/button_about_app" />
                     <View
@@ -194,15 +194,15 @@
                         android:textAlignment="viewStart"
                         style="?android:attr/borderlessButtonStyle"
                         android:textAppearance="?android:textAppearanceMedium"
-                        android:layout_alignLeft="@+id/button_about_cllege"
-                        android:layout_alignStart="@+id/button_about_cllege" />
+                        android:layout_alignLeft="@+id/button_about_college"
+                        android:layout_alignStart="@+id/button_about_college" />
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:id="@+id/imageView6"
                         android:src="@drawable/fb"
-                        android:layout_below="@+id/textView_myprofile"
+                        android:layout_below="@+id/button_myprofile"
                         android:layout_toLeftOf="@+id/button_postjob"
                         android:layout_toStartOf="@+id/button_postjob"
                         android:layout_marginTop="13dp" />
@@ -228,9 +228,9 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/info"
+                        android:src="@drawable/info2"
                         android:id="@+id/imageView9"
-                        android:layout_alignTop="@+id/button_about_cllege"
+                        android:layout_alignTop="@+id/button_about_college"
                         android:layout_toLeftOf="@+id/button_postjob"
                         android:layout_toStartOf="@+id/button_postjob"
                         android:layout_marginTop="13dp" />
@@ -239,7 +239,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:id="@+id/imageView10"
-                        android:layout_below="@+id/button_about_cllege"
+                        android:layout_below="@+id/button_about_college"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true" />
 
@@ -277,7 +277,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:id="@+id/imageView14"
-                        android:src="@drawable/info"
+                        android:src="@drawable/info2"
                         android:layout_alignTop="@+id/button_contact_us"
                         android:layout_alignLeft="@+id/imageView11"
                         android:layout_alignStart="@+id/imageView11"

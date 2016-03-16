@@ -27,7 +27,8 @@
         android:layout_toRightOf="@+id/profileimage"
         android:layout_toEndOf="@+id/profileimage"
         android:layout_marginBottom="2dp"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:textSize="18dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,7 +39,8 @@
         android:layout_below="@+id/textView_name"
         android:layout_toRightOf="@+id/briefcase"
         android:layout_toEndOf="@+id/briefcase"
-        android:layout_marginLeft="3dp" />
+        android:layout_marginLeft="3dp"
+        android:textSize="14dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,7 +51,8 @@
         android:layout_alignTop="@+id/icon_location"
         android:layout_toRightOf="@+id/icon_location"
         android:layout_toEndOf="@+id/icon_location"
-        android:layout_marginLeft="3dp" />
+        android:layout_marginLeft="3dp"
+        android:textSize="14dp" />
 
     <ImageView
         android:layout_width="16dp"
@@ -71,7 +74,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginLeft="0dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:textSize="14dp" />
 
     <ImageView
         android:layout_width="16dp"

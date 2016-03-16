@@ -9,10 +9,9 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OnMemberClick" android:label="Discover People">
+        <activity android:name=".Splash" android:label="Alumni">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -21,12 +20,34 @@
         <activity android:name=".onSearch" />
         <activity android:name=".onFilterClick" android:label="Filter" />
         <activity android:name=".onSettingClicked" android:label="More" />
-        <activity android:name=".onClickJob" android:label="Job Offerings"></activity>
+        <activity android:name=".OnJobClick" android:label="Job Offerings"></activity>
         <activity android:name=".About_app" android:label="About App"/>
         <activity android:name=".Contact_us" android:label="Contact Us"/>
         <activity android:name=".Faq" android:label="FAQs"/>
         <activity android:name=".jobProfile" android:label="Company Profile"/>
         <activity android:name=".jobPost" android:label="Post A Job"/>
+        <activity android:name=".Login">
+        </activity><activity android:name=".SignUp">
+    </activity><activity android:name=".MainScreen">
+    </activity><activity android:name=".EventPage" android:label="Events" >
+    </activity><activity android:name=".About_college" android:label="ACEIT">
+    </activity><activity android:name=".MainActivity">
+    </activity><activity android:name=".Technica" android:label="Technica Naitus">
+    </activity><activity android:name=".Shrandhan" android:label="Shrandhanjali">
+    </activity><activity android:name=".AryaRatan" android:label="Arya Ratan">
+    </activity><activity android:name=".Eupo" android:label="Euphonious">
+    </activity><activity android:name=".AryaCup" android:label="Arya Cup">
+    </activity><activity android:name=".Victory" android:label="Victory">
+    </activity><activity android:name=".Exergie" android:label="Exergie">
+    </activity><activity android:name=".Social" android:label="Social Event">
+    </activity><activity android:name=".TopGun" android:label="TopGun">
+    </activity><activity android:name=".Auto" android:label="Auto">
+    </activity><activity android:name=".Zephr" android:label="Zephr">
+    </activity><activity android:name=".Engineer" android:label="Engineer Day">
+    </activity><activity android:name=".Confernce" android:label="International Conference">
+    </activity><activity android:name=".sanghosti" android:label="Sanghosti">
+    </activity><activity android:name=".microsoft" android:label="Microsoft Innovation Center">
+    </activity><activity android:name=".OnMemberClick" />
     </application>
 
 </manifest>

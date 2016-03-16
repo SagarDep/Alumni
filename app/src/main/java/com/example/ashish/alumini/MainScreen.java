@@ -5,14 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.hp.signupdegin.R;
 
 public class MainScreen extends AppCompatActivity  implements View.OnClickListener{
 
-    at.markushi.ui.CircleButton events,about;
+    at.markushi.ui.CircleButton events,about,member;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
 
@@ -21,6 +20,9 @@ public class MainScreen extends AppCompatActivity  implements View.OnClickListen
 
         about=(at.markushi.ui.CircleButton)findViewById(R.id.about);
         about.setOnClickListener(this);
+
+        member=(at.markushi.ui.CircleButton)findViewById(R.id.member);
+        member.setOnClickListener(this);
 
         getSupportActionBar().hide();
     }
@@ -39,6 +41,11 @@ public class MainScreen extends AppCompatActivity  implements View.OnClickListen
             case R.id.about:
                 Intent moveToAbout=new Intent(this,About_college.class);
                 startActivity(moveToAbout);
+                break;
+
+            case R.id.member:
+                Intent moveToMember=new Intent(this,OnMemberClick.class);
+                startActivity(moveToMember);
                 break;
 
 

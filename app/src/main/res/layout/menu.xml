@@ -41,6 +41,7 @@
     android:layout_weight="1"
     android:layout_height="wrap_content"
     android:id="@+id/button_jobs"
+        android:clickable="true"
     style="?android:attr/borderlessButtonStyle"
     android:src="@drawable/work"
     />
