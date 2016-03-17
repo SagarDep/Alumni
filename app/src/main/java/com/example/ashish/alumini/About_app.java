@@ -16,7 +16,7 @@ public class About_app extends AppCompatActivity {
 
         setContentView(R.layout.about_app);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
     }
 
     @Override

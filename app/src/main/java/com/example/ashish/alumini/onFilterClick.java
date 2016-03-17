@@ -33,7 +33,7 @@ public class onFilterClick extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.on_filter_click);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ImageButton filter = (ImageButton) findViewById(R.id.button_filter);

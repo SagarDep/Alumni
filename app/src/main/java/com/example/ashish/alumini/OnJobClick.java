@@ -26,8 +26,8 @@ public class OnJobClick extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.on_job_click);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
 
         ListView listJob = (ListView) findViewById(R.id.listView_jobpost);
         ArrayList <JobListVar> list = new ArrayList<>();

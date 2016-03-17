@@ -2,6 +2,7 @@ package com.example.ashish.alumini;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -34,7 +35,8 @@ public class About_college extends AppCompatActivity implements BaseSliderView.O
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         CollegDescription = (TextView) findViewById(R.id.college_desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
-
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String text = "ARYA College of Engineering & I.T (ACEIT),Kukas,Jaipur Established in Year 2000 is among the foremost of institutes of national significance in higher technical education and AICTE,New Delhi Approved and Affiliated with Rajasthan Technical University,Kota in Rajasthan.It is commonly Known as “ARYA OLD MAIN CAMPUS” and “ARYA 1st”.";
         CollegDescription.setText(text);
 

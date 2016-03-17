@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -68,20 +70,23 @@ public class Edit_Profile extends Activity {
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View view) {
                 Log.d("SAVING","Inside saving");
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://192.168.150.3:5000/aryaalumni/api/v1.0/signup?",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-
+                                if (response.contains("1062")){
+                                    Log.d("SAVING","Inside saving e");
+                                    Snackbar.make(view, "Sorry! Database already contains this email", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                                }
                             }
                         },
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-
+                                Log.d("SAVING",error.toString());
                             }
                         }){
                     @Override
@@ -94,8 +99,8 @@ public class Edit_Profile extends Activity {
                         params.put("branch", "CS");
                         params.put("graduate_year", "2017");
                         params.put("work_designation", "2017");
-                        params.put("work_companyr", "2017");
-                        params.put("pg_cource", "2017");
+                        params.put("work_company", "2017");
+                        params.put("pg_course", "2017");
                         params.put("pg_college", "2017");
                         params.put("location_city", "2017");
                         params.put("location_country", "2017");

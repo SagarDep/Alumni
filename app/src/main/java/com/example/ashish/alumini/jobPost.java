@@ -15,7 +15,7 @@ public class jobPost extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_job);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

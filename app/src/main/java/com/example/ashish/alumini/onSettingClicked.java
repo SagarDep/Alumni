@@ -19,7 +19,7 @@ public class onSettingClicked extends AppCompatActivity implements  View.OnClick
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.on_setting_click);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ImageButton imageButton = (ImageButton) findViewById(R.id.button_setting);
         imageButton.setBackgroundColor(Color.parseColor("#f5f5f5"));

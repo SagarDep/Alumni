@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Company Name"
+        android:textColor="@color/cardview_dark_background"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/imageView_job_profile"
