@@ -3,9 +3,9 @@ package com.example.ashish.alumini;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ScrollView;
@@ -16,7 +16,6 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
-import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
@@ -42,9 +41,6 @@ public class Zephr extends AppCompatActivity  implements BaseSliderView.OnSlider
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
         file_maps.put("Zephyr", R.drawable.zep1);
         file_maps.put("Zephyr", R.drawable.zep2);
-        file_maps.put("Zephyr", R.drawable.zep3);
-        file_maps.put("Zephyr", R.drawable.zep4);
-        file_maps.put("Zephyr", R.drawable.zephyr7);
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
