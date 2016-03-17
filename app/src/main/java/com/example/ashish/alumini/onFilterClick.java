@@ -9,6 +9,7 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
@@ -67,10 +68,10 @@ public class onFilterClick extends AppCompatActivity implements View.OnClickList
         branch.add("CSE");
         branch.add("AE");
         branch.add("ME");
-        branch.add("EIC");
+        branch.add("EICE");
         branch.add("IT");
         branch.add("EE");
-        branch.add("EC");
+        branch.add("ECE");
         List<String> year = new ArrayList<>();
         for (int i=2004; i<2017; i++){
             year.add("" + i);
@@ -132,44 +133,20 @@ public class onFilterClick extends AppCompatActivity implements View.OnClickList
 
 
     }
-    private void prepareListData() {
-        Log.d("WTF","Here");
-        listDataHeader = new ArrayList<>();
-        listDataChild = new HashMap<>();
 
-        // Adding child data
-//        listDataHeader.add("Branch");
-//        listDataHeader.add("Graduation Year");
-
-
-        // Adding child data
-        List<String> top250 = new ArrayList<>();
-        top250.add("The Shawshank Redemption");
-        top250.add("The Godfather");
-        top250.add("The Godfather: Part II");
-        top250.add("Pulp Fiction");
-        top250.add("The Good, the Bad and the Ugly");
-        top250.add("The Dark Knight");
-        top250.add("12 Angry Men");
-
-
-        listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), top250); // Header, Child data
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the options menu from XML
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main2, menu);
-
         return true;
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
         finish();
     }
 
@@ -196,5 +173,11 @@ public class onFilterClick extends AppCompatActivity implements View.OnClickList
                 finish();
                 break;
         }
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home)
+            this.finish();
+        return true;
     }
 }

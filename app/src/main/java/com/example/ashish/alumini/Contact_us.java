@@ -24,7 +24,7 @@ public class Contact_us extends AppCompatActivity{
         button_website.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("http://www.google.com");
+                Uri uri = Uri.parse("http://www.aryacollege.in");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
@@ -33,7 +33,9 @@ public class Contact_us extends AppCompatActivity{
         button_phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + "91-141-6604555"));
+                startActivity(callIntent);
             }
         });
         Button button_mail = (Button) findViewById(R.id.mail);
@@ -41,8 +43,9 @@ public class Contact_us extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_EMAIL, "abc@mail.com");
-                startActivity(Intent.createChooser(intent, "Choose an Email client :"));
+                intent.setType("plain/text");
+                intent.putExtra(Intent.EXTRA_EMAIL, "info@aryacollege.in");
+                startActivity(Intent.createChooser(intent, ""));
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

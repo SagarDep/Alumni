@@ -207,11 +207,12 @@
                     android:layout_below="@id/textView_fblink2" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Twitter"
-                    android:id="@+id/textView_twlink"
+                    android:text="http://twitter.com/"
+                    android:clickable="true"
+                    android:id="@+id/editText_twlink"
                     android:layout_below="@+id/textView_fblink2"
                     android:layout_toRightOf="@+id/imageView_fb"
                     android:layout_toEndOf="@+id/imageView_fb"
@@ -225,39 +226,42 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/imageView_fb"
-                    android:layout_alignLeft="@+id/textView_twlink"
-                    android:layout_alignStart="@+id/textView_twlink"
-                    android:layout_marginTop="5dp" />
+                    android:layout_alignLeft="@+id/editText_twlink"
+                    android:layout_alignStart="@+id/editText_twlink"
+                    android:layout_marginTop="10dp" />
 
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="email"
-                    android:id="@+id/textView_email"
-                    android:layout_below="@+id/textView_twlink"
-                    android:layout_alignLeft="@+id/textView_twlink"
-                    android:layout_alignStart="@+id/textView_twlink" />
+                    android:clickable="true"
+                    android:id="@+id/editText_mail"
+                    android:layout_below="@+id/editText_twlink"
+                    android:layout_alignLeft="@+id/editText_twlink"
+                    android:layout_alignStart="@+id/editText_twlink"
+                    android:layout_marginTop="5dp" />
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="#a6a6a6"
                     android:layout_toEndOf="@+id/imageView_in"
-                    android:layout_below="@+id/textView_email"
-                    android:layout_alignLeft="@+id/textView_email"
-                    android:layout_alignStart="@+id/textView_email"
+                    android:layout_below="@+id/editText_mail"
+                    android:layout_alignLeft="@+id/editText_mail"
+                    android:layout_alignStart="@+id/editText_mail"
                     android:layout_marginTop="5dp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Phone"
-                    android:id="@+id/textView_contact"
-                    android:layout_below="@+id/textView_email"
-                    android:layout_alignLeft="@+id/textView_email"
-                    android:layout_alignStart="@+id/textView_email"
+                    android:clickable="true"
+                    android:id="@+id/editText_contact"
+                    android:layout_below="@+id/editText_mail"
+                    android:layout_alignLeft="@+id/editText_mail"
+                    android:layout_alignStart="@+id/editText_mail"
                     android:layout_marginTop="10dp" />
 
 
@@ -267,7 +271,7 @@
                     android:layout_height="16dp"
                     android:id="@+id/imageView_fb"
                     android:src="@drawable/tw"
-                    android:layout_alignTop="@+id/textView_twlink"
+                    android:layout_alignTop="@+id/editText_twlink"
                     android:layout_alignLeft="@+id/imageView_in"
                     android:layout_alignStart="@+id/imageView_in"
                     android:layout_marginTop="2dp" />
@@ -276,7 +280,7 @@
                     android:layout_height="16dp"
                     android:id="@+id/imageView_tw"
                     android:src="@drawable/ph"
-                    android:layout_alignTop="@+id/textView_contact"
+                    android:layout_alignTop="@+id/editText_contact"
                     android:layout_alignLeft="@+id/imageView_in"
                     android:layout_alignStart="@+id/imageView_in"
                     android:layout_marginTop="2dp" />
@@ -285,7 +289,7 @@
                     android:layout_height="16dp"
                     android:id="@+id/imageView_in"
                     android:src="@drawable/mail"
-                    android:layout_alignTop="@+id/textView_email"
+                    android:layout_alignTop="@+id/editText_mail"
                     android:layout_alignLeft="@+id/textView_fblink2"
                     android:layout_alignStart="@+id/textView_fblink2"
                     android:layout_marginTop="2dp" />

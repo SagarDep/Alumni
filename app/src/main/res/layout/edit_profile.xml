@@ -126,7 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
-                    android:id="@+id/editText3"
+                    android:id="@+id/editText_designation"
                     android:singleLine="true"
                     android:layout_below="@+id/textView_desig"
                     android:layout_marginTop="5dp"
@@ -134,7 +134,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/editText3"
+                    android:layout_below="@id/editText_designation"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Company"
                     android:id="@+id/textView_company"/>
@@ -142,7 +142,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText4"
+                    android:id="@+id/editText_company"
                     android:layout_below="@+id/textView_company"
                     android:singleLine="true"
                     android:layout_marginTop="5dp"
@@ -154,7 +154,7 @@
                     android:id="@+id/pg"
                     android:layout_marginTop="5dp"
                     android:textAppearance="?android:textAppearanceMedium"
-                    android:layout_below="@id/editText4"/>
+                    android:layout_below="@id/editText_company"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -185,7 +185,6 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/editText_univ"
                     android:singleLine="true"
-
                     android:layout_marginTop="5dp"
                     android:layout_below="@id/textView_univ"/>
 
@@ -207,7 +206,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
-                    android:hint="JAIPUR"
+                    android:hint=""
                     android:singleLine="true"
                     android:textAppearance="?android:textAppearanceMedium"
                     android:id="@+id/ediText_home"
@@ -247,7 +246,7 @@
                     android:singleLine="true"
 
                     android:layout_marginLeft="10dp"
-                    android:hint="Mumbai"
+                    android:hint=""
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp" />
 
@@ -291,7 +290,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="https://twitter.com/"
-                    android:id="@+id/textView_twlink"
+                    android:id="@+id/editText_twlink"
                     android:singleLine="true"
 
                     android:layout_below="@+id/textView_fblink2"
@@ -307,12 +306,13 @@
                     android:hint="Email"
                     android:singleLine="true"
                     android:inputType="textEmailAddress"
-                    android:id="@+id/textView_email"
+                    android:id="@+id/editText_mail"
 
-                    android:layout_below="@+id/textView_twlink"
-                    android:layout_alignLeft="@+id/textView_twlink"
-                    android:layout_alignStart="@+id/textView_twlink"
-                    android:layout_marginTop="5dp" />
+                    android:layout_below="@+id/editText_twlink"
+                    android:layout_alignLeft="@+id/editText_twlink"
+                    android:layout_alignStart="@+id/editText_twlink"
+                    android:layout_marginTop="5dp"
+                    android:text="e-mail" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -321,13 +321,14 @@
                     android:hint="Contact"
                     android:inputType="phone"
 
-                    android:id="@+id/textView_contact"
-                    android:layout_below="@+id/textView_email"
+                    android:id="@+id/editText_contact"
+                    android:layout_below="@+id/editText_mail"
                     android:layout_toRightOf="@+id/imageView_fb"
                     android:layout_toEndOf="@+id/imageView_fb"
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginTop="5dp" />
+                    android:layout_marginTop="5dp"
+                    android:text="Phone" />
 
 
                 <!-- image of new twitter -->
@@ -336,7 +337,7 @@
                     android:layout_height="20dp"
                     android:id="@+id/imageView_fb"
                     android:src="@drawable/tw"
-                    android:layout_alignTop="@+id/textView_twlink"
+                    android:layout_alignTop="@+id/editText_twlink"
                     android:layout_alignLeft="@+id/textView_fblink2"
                     android:layout_alignStart="@+id/textView_fblink2"
                     android:layout_marginTop="10dp" />
@@ -345,18 +346,18 @@
                     android:layout_height="20dp"
                     android:id="@+id/imageView_tw"
                     android:src="@drawable/ph"
-                    android:layout_alignTop="@+id/textView_contact"
-                    android:layout_toLeftOf="@+id/textView_contact"
-                    android:layout_toStartOf="@+id/textView_contact"
+                    android:layout_alignTop="@+id/editText_contact"
+                    android:layout_toLeftOf="@+id/editText_contact"
+                    android:layout_toStartOf="@+id/editText_contact"
                     android:layout_marginTop="10dp" />
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:id="@+id/imageView_in"
                     android:src="@drawable/mail"
-                    android:layout_alignTop="@+id/textView_email"
-                    android:layout_toLeftOf="@+id/textView_twlink"
-                    android:layout_toStartOf="@+id/textView_twlink"
+                    android:layout_alignTop="@+id/editText_mail"
+                    android:layout_toLeftOf="@+id/editText_twlink"
+                    android:layout_toStartOf="@+id/editText_twlink"
                     android:layout_marginTop="10dp" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
@@ -374,7 +375,8 @@
                 android:textAppearance="?android:textAppearanceMedium"
                 android:text="Save Changes"
                 style="?android:attr/borderlessButtonStyle"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:id="@+id/button_save" />
         </android.support.v7.widget.CardView>
 
 

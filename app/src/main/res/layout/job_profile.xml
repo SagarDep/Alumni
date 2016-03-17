@@ -119,7 +119,7 @@
                     android:layout_height="20dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Twitter"
-                    android:id="@+id/textView_twlink"
+                    android:id="@+id/editText_twlink"
                     android:layout_below="@+id/textView_fblink2"
                     android:layout_toRightOf="@+id/imageView_fb"
                     android:layout_toEndOf="@+id/imageView_fb"
@@ -131,10 +131,10 @@
                     android:layout_height="20dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="email"
-                    android:id="@+id/textView_email"
+                    android:id="@+id/editText_mail"
                     android:layout_below="@+id/imageView_fb"
-                    android:layout_alignLeft="@+id/textView_twlink"
-                    android:layout_alignStart="@+id/textView_twlink"
+                    android:layout_alignLeft="@+id/editText_twlink"
+                    android:layout_alignStart="@+id/editText_twlink"
                     android:layout_marginTop="5dp" />
 
                 <TextView
@@ -142,10 +142,10 @@
                     android:layout_height="20dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Website"
-                    android:id="@+id/textView_contact"
+                    android:id="@+id/editText_contact"
                     android:layout_below="@+id/imageView_in"
-                    android:layout_alignLeft="@+id/textView_email"
-                    android:layout_alignStart="@+id/textView_email"
+                    android:layout_alignLeft="@+id/editText_mail"
+                    android:layout_alignStart="@+id/editText_mail"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"/>
 
@@ -155,7 +155,7 @@
                     android:layout_height="16dp"
                     android:id="@+id/imageView_fb"
                     android:src="@drawable/tw"
-                    android:layout_alignTop="@+id/textView_twlink"
+                    android:layout_alignTop="@+id/editText_twlink"
                     android:layout_alignLeft="@+id/imageView_in"
                     android:layout_alignStart="@+id/imageView_in"
                     android:layout_marginTop="2dp" />
@@ -164,7 +164,7 @@
                     android:layout_height="16dp"
                     android:id="@+id/imageView_tw"
                     android:src="@drawable/website"
-                    android:layout_alignTop="@+id/textView_contact"
+                    android:layout_alignTop="@+id/editText_contact"
                     android:layout_alignLeft="@+id/imageView_in"
                     android:layout_alignStart="@+id/imageView_in"
                     android:layout_marginTop="2dp" />
@@ -173,7 +173,7 @@
                     android:layout_height="16dp"
                     android:id="@+id/imageView_in"
                     android:src="@drawable/mail"
-                    android:layout_alignTop="@+id/textView_email"
+                    android:layout_alignTop="@+id/editText_mail"
                     android:layout_alignLeft="@+id/textView_fblink2"
                     android:layout_alignStart="@+id/textView_fblink2"
                     android:layout_marginTop="2dp" />
