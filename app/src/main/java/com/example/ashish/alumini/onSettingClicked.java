@@ -123,7 +123,7 @@ public class onSettingClicked extends AppCompatActivity implements  View.OnClick
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==android.R.id.home)
-            this.finis  h();
+            this.finish();
         return true;
     }
 }

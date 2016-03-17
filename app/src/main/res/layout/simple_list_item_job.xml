@@ -24,7 +24,8 @@
         android:layout_toRightOf="@+id/imageView_job_profile"
         android:layout_toEndOf="@+id/imageView_job_profile"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:textSize="18dp" />
 
     <ImageView
         android:layout_width="16dp"
@@ -46,7 +47,8 @@
         android:layout_toRightOf="@+id/imageView4"
         android:layout_toEndOf="@+id/imageView4"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:textSize="14dp" />
 
     <ImageView
         android:layout_width="16dp"
@@ -67,7 +69,8 @@
         android:layout_alignBottom="@+id/imageView_job_profile"
         android:layout_alignLeft="@+id/textView_joblocation"
         android:layout_alignStart="@+id/textView_joblocation"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:textSize="14dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -78,7 +81,8 @@
         android:layout_alignBottom="@+id/imageView4"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/textView2" />
+        android:layout_below="@+id/textView2"
+        android:textSize="14dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -88,7 +92,8 @@
         android:id="@+id/textView6"
         android:layout_alignTop="@+id/imageView5"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textSize="14dp" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"

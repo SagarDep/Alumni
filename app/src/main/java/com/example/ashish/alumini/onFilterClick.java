@@ -5,21 +5,29 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by ashish on 9/3/16.
  */
 public class onFilterClick extends AppCompatActivity implements View.OnClickListener{
 
-    private ArrayList<String> parentItems = new ArrayList<String>();
-    private ArrayList<Object> childItems = new ArrayList<Object>();
+    ExpandableListAdapter listAdapter;
+    ExpandableListView expListView;
+    List<String> listDataHeader;
+    HashMap<String, List<String>> listDataChild;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,13 +35,9 @@ public class onFilterClick extends AppCompatActivity implements View.OnClickList
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        ImageButton filter  = (ImageButton) findViewById(R.id.button_filter);
+        ImageButton filter = (ImageButton) findViewById(R.id.button_filter);
         filter.setBackgroundColor(Color.parseColor("#f5f5f5"));
         filter.setClickable(false);
-
-
-
-        ExpandableListView expandableList = (ExpandableListView) findViewById(R.id.expandableListView);
 
 
 
@@ -48,10 +52,109 @@ public class onFilterClick extends AppCompatActivity implements View.OnClickList
         imageButton_setting.setOnClickListener(this);
 
 
+        expListView = (ExpandableListView) findViewById(R.id.lvExp);
+
+        // preparing list data
+//        prepareListData();
+        listDataHeader = new ArrayList<>();
+        listDataChild = new HashMap<>();
+        listDataHeader.add("Branch");
+        listDataHeader.add("Graduation Year");
+        listDataChild = new HashMap<>();
 
 
+        List<String> branch = new ArrayList<>();
+        branch.add("CSE");
+        branch.add("AE");
+        branch.add("ME");
+        branch.add("EIC");
+        branch.add("IT");
+        branch.add("EE");
+        branch.add("EC");
+        List<String> year = new ArrayList<>();
+        for (int i=2004; i<2017; i++){
+            year.add("" + i);
+        }
+        listDataChild.put(listDataHeader.get(0), branch);
+        listDataChild.put(listDataHeader.get(1), year);
+        listAdapter = new MyExpandableListAdapter(this, listDataHeader, listDataChild);
+
+        // setting list adapter
+
+        expListView.setAdapter(listAdapter);
+
+        // Listview Group click listener
+//        expListView.setOnGroupClickListener(new OnGroupClickListener() {
+//
+//            @Override
+//            public boolean onGroupClick(ExpandableListView parent, View v,
+//                                        int groupPosition, long id) {
+//                // Toast.makeText(getApplicationContext(),
+//                // "Group Clicked " + listDataHeader.get(groupPosition),
+//                // Toast.LENGTH_SHORT).show();
+//                return false;
+//            }
+//        });
+
+        // Listview Group expanded listener
+//        expListView.setOnGroupExpandListener(new OnGroupExpandListener() {
+//
+//            @Override
+//            public void onGroupExpand(int groupPosition) {
+//                Toast.makeText(getApplicationContext(),
+//                        listDataHeader.get(groupPosition) + " Expanded",
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+        // Listview Group collasped listener
+//        expListView.setOnGroupCollapseListener(new OnGroupCollapseListener() {
+//
+//            @Override
+//            public void onGroupCollapse(int groupPosition) {
+//                Toast.makeText(getApplicationContext(),
+//                        listDataHeader.get(groupPosition) + " Collapsed",
+//                        Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+
+        // Listview on child click listener
+//        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+//
+//            @Override
+//            public boolean onChildClick(ExpandableListView parent, View v,
+//                                        int groupPosition, int childPosition, long id) {
+//                // TODO Auto-generated method stub
+//
+//            }
+//        });
 
 
+    }
+    private void prepareListData() {
+        Log.d("WTF","Here");
+        listDataHeader = new ArrayList<>();
+        listDataChild = new HashMap<>();
+
+        // Adding child data
+//        listDataHeader.add("Branch");
+//        listDataHeader.add("Graduation Year");
+
+
+        // Adding child data
+        List<String> top250 = new ArrayList<>();
+        top250.add("The Shawshank Redemption");
+        top250.add("The Godfather");
+        top250.add("The Godfather: Part II");
+        top250.add("Pulp Fiction");
+        top250.add("The Good, the Bad and the Ugly");
+        top250.add("The Dark Knight");
+        top250.add("12 Angry Men");
+
+
+        listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), top250); // Header, Child data
 
     }
 

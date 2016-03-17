@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
@@ -29,6 +30,12 @@ public class Edit_Profile extends Activity {
         ArrayAdapter <CharSequence> adapter_year = ArrayAdapter.createFromResource(this,R.array.year_array,R.layout.support_simple_spinner_dropdown_item);
         spinner_year.setAdapter(adapter_year);
 
+        EditText name , description , location_home , location_work;
+
+        name= (EditText) findViewById(R.id.editText_name);
+        description = (EditText) findViewById(R.id.Edittext_desc);
+        location_home = (EditText) findViewById(R.id.ediText_home);
+        location_work = (EditText) findViewById(R.id.editText_location);
 
     }
 

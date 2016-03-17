@@ -120,8 +120,8 @@
                     android:id="@+id/textView_home_profile"
                     android:layout_below="@+id/info_text"
 
-                    android:layout_alignLeft="@+id/textView_location_profile"
-                    android:layout_alignStart="@+id/textView_location_profile"
+                    android:layout_alignLeft="@+id/editText_location"
+                    android:layout_alignStart="@+id/editText_location"
                     android:layout_marginTop="5dp" />
                 <View
                     android:layout_width="match_parent"
@@ -139,7 +139,7 @@
                     android:layout_height="16dp"
                     android:id="@+id/imageView_work"
                     android:src="@drawable/work"
-                    android:layout_alignTop="@+id/textView_location_profile"
+                    android:layout_alignTop="@+id/editText_location"
                     android:layout_alignLeft="@+id/info_text"
                     android:layout_alignStart="@+id/info_text"
                     android:layout_marginTop="2dp" />
@@ -159,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Mumbai"
-                    android:id="@+id/textView_location_profile"
+                    android:id="@+id/editText_location"
                     android:layout_below="@+id/textView_home_profile"
                     android:layout_toRightOf="@+id/imageView_work"
                     android:layout_toEndOf="@+id/imageView_work"
