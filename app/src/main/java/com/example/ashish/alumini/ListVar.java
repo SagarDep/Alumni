@@ -20,15 +20,18 @@ public class ListVar {
     String name ;
     String year_passing;
     String designation;
-    String location;
-    String fb_link;
-    String in_link;
-    String tw_link;
+    String location_work;
+    String branch;
+    String company;
     Bitmap bitmap;
-    public ListVar(String name2, Bitmap bitmap2){
+    public ListVar(String name2, Bitmap bitmap2, String designation2, String company, String location_work, String branch, String year_passing){
         name = name2;
        this.bitmap= Bitmap.createBitmap(bitmap2);
-
+        this.designation=designation2;
+        this.company = company;
+        this.location_work = location_work;
+        this.branch = branch;
+        this.year_passing = year_passing;
     }
     public static Bitmap getCircleBitmap(Bitmap bitmap) {
         final Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),

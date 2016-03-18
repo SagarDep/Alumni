@@ -40,11 +40,10 @@ public class Auto extends AppCompatActivity implements BaseSliderView.OnSliderCl
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Technica Naitus", R.drawable.tehnika1);
-        file_maps.put("Arya Old Main Campus", R.drawable.tenika_1);
-        file_maps.put("Inside View", R.drawable.tehnika2);
-        file_maps.put("Aray Cup", R.drawable.tehnika4);
-        file_maps.put("Naitus", R.drawable.tehnika5);
+        file_maps.put("Auto Ignition", R.drawable.tehnika1);
+        file_maps.put("Auto Ignition", R.drawable.eupo_2);
+        file_maps.put("Inside View", R.drawable.cup_2);
+        file_maps.put("AutoIgnition", R.drawable.top4);
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);

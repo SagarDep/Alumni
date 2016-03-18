@@ -34,8 +34,8 @@ public class AryaCup extends AppCompatActivity  implements BaseSliderView.OnSlid
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //putting text in dscrption
         String text = "Arya promotes the spirit of sportsmanship in the youth by organizing Arya Cup- The National Level Cricket Tournament every year in the campus. Cricket teams from far and wide participate in this event and their talent in sports is exhibited in the field of cricket.";
         Description.setText(text);

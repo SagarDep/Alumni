@@ -39,7 +39,7 @@ public class Proffesional extends ListFragment{
         super.onActivityCreated(savedInstanceState);
         ArrayList<ListVar> list_members = new ArrayList<>();
         for (int i = 0; i<5; i++){
-            ListVar listVar = new ListVar(" Name " + i, BitmapFactory.decodeResource(getResources(), R.drawable.image));
+            ListVar listVar = new ListVar(" Name " + i,BitmapFactory.decodeResource(getResources(),R.drawable.image),"CS","IBM","Mumbai","CS","2017");
             list_members.add(listVar);
         } //------TEMP
 

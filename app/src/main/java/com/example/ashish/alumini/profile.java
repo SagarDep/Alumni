@@ -31,7 +31,11 @@ public class profile extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(profile.this, Edit_Profile.class);
+                intent.putExtra("SIGN_UP","update");
+                intent.putExtra("EMAIL","email");
+                intent.putExtra("NAME","email");
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
             }
         });
 

@@ -6,11 +6,23 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import android.telephony.CellIdentityGsm;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.util.ArrayList;
 
@@ -43,9 +55,40 @@ public class All extends android.support.v4.app.ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+        String url ="http://192.168.150.3:5000/aryaalumni/api/v1.0/membersprofile?start=0&end=5";
+
+// Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        Log.d("WTF RESPONSE",response);
+                        try {
+                            JSONObject json= (JSONObject) new JSONTokener(response).nextValue();
+                            JSONArray jsonArray = json.getJSONArray("data");
+                            Log.d("WTF",jsonArray.get(0).toString());
+                        }
+                        catch (Exception e){
+
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("WTF ERROR",error.toString());
+            }
+        });
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+
+
         ArrayList<ListVar> list_members = new ArrayList<>();
         for (int i = 0; i<5; i++){
-            ListVar listVar = new ListVar(" Name " + i,BitmapFactory.decodeResource(getResources(),R.drawable.image));
+            ListVar listVar = new ListVar(" Name " + i,BitmapFactory.decodeResource(getResources(),R.drawable.image),"CS","IBM","Mumbai","CS","2017");
             list_members.add(listVar);
         } //------TEMP
 

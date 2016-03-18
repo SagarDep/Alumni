@@ -36,18 +36,18 @@
 
                 />
 
-            <TextView
+            <me.biubiubiu.justifytext.library.JustifyTextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="DEMO DEMO DEMO DEMO DEMO DEMO"
                 android:id="@+id/desc"
-                android:textSize="15dp"
+                android:textSize="16dp"
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
                 android:typeface="serif"
                 android:alpha="0.8"
-                android:layout_marginLeft="14dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="3dp"
                 android:layout_below="@+id/thanks"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="412dp" />

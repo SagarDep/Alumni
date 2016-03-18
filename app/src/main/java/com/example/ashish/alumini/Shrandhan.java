@@ -33,7 +33,7 @@ public class Shrandhan extends AppCompatActivity implements BaseSliderView.OnSli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shrandhan);
 
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
+       // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);

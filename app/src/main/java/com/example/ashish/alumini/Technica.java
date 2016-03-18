@@ -34,7 +34,7 @@ public class Technica extends AppCompatActivity implements BaseSliderView.OnSlid
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
+        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
 
         //putting text in dscrption
         String text = "Tehnica Naitus is a National Level Technical Project Competition which is organized every year in the campus to promote the innovative skills of the young students. The students from all over the nation throng the Arya campus to exhibit their projects and luminaries from industry and academia are invited as judges on this occasion. The valuable views shared by the knowledgeable dignitaries.";
