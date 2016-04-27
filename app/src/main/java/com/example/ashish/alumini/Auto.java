@@ -3,9 +3,9 @@ package com.example.ashish.alumini;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ScrollView;
@@ -16,7 +16,6 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
-import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
@@ -40,10 +39,15 @@ public class Auto extends AppCompatActivity implements BaseSliderView.OnSliderCl
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
+<<<<<<< HEAD
         file_maps.put("Auto Ignition", R.drawable.tehnika1);
         file_maps.put("Auto Ignition", R.drawable.eupo_2);
         file_maps.put("Inside View", R.drawable.cup_2);
         file_maps.put("AutoIgnition", R.drawable.top4);
+=======
+        file_maps.put("Technica Naitus", R.drawable.tehnika1);
+        file_maps.put("Arya Old Main Campus", R.drawable.tehnika2);
+>>>>>>> 8a11d880fa3e49f203808f55e6cd211e038ebc7d
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);

@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ScrollView;
@@ -17,7 +17,6 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
-import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
@@ -44,8 +43,7 @@ public class TopGun extends AppCompatActivity implements BaseSliderView.OnSlider
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
         file_maps.put("Top Guns", R.drawable.top1);
         file_maps.put("Top Gun", R.drawable.top2);
-        file_maps.put("TopGun", R.drawable.top3);
-        file_maps.put("Top Guns", R.drawable.top4);
+
 
 
         for (String name : file_maps.keySet()) {
