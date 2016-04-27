@@ -16,6 +16,7 @@ import android.util.Log;
  * Created by ashish on 3/3/16.
  */
 public class ListVar {
+    String uid;
     Image image ;
     String name ;
     String year_passing;
@@ -24,8 +25,12 @@ public class ListVar {
     String branch;
     String company;
     Bitmap bitmap;
-    public ListVar(String name2, Bitmap bitmap2, String designation2, String company, String location_work, String branch, String year_passing){
-        name = name2;
+    public ListVar(){
+
+    }
+    public ListVar(String uid , String name2, Bitmap bitmap2, String designation2, String company, String location_work, String branch, String year_passing){
+        this.uid = uid;
+        this.name = name2;
        this.bitmap= Bitmap.createBitmap(bitmap2);
         this.designation=designation2;
         this.company = company;
