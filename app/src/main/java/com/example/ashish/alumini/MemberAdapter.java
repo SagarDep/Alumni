@@ -1,6 +1,7 @@
 package com.example.ashish.alumini;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import java.util.List;
  */
 public class MemberAdapter extends ArrayAdapter<ListVar>{
     List<ListVar> List_members;
+    public  String TAG = "MemberAdapter";
     public MemberAdapter(Context context,int rid, List<ListVar> list){
         super(context,rid,list);
         List_members=list;
@@ -24,10 +26,11 @@ public class MemberAdapter extends ArrayAdapter<ListVar>{
     public View getView(int position, View convertView, ViewGroup parent) {
         ListVar  temp = getItem(position);
 
+        Log.d(TAG,"I'm here");
         if (convertView == null) {
             LayoutInflater vi;
             vi = LayoutInflater.from(getContext());
-            convertView = vi.inflate(R.layout.simple_list_item, null);
+            convertView = vi.inflate(R.layout.simple_list_item,parent);
         }
 
         Holder holder = new Holder();
@@ -39,8 +42,12 @@ public class MemberAdapter extends ArrayAdapter<ListVar>{
         // -----------------------PROFILE PIC-------------------
 
 //        holder.imageView_profilePic.setImageBitmap(ListVar.getCircleBitmap(temp.bitmap));
+//        holder.tv_name.setText(temp.name);
+//        holder.tv_designation.setText(temp.designation + " at " + temp.company);
+//        holder.tv_passing_year.setText(temp.year_passing + " " + temp.branch);
+//        holder.tv_location.setText(temp.location_work);
 
-        holder.tv_name.setText(temp.name);
+        holder.tv_name.setText("temp.name");
         holder.tv_designation.setText(temp.designation + " at " + temp.company);
         holder.tv_passing_year.setText(temp.year_passing + " " + temp.branch);
         holder.tv_location.setText(temp.location_work);

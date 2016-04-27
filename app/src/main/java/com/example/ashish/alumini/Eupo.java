@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ScrollView;
@@ -17,7 +17,6 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
-import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
@@ -41,10 +40,8 @@ public class Eupo extends AppCompatActivity implements BaseSliderView.OnSliderCl
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Euphonious", R.drawable.eupo);
+        file_maps.put("Euphonious", R.drawable.eupo_1);
         file_maps.put("Chief Guest", R.drawable.eupo_2);
-        file_maps.put("Prize Distribution", R.drawable.eupo_3);
-        file_maps.put("Group Performance", R.drawable.eupo_4);
 
         for (String name : file_maps.keySet()) {
         TextSliderView textSliderView = new TextSliderView(this);

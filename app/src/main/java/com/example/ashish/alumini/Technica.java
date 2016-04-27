@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ScrollView;
@@ -17,7 +17,6 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
-import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
@@ -41,11 +40,8 @@ public class Technica extends AppCompatActivity implements BaseSliderView.OnSlid
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Dr. K K Pathak,Secretary,RPSC,Ajmer", R.drawable.tenika_1);
+        file_maps.put("Dr. K K Pathak,Secretary,RPSC,Ajmer", R.drawable.tehnika4);
         file_maps.put("Tehnika Naitus", R.drawable.tehnika1);
-        file_maps.put("Tehnika Naitus", R.drawable.tehnika2);
-        file_maps.put("Projects", R.drawable.tehnika4);
-        file_maps.put("Students Enjoying", R.drawable.tehnika5);
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);

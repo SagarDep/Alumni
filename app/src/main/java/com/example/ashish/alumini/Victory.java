@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ScrollView;
@@ -17,7 +17,6 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
-import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
@@ -44,8 +43,6 @@ public class Victory extends AppCompatActivity implements BaseSliderView.OnSlide
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
         file_maps.put("Victory", R.drawable.vic1);
         file_maps.put("The Annual Day", R.drawable.vic3);
-        file_maps.put("The Annual Day ", R.drawable.vic2);
-        file_maps.put("Victory", R.drawable.vic4);
 
 
         for (String name : file_maps.keySet()) {

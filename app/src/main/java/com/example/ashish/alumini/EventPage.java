@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 
 import com.example.ashish.alumini.R;
 
@@ -31,5 +32,11 @@ public class EventPage extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home)
+            this.finish();
+        return true;
     }
 }

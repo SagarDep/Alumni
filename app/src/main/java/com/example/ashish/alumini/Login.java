@@ -1,17 +1,19 @@
 package com.example.ashish.alumini;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ashish.alumini.R;
+
+//import com.example.ashish.alumini.R;
 
 public class Login extends Activity
 {
@@ -101,47 +103,6 @@ public class Login extends Activity
         }
 
         return valid;
-    }
-
-
-  
-
-
-   //Handling the back button   
-    @Override
-    public void onBackPressed() {
-      
-           //Display alert message when back button has been pressed
-        backButtonHandler();
-        return;
-      
-    }
-
-    public void backButtonHandler() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(
-                Login.this);
-        // Setting Dialog Title
-        alertDialog.setTitle("Leave application?");
-        // Setting Dialog Message
-        alertDialog.setMessage("Are you sure you want to leave the application?");
-
-        // Setting Positive "Yes" Button
-        alertDialog.setPositiveButton("YES",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                });
-        // Setting Negative "NO" Button
-        alertDialog.setNegativeButton("NO",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Write your code here to invoke NO event
-                        dialog.cancel();
-                    }
-                });
-        // Showing Alert Message
-        alertDialog.show();
     }
 
 
