@@ -26,7 +26,6 @@ public class profile extends Activity {
 
         TextView textView = (TextView) findViewById(R.id.textView_year);
         ImageButton edit_image = (ImageButton) findViewById(R.id.edit_image);
-
         edit_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,7 +37,6 @@ public class profile extends Activity {
                 overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
             }
         });
-
         phone = (TextView) findViewById(R.id.editText_contact);
         tw_twitter = (TextView) findViewById(R.id.editText_twlink);
         mail = (TextView) findViewById(R.id.editText_mail);
@@ -49,7 +47,6 @@ public class profile extends Activity {
                 intent.setType("plain/text");
                 intent.putExtra(Intent.EXTRA_EMAIL, mail.getText());
                 startActivity(Intent.createChooser(intent, ""));
-
             }
         });
         tw_twitter.setOnClickListener(new View.OnClickListener() {

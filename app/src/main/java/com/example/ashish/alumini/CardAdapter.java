@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.ashish.alumini.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,7 +78,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
         nature = new MethodClass();
         nature.setName("Zephyr");
-       nature.setThumbnail(R.drawable.zephyr7);
+       nature.setThumbnail(R.drawable.zep1);
         mItems.add(nature);
 
         nature = new MethodClass();

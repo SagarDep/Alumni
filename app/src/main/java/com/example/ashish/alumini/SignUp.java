@@ -2,24 +2,23 @@ package com.example.ashish.alumini;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.ashish.alumini.R;
 
 public class SignUp extends Activity
 {
 
     EditText email,name,password,confirmPassword;
     Button SignUpButton;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -29,12 +28,11 @@ public class SignUp extends Activity
         email=(EditText)findViewById(R.id.email);
         password=(EditText)findViewById(R.id.password);
         name=(EditText)findViewById(R.id.name);
-        confirmPassword=(EditText)findViewById(R.id.confirm_password);
+       confirmPassword=(EditText)findViewById(R.id.confirm_password);
         SignUpButton=(Button)findViewById(R.id.signup);
 
 
         SignUpButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 signUp();
@@ -57,9 +55,9 @@ public class SignUp extends Activity
         pDialog.setMessage("Loading...");
         pDialog.show();
 
-      String    emailString = email.getText().toString().trim();
+        String    emailString = email.getText().toString().trim();
         String passwordString = password.getText().toString().trim();
-      String nameString=name.getText().toString().trim();
+        String nameString=name.getText().toString().trim();
         String confirmPasswordString=confirmPassword.getText().toString().trim();
 
         new android.os.Handler().postDelayed(
@@ -80,8 +78,8 @@ public class SignUp extends Activity
         move.putExtra("NAME",name.getText());
         move.putExtra("EMAIL",email.getText());
         move.putExtra("PASS",password.getText());
+
         startActivity(move);
-        overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
     }
 
     public void onSignupFailed() {
@@ -119,11 +117,11 @@ public class SignUp extends Activity
         } else {
             password.setError(null);
         }
-        
-        if(confirmPasswordString.isEmpty() ||  confirmPasswordString == passwordString)
+
+        if(confirmPasswordString.isEmpty() || confirmPasswordString.equals(passwordString))
         {
             confirmPassword.setError("Password do not match");
-            
+            valid=true;
         }
         else
         {
@@ -133,44 +131,6 @@ public class SignUp extends Activity
         return valid;
 
     }
-    //Handling the back button
-    @Override
-    public void onBackPressed() {
-
-        //Display alert message when back button has been pressed
-        backButtonHandler();
-        return;
-
-    }
-
-    public void backButtonHandler() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(
-                SignUp.this);
-        // Setting Dialog Title
-        alertDialog.setTitle("Leave application?");
-        // Setting Dialog Message
-        alertDialog.setMessage("Are you sure you want to leave the application?");
-
-        // Setting Positive "Yes" Button
-        alertDialog.setPositiveButton("YES",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                        System.exit(0);
-                    }
-                });
-        // Setting Negative "NO" Button
-        alertDialog.setNegativeButton("NO",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Write your code here to invoke NO event
-                        dialog.cancel();
-                    }
-                });
-        // Showing Alert Message
-        alertDialog.show();
-    }
-
 
 
 }

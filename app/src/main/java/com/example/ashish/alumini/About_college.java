@@ -4,10 +4,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -17,7 +18,6 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
-import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
@@ -51,8 +51,6 @@ public class About_college extends AppCompatActivity implements BaseSliderView.O
         file_maps.put("Placed Student",R.drawable.about1);
         file_maps.put("Arya Old Main Campus",R.drawable.about2);
         file_maps.put("Inside View",R.drawable.about3);
-        file_maps.put("Aray Cup", R.drawable.aryacup_main);
-        file_maps.put("Outer View", R.drawable.main_gate1);
 
         for(String name : file_maps.keySet()){
             TextSliderView textSliderView = new TextSliderView(this);
@@ -122,6 +120,12 @@ public class About_college extends AppCompatActivity implements BaseSliderView.O
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home)
+            this.finish();
+        return true;
     }
 
 }

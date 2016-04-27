@@ -39,8 +39,8 @@ public class Proffesional extends ListFragment{
         super.onActivityCreated(savedInstanceState);
         ArrayList<ListVar> list_members = new ArrayList<>();
         for (int i = 0; i<5; i++){
-            ListVar listVar = new ListVar(" Name " + i,BitmapFactory.decodeResource(getResources(),R.drawable.image),"CS","IBM","Mumbai","CS","2017");
-            list_members.add(listVar);
+//            ListVar listVar = new ListVar(" Name " + i,BitmapFactory.decodeResource(getResources(),R.drawable.image),"CS","IBM","Mumbai","CS","2017");
+//            list_members.add(listVar);
         } //------TEMP
 
         MemberAdapter memberAdapter= new MemberAdapter(getActivity(),R.layout.simple_list_item,list_members);

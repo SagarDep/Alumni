@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ScrollView;
@@ -17,7 +17,6 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
-import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
@@ -41,10 +40,15 @@ public class microsoft extends AppCompatActivity implements BaseSliderView.OnSli
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
+<<<<<<< HEAD
         file_maps.put("Microsoft Ed-Vantage Platinum Campus", R.drawable.confer);
         file_maps.put("Arya Old Main Campus", R.drawable.san3);
         file_maps.put("Inside View", R.drawable.micro_eduvantage);
         ;
+=======
+        file_maps.put("Technica Naitus", R.drawable.tehnika1);
+        file_maps.put("Arya Old Main Campus", R.drawable.tehnika2);
+>>>>>>> 8a11d880fa3e49f203808f55e6cd211e038ebc7d
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);

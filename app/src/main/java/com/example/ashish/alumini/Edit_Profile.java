@@ -106,8 +106,8 @@ public class Edit_Profile extends Activity {
                     Snackbar.make(view, "Sorry! We need Non Empty field", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }
 
-/*
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://192.168.150.3:5000/aryaalumni/api/v1.0/signup?",
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://182.73.140.106/aryaalumni/api/v1.0/signup?",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -118,12 +118,11 @@ public class Edit_Profile extends Activity {
                                 }
                                 if (response.contains("uid") && foo.equals("signup")) {
                                     Log.d("SAVING", "WORK");
-
-
-                                    try {
-                                        JSONObject json= (JSONObject) new JSONToke Intent intent = new Intent(Edit_Profile.this, MainScreen.class);
+                                    Intent intent = new Intent(Edit_Profile.this, MainScreen.class);
                                     startActivity(intent);
-                                    overridePendingTransition(R.anim.slide_out, R.anim.slide_in);ner(response).nextValue();
+                                    overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+                                    try {
+                                        JSONObject json= (JSONObject) new JSONTokener(response).nextValue();
                                         JSONArray jsonArray = json.getJSONArray("uid");
                                         uid=jsonArray.get(0).toString();
 
@@ -166,11 +165,11 @@ public class Edit_Profile extends Activity {
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                 requestQueue.add(stringRequest);
 
-*/
 
-                Intent intent = new Intent(Edit_Profile.this, MainScreen.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+
+//                Intent intent = new Intent(Edit_Profile.this, MainScreen.class);
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
 
 //                if (foo.equals("update")){
 //                    Log.d("GET","Updated");
