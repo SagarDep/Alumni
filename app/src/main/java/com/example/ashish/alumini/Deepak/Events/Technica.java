@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Deepak.Events;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,11 +17,11 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
-public class Shrandhan extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
-
+public class Technica extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     SliderLayout mDemoSlider ;
     ScrollView mainScroll;
@@ -30,29 +30,19 @@ public class Shrandhan extends AppCompatActivity implements BaseSliderView.OnSli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shrandhan);
-
-       // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
+        setContentView(R.layout.activity_technica);
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
+        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
 
         //putting text in dscrption
-        String text = "It is a tribute to the founder chairman Late. Shri T.K. Agarwal Ji.\n" +
-                "\n" +
-                "The event is full of festivity, fun and frolic and fills the students with enthusiasm and a spirit of gaiety. This kind of programme unfalteringly inculcates a spirit of togetherness and team work and develops the organizational capabilities of the students. This fest comprises of various events like.\n" +
-                "\n" +
-                "Paper Presentation\n" +
-                "Poster Making\n" +
-                "Debates\n" +
-                "Creative Writing\n" +
-                "Quiz";
+        String text = "Tehnica Naitus is a National Level Technical Project Competition which is organized every year in the campus to promote the innovative skills of the young students. The students from all over the nation throng the Arya campus to exhibit their projects and luminaries from industry and academia are invited as judges on this occasion. The valuable views shared by the knowledgeable dignitaries.";
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Dancing Talent", R.drawable.shra_1);
-        file_maps.put("Shradhanjali", R.drawable.shra_2);
-
+        file_maps.put("Dr. K K Pathak,Secretary,RPSC,Ajmer", R.drawable.tehnika4);
+        file_maps.put("Tehnika Naitus", R.drawable.tehnika1);
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
@@ -69,8 +59,7 @@ public class Shrandhan extends AppCompatActivity implements BaseSliderView.OnSli
                     .putString("extra", name);
 
             mDemoSlider.addSlider(textSliderView);
-
-                }
+        }
         mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Stack);
         mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mDemoSlider.setCustomAnimation(new DescriptionAnimation());
@@ -79,9 +68,9 @@ public class Shrandhan extends AppCompatActivity implements BaseSliderView.OnSli
     }
 
 
-    public void wayToTechica(View v)
+    public void wayToEvent(View v)
     {
-        Uri uri = Uri.parse("http://www.aryacollege.in/shradhanjali.php");
+        Uri uri = Uri.parse("http://www.aryacollege.in/tehnika-naitus.php");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
 

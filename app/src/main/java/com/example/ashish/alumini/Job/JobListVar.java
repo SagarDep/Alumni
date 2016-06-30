@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Job;
 
 import android.graphics.Bitmap;
 

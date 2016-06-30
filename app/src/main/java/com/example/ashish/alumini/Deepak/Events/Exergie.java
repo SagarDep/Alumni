@@ -1,7 +1,8 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Deepak.Events;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -16,10 +17,11 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
-public class Auto extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class Exergie extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     SliderLayout mDemoSlider ;
     ScrollView mainScroll;
@@ -28,26 +30,25 @@ public class Auto extends AppCompatActivity implements BaseSliderView.OnSliderCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_auto);
-
+        setContentView(R.layout.activity_exergie);
+       // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
         //putting text in dscrption
-        String text = "The Department of Automobile and Mechanical Engineering of Arya College of Engg. & I.T., in collaboration with The Institution of Engineers (India) organizes a National Level Technical Fest AUTOIGINITION, which ignites the spark of creativity and innovation in the youth so that that it can dwell into an interminable flame of learning and success. This technical fest comprises of many fun and frolic events.";
+        String text = "EXERGIE is a national level technical carnival organized by Computer Science and I.T. Department.It is focused on the invocation of a new methodology for the development of sprit of competition at technical level and also enhances the abilities of the students to improve their concentration and speed. Various events like Blind Coding, Apps World, Enforcer, Maneuver, Golden Goal etc.";
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-<<<<<<< HEAD
-        file_maps.put("Auto Ignition", R.drawable.tehnika1);
-        file_maps.put("Auto Ignition", R.drawable.eupo_2);
-        file_maps.put("Inside View", R.drawable.cup_2);
-        file_maps.put("AutoIgnition", R.drawable.top4);
-=======
+        file_maps.put("EXERGIE", R.drawable.exergie);
+        file_maps.put("EXERGIE", R.drawable.eupo);
+
+
+
         file_maps.put("Technica Naitus", R.drawable.tehnika1);
-        file_maps.put("Arya Old Main Campus", R.drawable.tehnika2);
->>>>>>> 8a11d880fa3e49f203808f55e6cd211e038ebc7d
+        file_maps.put("Arya Old Main Campus", R.drawable.tenika_1);
+
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
@@ -75,7 +76,7 @@ public class Auto extends AppCompatActivity implements BaseSliderView.OnSliderCl
 
     public void wayToEvent(View v)
     {
-        Uri uri = Uri.parse("http://www.aryacollege.in/autoignition.php");
+        Uri uri = Uri.parse("http://www.aryacollege.in/exergie.php");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
 
@@ -117,4 +118,5 @@ public class Auto extends AppCompatActivity implements BaseSliderView.OnSliderCl
     public void onPageScrollStateChanged(int state) {
 
     }
-    }
+
+}

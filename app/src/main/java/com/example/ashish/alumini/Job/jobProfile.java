@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Job;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -6,16 +6,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.example.ashish.alumini.R;
+
 /**
- * Created by ashish on 14/3/16.
+ * Created by ashish on 12/3/16.
  */
-public class jobPost extends AppCompatActivity {
+public class jobProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.post_job);
+        setContentView(R.layout.job_profile);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d60d0d")));
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -23,5 +25,4 @@ public class jobPost extends AppCompatActivity {
             this.finish();
         return true;
     }
-
 }

@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Deepak.Events;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,31 +17,38 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
-public class AryaCup extends AppCompatActivity  implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
+public class Engineer extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     SliderLayout mDemoSlider ;
     ScrollView mainScroll;
     TextView Description;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_arya_cup);
+        setContentView(R.layout.activity_engineer);
+        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
-        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //putting text in dscrption
-        String text = "Arya promotes the spirit of sportsmanship in the youth by organizing Arya Cup- The National Level Cricket Tournament every year in the campus. Cricket teams from far and wide participate in this event and their talent in sports is exhibited in the field of cricket.";
+        String text = "Engineer's Day is celebrated evey year in the college.";
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Arya Cup", R.drawable.aryacup_main);
-        file_maps.put("Finalist Team", R.drawable.cup_1);
+
+        file_maps.put("Engineer's Day", R.drawable.eupo_2);
+        file_maps.put("Engineer's Day", R.drawable.tenika_1);
+        file_maps.put("Engineer's Day", R.drawable.san1);
+        file_maps.put("Engineer's Day", R.drawable.national_sanghosti);
+
+
+        file_maps.put("Technica Naitus", R.drawable.tehnika1);
+        file_maps.put("Arya Old Main Campus", R.drawable.tehnika2);
 
 
         for (String name : file_maps.keySet()) {
@@ -70,7 +77,7 @@ public class AryaCup extends AppCompatActivity  implements BaseSliderView.OnSlid
 
     public void wayToEvent(View v)
     {
-        Uri uri = Uri.parse("http://www.aryacollege.in/aryacup.php");
+        Uri uri = Uri.parse("http://www.aryacollege.in/engineer-day.php");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
 
@@ -113,5 +120,5 @@ public class AryaCup extends AppCompatActivity  implements BaseSliderView.OnSlid
 
     }
 
-
 }
+

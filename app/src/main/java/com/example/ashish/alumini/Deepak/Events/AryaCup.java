@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Deepak.Events;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,32 +17,32 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
-public class Victory extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
+public class AryaCup extends AppCompatActivity  implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
     SliderLayout mDemoSlider ;
     ScrollView mainScroll;
     TextView Description;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_victory);
-       // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
+        setContentView(R.layout.activity_arya_cup);
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
-
+        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //putting text in dscrption
-        String text = "Victory - The Annual Day is organized every year in the Arya Campus to promote the talent and achievements of the young Aryans. Another distinguished feature of the event is the presentation of the Annual Report by the head of the institution which brings forth the plethora of activities organized in the campus, remarkable achievements of the faculty, students and institution as a whole. This day also brings a sense of pride in the distinguished Aryans.";
+        String text = "Arya promotes the spirit of sportsmanship in the youth by organizing Arya Cup- The National Level Cricket Tournament every year in the campus. Cricket teams from far and wide participate in this event and their talent in sports is exhibited in the field of cricket.";
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Victory", R.drawable.vic1);
-        file_maps.put("The Annual Day", R.drawable.vic3);
+        file_maps.put("Arya Cup", R.drawable.aryacup_main);
+        file_maps.put("Finalist Team", R.drawable.cup_1);
 
 
         for (String name : file_maps.keySet()) {
@@ -71,7 +71,7 @@ public class Victory extends AppCompatActivity implements BaseSliderView.OnSlide
 
     public void wayToEvent(View v)
     {
-        Uri uri = Uri.parse("http://www.aryacollege.in/the-annualday.php");
+        Uri uri = Uri.parse("http://www.aryacollege.in/aryacup.php");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
 
@@ -114,5 +114,5 @@ public class Victory extends AppCompatActivity implements BaseSliderView.OnSlide
 
     }
 
-}
 
+}

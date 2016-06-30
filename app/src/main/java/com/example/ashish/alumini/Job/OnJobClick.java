@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Job;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -15,6 +15,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+
+import com.example.ashish.alumini.Activities.PostLogin.MainScreen;
+import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.onFilterClick;
+import com.example.ashish.alumini.onSettingClicked;
 
 import java.util.ArrayList;
 

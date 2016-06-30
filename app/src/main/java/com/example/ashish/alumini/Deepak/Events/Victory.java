@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Deepak.Events;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -18,41 +17,36 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
-public class About_college extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class Victory extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
-    TextView CollegDescription;
     SliderLayout mDemoSlider ;
     ScrollView mainScroll;
+    TextView Description;
+
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_college);
+        setContentView(R.layout.activity_victory);
+       // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
         mainScroll=(ScrollView)findViewById(R.id.scroll);
-        CollegDescription = (TextView) findViewById(R.id.college_desc);
+        Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        String text = "ARYA College of Engineering & I.T (ACEIT),Kukas,Jaipur Established in Year 2000 is among the foremost of institutes of national significance in higher technical education and AICTE,New Delhi Approved and Affiliated with Rajasthan Technical University,Kota in Rajasthan.It is commonly Known as “ARYA OLD MAIN CAMPUS” and “ARYA 1st”.";
-        CollegDescription.setText(text);
 
-        /*HashMap<String,String> url_maps = new HashMap<String, String>();
-        url_maps.put("Hannibal", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
-        url_maps.put("Big Bang Theory", "http://tvfiles.alphacoders.com/100/hdclearart-10.png");
-        url_maps.put("House of Cards", "http://cdn3.nflximg.net/images/3093/2043093.jpg");
-        url_maps.put("Game of Thrones", "http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
-*/
+        //putting text in dscrption
+        String text = "Victory - The Annual Day is organized every year in the Arya Campus to promote the talent and achievements of the young Aryans. Another distinguished feature of the event is the presentation of the Annual Report by the head of the institution which brings forth the plethora of activities organized in the campus, remarkable achievements of the faculty, students and institution as a whole. This day also brings a sense of pride in the distinguished Aryans.";
+        Description.setText(text);
 
-        HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Placed Student",R.drawable.about1);
-        file_maps.put("Arya Old Main Campus",R.drawable.about2);
-        file_maps.put("Inside View",R.drawable.about3);
+        HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
+        file_maps.put("Victory", R.drawable.vic1);
+        file_maps.put("The Annual Day", R.drawable.vic3);
 
-        for(String name : file_maps.keySet()){
+
+        for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
             textSliderView
@@ -64,7 +58,7 @@ public class About_college extends AppCompatActivity implements BaseSliderView.O
             //add your extra information
             textSliderView.bundle(new Bundle());
             textSliderView.getBundle()
-                    .putString("extra",name);
+                    .putString("extra", name);
 
             mDemoSlider.addSlider(textSliderView);
         }
@@ -75,16 +69,15 @@ public class About_college extends AppCompatActivity implements BaseSliderView.O
         mDemoSlider.addOnPageChangeListener(this);
     }
 
-   public void wayToCollege(View v)
-   {
-       Uri uri = Uri.parse("http://www.aryacollege.in/");
-       Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-       startActivity(intent);
+
+    public void wayToEvent(View v)
+    {
+        Uri uri = Uri.parse("http://www.aryacollege.in/the-annualday.php");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
 
 
-   }
-
-
+    }
 
     @Override
     public void onSliderClick(BaseSliderView slider) {
@@ -121,11 +114,6 @@ public class About_college extends AppCompatActivity implements BaseSliderView.O
     public void onPageScrollStateChanged(int state) {
 
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==android.R.id.home)
-            this.finish();
-        return true;
-    }
 
 }
+

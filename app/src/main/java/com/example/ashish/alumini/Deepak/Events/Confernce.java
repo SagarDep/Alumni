@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Deepak.Events;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,10 +17,11 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
-public class Technica extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class Confernce extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     SliderLayout mDemoSlider ;
     ScrollView mainScroll;
@@ -29,19 +30,25 @@ public class Technica extends AppCompatActivity implements BaseSliderView.OnSlid
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_technica);
+        setContentView(R.layout.activity_confernce);
+        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
-        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
 
         //putting text in dscrption
-        String text = "Tehnica Naitus is a National Level Technical Project Competition which is organized every year in the campus to promote the innovative skills of the young students. The students from all over the nation throng the Arya campus to exhibit their projects and luminaries from industry and academia are invited as judges on this occasion. The valuable views shared by the knowledgeable dignitaries.";
+        String text = "The Second International Conference on Advanced Trends in Engineering & Technology 2014 was aimed to provide an opportunistic forum and vibrant platform for researches and industry practitioners. This two day International conference was held in April 2014 in Arya Campus.";
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Dr. K K Pathak,Secretary,RPSC,Ajmer", R.drawable.tehnika4);
-        file_maps.put("Tehnika Naitus", R.drawable.tehnika1);
+
+        file_maps.put("International Conference", R.drawable.tehnika1);
+       file_maps.put("International Conference", R.drawable.eupo_2);
+        file_maps.put("International Conference", R.drawable.confer);
+
+        file_maps.put("Technica Naitus", R.drawable.tehnika1);
+        file_maps.put("Arya Old Main Campus", R.drawable.tehnika4);
+
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
@@ -69,7 +76,7 @@ public class Technica extends AppCompatActivity implements BaseSliderView.OnSlid
 
     public void wayToEvent(View v)
     {
-        Uri uri = Uri.parse("http://www.aryacollege.in/tehnika-naitus.php");
+        Uri uri = Uri.parse("http://www.aryacollege.in/international-conference.php");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
 

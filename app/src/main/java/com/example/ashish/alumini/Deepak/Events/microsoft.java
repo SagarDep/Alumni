@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Deepak.Events;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,38 +17,38 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
-public class Engineer extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class microsoft extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     SliderLayout mDemoSlider ;
     ScrollView mainScroll;
     TextView Description;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_engineer);
-        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
+        setContentView(R.layout.activity_microsoft);
+       // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
         //putting text in dscrption
-        String text = "Engineer's Day is celebrated evey year in the college.";
+        String text = "Arya College of Engineering & I.T. is the first college in Northern India to be qualified as Microsoft Ed-Vantage Platinum Campus and awarded with Microsoft Academic Alliance Platinum Campus Certification.As a Microsoft Ed-Vantage Platinum level Campus, one is eligible to apply for internship opportunities for pre-final year students and employment opportunities for the final year students after fulfilling the pre-requisites.";
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-<<<<<<< HEAD
-        file_maps.put("Engineer's Day", R.drawable.eupo_2);
-        file_maps.put("Engineer's Day", R.drawable.tenika_1);
-        file_maps.put("Engineer's Day", R.drawable.san1);
-        file_maps.put("Engineer's Day", R.drawable.national_sanghosti);
 
-=======
+        file_maps.put("Microsoft Ed-Vantage Platinum Campus", R.drawable.confer);
+        file_maps.put("Arya Old Main Campus", R.drawable.san3);
+        file_maps.put("Inside View", R.drawable.micro_eduvantage);
+
         file_maps.put("Technica Naitus", R.drawable.tehnika1);
         file_maps.put("Arya Old Main Campus", R.drawable.tehnika2);
->>>>>>> 8a11d880fa3e49f203808f55e6cd211e038ebc7d
+
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
@@ -76,7 +76,7 @@ public class Engineer extends AppCompatActivity implements BaseSliderView.OnSlid
 
     public void wayToEvent(View v)
     {
-        Uri uri = Uri.parse("http://www.aryacollege.in/engineer-day.php");
+        Uri uri = Uri.parse("http://www.aryacollege.in/microsoft-Innovation.php");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
 

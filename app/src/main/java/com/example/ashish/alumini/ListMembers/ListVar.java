@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.ListMembers;
 
 import android.content.Intent;
 import android.graphics.Bitmap;

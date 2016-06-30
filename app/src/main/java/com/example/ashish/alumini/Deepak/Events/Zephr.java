@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Deepak.Events;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,10 +17,11 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
-public class Confernce extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class Zephr extends AppCompatActivity  implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     SliderLayout mDemoSlider ;
     ScrollView mainScroll;
@@ -29,26 +30,19 @@ public class Confernce extends AppCompatActivity implements BaseSliderView.OnSli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confernce);
-        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
+        setContentView(R.layout.activity_zephr);
+       // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
         //putting text in dscrption
-        String text = "The Second International Conference on Advanced Trends in Engineering & Technology 2014 was aimed to provide an opportunistic forum and vibrant platform for researches and industry practitioners. This two day International conference was held in April 2014 in Arya Campus.";
+        String text = "Zephyr’14 is a national level tech carnival comprising of various competitions that challenge and enhance the skills of the youth.This fest is organized by the Department of Electronics and Communication Engineering in association with Institution of Engineers, India in the month of February. It includes various events to storm the brains beyond the threshold.";
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-<<<<<<< HEAD
-        file_maps.put("International Conference", R.drawable.tehnika1);
-       file_maps.put("International Conference", R.drawable.eupo_2);
-        file_maps.put("International Conference", R.drawable.confer);
-      //  );
-=======
-        file_maps.put("Technica Naitus", R.drawable.tehnika1);
-        file_maps.put("Arya Old Main Campus", R.drawable.tehnika4);
->>>>>>> 8a11d880fa3e49f203808f55e6cd211e038ebc7d
+        file_maps.put("Zephyr", R.drawable.zep1);
+        file_maps.put("Zephyr", R.drawable.zep2);
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
@@ -76,7 +70,7 @@ public class Confernce extends AppCompatActivity implements BaseSliderView.OnSli
 
     public void wayToEvent(View v)
     {
-        Uri uri = Uri.parse("http://www.aryacollege.in/international-conference.php");
+        Uri uri = Uri.parse("http://www.aryacollege.in/zephyr.php");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
 
@@ -120,3 +114,6 @@ public class Confernce extends AppCompatActivity implements BaseSliderView.OnSli
     }
 
 }
+
+
+

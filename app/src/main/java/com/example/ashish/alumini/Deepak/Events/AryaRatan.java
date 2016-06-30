@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Deepak.Events;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,10 +17,11 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
-public class sanghosti extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class AryaRatan extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     SliderLayout mDemoSlider ;
     ScrollView mainScroll;
@@ -29,19 +30,26 @@ public class sanghosti extends AppCompatActivity implements BaseSliderView.OnSli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sanghosti);
-        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
+        setContentView(R.layout.activity_arya_ratan);
+//        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
         //putting text in dscrption
-        String text = "A National seminar on Technical Terminology in Engineering & Science by Government of India, Commission for Scientific and Technical Terminology,(Ministry of Human Resource Development Deptt. of higher education) was organized on 14 and 15 May, 2014 in the campus. The Chief Guest in the opening ceremony was Dr. Deepak Kumar, Senior Scientific officer. Well known luminaries from the field shared their views during the seminar.";
+        String text = "One of the other Memorable occasion organized in the campus is ‘Arya Ratan’ The Fresher’s Party when the fresh batch is given a cordial reception.";
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Arya Old Main Campus", R.drawable.san2);
-        file_maps.put("Inside View", R.drawable.san3);
+
+        file_maps.put("Arya Ratan", R.drawable.tenika_1);
+        file_maps.put("Arya Old Main Campus", R.drawable.cup_1);
+
+        
+
+        file_maps.put("Technica Naitus", R.drawable.tehnika2);
+        file_maps.put("Arya Old Main Campus", R.drawable.tehnika1);
+
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
@@ -67,9 +75,9 @@ public class sanghosti extends AppCompatActivity implements BaseSliderView.OnSli
     }
 
 
-    public void wayToEvent(View v)
+    public void wayToTechica(View v)
     {
-        Uri uri = Uri.parse("http://www.aryacollege.in/national_sangosti.php");
+        Uri uri = Uri.parse("http://www.aryacollege.in/freshers-day.php");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
 
@@ -113,4 +121,3 @@ public class sanghosti extends AppCompatActivity implements BaseSliderView.OnSli
     }
 
 }
-

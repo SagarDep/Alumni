@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Deepak.Events;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,32 +16,38 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
-public class Social extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class Auto extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     SliderLayout mDemoSlider ;
     ScrollView mainScroll;
     TextView Description;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_social);
+        setContentView(R.layout.activity_auto);
 
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
         //putting text in dscrption
-        String text = "With a humanitarian aim to fulfill a mission to contribute to the national well being a Blood Donation Camp is organized every year in the Arya Campus. In 2014 the camp was organized under the National Service Scheme with the Swasthya Kalyan Blood Bank on 5th May ’14. A large number of faculty, staff, students and nearby residents donated 300 unit blood to make the camp a great success.";
+        String text = "The Department of Automobile and Mechanical Engineering of Arya College of Engg. & I.T., in collaboration with The Institution of Engineers (India) organizes a National Level Technical Fest AUTOIGINITION, which ignites the spark of creativity and innovation in the youth so that that it can dwell into an interminable flame of learning and success. This technical fest comprises of many fun and frolic events.";
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
+
+        file_maps.put("Auto Ignition", R.drawable.tehnika1);
+        file_maps.put("Auto Ignition", R.drawable.eupo_2);
+        file_maps.put("Inside View", R.drawable.cup_2);
+
         file_maps.put("Technica Naitus", R.drawable.tehnika1);
-        file_maps.put("Arya Old Main Campus", R.drawable.tehnika1);
+        file_maps.put("Arya Old Main Campus", R.drawable.tehnika2);
+
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
@@ -69,7 +75,7 @@ public class Social extends AppCompatActivity implements BaseSliderView.OnSlider
 
     public void wayToEvent(View v)
     {
-        Uri uri = Uri.parse("http://www.aryacollege.in/social-responsibility.php");
+        Uri uri = Uri.parse("http://www.aryacollege.in/autoignition.php");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
 
@@ -111,6 +117,4 @@ public class Social extends AppCompatActivity implements BaseSliderView.OnSlider
     public void onPageScrollStateChanged(int state) {
 
     }
-
-}
-
+    }

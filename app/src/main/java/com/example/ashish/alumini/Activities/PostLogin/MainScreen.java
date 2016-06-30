@@ -1,9 +1,14 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Activities.PostLogin;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.ashish.alumini.About_college;
+import com.example.ashish.alumini.EventPage;
+import com.example.ashish.alumini.OnMemberClick;
+import com.example.ashish.alumini.R;
 
 
 public class MainScreen extends AppCompatActivity  implements View.OnClickListener{

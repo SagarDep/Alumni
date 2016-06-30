@@ -1,8 +1,7 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Deepak.Events;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -17,34 +16,33 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
-public class TopGun extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class Social extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     SliderLayout mDemoSlider ;
     ScrollView mainScroll;
     TextView Description;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_top_gun);
-       // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
+        setContentView(R.layout.activity_social);
 
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
         //putting text in dscrption
-        String text = "The pass out batch of our college,are bid adieu in a Top Guns- The Farewell Party which is organized by their juniors. The students organize a cultural programme including dance, songs, instrumental performance,etc.";
+        String text = "With a humanitarian aim to fulfill a mission to contribute to the national well being a Blood Donation Camp is organized every year in the Arya Campus. In 2014 the camp was organized under the National Service Scheme with the Swasthya Kalyan Blood Bank on 5th May ’14. A large number of faculty, staff, students and nearby residents donated 300 unit blood to make the camp a great success.";
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Top Guns", R.drawable.top1);
-        file_maps.put("Top Gun", R.drawable.top2);
-
-
+        file_maps.put("Technica Naitus", R.drawable.tehnika1);
+        file_maps.put("Arya Old Main Campus", R.drawable.tehnika1);
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
@@ -72,7 +70,7 @@ public class TopGun extends AppCompatActivity implements BaseSliderView.OnSlider
 
     public void wayToEvent(View v)
     {
-        Uri uri = Uri.parse("http://www.aryacollege.in/the-farewellparty.php");
+        Uri uri = Uri.parse("http://www.aryacollege.in/social-responsibility.php");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
 
@@ -114,5 +112,6 @@ public class TopGun extends AppCompatActivity implements BaseSliderView.OnSlider
     public void onPageScrollStateChanged(int state) {
 
     }
-    }
+
+}
 

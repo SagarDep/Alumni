@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Deepak.Events.AboutCollege;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -17,40 +18,42 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
-public class Exergie extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class About_college extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
+    TextView CollegDescription;
     SliderLayout mDemoSlider ;
     ScrollView mainScroll;
-    TextView Description;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exergie);
-       // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
+        setContentView(R.layout.activity_about_college);
         mainScroll=(ScrollView)findViewById(R.id.scroll);
-        Description = (TextView) findViewById(R.id.desc);
+        CollegDescription = (TextView) findViewById(R.id.college_desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        String text = "ARYA College of Engineering & I.T (ACEIT),Kukas,Jaipur Established in Year 2000 is among the foremost of institutes of national significance in higher technical education and AICTE,New Delhi Approved and Affiliated with Rajasthan Technical University,Kota in Rajasthan.It is commonly Known as “ARYA OLD MAIN CAMPUS” and “ARYA 1st”.";
+        CollegDescription.setText(text);
 
-        //putting text in dscrption
-        String text = "EXERGIE is a national level technical carnival organized by Computer Science and I.T. Department.It is focused on the invocation of a new methodology for the development of sprit of competition at technical level and also enhances the abilities of the students to improve their concentration and speed. Various events like Blind Coding, Apps World, Enforcer, Maneuver, Golden Goal etc.";
-        Description.setText(text);
+        /*HashMap<String,String> url_maps = new HashMap<String, String>();
+        url_maps.put("Hannibal", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
+        url_maps.put("Big Bang Theory", "http://tvfiles.alphacoders.com/100/hdclearart-10.png");
+        url_maps.put("House of Cards", "http://cdn3.nflximg.net/images/3093/2043093.jpg");
+        url_maps.put("Game of Thrones", "http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
+*/
 
-        HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-<<<<<<< HEAD
-        file_maps.put("EXERGIE", R.drawable.exergie);
-        file_maps.put("EXERGIE", R.drawable.eupo);
-        file_maps.put("EXERGIE", R.drawable.eupo_3);
+        HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
+        file_maps.put("Placed Student",R.drawable.about1);
+        file_maps.put("Arya Old Main Campus",R.drawable.about2);
+        file_maps.put("Inside View",R.drawable.about3);
 
-=======
-        file_maps.put("Technica Naitus", R.drawable.tehnika1);
-        file_maps.put("Arya Old Main Campus", R.drawable.tenika_1);
->>>>>>> 8a11d880fa3e49f203808f55e6cd211e038ebc7d
-
-        for (String name : file_maps.keySet()) {
+        for(String name : file_maps.keySet()){
             TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
             textSliderView
@@ -62,7 +65,7 @@ public class Exergie extends AppCompatActivity implements BaseSliderView.OnSlide
             //add your extra information
             textSliderView.bundle(new Bundle());
             textSliderView.getBundle()
-                    .putString("extra", name);
+                    .putString("extra",name);
 
             mDemoSlider.addSlider(textSliderView);
         }
@@ -73,15 +76,16 @@ public class Exergie extends AppCompatActivity implements BaseSliderView.OnSlide
         mDemoSlider.addOnPageChangeListener(this);
     }
 
+   public void wayToCollege(View v)
+   {
+       Uri uri = Uri.parse("http://www.aryacollege.in/");
+       Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+       startActivity(intent);
 
-    public void wayToEvent(View v)
-    {
-        Uri uri = Uri.parse("http://www.aryacollege.in/exergie.php");
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        startActivity(intent);
+
+   }
 
 
-    }
 
     @Override
     public void onSliderClick(BaseSliderView slider) {
@@ -117,6 +121,12 @@ public class Exergie extends AppCompatActivity implements BaseSliderView.OnSlide
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home)
+            this.finish();
+        return true;
     }
 
 }

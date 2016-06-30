@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Deepak.Events;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,10 +17,12 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.ashish.alumini.R;
 
 import java.util.HashMap;
 
-public class microsoft extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class Shrandhan extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+
 
     SliderLayout mDemoSlider ;
     ScrollView mainScroll;
@@ -29,26 +31,29 @@ public class microsoft extends AppCompatActivity implements BaseSliderView.OnSli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_microsoft);
+        setContentView(R.layout.activity_shrandhan);
+
        // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
         //putting text in dscrption
-        String text = "Arya College of Engineering & I.T. is the first college in Northern India to be qualified as Microsoft Ed-Vantage Platinum Campus and awarded with Microsoft Academic Alliance Platinum Campus Certification.As a Microsoft Ed-Vantage Platinum level Campus, one is eligible to apply for internship opportunities for pre-final year students and employment opportunities for the final year students after fulfilling the pre-requisites.";
+        String text = "It is a tribute to the founder chairman Late. Shri T.K. Agarwal Ji.\n" +
+                "\n" +
+                "The event is full of festivity, fun and frolic and fills the students with enthusiasm and a spirit of gaiety. This kind of programme unfalteringly inculcates a spirit of togetherness and team work and develops the organizational capabilities of the students. This fest comprises of various events like.\n" +
+                "\n" +
+                "Paper Presentation\n" +
+                "Poster Making\n" +
+                "Debates\n" +
+                "Creative Writing\n" +
+                "Quiz";
         Description.setText(text);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-<<<<<<< HEAD
-        file_maps.put("Microsoft Ed-Vantage Platinum Campus", R.drawable.confer);
-        file_maps.put("Arya Old Main Campus", R.drawable.san3);
-        file_maps.put("Inside View", R.drawable.micro_eduvantage);
-        ;
-=======
-        file_maps.put("Technica Naitus", R.drawable.tehnika1);
-        file_maps.put("Arya Old Main Campus", R.drawable.tehnika2);
->>>>>>> 8a11d880fa3e49f203808f55e6cd211e038ebc7d
+        file_maps.put("Dancing Talent", R.drawable.shra_1);
+        file_maps.put("Shradhanjali", R.drawable.shra_2);
+
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
@@ -65,7 +70,8 @@ public class microsoft extends AppCompatActivity implements BaseSliderView.OnSli
                     .putString("extra", name);
 
             mDemoSlider.addSlider(textSliderView);
-        }
+
+                }
         mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Stack);
         mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mDemoSlider.setCustomAnimation(new DescriptionAnimation());
@@ -74,9 +80,9 @@ public class microsoft extends AppCompatActivity implements BaseSliderView.OnSli
     }
 
 
-    public void wayToEvent(View v)
+    public void wayToTechica(View v)
     {
-        Uri uri = Uri.parse("http://www.aryacollege.in/microsoft-Innovation.php");
+        Uri uri = Uri.parse("http://www.aryacollege.in/shradhanjali.php");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
 
@@ -120,4 +126,3 @@ public class microsoft extends AppCompatActivity implements BaseSliderView.OnSli
     }
 
 }
-
