@@ -1,16 +1,12 @@
 package com.example.ashish.alumini;
 
-import android.app.ListFragment;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
-import android.telephony.CellIdentityGsm;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.android.volley.Request;
@@ -19,6 +15,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ashish.alumini.ListMembers.ListVar;
+import com.example.ashish.alumini.ListMembers.MemberAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

@@ -8,7 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 
-import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.Deepak.Events.CardAdapter;
 
 public class EventPage extends AppCompatActivity {
 

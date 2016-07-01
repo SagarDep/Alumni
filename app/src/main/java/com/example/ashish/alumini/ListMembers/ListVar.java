@@ -16,15 +16,15 @@ import android.util.Log;
  * Created by ashish on 3/3/16.
  */
 public class ListVar {
-    String uid;
-    Image image ;
-    String name ;
-    String year_passing;
-    String designation;
-    String location_work;
-    String branch;
-    String company;
-    Bitmap bitmap;
+     public String uid;
+    public Image image ;
+    public String name ;
+    public String year_passing;
+    public String designation;
+    public String location_work;
+    public String branch;
+    public String company;
+    public Bitmap bitmap;
     public ListVar(){
 
     }

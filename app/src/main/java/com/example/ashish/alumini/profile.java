@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ashish.alumini.ListMembers.ListVar;
+
 /**
  * Created by ashish on 4/3/16.
  */

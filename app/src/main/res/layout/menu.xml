@@ -1,56 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
 
-    <LinearLayout
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#FFFFFF"
+    android:layout_height="40dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/card_background"
+    android:padding="5dp"
     android:weightSum="4">
-    <ImageButton
-    android:layout_weight="1"
-    android:layout_height="wrap_content"
-    android:id="@+id/button_home"
-    android:src="@drawable/home"
-    style="?android:attr/borderlessButtonStyle"
-    android:layout_width="0dp"
-    android:layout_gravity="left|bottom" />
+    <com.mikepenz.iconics.view.IconicsImageView
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/button_home"
+        app:iiv_color="@android:color/black"
+        app:iiv_icon="faw-home" />
+
     <View
     android:layout_width="1dp"
     android:layout_height="match_parent"
     android:background="#d60d0d"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp" />
-    <ImageButton
-    android:layout_width="0dp"
-    android:layout_weight="1"
-    android:layout_height="wrap_content"
-    android:id="@+id/button_filter"
-    android:src="@drawable/filter" style="?android:attr/borderlessButtonStyle"
-    />
+    <com.mikepenz.iconics.view.IconicsImageView
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/button_filter"
+        app:iiv_color="@android:color/black"
+        app:iiv_icon="faw-filter" />
     <View
     android:layout_width="1dp"
     android:layout_height="match_parent"
     android:background="#d60d0d"
     android:layout_marginBottom="5dp"
     android:layout_marginTop="5dp" />
-    <ImageButton
-    android:layout_width="0dp"
-    android:layout_weight="1"
-    android:layout_height="wrap_content"
-    android:id="@+id/button_jobs"
-        android:clickable="true"
-    style="?android:attr/borderlessButtonStyle"
-    android:src="@drawable/work"
-    />
-    <!--<View-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:id="@+id/temp"-->
-    <!--android:layout_height="5dp"-->
-    <!--android:background="#d60d0d" />-->
+    <com.mikepenz.iconics.view.IconicsImageView
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/button_jobs"
+        app:iiv_color="@android:color/black"
+        app:iiv_icon="faw-briefcase" />
+
     <View
     android:layout_width="1dp"
     android:layout_height="match_parent"
@@ -58,16 +53,14 @@
     android:padding="0dp"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp" />
-    <ImageButton
-    android:layout_width="0dp"
-    android:layout_weight="1"
-    android:layout_height="wrap_content"
-    android:id="@+id/button_setting"
-    android:src="@drawable/more"
-    style="?android:attr/borderlessButtonStyle"
-    />
+    <com.mikepenz.iconics.view.IconicsImageView
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="10dp"
+        android:id="@+id/button_settings"
+        app:iiv_color="@android:color/black"
+        app:iiv_icon="faw-ellipsis-h" />
 
     </LinearLayout>
 
-
-</FrameLayout>

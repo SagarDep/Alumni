@@ -2,56 +2,108 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ashish.alumini">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
-
         android:theme="@style/AppTheme">
-        <activity android:name=".Splash" android:label="Alumni">
+        <activity
+            android:name=".PreLogin.ActivitySplashScreen"
+            android:label="Alumni">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".profile" />
         <activity android:name=".Edit_Profile" />
         <activity android:name=".onSearch" />
-        <activity android:name=".onFilterClick" android:label="Filter" />
-        <activity android:name=".onSettingClicked" android:label="More" />
-        <activity android:name=".OnJobClick" android:label="Job Offerings"></activity>
-        <activity android:name=".About_app" android:label="About App"/>
-        <activity android:name=".Contact_us" android:label="Contact Us"/>
-        <activity android:name=".Faq" android:label="FAQs"/>
-        <activity android:name=".jobProfile" android:label="Company Profile"/>
-        <activity android:name=".jobPost" android:label="Post A Job"/>
-        <activity android:name=".Login">
-        </activity><activity android:name=".SignUp">
-    </activity><activity android:name=".MainScreen">
-    </activity><activity android:name=".EventPage" android:label="Events" >
-    </activity><activity android:name=".About_college" android:label="ACEIT">
-    </activity><activity android:name=".MainActivity">
-    </activity><activity android:name=".Technica" android:label="Technica Naitus">
-    </activity><activity android:name=".Shrandhan" android:label="Shrandhanjali">
-    </activity><activity android:name=".AryaRatan" android:label="Arya Ratan">
-    </activity><activity android:name=".Eupo" android:label="Euphonious">
-    </activity><activity android:name=".AryaCup" android:label="Arya Cup">
-    </activity><activity android:name=".Victory" android:label="Victory">
-    </activity><activity android:name=".Exergie" android:label="Exergie">
-    </activity><activity android:name=".Social" android:label="Social Event">
-    </activity><activity android:name=".TopGun" android:label="TopGun">
-    </activity><activity android:name=".Auto" android:label="Auto">
-    </activity><activity android:name=".Zephr" android:label="Zephr">
-    </activity><activity android:name=".Engineer" android:label="Engineer Day">
-    </activity><activity android:name=".Confernce" android:label="International Conference">
-    </activity><activity android:name=".sanghosti" android:label="Sanghosti">
-    </activity><activity android:name=".microsoft" android:label="Microsoft Innovation Center">
-    </activity><activity android:name=".OnMemberClick" />
-
-
+        <activity
+            android:name=".onFilterClick"
+            android:label="Filter" />
+        <activity
+            android:name=".PostLogin.ActivitySettings"
+            android:label="More" />
+        <activity
+            android:name=".Job.OnJobClick"
+            android:label="Job Offerings" />
+        <activity
+            android:name=".About_app"
+            android:label="About App" />
+        <activity
+            android:name=".Contact_us"
+            android:label="Contact Us" />
+        <activity
+            android:name=".Faq"
+            android:label="FAQs" />
+        <activity
+            android:name=".Job.jobProfile"
+            android:label="Company Profile" />
+        <activity
+            android:name=".Job.jobPost"
+            android:label="Post A Job" />
+        <activity android:name=".PreLogin.Login"></activity>
+        <activity android:name=".PreLogin.SignUp"></activity>
+        <activity android:name=".PostLogin.MainScreen"></activity>
+        <activity
+            android:name=".EventPage"
+            android:label="Events"></activity>
+        <activity
+            android:name=".Deepak.Events.AboutCollege.About_college"
+            android:label="ACEIT"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".Deepak.Events.Events.Technica"
+            android:label="Technica Naitus"></activity>
+        <activity
+            android:name=".Deepak.Events.Events.Shrandhan"
+            android:label="Shrandhanjali"></activity>
+        <activity
+            android:name=".Deepak.Events.Events.AryaRatan"
+            android:label="Arya Ratan"></activity>
+        <activity
+            android:name=".Deepak.Events.Events.Eupo"
+            android:label="Euphonious"></activity>
+        <activity
+            android:name=".Deepak.Events.Events.AryaCup"
+            android:label="Arya Cup"></activity>
+        <activity
+            android:name=".Deepak.Events.Events.Victory"
+            android:label="Victory"></activity>
+        <activity
+            android:name=".Deepak.Events.Events.Exergie"
+            android:label="Exergie"></activity>
+        <activity
+            android:name=".Deepak.Events.Events.Social"
+            android:label="Social Event"></activity>
+        <activity
+            android:name=".Deepak.Events.Events.TopGun"
+            android:label="TopGun"></activity>
+        <activity
+            android:name=".Deepak.Events.Events.Auto"
+            android:label="Auto"></activity>
+        <activity
+            android:name=".Deepak.Events.Events.Zephr"
+            android:label="Zephr"></activity>
+        <activity
+            android:name=".Deepak.Events.Events.Engineer"
+            android:label="Engineer Day"></activity>
+        <activity
+            android:name=".Deepak.Events.Events.Confernce"
+            android:label="International Conference"></activity>
+        <activity
+            android:name=".Deepak.Events.Events.sanghosti"
+            android:label="Sanghosti"></activity>
+        <activity
+            android:name=".Deepak.Events.Events.microsoft"
+            android:label="Microsoft Innovation Center"></activity>
+        <activity android:name=".MemberClick" />
+        <activity android:name=".ActivityMember"></activity>
     </application>
-    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
 
 </manifest>

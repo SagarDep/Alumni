@@ -61,7 +61,7 @@
             android:id="@+id/card_view_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            card_view:cardCornerRadius="2dp"
+
             android:padding="0dp"
             android:layout_gravity="left|center"
             android:layout_below="@+id/cardView_name"
@@ -125,7 +125,6 @@
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            card_view:cardCornerRadius="2dp"
             android:paddingLeft="10dp"
             android:layout_below="@+id/card_view_description"
             android:layout_alignLeft="@+id/card_view_description"

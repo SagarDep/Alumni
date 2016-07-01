@@ -21,7 +21,7 @@
         android:paddingBottom="5dp"
 
         android:layout_marginBottom="10dp"
-        card_view:cardCornerRadius="4dp"
+
         android:layout_marginTop="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
@@ -86,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#000"
-            card_view:cardCornerRadius="4dp"
+
             android:layout_marginLeft="4dp"
 
             android:layout_marginRight="4dp"
@@ -490,7 +490,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="60dp"
 
-            card_view:cardCornerRadius="4dp"
+
             android:layout_below="@+id/card_view"
             android:layout_alignLeft="@+id/card_view"
             android:layout_alignStart="@+id/card_view">

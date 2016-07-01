@@ -1,16 +1,15 @@
 package com.example.ashish.alumini;
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
+
+import com.example.ashish.alumini.ListMembers.ListVar;
+import com.example.ashish.alumini.ListMembers.MemberAdapter;
 
 import java.util.ArrayList;
 
@@ -38,14 +37,12 @@ public class Proffesional extends ListFragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ArrayList<ListVar> list_members = new ArrayList<>();
-        for (int i = 0; i<5; i++){
-//            ListVar listVar = new ListVar(" Name " + i,BitmapFactory.decodeResource(getResources(),R.drawable.image),"CS","IBM","Mumbai","CS","2017");
+
 //            list_members.add(listVar);
-        } //------TEMP
 
-        MemberAdapter memberAdapter= new MemberAdapter(getActivity(),R.layout.simple_list_item,list_members);
+//        MemberAdapter memberAdapter= new MemberAdapter(getActivity(),R.layout.lis,list_members);
 
-        setListAdapter(memberAdapter);
+//        setListAdapter(memberAdapter);
 
 
     }

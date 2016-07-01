@@ -5,8 +5,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,8 +13,12 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 
+import com.example.ashish.alumini.ListMembers.ExpandableList.MyExpandableListAdapter;
+import com.example.ashish.alumini.PostLogin.MainScreen;
+import com.example.ashish.alumini.PostLogin.ActivitySettings;
+//import com.example.ashish.alumini.Job.OnJobClick;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -47,10 +49,10 @@ public class onFilterClick extends AppCompatActivity implements View.OnClickList
         ImageButton imageButton_home ,  imageButton_job, imageButton_setting;
         imageButton_home = (ImageButton) findViewById(R.id.button_home);
         imageButton_job = (ImageButton) findViewById(R.id.button_jobs);
-        imageButton_setting = (ImageButton) findViewById(R.id.button_setting);
+//        imageButton_setting = (ImageButton) findViewById(R.id.button_setting);
         imageButton_job.setOnClickListener(this);
         imageButton_home.setOnClickListener(this);
-        imageButton_setting.setOnClickListener(this);
+//        imageButton_setting.setOnClickListener(this);
 
 
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
@@ -152,27 +154,27 @@ public class onFilterClick extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.button_jobs:
-                Intent intent = new Intent(onFilterClick.this, OnJobClick.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
-                finish();
-                break;
-            case R.id.button_setting:
-                Intent intent2 = new Intent(onFilterClick.this, onSettingClicked.class);
-                startActivity(intent2);
-                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
-                finish();
-                break;
-
-            case R.id.button_home:
-                Intent intent4 = new Intent(onFilterClick.this,MainScreen.class);
-                startActivity(intent4);
-                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
-                finish();
-                break;
-        }
+//        switch (v.getId()){
+//            case R.id.button_jobs:
+//                Intent intent = new Intent(onFilterClick.this, OnJobClick.class);
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+//                finish();
+//                break;
+//            case R.id.button_setting:
+//                Intent intent2 = new Intent(onFilterClick.this, ActivitySettings.class);
+//                startActivity(intent2);
+//                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+//                finish();
+//                break;
+//
+//            case R.id.button_home:
+//                Intent intent4 = new Intent(onFilterClick.this,MainScreen.class);
+//                startActivity(intent4);
+//                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+//                finish();
+//                break;
+//        }
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
