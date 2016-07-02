@@ -1,6 +1,7 @@
 package com.example.ashish.alumini.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ashish.alumini.MemberClick;
+import com.example.ashish.alumini.PostLogin.MainScreen;
 import com.example.ashish.alumini.R;
 import com.mikepenz.iconics.view.IconicsImageView;
 
@@ -87,6 +90,9 @@ public class FragmentMenu extends Fragment {
 
     @OnClick(R.id.button_home)
     public void changeToHomeFragment(){
+        Intent intent4 = new Intent(getActivity(),MainScreen.class);
+             startActivity(intent4);
+             getActivity().overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
 
     }
     @OnClick(R.id.button_filter)
