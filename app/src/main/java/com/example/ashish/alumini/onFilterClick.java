@@ -1,6 +1,5 @@
 package com.example.ashish.alumini;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -14,8 +13,6 @@ import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 
 import com.example.ashish.alumini.ListMembers.ExpandableList.MyExpandableListAdapter;
-import com.example.ashish.alumini.PostLogin.MainScreen;
-import com.example.ashish.alumini.PostLogin.ActivitySettings;
 //import com.example.ashish.alumini.Job.OnJobClick;
 
 import java.util.ArrayList;

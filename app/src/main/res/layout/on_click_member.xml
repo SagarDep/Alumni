@@ -27,7 +27,7 @@
         android:layout_below="@+id/view"
         android:layout_above="@+id/include" />
     <include
-        layout="@layout/menu"
+        layout="@layout/fragment_menu_bottom"
         android:id="@+id/include"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

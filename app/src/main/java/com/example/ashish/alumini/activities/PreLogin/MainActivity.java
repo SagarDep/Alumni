@@ -1,17 +1,15 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.activities.PreLogin;
 
-
-import android.graphics.Color;
-import android.os.Bundle;
 
 import android.app.TabActivity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.util.TypedValue;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.example.ashish.alumini.activities.PreLogin.Login;
-import com.example.ashish.alumini.activities.PreLogin.SignUp;
+import com.example.ashish.alumini.R;
 
 public class MainActivity extends TabActivity {
     /** Called when the activity is first created. */

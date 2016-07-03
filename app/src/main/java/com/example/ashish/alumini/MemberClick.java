@@ -3,7 +3,6 @@ package com.example.ashish.alumini;
 import android.support.v4.app.ListFragment;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -19,8 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.example.ashish.alumini.PostLogin.MainScreen;
-import com.example.ashish.alumini.PostLogin.ActivitySettings;
 //import com.example.ashish.alumini.Job.OnJobClick;
 
 import java.util.ArrayList;

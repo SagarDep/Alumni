@@ -16,10 +16,10 @@
 //import android.widget.ImageButton;
 //import android.widget.ListView;
 //
-//import com.example.ashish.alumini.PostLogin.MainScreen;
+//import com.example.ashish.alumini.activities.PostLogin.MainScreen;
 //import com.example.ashish.alumini.R;
 //import com.example.ashish.alumini.onFilterClick;
-//import com.example.ashish.alumini.PostLogin.ActivitySettings;
+//import com.example.ashish.alumini.activities.PostLogin.ActivitySettings;
 //
 //import java.util.ArrayList;
 //
