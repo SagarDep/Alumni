@@ -7,21 +7,26 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
 
 import com.example.ashish.alumini.R;
+import com.squareup.otto.Bus;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragmentMembers.OnFragmentInteractionListener} interface
+ * {@link BlankFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragmentMembers#newInstance} factory method to
+ * Use the {@link BlankFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentMembers extends Fragment {
+public class BlankFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -31,7 +36,15 @@ public class FragmentMembers extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public FragmentMembers() {
+    /*
+    * Butterknife
+    * */
+//    @Bind(R.id.button_settings)
+//    Button j;
+
+    Bus mBus = new Bus();
+
+    public BlankFragment() {
         // Required empty public constructor
     }
 
@@ -41,11 +54,11 @@ public class FragmentMembers extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentJobs.
+     * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentMembers newInstance(String param1, String param2) {
-        FragmentMembers fragment = new FragmentMembers();
+    public static BlankFragment newInstance(String param1, String param2) {
+        BlankFragment fragment = new BlankFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,9 +78,15 @@ public class FragmentMembers extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        TextView textView = new TextView(getActivity());
-        textView.setText("Members");
-        return textView;
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_blank2, container, false);
+
+        ButterKnife.bind(this,view);
+        //Bus Registering
+        mBus.register(getActivity());
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Fragments.viewpager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +17,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ashish.alumini.ListMembers.ListVar;
 import com.example.ashish.alumini.ListMembers.MemberAdapter;
+import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.profile;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

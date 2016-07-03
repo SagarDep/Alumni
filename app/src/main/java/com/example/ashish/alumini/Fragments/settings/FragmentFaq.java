@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.Fragments.settings;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,19 +8,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ashish.alumini.R;
+import com.squareup.otto.Bus;
+
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link BlankFragment.OnFragmentInteractionListener} interface
+ * {@link FragmentFaq.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link BlankFragment#newInstance} factory method to
+ * Use the {@link FragmentFaq#newInstance} factory method to
  * create an instance of this fragment.
- *
  */
-public class BlankFragment extends Fragment {
+public class FragmentFaq extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -29,6 +33,18 @@ public class BlankFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    /*
+    * Butterknife
+    * */
+//    @Bind(R.id.button_settings)
+//    Button j;
+
+    Bus mBus = new Bus();
+
+    public FragmentFaq() {
+        // Required empty public constructor
+    }
 
     /**
      * Use this factory method to create a new instance of
@@ -39,16 +55,13 @@ public class BlankFragment extends Fragment {
      * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlankFragment newInstance(String param1, String param2) {
-        BlankFragment fragment = new BlankFragment();
+    public static FragmentFaq newInstance(String param1, String param2) {
+        FragmentFaq fragment = new FragmentFaq();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
-    public BlankFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -64,7 +77,14 @@ public class BlankFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank, container, false);
+        View view = inflater.inflate(R.layout.faq, container, false);
+
+        ButterKnife.bind(this,view);
+        //Bus Registering
+        mBus.register(getActivity());
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -96,7 +116,7 @@ public class BlankFragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p>
+     * <p/>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.

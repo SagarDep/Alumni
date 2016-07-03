@@ -20,6 +20,10 @@ import android.widget.ImageButton;
 
 //import com.example.ashish.alumini.Job.OnJobClick;
 
+import com.example.ashish.alumini.Fragments.viewpager.All;
+import com.example.ashish.alumini.Fragments.viewpager.PG;
+import com.example.ashish.alumini.Fragments.viewpager.Proffesional;
+
 import java.util.ArrayList;
 import java.util.List;
 

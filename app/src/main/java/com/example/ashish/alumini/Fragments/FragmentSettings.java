@@ -1,15 +1,22 @@
 package com.example.ashish.alumini.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.ashish.alumini.R;
+import com.squareup.otto.Bus;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,17 +26,46 @@ import com.example.ashish.alumini.R;
  * Use the {@link FragmentSettings#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentSettings extends Fragment {
+public class FragmentSettings extends Fragment  {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    @Bind(R.id.button_postjob)
+    Button mButtonJobPost;
+    @Bind(R.id.button_myprofile)
+    Button mButtonProfile;
+    @Bind(R.id.button_fbPage)
+    Button mButtonFbPage;
+    @Bind(R.id.button_about_app)
+    Button mButtonAboutApp;
+    @Bind(R.id.button_about_college)
+    Button mButtonAboutCollege;
+    @Bind(R.id.button_support)
+    Button mButtonSupport;
+    @Bind(R.id.button_contact_us)
+    Button mButtonContactUs;
+    @Bind(R.id.button_faq)
+    Button mButtonFaqs;
+    @Bind(R.id.button_rate_us)
+    Button mButtonRateUs;
+    @Bind(R.id.button)
+    Button mButtonLogOut;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    /*
+    * Butterknife
+    * */
+//    @Bind(R.id.button_settings)
+//    Button j;
+
+    Bus mBus = new Bus();
 
     public FragmentSettings() {
         // Required empty public constructor
@@ -41,7 +77,7 @@ public class FragmentSettings extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentJobs.
+     * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
     public static FragmentSettings newInstance(String param1, String param2) {
@@ -65,7 +101,14 @@ public class FragmentSettings extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_settings,container,false);
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_settings, container, false);
+
+        ButterKnife.bind(this,view);
+        //Bus Registering
+        mBus.register(getActivity());
+
+
         return view;
     }
 
@@ -106,5 +149,11 @@ public class FragmentSettings extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @OnClick(R.id.button_faq)
+    public void handlerFaqButton(View view){
+
+        mBus.post(R.id.button_faq);
     }
 }

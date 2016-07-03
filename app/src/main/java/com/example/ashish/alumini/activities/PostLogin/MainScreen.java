@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.ashish.alumini.ActivityMember;
-
 import com.example.ashish.alumini.deepak.about_college.About_college;
 import com.example.ashish.alumini.deepak.events.EventPage;
 import com.example.ashish.alumini.R;

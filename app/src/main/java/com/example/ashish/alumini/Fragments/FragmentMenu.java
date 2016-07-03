@@ -13,8 +13,10 @@ import android.widget.LinearLayout;
 import com.example.ashish.alumini.activities.PostLogin.MainScreen;
 import com.example.ashish.alumini.R;
 import com.mikepenz.iconics.view.IconicsImageView;
+import com.squareup.otto.Bus;
 
-import butterknife.BindView;
+import butterknife.Bind;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -32,10 +34,10 @@ public class FragmentMenu extends Fragment {
     * GLOBAL DECLARATIONS & BUTTERKNIFE INJECTIONS
     *
     * */
-    @BindView(R.id.linearLayout_home) LinearLayout mLinearLayoutHome;
-    @BindView(R.id.linearLayout_filter) LinearLayout mLinearLayoutFilter;
-    @BindView(R.id.linearLayout_jobs) LinearLayout mLinearLayoutJobs;
-    @BindView(R.id.linearLayout_settings) LinearLayout mLinearLayoutSettings;
+    @Bind(R.id.linearLayout_home) LinearLayout mLinearLayoutHome;
+    @Bind(R.id.linearLayout_filter) LinearLayout mLinearLayoutFilter;
+    @Bind(R.id.linearLayout_jobs) LinearLayout mLinearLayoutJobs;
+    @Bind(R.id.linearLayout_settings) LinearLayout mLinearLayoutSettings;
 
     View mViewPrevious;
     LinearLayout mLinearLayoutPrevious;
@@ -50,7 +52,10 @@ public class FragmentMenu extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    Bus mBus = new Bus();
     private OnFragmentInteractionListener mListener;
+
+
 
     public FragmentMenu() {
         // Required empty public constructor
@@ -88,62 +93,34 @@ public class FragmentMenu extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu_bottom, container, false);
-        ButterKnife.bind(getActivity());
+        //Butterknife Binding
+        ButterKnife.bind(this,view);
 
 
-        //TODO : temp initialization --> have to implement butterknife
+        mBus.register(getActivity());
+
+
         mViewPrevious = view.findViewById(R.id.view_home);
         mLinearLayoutPrevious = (LinearLayout) view.findViewById(R.id.linearLayout_home);
-
-        final LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.linearLayout_home);
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent4 = new Intent(getActivity(),MainScreen.class);
-                startActivity(intent4);
-                getActivity().overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
-                setVisibleView(getView().findViewById(R.id.view_home),linearLayout);
-            }
-        });
-        final LinearLayout linearLayoutsettings = (LinearLayout) view.findViewById(R.id.linearLayout_settings);
-        linearLayoutsettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setVisibleView(getView().findViewById(R.id.view_settings),linearLayoutsettings);
-            }
-        });
-        final LinearLayout linearLayout3 = (LinearLayout) view.findViewById(R.id.linearLayout_filter);
-        linearLayout3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setVisibleView(getView().findViewById(R.id.view_filter),linearLayout3);
-            }
-        });
-        final LinearLayout linearLayout4 = (LinearLayout) view.findViewById(R.id.linearLayout_jobs);
-        linearLayout4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setVisibleView(getView().findViewById(R.id.view_jobs),linearLayout4);
-            }
-        });
 
         return view;
     }
 
     @OnClick(R.id.linearLayout_home)
     public void changeToHomeFragment(){
+        setVisibleView(getView().findViewById(R.id.view_home),mLinearLayoutHome);
     }
-    @OnClick(R.id.button_filter)
+    @OnClick(R.id.linearLayout_filter)
     public void changeToFilterFragment(){
-
+        setVisibleView(getView().findViewById(R.id.view_filter),mLinearLayoutFilter);
     }
-    @OnClick(R.id.button_jobs)
+    @OnClick(R.id.linearLayout_jobs)
     public void changeToJobsFragment(){
-
+        setVisibleView(getView().findViewById(R.id.view_jobs),mLinearLayoutJobs);
     }
-    @OnClick(R.id.button_settings)
+    @OnClick(R.id.linearLayout_settings)
     public void changeFragment(){
-
+        setVisibleView(getView().findViewById(R.id.view_settings),mLinearLayoutSettings);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -185,18 +162,20 @@ public class FragmentMenu extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    public void setVisibleView(View viewLine,LinearLayout layout){
+    public void setVisibleView(View viewUnderLine,LinearLayout layout){
         //setting the previously clicked view to visibility=gone
         mViewPrevious.setVisibility(View.GONE);
         //setting the previously clicked Button to default
-        mLinearLayoutPrevious.setBackgroundColor(getResources().getColor(R.color.cardview_dark_background));
+        mLinearLayoutPrevious.setBackgroundColor(getResources().getColor(R.color.card_background));
 
         //changing color and visibility
         layout.setBackgroundColor(getResources().getColor(R.color.grey));
-        viewLine.setVisibility(View.VISIBLE);
+        viewUnderLine.setVisibility(View.VISIBLE);
 
-        //updating the previous elements for next click
-        mViewPrevious=viewLine;
+        //updating the previous elements for changing the visibility in next click
+        mViewPrevious=viewUnderLine;
         mLinearLayoutPrevious = layout;
+
+        mBus.post(layout.getId()); // Posting the clicked layout to the Fragment activity (ActivityMember)
     }
 }

@@ -65,9 +65,8 @@ public class FragmentJobs extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        TextView textView = new TextView(getActivity());
-        textView.setText(R.string.hello_blank_fragment);
-        return textView;
+        View view = inflater.inflate(R.layout.on_job_click,container,false);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
