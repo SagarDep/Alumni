@@ -1,26 +1,22 @@
 package com.example.ashish.alumini.activities.PostLogin;
 
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
-import com.example.ashish.alumini.Fragments.BlankFragment;
+import com.example.ashish.alumini.Fragments.Fragment;
 import com.example.ashish.alumini.Fragments.FragmentJobs;
 import com.example.ashish.alumini.Fragments.FragmentMembers;
 import com.example.ashish.alumini.Fragments.FragmentMenu;
 import com.example.ashish.alumini.Fragments.FragmentSettings;
+import com.example.ashish.alumini.Fragments.settings.FragmentAboutApp;
 import com.example.ashish.alumini.Fragments.settings.FragmentFaq;
+import com.example.ashish.alumini.Fragments.settings.FragmentJobPosting;
+import com.example.ashish.alumini.Fragments.settings.FragmentProfile;
 import com.example.ashish.alumini.R;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
@@ -29,15 +25,20 @@ public class ActivityMember extends AppCompatActivity implements
         FragmentMenu.OnFragmentInteractionListener,
         FragmentSettings.OnFragmentInteractionListener,
         FragmentJobs.OnFragmentInteractionListener,
-        BlankFragment.OnFragmentInteractionListener,
+        Fragment.OnFragmentInteractionListener,
         FragmentMembers.OnFragmentInteractionListener,
-        FragmentFaq.OnFragmentInteractionListener
+        FragmentFaq.OnFragmentInteractionListener,
+        FragmentJobPosting.OnFragmentInteractionListener,
+        FragmentAboutApp.OnFragmentInteractionListener,
+        FragmentProfile.OnFragmentInteractionListener
 {
 
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
 
     Bus mBus = new Bus();
+
+    Boolean mBackToMainScreen = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +71,7 @@ public class ActivityMember extends AppCompatActivity implements
     }
 
 
-    public void changeFragment(Fragment fragment){
+    public void changeFragment(android.support.v4.app.Fragment fragment){
         if (findViewById(R.id.fragment_container)!=null){
             mFragmentTransaction = mFragmentManager.beginTransaction();
             mFragmentTransaction.replace(R.id.fragment_container,fragment);
@@ -83,23 +84,75 @@ public class ActivityMember extends AppCompatActivity implements
     public void changingFragment(Integer id){
         switch (id){
             case R.id.linearLayout_home :
+                mBackToMainScreen=true;
                 changeFragment(new FragmentMembers().newInstance(null,null));
                 break;
 
             case R.id.linearLayout_filter :
-                changeFragment(new BlankFragment().newInstance(null,null));
+                mBackToMainScreen=true;
+                changeFragment(new Fragment().newInstance(null,null));
                 break;
 
             case R.id.linearLayout_jobs :
+                mBackToMainScreen=true;
                 changeFragment(new FragmentJobs().newInstance(null,null));
                 break;
 
             case R.id.linearLayout_settings :
+                mBackToMainScreen=true;
                 changeFragment(new FragmentSettings().newInstance(null,null));
                 break;
 
-            case R.id.button_faq :
-                changeFragment(new FragmentFaq().newInstance(null,null));
+
+            case 9999 :
+                mBackToMainScreen=false;
+                break;
+////                changeFragment(new FragmentJobPosting().newInstance(null,null));
+//
+//            case R.id.button_myprofile :
+//                mBackToMainScreen=false;
+////                changeFragment(new FragmentFaq().newInstance(null,null));
+//
+//            case R.id.button_fbPage :
+//                mBackToMainScreen=false;
+////                changeFragment(new FragmentFaq().newInstance(null,null));
+//
+//            case R.id.button_about_app :
+//                mBackToMainScreen=false;
+////                changeFragment(new FragmentFaq().newInstance(null,null));
+//
+//            case R.id.button_about_college :
+//                mBackToMainScreen=false;
+////                changeFragment(new FragmentFaq().newInstance(null,null));
+//
+//            case R.id.button_support :
+//                mBackToMainScreen=false;
+////                changeFragment(new FragmentFaq().newInstance(null,null));
+//
+//            case R.id.button_contact_us :
+//                mBackToMainScreen=false;
+////                changeFragment(new FragmentFaq().newInstance(null,null));
+//
+//            case R.id.button_faq :
+//                mBackToMainScreen=false;
+////                changeFragment(new FragmentFaq().newInstance(null,null));
+//
+//            case R.id.button_rate_us :
+//                mBackToMainScreen=false;
+////                changeFragment(new FragmentFaq().newInstance(null,null));
+
+
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (mBackToMainScreen==false){
+            mBackToMainScreen=true;
+            changeFragment(new FragmentSettings().newInstance(null,null));
+        }
+        else
+            super.onBackPressed();
     }
 }

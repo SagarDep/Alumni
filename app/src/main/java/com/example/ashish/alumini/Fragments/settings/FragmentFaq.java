@@ -52,7 +52,7 @@ public class FragmentFaq extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment.
+     * @return A new instance of fragment Fragment.
      */
     // TODO: Rename and change types and number of parameters
     public static FragmentFaq newInstance(String param1, String param2) {
