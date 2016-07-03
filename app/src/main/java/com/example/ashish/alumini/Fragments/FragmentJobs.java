@@ -7,9 +7,22 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
+import com.example.ashish.alumini.Job.JobListAdapter;
+import com.example.ashish.alumini.Job.JobListInstance;
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
+import com.squareup.otto.Bus;
+
+import java.util.ArrayList;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnItemClick;
+import butterknife.OnItemSelected;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +38,15 @@ public class FragmentJobs extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    @Bind(R.id.listView_jobs)
+    ListView mListViewJobs;
+
+    ArrayList<JobListInstance> mArrayList = new ArrayList<>();
+    JobListAdapter mListAdapter;
+
+    ActivityMember mActivity;
+
+    Bus mBus = new Bus();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -63,9 +85,44 @@ public class FragmentJobs extends Fragment {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.on_job_click,container,false);
+        View view = inflater.inflate(R.layout.fragment_jobs,container,false);
+
+        ButterKnife.bind(this,view);
+        //Bus Registering
+        mBus.register(getActivity());
+
+        mActivity  = (ActivityMember) getActivity();
+
+        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+        mListAdapter = new JobListAdapter(getActivity(),R.layout.simple_list_item_job,mArrayList);
+
+        mListViewJobs.setAdapter(mListAdapter);
+
+
+
+        mListViewJobs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mBus.post(9999);
+                mActivity.changeFragment(new FragmentJobDetails().newInstance("",""));
+            }
+        });
         return view;
     }
 

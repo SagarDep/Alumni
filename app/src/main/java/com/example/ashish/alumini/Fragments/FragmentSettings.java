@@ -36,26 +36,6 @@ public class FragmentSettings extends Fragment  {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    @Bind(R.id.button_postjob)
-    Button mButtonJobPost;
-    @Bind(R.id.button_myprofile)
-    Button mButtonProfile;
-    @Bind(R.id.button_fbPage)
-    Button mButtonFbPage;
-    @Bind(R.id.button_about_app)
-    Button mButtonAboutApp;
-    @Bind(R.id.button_about_college)
-    Button mButtonAboutCollege;
-    @Bind(R.id.button_support)
-    Button mButtonSupport;
-    @Bind(R.id.button_contact_us)
-    Button mButtonContactUs;
-    @Bind(R.id.button_faq)
-    Button mButtonFaqs;
-    @Bind(R.id.button_rate_us)
-    Button mButtonRateUs;
-    @Bind(R.id.button_logout)
-    Button mButtonLogOut;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -66,8 +46,26 @@ public class FragmentSettings extends Fragment  {
     /*
     * Butterknife
     * */
-//    @Bind(R.id.button_settings)
-//    Button j;
+//    @Bind(R.id.button_postjob)
+//    Button mButtonJobPost;
+//    @Bind(R.id.button_myprofile)
+//    Button mButtonProfile;
+//    @Bind(R.id.button_fbPage)
+//    Button mButtonFbPage;
+//    @Bind(R.id.button_about_app)
+//    Button mButtonAboutApp;
+//    @Bind(R.id.button_about_college)
+//    Button mButtonAboutCollege;
+//    @Bind(R.id.button_support)
+//    Button mButtonSupport;
+//    @Bind(R.id.button_contact_us)
+//    Button mButtonContactUs;
+//    @Bind(R.id.button_faq)
+//    Button mButtonFaqs;
+//    @Bind(R.id.button_rate_us)
+//    Button mButtonRateUs;
+//    @Bind(R.id.button_logout)
+//    Button mButtonLogOut;
 
     Bus mBus = new Bus();
     ActivityMember mActivity;

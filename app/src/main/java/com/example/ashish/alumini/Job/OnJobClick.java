@@ -35,9 +35,9 @@
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //
 //        ListView listJob = (ListView) findViewById(R.id.listView_jobpost);
-//        ArrayList <JobListVar> list = new ArrayList<>();
+//        ArrayList <JobListInstance> list = new ArrayList<>();
 //        for (int i = 0; i<6; i++){
-//            JobListVar listVar = new JobListVar(" Name " + i, BitmapFactory.decodeResource(getResources(), R.drawable.image));
+//            JobListInstance listVar = new JobListInstance(" Name " + i, BitmapFactory.decodeResource(getResources(), R.drawable.image));
 //            list.add(listVar);
 //        }
 //        JobListAdapter memberAdapter= new JobListAdapter(this,R.layout.simple_list_item_job,list);

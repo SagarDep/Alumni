@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.example.ashish.alumini.Fragments.Fragment;
+import com.example.ashish.alumini.Fragments.FragmentJobDetails;
 import com.example.ashish.alumini.Fragments.FragmentJobs;
 import com.example.ashish.alumini.Fragments.FragmentMembers;
 import com.example.ashish.alumini.Fragments.FragmentMenu;
@@ -30,11 +31,13 @@ public class ActivityMember extends AppCompatActivity implements
         FragmentFaq.OnFragmentInteractionListener,
         FragmentJobPosting.OnFragmentInteractionListener,
         FragmentAboutApp.OnFragmentInteractionListener,
-        FragmentProfile.OnFragmentInteractionListener
-{
+        FragmentProfile.OnFragmentInteractionListener,
+        FragmentJobDetails.OnFragmentInteractionListener{
 
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
+
+    FragmentJobs mFragmentJob =  new FragmentJobs().newInstance("","");
 
     Bus mBus = new Bus();
 
@@ -95,14 +98,13 @@ public class ActivityMember extends AppCompatActivity implements
 
             case R.id.linearLayout_jobs :
                 mBackToMainScreen=true;
-                changeFragment(new FragmentJobs().newInstance(null,null));
+                changeFragment(mFragmentJob);
                 break;
 
             case R.id.linearLayout_settings :
                 mBackToMainScreen=true;
                 changeFragment(new FragmentSettings().newInstance(null,null));
                 break;
-
 
             case 9999 :
                 mBackToMainScreen=false;
@@ -140,14 +142,11 @@ public class ActivityMember extends AppCompatActivity implements
 //            case R.id.button_rate_us :
 //                mBackToMainScreen=false;
 ////                changeFragment(new FragmentFaq().newInstance(null,null));
-
-
         }
     }
 
     @Override
     public void onBackPressed() {
-
         if (mBackToMainScreen==false){
             mBackToMainScreen=true;
             changeFragment(new FragmentSettings().newInstance(null,null));

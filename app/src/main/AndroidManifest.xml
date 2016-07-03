@@ -27,12 +27,7 @@
         <activity
             android:name=".onFilterClick"
             android:label="Filter" />
-        <activity
-            android:name=".activities.PostLogin.ActivitySettings"
-            android:label="More" />
-        <!--<activity-->
-            <!--android:name=".Job.OnJobClick"-->
-            <!--android:label="Job Offerings" />-->
+
         <activity
             android:name=".About_app"
             android:label="About App" />

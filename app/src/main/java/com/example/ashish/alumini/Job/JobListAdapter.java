@@ -12,37 +12,64 @@ import com.example.ashish.alumini.R;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * Created by ashish on 11/3/16.
  */
-public class JobListAdapter extends ArrayAdapter<JobListVar> {
-    List<JobListVar> listofcoms;
-    public JobListAdapter(Context context, int resource, List<JobListVar> objects) {
+public class JobListAdapter extends ArrayAdapter<JobListInstance> {
+    List<JobListInstance> listofcoms;
+
+    @Bind(R.id.imageView_logo) ImageView mImageView;
+    @Bind(R.id.textView_companyName) TextView mTextViewCompanyName;
+    @Bind(R.id.textView_joblocation) TextView mTextViewJobLocation;
+    @Bind(R.id.textView_jobPosition) TextView mTextViewJobPosition;
+    @Bind(R.id.textView_jobType) TextView mTextViewJobType;
+    @Bind(R.id.textView_lastDate) TextView mTextViewLastDate;
+
+
+
+    public JobListAdapter(Context context, int resource, List<JobListInstance> objects) {
         super(context, resource, objects);
         listofcoms=objects;
+
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        JobListVar temp  = getItem(position);
+
         if (convertView == null) {
             LayoutInflater vi;
             vi = LayoutInflater.from(getContext());
             convertView = vi.inflate(R.layout.simple_list_item_job, null);
         }
-        Holder holder = new Holder();
-        holder.tv_name = (TextView) convertView.findViewById(R.id.textView2);
-        holder.tv_location = (TextView) convertView.findViewById(R.id.textView_joblocation);
-        holder.imageView_profilePic = (ImageView) convertView.findViewById(R.id.imageView_job_profile);
+        //Butterknife Injections
+        ButterKnife.bind(this,convertView);
 
-//        holder.imageView_profilePic.setImageBitmap(ListVar.getCircleBitmap(temp.logo));
-        holder.tv_name.setText("Dummy Name");
-        holder.tv_location.setText("Bharat");
+        JobListInstance item = getItem(position);
+//
+//
+//        Holder holder = new Holder();
+//        holder.tv_name = (TextView) convertView.findViewById(R.id.textView_companyName);
+//        holder.tv_location = (TextView) convertView.findViewById(R.id.textView_joblocation);
+//        holder.imageView_profilePic = (ImageView) convertView.findViewById(R.id.imageView_logo);
+//
+////        holder.imageView_profilePic.setImageBitmap(ListVar.getCircleBitmap(temp.logo));
+//        holder.tv_name.setText("Dummy Name");
+//        holder.tv_location.setText("Bharat");
+        mTextViewCompanyName.setText(item.getCompanyName());
+        mTextViewJobLocation.setText(item.getJobLocation());
+        mTextViewJobPosition.setText(item.getJobPost());
+        mTextViewJobType.setText(item.getJobType());
+        mTextViewLastDate.setText(item.getLastDate());
+
+
         return convertView;
     }
 
     @Override
-    public JobListVar getItem(int position) {
+    public JobListInstance getItem(int position) {
         return listofcoms.get(position);
     }
     private static class Holder{
@@ -51,6 +78,7 @@ public class JobListAdapter extends ArrayAdapter<JobListVar> {
         public TextView tv_location ;
         public TextView tv_passing_year ;
         public ImageView imageView_profilePic;
+
 
     }
 }
