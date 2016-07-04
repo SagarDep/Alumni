@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.ashish.alumini.Job.JobListInstance;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
 import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -37,8 +41,8 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     /*
     * Butterknife
     * */
-//    @Bind(R.id.button_settings)
-//    Button j;
+    @Bind(R.id.textView_name_profile)
+    TextView mTextViewName;
 
     Bus mBus = new Bus();
 
@@ -79,7 +83,7 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_blank2, container, false);
+        View view = inflater.inflate(R.layout.job_profile, container, false);
 
         ButterKnife.bind(this,view);
         //Bus Registering
@@ -126,5 +130,10 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Subscribe
+    public void setData(JobListInstance item){
+        mTextViewName.setText(item.getCompanyName());
     }
 }

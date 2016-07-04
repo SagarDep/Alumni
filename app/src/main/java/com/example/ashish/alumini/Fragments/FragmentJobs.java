@@ -84,20 +84,22 @@ public class FragmentJobs extends Fragment {
         }
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//    }
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_jobs,container,false);
+
+
 
         ButterKnife.bind(this,view);
         //Bus Registering
@@ -119,8 +121,10 @@ public class FragmentJobs extends Fragment {
         mListViewJobs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mBus.post(9999);
+                mBus.post(8888);
+
                 mActivity.changeFragment(new FragmentJobDetails().newInstance("",""));
+                mBus.post(mArrayList.get(position));
             }
         });
         return view;

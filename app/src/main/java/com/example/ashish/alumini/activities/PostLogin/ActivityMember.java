@@ -39,9 +39,13 @@ public class ActivityMember extends AppCompatActivity implements
 
     FragmentJobs mFragmentJob =  new FragmentJobs().newInstance("","");
 
+    Fragment mFragment;
+
     Bus mBus = new Bus();
 
     Boolean mBackToMainScreen = true;
+    Boolean mBackToSettings = true;
+    Boolean mBackToJobList = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +102,8 @@ public class ActivityMember extends AppCompatActivity implements
 
             case R.id.linearLayout_jobs :
                 mBackToMainScreen=true;
-                changeFragment(mFragmentJob);
+//                changeFragment(mFragmentJob);
+                changeFragment(new FragmentJobs().newInstance("","  "));
                 break;
 
             case R.id.linearLayout_settings :
@@ -107,7 +112,13 @@ public class ActivityMember extends AppCompatActivity implements
                 break;
 
             case 9999 :
-                mBackToMainScreen=false;
+                mBackToSettings=true;
+                mBackToJobList=false;
+                break;
+
+            case 8888 :
+                mBackToJobList = true;
+                mBackToSettings=false;
                 break;
 ////                changeFragment(new FragmentJobPosting().newInstance(null,null));
 //
@@ -147,9 +158,11 @@ public class ActivityMember extends AppCompatActivity implements
 
     @Override
     public void onBackPressed() {
-        if (mBackToMainScreen==false){
-            mBackToMainScreen=true;
+        if (mBackToSettings==true){
             changeFragment(new FragmentSettings().newInstance(null,null));
+        }
+        else if (mBackToJobList==true){
+            changeFragment(new FragmentJobs().newInstance(null,null));
         }
         else
             super.onBackPressed();
