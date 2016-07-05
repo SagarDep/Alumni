@@ -41,7 +41,7 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     /*
     * Butterknife
     * */
-    @Bind(R.id.textView_name_profile)
+    @Bind(R.id.textView_name)
     TextView mTextViewName;
 
     Bus mBus = new Bus();

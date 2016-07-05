@@ -49,7 +49,7 @@ public class Edit_Profile extends Activity {
         spinner_branch.setAdapter(adapter_branch);
 
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.image);
-        ImageView mImage = (ImageView) findViewById(R.id.imageView_com_logo);
+        ImageView mImage = (ImageView) findViewById(R.id.imageView_companyLogo);
         mImage.setImageBitmap(ListVar.getCircleBitmap(bm));
 
         final Spinner spinner_year  = (Spinner) findViewById(R.id.spinner_year);
@@ -63,16 +63,16 @@ public class Edit_Profile extends Activity {
 
         description = (EditText) findViewById(R.id.Edittext_desc);
         location_home = (EditText) findViewById(R.id.ediText_home);
-        location_work = (EditText) findViewById(R.id.editText_location6);
-        designation = (EditText) findViewById(R.id.editText_designation);
+        location_work = (EditText) findViewById(R.id.editText_jobLocation);
+        designation = (EditText) findViewById(R.id.editText_jobDescription);
         company = (EditText) findViewById(R.id.editText_company);
         course = (EditText) findViewById(R.id.editText_course);
         institute = (EditText) findViewById(R.id.editText_univ);
-        twitter = (EditText) findViewById(R.id.editText_twlink);
-        email = (EditText) findViewById(R.id.editText_mail);
+        twitter = (EditText) findViewById(R.id.textView_twitterlink);
+        email = (EditText) findViewById(R.id.textView_fbLink);
         email.setText(bundle.get("EMAIL").toString());
         name.setText(bundle.get("NAME").toString());
-        phone = (EditText) findViewById(R.id.editText_contact);
+        phone = (EditText) findViewById(R.id.textView_contact);
 
 
 

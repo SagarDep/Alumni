@@ -238,11 +238,12 @@
 
 
 
-                    <com.mikepenz.iconics.view.IconicsImageView                         app:iiv_color="@android:color/black" app:iiv_icon="faw-briefcase"
+                    <com.mikepenz.iconics.view.IconicsImageView
+                        app:iiv_color="@android:color/black"
+                        app:iiv_icon="faw-mail"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:id="@+id/imageView11"
-
                         android:layout_below="@+id/view11"
                         android:layout_alignLeft="@+id/imageView9"
                         android:layout_alignStart="@+id/imageView9"

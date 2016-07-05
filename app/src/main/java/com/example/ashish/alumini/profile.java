@@ -21,7 +21,7 @@ public class profile extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.afterlistclick);
+        setContentView(R.layout.fragment_profile);
         Bitmap bm = BitmapFactory.decodeResource(getResources(),R.drawable.image);
         ImageView mImage = (ImageView) findViewById(R.id.imageView_profilepic);
         mImage.setImageBitmap(ListVar.getCircleBitmap(bm));
@@ -39,9 +39,9 @@ public class profile extends Activity {
                 overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
             }
         });
-        phone = (TextView) findViewById(R.id.editText_contact);
-        tw_twitter = (TextView) findViewById(R.id.editText_twlink);
-        mail = (TextView) findViewById(R.id.editText_mail);
+        phone = (TextView) findViewById(R.id.textView_contact);
+        tw_twitter = (TextView) findViewById(R.id.textView_twitterlink);
+        mail = (TextView) findViewById(R.id.textView_fbLink);
         mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

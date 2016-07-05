@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Company Name"
-            android:id="@+id/textView_name_profile"
+            android:id="@+id/textView_name"
             android:layout_below="@+id/imageView_profilepic"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
@@ -27,8 +27,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Type"
-            android:id="@+id/textView_type"
-            android:layout_below="@+id/textView_name_profile"
+            android:id="@+id/textView_desigNCom"
+            android:layout_below="@+id/textView_name"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
 
@@ -55,8 +55,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Location"
-            android:id="@+id/textView_brach"
-            android:layout_below="@+id/textView_type"
+            android:id="@+id/textView_branch"
+            android:layout_below="@+id/textView_desigNCom"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
 
@@ -118,7 +118,7 @@
                     android:layout_height="20dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Twitter"
-                    android:id="@+id/editText_twlink"
+                    android:id="@+id/textView_twitterlink"
                     android:layout_below="@+id/textView_Contact"
                     android:layout_toRightOf="@+id/imageView_fb"
                     android:layout_toEndOf="@+id/imageView_fb"
@@ -130,10 +130,10 @@
                     android:layout_height="20dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="email"
-                    android:id="@+id/editText_mail"
+                    android:id="@+id/textView_fbLink"
                     android:layout_below="@+id/imageView_fb"
-                    android:layout_alignLeft="@+id/editText_twlink"
-                    android:layout_alignStart="@+id/editText_twlink"
+                    android:layout_alignLeft="@+id/textView_twitterlink"
+                    android:layout_alignStart="@+id/textView_twitterlink"
                     android:layout_marginTop="5dp" />
 
                 <TextView
@@ -141,10 +141,10 @@
                     android:layout_height="20dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Website"
-                    android:id="@+id/editText_contact"
-                    android:layout_below="@+id/imageView_in"
-                    android:layout_alignLeft="@+id/editText_mail"
-                    android:layout_alignStart="@+id/editText_mail"
+                    android:id="@+id/textView_contact"
+                    android:layout_below="@+id/imageView_email"
+                    android:layout_alignLeft="@+id/textView_fbLink"
+                    android:layout_alignStart="@+id/textView_fbLink"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"/>
 
@@ -154,25 +154,25 @@
                     android:layout_height="16dp"
                     android:id="@+id/imageView_fb"
                     android:src="@drawable/tw"
-                    android:layout_alignTop="@+id/editText_twlink"
-                    android:layout_alignLeft="@+id/imageView_in"
-                    android:layout_alignStart="@+id/imageView_in"
+                    android:layout_alignTop="@+id/textView_twitterlink"
+                    android:layout_alignLeft="@+id/imageView_email"
+                    android:layout_alignStart="@+id/imageView_email"
                     android:layout_marginTop="2dp" />
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:id="@+id/imageView_tw"
+                    android:id="@+id/imageView_phone"
                     android:src="@drawable/website"
-                    android:layout_alignTop="@+id/editText_contact"
-                    android:layout_alignLeft="@+id/imageView_in"
-                    android:layout_alignStart="@+id/imageView_in"
+                    android:layout_alignTop="@+id/textView_contact"
+                    android:layout_alignLeft="@+id/imageView_email"
+                    android:layout_alignStart="@+id/imageView_email"
                     android:layout_marginTop="2dp" />
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:id="@+id/imageView_in"
+                    android:id="@+id/imageView_email"
                     android:src="@drawable/mail"
-                    android:layout_alignTop="@+id/editText_mail"
+                    android:layout_alignTop="@+id/textView_fbLink"
                     android:layout_alignLeft="@+id/textView_Contact"
                     android:layout_alignStart="@+id/textView_Contact"
                     android:layout_marginTop="2dp" />
@@ -185,7 +185,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Description"
             android:id="@+id/textView_description"
-            android:layout_below="@+id/textView_brach"
+            android:layout_below="@+id/textView_branch"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
 
@@ -194,9 +194,9 @@
             android:layout_height="20dp"
             android:id="@+id/imageView"
             android:src="@drawable/location"
-            android:layout_alignBottom="@+id/textView_brach"
-            android:layout_toLeftOf="@+id/textView_brach"
-            android:layout_toStartOf="@+id/textView_brach"
+            android:layout_alignBottom="@+id/textView_branch"
+            android:layout_toLeftOf="@+id/textView_branch"
+            android:layout_toStartOf="@+id/textView_branch"
             android:layout_marginRight="10dp" />
 
 

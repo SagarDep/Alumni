@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ashish.alumini.R;
+import com.mikepenz.iconics.view.IconicsImageView;
 
 import java.util.List;
 
@@ -19,9 +20,10 @@ import butterknife.ButterKnife;
  * Created by ashish on 11/3/16.
  */
 public class JobListAdapter extends ArrayAdapter<JobListInstance> {
-    List<JobListInstance> listofcoms;
+    List<JobListInstance> mListJobs;
 
-    @Bind(R.id.imageView_logo) ImageView mImageView;
+    @Bind(R.id.imageView_logo)
+    ImageView mImageView;
     @Bind(R.id.textView_companyName) TextView mTextViewCompanyName;
     @Bind(R.id.textView_joblocation) TextView mTextViewJobLocation;
     @Bind(R.id.textView_jobPosition) TextView mTextViewJobPosition;
@@ -32,7 +34,7 @@ public class JobListAdapter extends ArrayAdapter<JobListInstance> {
 
     public JobListAdapter(Context context, int resource, List<JobListInstance> objects) {
         super(context, resource, objects);
-        listofcoms=objects;
+        mListJobs =objects;
 
     }
 
@@ -70,15 +72,7 @@ public class JobListAdapter extends ArrayAdapter<JobListInstance> {
 
     @Override
     public JobListInstance getItem(int position) {
-        return listofcoms.get(position);
+        return mListJobs.get(position);
     }
-    private static class Holder{
-        public TextView tv_name ;
-        public TextView tv_designation ;
-        public TextView tv_location ;
-        public TextView tv_passing_year ;
-        public ImageView imageView_profilePic;
 
-
-    }
 }

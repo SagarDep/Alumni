@@ -114,11 +114,13 @@ public class ActivityMember extends AppCompatActivity implements
             case 9999 :
                 mBackToSettings=true;
                 mBackToJobList=false;
+                mBackToMainScreen=false;
                 break;
 
             case 8888 :
                 mBackToJobList = true;
                 mBackToSettings=false;
+                mBackToMainScreen=false;
                 break;
 ////                changeFragment(new FragmentJobPosting().newInstance(null,null));
 //
@@ -158,11 +160,14 @@ public class ActivityMember extends AppCompatActivity implements
 
     @Override
     public void onBackPressed() {
-        if (mBackToSettings==true){
-            changeFragment(new FragmentSettings().newInstance(null,null));
-        }
-        else if (mBackToJobList==true){
-            changeFragment(new FragmentJobs().newInstance(null,null));
+        if (mBackToMainScreen==false){
+            mBackToMainScreen=true;
+            if (mBackToSettings==true){
+                changeFragment(new FragmentSettings().newInstance(null,null));
+            }
+            else if (mBackToJobList==true){
+                changeFragment(new FragmentJobs().newInstance(null,null));
+            }
         }
         else
             super.onBackPressed();

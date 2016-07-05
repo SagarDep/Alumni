@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:scrollbars="none"
     android:fillViewport="false"
     android:layout_width="match_parent">
@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Dummy name"
-            android:id="@+id/textView_name_profile"
+            android:id="@+id/textView_name"
             android:layout_below="@+id/imageView_profilepic"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
@@ -26,21 +26,25 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Asst. Engg at IBM"
-            android:id="@+id/textView_type"
-            android:layout_below="@+id/textView_name_profile"
+            android:id="@+id/textView_desigNCom"
+            android:layout_below="@+id/textView_name"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
 
 
-        <ImageButton
+        <com.mikepenz.iconics.view.IconicsImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:id="@+id/edit_image"
+            app:iiv_icon="faw-pencil-square-o"
+            app:iiv_color="@color/black_de"
+            android:id="@+id/edit_imageButton"
             android:background="@android:color/transparent"
             android:layout_below="@+id/textView_year"
             android:layout_alignRight="@+id/textView_bio"
             android:layout_alignEnd="@+id/textView_bio" />
-        <ImageView
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:id="@+id/imageView_profilepic"
@@ -54,7 +58,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BiIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO "
             android:id="@+id/textView_bio"
-            android:layout_below="@+id/textView_brach"
+            android:layout_below="@+id/textView_branch"
             android:layout_alignRight="@+id/textView_year"
             android:layout_alignEnd="@+id/textView_year"
             android:layout_marginTop="5dp"
@@ -68,8 +72,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Branch - CSE"
-            android:id="@+id/textView_brach"
-            android:layout_below="@+id/textView_type"
+            android:id="@+id/textView_branch"
+            android:layout_below="@+id/textView_desigNCom"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
 
@@ -116,11 +120,11 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Jaipur"
-                    android:id="@+id/textView_home_profile"
+                    android:id="@+id/textView_homeLocation"
                     android:layout_below="@+id/info_text"
 
-                    android:layout_alignLeft="@+id/editText_location6"
-                    android:layout_alignStart="@+id/editText_location6"
+                    android:layout_alignLeft="@+id/editText_jobLocation"
+                    android:layout_alignStart="@+id/editText_jobLocation"
                     android:layout_marginTop="5dp" />
                 <View
                     android:layout_width="match_parent"
@@ -129,27 +133,29 @@
                     android:layout_toEndOf="@+id/imageView_work"
                     android:layout_toRightOf="@id/imageView_work"
                     android:layout_marginBottom="5dp"
-                    android:layout_below="@+id/textView_home_profile"
-                    android:layout_alignLeft="@+id/textView_home_profile"
-                    android:layout_alignStart="@+id/textView_home_profile"
+                    android:layout_below="@+id/textView_homeLocation"
+                    android:layout_alignLeft="@+id/textView_homeLocation"
+                    android:layout_alignStart="@+id/textView_homeLocation"
                     android:layout_marginTop="5dp" />
 
-                <ImageView
+                <com.mikepenz.iconics.view.IconicsImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:id="@+id/imageView_work"
-                    android:src="@drawable/work"
-                    android:layout_alignTop="@+id/editText_location6"
+                    app:iiv_icon="faw-briefcase"
+                    app:iiv_color="@color/black_de"
+                    android:layout_alignTop="@+id/editText_jobLocation"
                     android:layout_alignLeft="@+id/info_text"
                     android:layout_alignStart="@+id/info_text"
                     android:layout_marginTop="2dp" />
 
-                <ImageView
+                <com.mikepenz.iconics.view.IconicsImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:id="@+id/imageView_home"
-                    android:src="@drawable/home"
-                    android:layout_alignTop="@+id/textView_home_profile"
+                    app:iiv_icon="faw-home"
+                    app:iiv_color="@color/black_de"
+                    android:layout_alignTop="@+id/textView_homeLocation"
                     android:layout_alignLeft="@+id/imageView_work"
                     android:layout_alignStart="@+id/imageView_work"
                     android:layout_marginTop="2dp" />
@@ -159,8 +165,8 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Mumbai"
-                    android:id="@+id/editText_location6"
-                    android:layout_below="@+id/textView_home_profile"
+                    android:id="@+id/editText_jobLocation"
+                    android:layout_below="@+id/textView_homeLocation"
                     android:layout_toRightOf="@+id/imageView_work"
                     android:layout_toEndOf="@+id/imageView_work"
                     android:layout_margin="10dp" />
@@ -197,11 +203,12 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:textAppearanceMedium"
                     android:text="Contact"
-                    android:textColor="@color/cardview_dark_background"
+
                     android:id="@+id/textView_Contact"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
                 <View
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="#a6a6a6"
@@ -213,7 +220,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="http://twitter.com/"
                     android:clickable="true"
-                    android:id="@+id/editText_twlink"
+                    android:id="@+id/textView_twitterlink"
                     android:layout_below="@+id/textView_Contact"
                     android:layout_toRightOf="@+id/imageView_fb"
                     android:layout_toEndOf="@+id/imageView_fb"
@@ -227,8 +234,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/imageView_fb"
-                    android:layout_alignLeft="@+id/editText_twlink"
-                    android:layout_alignStart="@+id/editText_twlink"
+                    android:layout_alignLeft="@+id/textView_twitterlink"
+                    android:layout_alignStart="@+id/textView_twitterlink"
                     android:layout_marginTop="10dp" />
 
 
@@ -236,22 +243,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="email"
+                    android:text="Facebook"
                     android:clickable="true"
-                    android:id="@+id/editText_mail"
-                    android:layout_below="@+id/editText_twlink"
-                    android:layout_alignLeft="@+id/editText_twlink"
-                    android:layout_alignStart="@+id/editText_twlink"
+                    android:id="@+id/textView_fbLink"
+                    android:layout_below="@+id/textView_twitterlink"
+                    android:layout_alignLeft="@+id/textView_twitterlink"
+                    android:layout_alignStart="@+id/textView_twitterlink"
                     android:layout_marginTop="5dp" />
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="#a6a6a6"
-                    android:layout_toEndOf="@+id/imageView_in"
-                    android:layout_toRightOf="@id/imageView_in"
-                    android:layout_below="@+id/editText_mail"
-                    android:layout_alignLeft="@+id/editText_mail"
-                    android:layout_alignStart="@+id/editText_mail"
+                    android:layout_toEndOf="@+id/imageView_email"
+                    android:layout_toRightOf="@id/imageView_email"
+                    android:layout_below="@+id/textView_fbLink"
+                    android:layout_alignLeft="@+id/textView_fbLink"
+                    android:layout_alignStart="@+id/textView_fbLink"
                     android:layout_marginTop="5dp" />
 
                 <TextView
@@ -260,38 +267,71 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Phone"
                     android:clickable="true"
-                    android:id="@+id/editText_contact"
-                    android:layout_below="@+id/editText_mail"
-                    android:layout_alignLeft="@+id/editText_mail"
-                    android:layout_alignStart="@+id/editText_mail"
+                    android:id="@+id/textView_contact"
+                    android:layout_below="@+id/textView_fbLink"
+                    android:layout_alignLeft="@+id/textView_fbLink"
+                    android:layout_alignStart="@+id/textView_fbLink"
+                    android:layout_marginTop="10dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#a6a6a6"
+                    android:layout_toEndOf="@+id/imageView_email"
+                    android:layout_toRightOf="@id/imageView_email"
+                    android:layout_below="@+id/textView_contact"
+                    android:layout_alignLeft="@+id/textView_fbLink"
+                    android:layout_alignStart="@+id/textView_fbLink"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/view15" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Email"
+                    android:clickable="true"
+                    android:id="@+id/textView_mail"
+                    android:layout_below="@+id/textView_contact"
+                    android:layout_alignLeft="@+id/textView_fbLink"
+                    android:layout_alignStart="@+id/textView_fbLink"
                     android:layout_marginTop="10dp" />
 
-
-
-                <ImageView
+                <com.mikepenz.iconics.view.IconicsImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:id="@+id/imageView_phonejhbk"
+                    app:iiv_icon="faw-phone"
+                    app:iiv_color="@color/black_de"
+                    android:layout_alignTop="@+id/textView_contact"
+                    android:layout_alignLeft="@+id/imageView_email"
+                    android:layout_alignStart="@+id/imageView_email"
+                    android:layout_marginTop="2dp" />
+                <com.mikepenz.iconics.view.IconicsImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:id="@+id/imageView_fb"
-                    android:src="@drawable/tw"
-                    android:layout_alignTop="@+id/editText_twlink"
-                    android:layout_alignLeft="@+id/imageView_in"
-                    android:layout_alignStart="@+id/imageView_in"
+                    app:iiv_icon="faw-twitter"
+                    app:iiv_color="@color/black_de"
+                    android:layout_alignTop="@+id/textView_twitterlink"
+                    android:layout_alignLeft="@+id/imageView_email"
+                    android:layout_alignStart="@+id/imageView_email"
                     android:layout_marginTop="2dp" />
-                <ImageView
+                <com.mikepenz.iconics.view.IconicsImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:id="@+id/imageView_tw"
-                    android:src="@drawable/ph"
-                    android:layout_alignTop="@+id/editText_contact"
-                    android:layout_alignLeft="@+id/imageView_in"
-                    android:layout_alignStart="@+id/imageView_in"
-                    android:layout_marginTop="2dp" />
-                <ImageView
+                    android:id="@+id/imageView_phone"
+                    app:iiv_icon="faw-envelope"
+                    app:iiv_color="@color/black_de"
+                    android:layout_alignTop="@+id/textView_mail"
+                    android:layout_toLeftOf="@+id/textView_twitterlink"
+                    android:layout_toStartOf="@+id/textView_twitterlink" />
+                <com.mikepenz.iconics.view.IconicsImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:id="@+id/imageView_in"
-                    android:src="@drawable/mail"
-                    android:layout_alignTop="@+id/editText_mail"
+                    android:id="@+id/imageView_email"
+                    app:iiv_icon="faw-facebook"
+                    app:iiv_color="@color/black_de"
+                    android:layout_alignTop="@+id/textView_fbLink"
                     android:layout_alignLeft="@+id/textView_Contact"
                     android:layout_alignStart="@+id/textView_Contact"
                     android:layout_marginTop="2dp" />
