@@ -240,7 +240,7 @@
 
                     <com.mikepenz.iconics.view.IconicsImageView
                         app:iiv_color="@android:color/black"
-                        app:iiv_icon="faw-mail"
+                        app:iiv_icon="faw-envelope"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:id="@+id/imageView11"

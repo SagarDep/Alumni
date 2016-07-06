@@ -38,7 +38,7 @@ public class MemberClick extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.on_click_member);
+        setContentView(R.layout.activity_member);
 
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
