@@ -3,7 +3,6 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     android:scrollbars="none"
     android:padding="5dp">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -205,7 +204,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:id="@+id/editText_companyEmail"
+                        android:id="@+id/editText_memberEmail"
                         android:hint="e-mail address"/>
 
                 </android.support.design.widget.TextInputLayout>

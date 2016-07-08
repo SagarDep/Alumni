@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.example.ashish.alumini.Fragments.Fragment;
+import com.example.ashish.alumini.Fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.Fragments.FragmentJobDetails;
 import com.example.ashish.alumini.Fragments.FragmentJobs;
 import com.example.ashish.alumini.Fragments.FragmentMembers;
@@ -32,7 +33,8 @@ public class ActivityMember extends AppCompatActivity implements
         FragmentJobPosting.OnFragmentInteractionListener,
         FragmentAboutApp.OnFragmentInteractionListener,
         FragmentProfile.OnFragmentInteractionListener,
-        FragmentJobDetails.OnFragmentInteractionListener{
+        FragmentJobDetails.OnFragmentInteractionListener,
+        FragmentGetProfileData.OnFragmentInteractionListener {
 
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;

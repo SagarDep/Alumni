@@ -7,11 +7,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.ashish.alumini.Fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
 import com.squareup.otto.Bus;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,10 +42,10 @@ public class FragmentProfile extends Fragment {
     /*
     * Butterknife
     * */
-//    @Bind(R.id.button_settings)
-//    Button j;
 
     Bus mBus = new Bus();
+
+    ActivityMember mActivity ;
 
     public FragmentProfile() {
         // Required empty public constructor
@@ -83,9 +88,17 @@ public class FragmentProfile extends Fragment {
         //Bus Registering
         mBus.register(getActivity());
 
+        mActivity = (ActivityMember) getActivity();
+
 
         return view;
     }
+
+    @OnClick(R.id.imageView_edit)
+    public void editProfile(){
+        mActivity.changeFragment(new FragmentGetProfileData().newInstance("edit",""));
+    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

@@ -2,6 +2,7 @@ package com.example.ashish.alumini.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -70,6 +71,8 @@ public class FragmentSettings extends Fragment  {
     Bus mBus = new Bus();
     ActivityMember mActivity;
 
+    SharedPreferences mSharedPreferences;
+
     public FragmentSettings() {
         // Required empty public constructor
     }
@@ -112,6 +115,9 @@ public class FragmentSettings extends Fragment  {
         mBus.register(getActivity());
 
         mActivity = (ActivityMember) getActivity();
+
+        mSharedPreferences = mActivity.getPreferences(Context.MODE_PRIVATE);
+
 
 
 
@@ -210,6 +216,8 @@ public class FragmentSettings extends Fragment  {
         }
     }
     public Boolean logout(){
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putBoolean("IS_LOGGED_IN",false);
         return true;
     }
 

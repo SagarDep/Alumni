@@ -4,8 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="cardview_dark_background">#FF4081</color>
-    <color name="grey">#a39c9d</color>
+    <color name="grey">#a6a6a6</color>
     <color name="appTheme">#e53935</color>
 
+    <color name="horizontal_line">#a6a6a6</color>
 
 </resources>

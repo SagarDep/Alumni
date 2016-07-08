@@ -42,7 +42,7 @@ public class Edit_Profile extends Activity {
         final Bundle bundle = getIntent().getExtras();
         final String foo =  bundle.get("SIGN_UP").toString();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.edit_profile);
+        setContentView(R.layout.fragment_getprofiledata);
         final Spinner spinner_branch =  (Spinner) findViewById(R.id.spinner_branch);
         ArrayAdapter <CharSequence>  adapter_branch = ArrayAdapter.createFromResource(this,R.array.branch_array,R.layout.support_simple_spinner_dropdown_item);
         adapter_branch.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -59,20 +59,20 @@ public class Edit_Profile extends Activity {
 
         final EditText name , description , location_home , location_work  , designation , company , course , institute , twitter , email , phone;
 
-        name= (EditText) findViewById(R.id.editText_name);
-
-        description = (EditText) findViewById(R.id.Edittext_desc);
-        location_home = (EditText) findViewById(R.id.ediText_home);
-        location_work = (EditText) findViewById(R.id.editText_jobLocation);
-        designation = (EditText) findViewById(R.id.editText_jobDescription);
-        company = (EditText) findViewById(R.id.editText_company);
-        course = (EditText) findViewById(R.id.editText_course);
-        institute = (EditText) findViewById(R.id.editText_univ);
-        twitter = (EditText) findViewById(R.id.textView_twitterlink);
-        email = (EditText) findViewById(R.id.textView_fbLink);
-        email.setText(bundle.get("EMAIL").toString());
-        name.setText(bundle.get("NAME").toString());
-        phone = (EditText) findViewById(R.id.textView_contact);
+//        name= (EditText) findViewById(R.id.editText_name);
+//
+//        description = (EditText) findViewById(R.id.Edittext_desc);
+//        location_home = (EditText) findViewById(R.id.ediText_home);
+//        location_work = (EditText) findViewById(R.id.editText_jobLocation);
+//        designation = (EditText) findViewById(R.id.editText_jobDescription);
+//        company = (EditText) findViewById(R.id.editText_company);
+//        course = (EditText) findViewById(R.id.editText_course);
+//        institute = (EditText) findViewById(R.id.editText_univ);
+//        twitter = (EditText) findViewById(R.id.textView_twitterlink);
+//        email = (EditText) findViewById(R.id.textView_fbLink);
+//        email.setText(bundle.get("EMAIL").toString());
+//        name.setText(bundle.get("NAME").toString());
+//        phone = (EditText) findViewById(R.id.textView_contact);
 
 
 
@@ -85,27 +85,27 @@ public class Edit_Profile extends Activity {
                 final String sname , sdescription , slocation_home , slocation_work  , sdesignation , scompany
                         , scourse , sinstitute , stwitter , semail , sphone ,syear , sbranch;
 
-                sname = name.getText().toString();
-                sdescription = description.getText().toString();
-                slocation_home = location_home.getText().toString();
-                slocation_work = location_work.getText().toString();
-                sdesignation = designation.getText().toString();
-                scompany = company.getText().toString();
-                scourse = course.getText().toString();
-                sinstitute = institute.getText().toString();
-                stwitter = twitter.getText().toString();
-                semail  = email.getText().toString();
-                sphone = phone.getText().toString();
-                syear = spinner_year.getSelectedItem().toString();
-                sbranch = spinner_branch.getSelectedItem().toString();
+//                sname = name.getText().toString();
+//                sdescription = description.getText().toString();
+//                slocation_home = location_home.getText().toString();
+//                slocation_work = location_work.getText().toString();
+//                sdesignation = designation.getText().toString();
+//                scompany = company.getText().toString();
+//                scourse = course.getText().toString();
+//                sinstitute = institute.getText().toString();
+//                stwitter = twitter.getText().toString();
+//                semail  = email.getText().toString();
+//                sphone = phone.getText().toString();
+//                syear = spinner_year.getSelectedItem().toString();
+//                sbranch = spinner_branch.getSelectedItem().toString();
 
-                Log.d("GET",sname + sdescription + slocation_home + slocation_work  + sdesignation + scompany
-                        + scourse + sinstitute + stwitter + semail + sphone + syear + sbranch);
+//                Log.d("GET",sname + sdescription + slocation_home + slocation_work  + sdesignation + scompany
+//                        + scourse + sinstitute + stwitter + semail + sphone + syear + sbranch);
 
-                if (sname.isEmpty() || sdescription.isEmpty() || slocation_home.isEmpty() ||  slocation_work.isEmpty() || sdesignation.isEmpty() || scompany.isEmpty()
-                         || stwitter.isEmpty() || semail.isEmpty() || sphone.isEmpty() || syear.isEmpty() || sbranch.isEmpty() ){
-                    Snackbar.make(view, "Sorry! We need Non Empty field", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                }
+//                if (sname.isEmpty() || sdescription.isEmpty() || slocation_home.isEmpty() ||  slocation_work.isEmpty() || sdesignation.isEmpty() || scompany.isEmpty()
+//                         || stwitter.isEmpty() || semail.isEmpty() || sphone.isEmpty() || syear.isEmpty() || sbranch.isEmpty() ){
+//                    Snackbar.make(view, "Sorry! We need Non Empty field", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+//                }
 
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://182.73.140.106/aryaalumni/api/v1.0/signup?",
@@ -144,20 +144,20 @@ public class Edit_Profile extends Activity {
                     @Override
                     protected Map<String,String> getParams(){
                         Map<String,String> params = new HashMap<String, String>();
-                        params.put("name",sname);
-                        params.put("email",semail);
-                        params.put("password", "PASS");
-                        params.put("description", sdescription);
-                        params.put("branch", sbranch);
-                        params.put("graduation_year", syear);
-                        params.put("work_designation", sdesignation);
-                        params.put("work_company", scompany);
-                        params.put("pg_course", "null");
-                        params.put("pg_college", "null");
-                        params.put("location_city", slocation_work);
-                        params.put("location_work", slocation_home);
-                        params.put("contact_twitter", stwitter);
-                        params.put("contact_phone", sphone);
+//                        params.put("name",sname);
+//                        params.put("email",semail);
+//                        params.put("password", "PASS");
+//                        params.put("description", sdescription);
+//                        params.put("branch", sbranch);
+//                        params.put("graduation_year", syear);
+//                        params.put("work_designation", sdesignation);
+//                        params.put("work_company", scompany);
+//                        params.put("pg_course", "null");
+//                        params.put("pg_college", "null");
+//                        params.put("location_city", slocation_work);
+//                        params.put("location_work", slocation_home);
+//                        params.put("contact_twitter", stwitter);
+//                        params.put("contact_phone", sphone);
                         return params;
                     }
 
