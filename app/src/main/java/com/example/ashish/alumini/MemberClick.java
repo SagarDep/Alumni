@@ -24,6 +24,8 @@ import com.example.ashish.alumini.Fragments.viewpager.All;
 import com.example.ashish.alumini.Fragments.viewpager.PG;
 import com.example.ashish.alumini.Fragments.viewpager.Proffesional;
 
+import com.example.ashish.alumini.supporting_classes.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +50,7 @@ public class MemberClick extends AppCompatActivity implements View.OnClickListen
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(mViewPager, null);
 
-        mTabLayout = (TabLayout) findViewById(R.id.tabs);
+        mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
         mTabLayout.setupWithViewPager(mViewPager);
         ImageButton imageButton_home , imageButton_job , imageButton_filter, imageButton_setting;
         imageButton_home = (ImageButton) findViewById(R.id.button_home);
@@ -84,34 +86,7 @@ public class MemberClick extends AppCompatActivity implements View.OnClickListen
     }
 
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void addFragment(ListFragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
-    }
 
     @Override
     public void onClick(View v) {

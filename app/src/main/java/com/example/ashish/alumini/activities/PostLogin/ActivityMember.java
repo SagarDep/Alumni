@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.example.ashish.alumini.Fragments.Fragment;
-import com.example.ashish.alumini.Fragments.FragmentGetProfileData;
+import com.example.ashish.alumini.Fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.Fragments.FragmentJobDetails;
 import com.example.ashish.alumini.Fragments.FragmentJobs;
 import com.example.ashish.alumini.Fragments.FragmentMembers;

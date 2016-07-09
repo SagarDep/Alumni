@@ -3,13 +3,22 @@ package com.example.ashish.alumini.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.ashish.alumini.Fragments.viewpager.All;
+import com.example.ashish.alumini.Fragments.viewpager.PG;
+import com.example.ashish.alumini.Fragments.viewpager.Proffesional;
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.supporting_classes.ViewPagerAdapter;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +37,9 @@ public class FragmentMembers extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    @Bind(R.id.viewpager) ViewPager mViewPager;
+    @Bind(R.id.tabLayout)TabLayout mTabLayout;
 
     private OnFragmentInteractionListener mListener;
 
@@ -65,9 +77,16 @@ public class FragmentMembers extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        TextView textView = new TextView(getActivity());
-        textView.setText("Members");
-        return textView;
+        View view = inflater.inflate(R.layout.activity_member, container, false);
+
+        ButterKnife.bind(this,view);
+
+        mTabLayout.setupWithViewPager(mViewPager);
+        setupViewPager(mViewPager);
+
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -75,6 +94,14 @@ public class FragmentMembers extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
+        adapter.addFragment(new All(), "ALL");
+        adapter.addFragment(new Proffesional(),"ACE");
+        adapter.addFragment(new PG(),  "NERDS");
+        viewPager.setAdapter(adapter);
     }
 
     @Override
