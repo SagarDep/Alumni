@@ -1,15 +1,11 @@
 package com.example.ashish.alumini;
 
-import android.support.v4.app.ListFragment;
 import android.app.SearchManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -20,14 +16,11 @@ import android.widget.ImageButton;
 
 //import com.example.ashish.alumini.Job.OnJobClick;
 
-import com.example.ashish.alumini.Fragments.viewpager.All;
-import com.example.ashish.alumini.Fragments.viewpager.PG;
-import com.example.ashish.alumini.Fragments.viewpager.Proffesional;
+import com.example.ashish.alumini.Fragments.viewpager.FragmentViewPager1;
+import com.example.ashish.alumini.Fragments.viewpager.FragmentViewPager3;
+import com.example.ashish.alumini.Fragments.viewpager.FragmentViewPager2;
 
 import com.example.ashish.alumini.supporting_classes.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by ashish on 11/3/16.
@@ -65,9 +58,9 @@ public class MemberClick extends AppCompatActivity implements View.OnClickListen
     }
     private void setupViewPager(ViewPager viewPager,String where) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new All(), "ALL");
-        adapter.addFragment(new Proffesional(),"PROFESSIONALS");
-        adapter.addFragment(new PG(),  "Post Grads.");
+        adapter.addFragment(new FragmentViewPager1(), "ALL");
+        adapter.addFragment(new FragmentViewPager2(),"PROFESSIONALS");
+        adapter.addFragment(new FragmentViewPager3(),  "Post Grads.");
         viewPager.setAdapter(adapter);
     }
     @Override

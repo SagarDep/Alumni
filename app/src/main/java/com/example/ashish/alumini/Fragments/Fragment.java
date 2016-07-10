@@ -42,7 +42,7 @@ public class Fragment extends android.support.v4.app.Fragment {
 
     Bus mBus = new Bus();
 
-    ActivityMember mActivity = (ActivityMember) getActivity();
+    ActivityMember mActivity ;
 
     public Fragment() {
         // Required empty public constructor
@@ -81,6 +81,8 @@ public class Fragment extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_blank2, container, false);
 
+        mActivity = (ActivityMember) getActivity();
+
         ButterKnife.bind(this,view);
         //Bus Registering
         mBus.register(getActivity());
@@ -105,6 +107,17 @@ public class Fragment extends android.support.v4.app.Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mBus.unregister(getActivity());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 
     @Override

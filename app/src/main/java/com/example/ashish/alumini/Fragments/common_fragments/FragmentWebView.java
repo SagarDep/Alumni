@@ -1,35 +1,35 @@
-package com.example.ashish.alumini.Fragments;
+package com.example.ashish.alumini.Fragments.common_fragments;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
-import com.example.ashish.alumini.Fragments.viewpager.FragmentViewPager1;
-import com.example.ashish.alumini.Fragments.viewpager.FragmentViewPager3;
-import com.example.ashish.alumini.Fragments.viewpager.FragmentViewPager2;
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.supporting_classes.ViewPagerAdapter;
+import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
+import com.squareup.otto.Bus;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple {@link android.support.v4.app.Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragmentMembers.OnFragmentInteractionListener} interface
+ * {@link FragmentWebView.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragmentMembers#newInstance} factory method to
+ * Use the {@link FragmentWebView#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentMembers extends Fragment {
+public class FragmentWebView extends android.support.v4.app.Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -37,12 +37,21 @@ public class FragmentMembers extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    @Bind(R.id.viewpager) ViewPager mViewPager;
-    @Bind(R.id.tabLayout)TabLayout mTabLayout;
-
     private OnFragmentInteractionListener mListener;
 
-    public FragmentMembers() {
+    /*
+    * Butterknife
+    * */
+    @Bind(R.id.progressBar)
+    ProgressBar mProgressBar;
+    @Bind(R.id.webView)
+    WebView mWebView;
+
+    Bus mBus = new Bus();
+
+    ActivityMember mActivity ;
+
+    public FragmentWebView() {
         // Required empty public constructor
     }
 
@@ -52,11 +61,11 @@ public class FragmentMembers extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentJobs.
+     * @return A new instance of fragment Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentMembers newInstance(String param1, String param2) {
-        FragmentMembers fragment = new FragmentMembers();
+    public static FragmentWebView newInstance(String param1, String param2) {
+        FragmentWebView fragment = new FragmentWebView();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -76,16 +85,52 @@ public class FragmentMembers extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_member, container, false);
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_web_view, container, false);
+
+        mActivity = (ActivityMember) getActivity();
 
         ButterKnife.bind(this,view);
+        //Bus Registering
+        mBus.register(getActivity());
 
 
-        setupViewPager(mViewPager);
-        mTabLayout.setupWithViewPager(mViewPager);
+        mProgressBar.setVisibility(View.VISIBLE);
+        mProgressBar.setMax(100);
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.loadUrl("http://foodreduction.tk");
+//            webView.loadUrl("http://facebook.com");
+        mWebView.canGoBackOrForward(5);
+
+        mWebView.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+//                setContentView(R.layout.activity_main);
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
 
 
+        });
 
+        mWebView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                if (mProgressBar.getVisibility() == View.GONE) {
+                    mProgressBar.setVisibility(View.VISIBLE);
+                }
+                mProgressBar.setProgress(newProgress);
+                if (newProgress == 100) {
+                    mProgressBar.setVisibility(View.GONE);
+                }
+            }
+
+        });
 
         return view;
     }
@@ -97,14 +142,6 @@ public class FragmentMembers extends Fragment {
         }
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(new FragmentViewPager1(), "ALL");
-        adapter.addFragment(new FragmentViewPager2(),"ACE");
-        adapter.addFragment(new FragmentViewPager3(),  "NERDS");
-        viewPager.setAdapter(adapter);
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -114,6 +151,17 @@ public class FragmentMembers extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mBus.unregister(getActivity());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 
     @Override

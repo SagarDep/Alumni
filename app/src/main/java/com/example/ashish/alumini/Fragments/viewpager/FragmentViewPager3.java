@@ -18,9 +18,9 @@ import java.util.ArrayList;
 /**
  * Created by ashish on 14/3/16.
  */
-public class PG extends ListFragment{
+public class FragmentViewPager3 extends ListFragment{
 
-    public PG() {
+    public FragmentViewPager3() {
         // Required empty public constructor
     }
 

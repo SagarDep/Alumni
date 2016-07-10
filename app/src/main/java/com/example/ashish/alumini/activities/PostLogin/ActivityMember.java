@@ -105,7 +105,7 @@ public class ActivityMember extends AppCompatActivity implements
             case R.id.linearLayout_jobs :
                 mBackToMainScreen=true;
 //                changeFragment(mFragmentJob);
-                changeFragment(new FragmentJobs().newInstance("","  "));
+                changeFragment(mFragmentJob);
                 break;
 
             case R.id.linearLayout_settings :

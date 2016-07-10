@@ -2,53 +2,69 @@ package com.example.ashish.alumini.Fragments.viewpager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.ashish.alumini.ListMembers.ListVar;
 import com.example.ashish.alumini.ListMembers.MemberAdapter;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.profile;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.util.ArrayList;
 
 /**
  * Created by ashish on 14/3/16.
  */
-public class Proffesional extends ListFragment{
+public class FragmentViewPager1 extends android.support.v4.app.ListFragment {
 
-    public Proffesional() {
+    private String TAG = getClass().getSimpleName();
+
+    private ArrayList<ListVar> mArrayList;
+    private MemberAdapter mMemberAdapter;
+    public FragmentViewPager1() {
         // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_two, container, false);
+        View view = inflater.inflate(R.layout.fragment_one, container, false);
+
+        return view;
     }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ArrayList<ListVar> list_members = new ArrayList<>();
 
-//            list_members.add(listVar);
+        mArrayList.add(new ListVar("01","ashish",null,"a","a","a","a","a"));
 
-//        MemberAdapter memberAdapter= new MemberAdapter(getActivity(),R.layout.lis,list_members);
-
+//        MemberAdapter memberAdapter= new MemberAdapter(getActivity(),R.layout.simple_list_item,mArrayList);
 //        setListAdapter(memberAdapter);
 
 
     }
-
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
@@ -56,4 +72,3 @@ public class Proffesional extends ListFragment{
         startActivity(intent);
     }
 }
-
