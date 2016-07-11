@@ -2,7 +2,9 @@ package com.example.ashish.alumini.activities.PreLogin;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +22,7 @@ public class Login extends Activity
     EditText email,password;
     Button loginButton;
 
+    SharedPreferences mSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,9 @@ public class Login extends Activity
                 login();
             }
         });
+
+        mSharedPreferences = this.getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
     }
 
     //body of login method
@@ -73,6 +79,10 @@ public class Login extends Activity
         loginButton.setEnabled(true);
         Intent move=new Intent(Login.this,MainScreen.class);
         startActivity(move);
+
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putBoolean(getString(R.string.login_key),true);
+        editor.commit();
     }
 
     public void onLoginFailed() {

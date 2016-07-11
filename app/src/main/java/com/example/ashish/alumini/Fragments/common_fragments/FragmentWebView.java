@@ -98,8 +98,7 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
         mProgressBar.setVisibility(View.VISIBLE);
         mProgressBar.setMax(100);
         mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.loadUrl("http://foodreduction.tk");
-//            webView.loadUrl("http://facebook.com");
+        mWebView.loadUrl(mParam1);
         mWebView.canGoBackOrForward(5);
 
         mWebView.setWebViewClient(new WebViewClient() {

@@ -1,16 +1,16 @@
 package com.example.ashish.alumini.Fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
+import com.example.ashish.alumini.Fragments.common_fragments.FragmentWebView;
 import com.example.ashish.alumini.Fragments.settings.FragmentAboutApp;
 import com.example.ashish.alumini.Fragments.settings.FragmentFaq;
 import com.example.ashish.alumini.Fragments.settings.FragmentJobPosting;
@@ -19,7 +19,6 @@ import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
 import com.squareup.otto.Bus;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -116,10 +115,8 @@ public class FragmentSettings extends Fragment  {
 
         mActivity = (ActivityMember) getActivity();
 
-        mSharedPreferences = mActivity.getPreferences(Context.MODE_PRIVATE);
-
-
-
+        mSharedPreferences = getActivity().getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
         return view;
     }
@@ -177,7 +174,8 @@ public class FragmentSettings extends Fragment  {
     }
     @OnClick(R.id.button_fbPage)
     public void handlerFbButton(){
-//        mBus.post(9999);
+        mBus.post(9999);
+        mActivity.changeFragment(new FragmentWebView().newInstance(getString(R.string.url_facebook_page),""));
     }
     @OnClick(R.id.button_about_app)
     public void handlerAboutAppButton(){
@@ -189,15 +187,14 @@ public class FragmentSettings extends Fragment  {
     public void handlerAboutCollegeButton(){
 //        mBus.post(R.id.button_postjob);
         mBus.post(9999);
+        mActivity.changeFragment(new FragmentWebView().newInstance(getString(R.string.url_college),""));
     }
     @OnClick(R.id.button_support)
     public void handlerSupportButton(){
-//        mBus.post(R.id.button_postjob);
         mBus.post(9999);
     }
     @OnClick(R.id.button_contact_us)
     public void handlerContactUsButton(){
-//        mBus.post(R.id.button_postjob);
         mBus.post(9999);
     }
     @OnClick(R.id.button_faq)
@@ -205,20 +202,16 @@ public class FragmentSettings extends Fragment  {
         mBus.post(9999);
         mActivity.changeFragment(new FragmentFaq().newInstance("",""));
     }
+
     @OnClick(R.id.button_rate_us)
     public void handlerRatingButton(){
         mBus.post(R.id.button_faq);
     }
     @OnClick(R.id.button_logout)
     public void handlerLogoutButton(){
-        if (logout()==true){
-
-        }
-    }
-    public Boolean logout(){
-        SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putBoolean("IS_LOGGED_IN",false);
-        return true;
+      SharedPreferences.Editor editor = mSharedPreferences.edit();
+      editor.putBoolean(getString(R.string.login_key),false);
+      editor.commit();
     }
 
 }

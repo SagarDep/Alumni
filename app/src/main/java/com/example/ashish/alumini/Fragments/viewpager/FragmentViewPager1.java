@@ -58,7 +58,7 @@ public class FragmentViewPager1 extends android.support.v4.app.ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mArrayList.add(new ListVar("01","ashish",null,"a","a","a","a","a"));
+//        mArrayList.add(new ListVar("01","ashish",null,"a","a","a","a","a"));
 
 //        MemberAdapter memberAdapter= new MemberAdapter(getActivity(),R.layout.simple_list_item,mArrayList);
 //        setListAdapter(memberAdapter);

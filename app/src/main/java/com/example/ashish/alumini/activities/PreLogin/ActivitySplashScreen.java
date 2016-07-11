@@ -1,5 +1,6 @@
 package com.example.ashish.alumini.activities.PreLogin;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -19,15 +20,22 @@ public class ActivitySplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        mSharedPreferences = getPreferences(MODE_PRIVATE);
-        Boolean aBoolean = mSharedPreferences.getBoolean(mLoginKey,true);
 
         //hide the actionBar
         getSupportActionBar().hide();
-        if (aBoolean==false){
-            mIntent = new Intent(ActivitySplashScreen.this,MainActivity.class);
+
+        mSharedPreferences = this.getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+
+        Boolean spLogin = mSharedPreferences.getBoolean(mLoginKey,false);
+
+
+
+        if (spLogin==true){
+            mIntent = new Intent(this, MainScreen.class);
         }
-        else mIntent = new Intent(this, MainScreen.class);
+        else
+            mIntent = new Intent(this,MainActivity.class);
 
 
         //creating thread to hold screen for splash

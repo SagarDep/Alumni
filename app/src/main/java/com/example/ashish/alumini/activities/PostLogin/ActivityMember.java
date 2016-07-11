@@ -15,6 +15,7 @@ import com.example.ashish.alumini.Fragments.FragmentJobs;
 import com.example.ashish.alumini.Fragments.FragmentMembers;
 import com.example.ashish.alumini.Fragments.FragmentMenu;
 import com.example.ashish.alumini.Fragments.FragmentSettings;
+import com.example.ashish.alumini.Fragments.common_fragments.FragmentWebView;
 import com.example.ashish.alumini.Fragments.settings.FragmentAboutApp;
 import com.example.ashish.alumini.Fragments.settings.FragmentFaq;
 import com.example.ashish.alumini.Fragments.settings.FragmentJobPosting;
@@ -34,7 +35,8 @@ public class ActivityMember extends AppCompatActivity implements
         FragmentAboutApp.OnFragmentInteractionListener,
         FragmentProfile.OnFragmentInteractionListener,
         FragmentJobDetails.OnFragmentInteractionListener,
-        FragmentGetProfileData.OnFragmentInteractionListener {
+        FragmentGetProfileData.OnFragmentInteractionListener,
+        FragmentWebView.OnFragmentInteractionListener{
 
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
