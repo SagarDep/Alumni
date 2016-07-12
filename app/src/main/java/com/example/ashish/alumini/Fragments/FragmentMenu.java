@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
 import com.example.ashish.alumini.activities.PostLogin.MainScreen;
 import com.example.ashish.alumini.R;
 import com.mikepenz.iconics.view.IconicsImageView;
@@ -55,6 +56,10 @@ public class FragmentMenu extends Fragment {
     Bus mBus = new Bus();
     private OnFragmentInteractionListener mListener;
 
+    ActivityMember mActivity;
+
+
+
 
 
     public FragmentMenu() {
@@ -95,13 +100,14 @@ public class FragmentMenu extends Fragment {
         View view = inflater.inflate(R.layout.fragment_menu_bottom, container, false);
         //Butterknife Binding
         ButterKnife.bind(this,view);
-
-
+        //event bus registering
         mBus.register(getActivity());
 
+        mActivity = (ActivityMember) getActivity();
 
         mViewPrevious = view.findViewById(R.id.view_home);
         mLinearLayoutPrevious = (LinearLayout) view.findViewById(R.id.linearLayout_home);
+        mLinearLayoutHome.setBackgroundColor(getResources().getColor(R.color.grey));
 
         return view;
     }
@@ -113,14 +119,17 @@ public class FragmentMenu extends Fragment {
     @OnClick(R.id.linearLayout_filter)
     public void changeToFilterFragment(){
         setVisibleView(getView().findViewById(R.id.view_filter),mLinearLayoutFilter);
+        mActivity.changeFragment(new com.example.ashish.alumini.Fragments.Fragment().newInstance(null,null));
     }
     @OnClick(R.id.linearLayout_jobs)
     public void changeToJobsFragment(){
         setVisibleView(getView().findViewById(R.id.view_jobs),mLinearLayoutJobs);
+        mActivity.changeFragment(mActivity.mFragmentJob);
     }
     @OnClick(R.id.linearLayout_settings)
     public void changeFragment(){
         setVisibleView(getView().findViewById(R.id.view_settings),mLinearLayoutSettings);
+        mActivity.changeFragment(new FragmentSettings().newInstance(null,null));
     }
 
     // TODO: Rename method, update argument and hook method into UI event

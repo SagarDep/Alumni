@@ -83,16 +83,15 @@ public class FragmentJobs extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
+        if (mArrayList.size()!=0){
+            return;
+        }
         mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
         mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
         mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
         mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
         mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-
         mListAdapter = new JobListAdapter(getActivity(),R.layout.simple_list_item_job,mArrayList);
-
-
     }
 
 
@@ -116,8 +115,6 @@ public class FragmentJobs extends Fragment {
         View view = inflater.inflate(R.layout.fragment_jobs,container,false);
 
         ButterKnife.bind(this,view);
-
-
 
 
         mListViewJobs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -147,6 +144,7 @@ public class FragmentJobs extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
     }
 
     @Override

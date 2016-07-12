@@ -170,7 +170,7 @@ public class FragmentSettings extends Fragment  {
     @OnClick(R.id.button_myprofile)
     public void handlerMyProfileButton(){
         mBus.post(9999);
-        mActivity.changeFragment(new FragmentProfile().newInstance("",""));
+        mActivity.changeFragment(new FragmentProfile());
     }
     @OnClick(R.id.button_fbPage)
     public void handlerFbButton(){
@@ -181,7 +181,7 @@ public class FragmentSettings extends Fragment  {
     public void handlerAboutAppButton(){
 //        mBus.post(R.id.button_postjob);
         mBus.post(9999);
-        mActivity.changeFragment(new FragmentAboutApp().newInstance("",""));
+        mActivity.changeFragment(new FragmentAboutApp());
     }
     @OnClick(R.id.button_about_college)
     public void handlerAboutCollegeButton(){
@@ -200,7 +200,7 @@ public class FragmentSettings extends Fragment  {
     @OnClick(R.id.button_faq)
     public void handlerFaqButton(){
         mBus.post(9999);
-        mActivity.changeFragment(new FragmentFaq().newInstance("",""));
+        mActivity.changeFragment(new FragmentFaq());
     }
 
     @OnClick(R.id.button_rate_us)

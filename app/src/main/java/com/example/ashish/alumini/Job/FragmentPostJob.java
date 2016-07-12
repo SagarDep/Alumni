@@ -11,11 +11,11 @@ import com.example.ashish.alumini.R;
 /**
  * Created by ashish on 14/3/16.
  */
-public class jobPost extends AppCompatActivity {
+public class FragmentPostJob extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_job_posting);
+        setContentView(R.layout.fragment_post_job);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
     }

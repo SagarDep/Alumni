@@ -41,7 +41,7 @@ public class ActivityMember extends AppCompatActivity implements
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
 
-    FragmentJobs mFragmentJob =  new FragmentJobs().newInstance("","");
+    public FragmentJobs mFragmentJob = new FragmentJobs();
 
     Fragment mFragment;
 
@@ -62,6 +62,8 @@ public class ActivityMember extends AppCompatActivity implements
         mBus.register(this);
 
         mFragmentManager = getSupportFragmentManager();
+
+
 
         //setting
         mFragmentTransaction = mFragmentManager.beginTransaction();
@@ -101,18 +103,14 @@ public class ActivityMember extends AppCompatActivity implements
 
             case R.id.linearLayout_filter :
                 mBackToMainScreen=true;
-                changeFragment(new Fragment().newInstance(null,null));
                 break;
 
             case R.id.linearLayout_jobs :
                 mBackToMainScreen=true;
-//                changeFragment(mFragmentJob);
-                changeFragment(mFragmentJob);
                 break;
 
             case R.id.linearLayout_settings :
                 mBackToMainScreen=true;
-                changeFragment(new FragmentSettings().newInstance(null,null));
                 break;
 
             case 9999 :
@@ -126,39 +124,6 @@ public class ActivityMember extends AppCompatActivity implements
                 mBackToSettings=false;
                 mBackToMainScreen=false;
                 break;
-////                changeFragment(new FragmentJobPosting().newInstance(null,null));
-//
-//            case R.id.button_myprofile :
-//                mBackToMainScreen=false;
-////                changeFragment(new FragmentFaq().newInstance(null,null));
-//
-//            case R.id.button_fbPage :
-//                mBackToMainScreen=false;
-////                changeFragment(new FragmentFaq().newInstance(null,null));
-//
-//            case R.id.button_about_app :
-//                mBackToMainScreen=false;
-////                changeFragment(new FragmentFaq().newInstance(null,null));
-//
-//            case R.id.button_about_college :
-//                mBackToMainScreen=false;
-////                changeFragment(new FragmentFaq().newInstance(null,null));
-//
-//            case R.id.button_support :
-//                mBackToMainScreen=false;
-////                changeFragment(new FragmentFaq().newInstance(null,null));
-//
-//            case R.id.button_contact_us :
-//                mBackToMainScreen=false;
-////                changeFragment(new FragmentFaq().newInstance(null,null));
-//
-//            case R.id.button_faq :
-//                mBackToMainScreen=false;
-////                changeFragment(new FragmentFaq().newInstance(null,null));
-//
-//            case R.id.button_rate_us :
-//                mBackToMainScreen=false;
-////                changeFragment(new FragmentFaq().newInstance(null,null));
         }
     }
 
@@ -170,7 +135,7 @@ public class ActivityMember extends AppCompatActivity implements
                 changeFragment(new FragmentSettings().newInstance(null,null));
             }
             else if (mBackToJobList==true){
-                changeFragment(new FragmentJobs().newInstance(null,null));
+                changeFragment(mFragmentJob);
             }
         }
         else
