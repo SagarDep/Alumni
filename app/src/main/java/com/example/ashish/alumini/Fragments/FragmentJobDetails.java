@@ -41,10 +41,15 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     /*
     * Butterknife
     * */
-    @Bind(R.id.textView_name)
+    @Bind(R.id.textView_company_name)
     TextView mTextViewName;
 
+
     Bus mBus = new Bus();
+
+    JobListInstance mListInstance;
+
+
 
     ActivityMember mActivity = (ActivityMember) getActivity();
 
@@ -61,12 +66,13 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
      * @return A new instance of fragment Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentJobDetails newInstance(String param1, String param2) {
+    public static FragmentJobDetails newInstance(JobListInstance param1, String param2) {
         FragmentJobDetails fragment = new FragmentJobDetails();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM1, "");
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
+        fragment.setData(param1);
         return fragment;
     }
 
@@ -76,6 +82,7 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 

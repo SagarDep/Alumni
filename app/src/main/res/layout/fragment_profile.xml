@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Dummy name"
-            android:id="@+id/textView_name"
+            android:id="@+id/textView_company_name"
             android:layout_below="@+id/imageView_profilepic"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
@@ -27,7 +27,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Asst. Engg at IBM"
             android:id="@+id/textView_desigNCom"
-            android:layout_below="@+id/textView_name"
+            android:layout_below="@+id/textView_company_name"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
 

@@ -41,7 +41,7 @@ public class ActivityMember extends AppCompatActivity implements
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
 
-    public FragmentJobs mFragmentJob = new FragmentJobs();
+    public FragmentJobs mFragmentJob = new FragmentJobs().newInstance("","");
 
     Fragment mFragment;
 

@@ -6,14 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.ashish.alumini.R;
-
 public class Faq extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.faq);
+        setContentView(R.layout.fragment_faq);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e53935")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

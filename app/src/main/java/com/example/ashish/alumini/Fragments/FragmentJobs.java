@@ -86,7 +86,7 @@ public class FragmentJobs extends Fragment {
         if (mArrayList.size()!=0){
             return;
         }
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"Zillion","Gurgaon1","Web Dev","6","1f/5/16","Non-Tech"));
         mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
         mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
         mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
@@ -121,7 +121,7 @@ public class FragmentJobs extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mBus.post(8888);
-                mActivity.changeFragment(new FragmentJobDetails().newInstance("",""));
+                mActivity.changeFragment(new FragmentJobDetails());
                 mBus.post(mArrayList.get(position));
             }
         });

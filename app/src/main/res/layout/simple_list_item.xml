@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textView_name"
+        android:id="@+id/textView_company_name"
         android:layout_weight="0.06"
         android:textColor="@color/cardview_dark_background"
         android:layout_gravity="center_horizontal"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/textView_designation"
-        android:layout_below="@+id/textView_name"
+        android:layout_below="@+id/textView_company_name"
         android:layout_toRightOf="@+id/briefcase"
         android:layout_toEndOf="@+id/briefcase"
         android:layout_marginLeft="3dp"
@@ -67,21 +67,20 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/textView_passing_year"
-        android:layout_alignTop="@+id/textView_name"
+        android:layout_alignTop="@+id/textView_company_name"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="10dp"
         android:textSize="14dp" />
 
-    <ImageView
+    <com.mikepenz.iconics.view.IconicsImageView
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:id="@+id/briefcase"
-        android:src="@drawable/work"
         android:layout_above="@+id/icon_location"
-        android:layout_alignLeft="@+id/textView_name"
-        android:layout_alignStart="@+id/textView_name"
+        android:layout_alignLeft="@+id/textView_company_name"
+        android:layout_alignStart="@+id/textView_company_name"
         android:scaleType="fitXY"/>
     <View
         android:layout_width="match_parent"
