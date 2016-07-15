@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
-import com.example.ashish.alumini.ListMembers.ExpandableList.MyExpandableListAdapter;
+import com.example.ashish.alumini.ListMembers.ExpandableList.ExpandableListAdapter;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
 import com.squareup.otto.Bus;
@@ -52,7 +50,7 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
     ExpandableListView mExpListView;
 
 
-    ExpandableListAdapter listAdapter;
+    android.widget.ExpandableListAdapter listAdapter;
 
     List<String> listHeader;
     HashMap<String, List<String>> listChild;
@@ -96,7 +94,7 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.on_filter_click, container, false);
+        View view = inflater.inflate(R.layout.fragment_expandable_list, container, false);
 
         mActivity = (ActivityMember) getActivity();
 
@@ -124,7 +122,7 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
         }
         listChild.put(listHeader.get(0), branch);
         listChild.put(listHeader.get(1), year);
-        listAdapter = new MyExpandableListAdapter(getActivity(), listHeader, listChild);
+        listAdapter = new ExpandableListAdapter(getActivity(), listHeader, listChild);
 
         // setting list adapter
 

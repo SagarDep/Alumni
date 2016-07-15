@@ -7,10 +7,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ExpandableListView;
 
+import com.example.ashish.alumini.ListMembers.ExpandableList.ExpandableListAdapter;
 import com.example.ashish.alumini.R;
 import com.squareup.otto.Bus;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -37,8 +45,16 @@ public class FragmentFaq extends Fragment {
     /*
     * Butterknife
     * */
-//    @Bind(R.id.button_settings)
-//    Button j;
+    @Bind(R.id.button_filter)
+    Button mButtonFilter;
+    @Bind(R.id.expandableListView)
+    ExpandableListView mExpListView;
+
+    android.widget.ExpandableListAdapter mListAdapter;
+
+    List<String> mListHeaders;
+    HashMap<String, List<String>> mListChild;
+
 
     Bus mBus = new Bus();
 
@@ -77,11 +93,30 @@ public class FragmentFaq extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_faq, container, false);
+        View view = inflater.inflate(R.layout.fragment_expandable_list, container, false);
 
         ButterKnife.bind(this,view);
         //Bus Registering
         mBus.register(getActivity());
+
+        mButtonFilter.setVisibility(View.INVISIBLE);
+
+        mListHeaders = new ArrayList<>();
+        mListChild = new HashMap<>();
+        mListHeaders.add("Why this App?");
+        mListHeaders.add("What we want?");
+        mListChild = new HashMap<>();
+        List<String> branch = new ArrayList<>();
+        branch.add(getResources().getString(R.string.answer1));
+        List<String> year = new ArrayList<>();
+        year.add(getResources().getString(R.string.answer2));
+        mListChild.put(mListHeaders.get(0), branch);
+        mListChild.put(mListHeaders.get(1), year);
+        mListAdapter = new ExpandableListAdapter(getActivity(), mListHeaders, mListChild);
+
+        // setting list adapter
+
+        mExpListView.setAdapter(mListAdapter);
 
 
 
