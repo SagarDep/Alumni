@@ -247,6 +247,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/save_data"
+                android:id="@+id/button_post_job"
                 style="?android:attr/borderlessButtonStyle"
                 />
         </android.support.v7.widget.CardView>
