@@ -34,7 +34,7 @@
     <string name="location">Location</string>
     <string name="contact">Contact</string>
 
-    <!--For the About app Fragment-->
+    <!--For the About app BlankFragment-->
     <string name="developed_by">Designed &amp; Developed By Arya</string>
 
     <!--Urls used in webviews-->

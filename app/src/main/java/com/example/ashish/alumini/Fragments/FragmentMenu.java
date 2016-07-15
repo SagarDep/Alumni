@@ -1,7 +1,6 @@
 package com.example.ashish.alumini.Fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
-import com.example.ashish.alumini.activities.PostLogin.MainScreen;
 import com.example.ashish.alumini.R;
 import com.mikepenz.iconics.view.IconicsImageView;
 import com.squareup.otto.Bus;
@@ -40,8 +38,14 @@ public class FragmentMenu extends Fragment {
     @Bind(R.id.linearLayout_jobs) LinearLayout mLinearLayoutJobs;
     @Bind(R.id.linearLayout_settings) LinearLayout mLinearLayoutSettings;
 
-    View mViewPrevious;
+    @Bind(R.id.button_home) IconicsImageView mImageViewMembers;
+    @Bind(R.id.button_filter) IconicsImageView mImageViewFilter;
+    @Bind(R.id.button_jobs) IconicsImageView mImageViewJobs;
+    @Bind(R.id.button_settings) IconicsImageView mImageViewSettings;
+
+    View mLineViewPrevious;
     LinearLayout mLinearLayoutPrevious;
+    IconicsImageView mPreviousIconicsImageView;
     View mViewCurrent;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -105,30 +109,34 @@ public class FragmentMenu extends Fragment {
 
         mActivity = (ActivityMember) getActivity();
 
-        mViewPrevious = view.findViewById(R.id.view_home);
+        mLineViewPrevious = view.findViewById(R.id.view_home);
         mLinearLayoutPrevious = (LinearLayout) view.findViewById(R.id.linearLayout_home);
-        mLinearLayoutHome.setBackgroundColor(getResources().getColor(R.color.grey));
+        mPreviousIconicsImageView = (IconicsImageView) view.findViewById(R.id.button_home) ;
+//        mLinearLayoutHome.setBackgroundColor(getResources().getColor(R.color.grey));
+
 
         return view;
     }
 
     @OnClick(R.id.linearLayout_home)
     public void changeToHomeFragment(){
-        setVisibleView(getView().findViewById(R.id.view_home),mLinearLayoutHome);
+        setVisibleView(getView().findViewById(R.id.view_home),mImageViewMembers);
     }
     @OnClick(R.id.linearLayout_filter)
     public void changeToFilterFragment(){
-        setVisibleView(getView().findViewById(R.id.view_filter),mLinearLayoutFilter);
-        mActivity.changeFragment(new com.example.ashish.alumini.Fragments.Fragment().newInstance(null,null));
+
+        setVisibleView(getView().findViewById(R.id.view_filter),mImageViewFilter);
+        mActivity.changeFragment(new BlankFragment().newInstance(null,null));
     }
     @OnClick(R.id.linearLayout_jobs)
     public void changeToJobsFragment(){
-        setVisibleView(getView().findViewById(R.id.view_jobs),mLinearLayoutJobs);
-        mActivity.changeFragment(mActivity.mFragmentJob);
+        setVisibleView(getView().findViewById(R.id.view_jobs),mImageViewJobs);
+        mActivity.changeFragment(new FragmentJobs().newInstance(null,null));
     }
     @OnClick(R.id.linearLayout_settings)
     public void changeFragment(){
-        setVisibleView(getView().findViewById(R.id.view_settings),mLinearLayoutSettings);
+//        setVisibleView(getView().findViewById(R.id.view_settings),mLinearLayoutSettings);
+        setVisibleView(getView().findViewById(R.id.view_settings),mImageViewSettings);
         mActivity.changeFragment(new FragmentSettings().newInstance(null,null));
     }
 
@@ -171,20 +179,22 @@ public class FragmentMenu extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    public void setVisibleView(View viewUnderLine,LinearLayout layout){
+//    public void setVisibleView(View viewUnderLine,LinearLayout layout){
+    public void setVisibleView(View viewUnderLine,IconicsImageView imageView){
         //setting the previously clicked view to visibility=gone
-        mViewPrevious.setVisibility(View.GONE);
+        mLineViewPrevious.setVisibility(View.GONE);
+
         //setting the previously clicked Button to default
-        mLinearLayoutPrevious.setBackgroundColor(getResources().getColor(R.color.card_background));
+        mPreviousIconicsImageView.setColor(getResources().getColor(R.color.black_de));
 
         //changing color and visibility
-        layout.setBackgroundColor(getResources().getColor(R.color.grey));
+        imageView.setColor(getResources().getColor(R.color.appTheme));
         viewUnderLine.setVisibility(View.VISIBLE);
 
         //updating the previous elements for changing the visibility in next click
-        mViewPrevious=viewUnderLine;
-        mLinearLayoutPrevious = layout;
+        mLineViewPrevious =viewUnderLine;
+        mPreviousIconicsImageView = imageView;
 
-        mBus.post(layout.getId()); // Posting the clicked layout to the Fragment activity (ActivityMember)
+        mBus.post(imageView.getId()); // Posting the clicked layout to the BlankFragment activity (ActivityMember)
     }
 }

@@ -52,7 +52,7 @@ public class FragmentFaq extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment.
+     * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
     public static FragmentFaq newInstance(String param1, String param2) {
@@ -82,6 +82,8 @@ public class FragmentFaq extends Fragment {
         ButterKnife.bind(this,view);
         //Bus Registering
         mBus.register(getActivity());
+
+
 
 
         return view;

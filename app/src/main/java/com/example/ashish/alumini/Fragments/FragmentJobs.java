@@ -21,9 +21,6 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnItemClick;
-import butterknife.OnItemSelected;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -83,15 +80,7 @@ public class FragmentJobs extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        if (mArrayList.size()!=0){
-            return;
-        }
-        mArrayList.add(new JobListInstance(null,"Zillion","Gurgaon1","Web Dev","6","1f/5/16","Non-Tech"));
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-        mListAdapter = new JobListAdapter(getActivity(),R.layout.simple_list_item_job,mArrayList);
+
     }
 
 
@@ -100,13 +89,6 @@ public class FragmentJobs extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        //Bus Registering
-        mBus.register(getActivity());
-
-        mActivity  = (ActivityMember) getActivity();
-
-        mListViewJobs.setAdapter(mListAdapter);
-
     }
 
     @Override
@@ -114,8 +96,24 @@ public class FragmentJobs extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_jobs,container,false);
 
+        //Bus Registering
+        mBus.register(getActivity());
+
         ButterKnife.bind(this,view);
 
+        mActivity  = (ActivityMember) getActivity();
+
+        mListViewJobs.setAdapter(mListAdapter);
+
+        if (mArrayList.size()==0){
+
+            mArrayList.add(new JobListInstance(null,"Zillion","Gurgaon1","Web Dev","6","1f/5/16","Non-Tech"));
+            mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+            mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+            mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+            mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+            mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList);
+        }
 
         mListViewJobs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

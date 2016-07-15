@@ -40,7 +40,7 @@
 //            JobListInstance listVar = new JobListInstance(" Name " + i, BitmapFactory.decodeResource(getResources(), R.drawable.image));
 //            list.add(listVar);
 //        }
-//        JobListAdapter memberAdapter= new JobListAdapter(this,R.layout.simple_list_item_job,list);
+//        JobListAdapter memberAdapter= new JobListAdapter(this,R.layout.list_layout_job,list);
 //        listJob.setAdapter(memberAdapter);
 //
 //        listJob.setOnItemClickListener(new AdapterView.OnItemClickListener() {

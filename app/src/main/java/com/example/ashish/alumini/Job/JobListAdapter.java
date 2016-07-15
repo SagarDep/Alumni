@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ashish.alumini.R;
-import com.mikepenz.iconics.view.IconicsImageView;
 
 import java.util.List;
 
@@ -44,7 +43,7 @@ public class JobListAdapter extends ArrayAdapter<JobListInstance> {
         if (convertView == null) {
             LayoutInflater vi;
             vi = LayoutInflater.from(getContext());
-            convertView = vi.inflate(R.layout.simple_list_item_job, null);
+            convertView = vi.inflate(R.layout.list_layout_job, null);
         }
         //Butterknife Injections
         ButterKnife.bind(this,convertView);

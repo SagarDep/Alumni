@@ -6,9 +6,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 
-import com.example.ashish.alumini.Fragments.Fragment;
+import com.example.ashish.alumini.Fragments.BlankFragment;
 import com.example.ashish.alumini.Fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.Fragments.FragmentJobDetails;
 import com.example.ashish.alumini.Fragments.FragmentJobs;
@@ -28,7 +29,7 @@ public class ActivityMember extends AppCompatActivity implements
         FragmentMenu.OnFragmentInteractionListener,
         FragmentSettings.OnFragmentInteractionListener,
         FragmentJobs.OnFragmentInteractionListener,
-        Fragment.OnFragmentInteractionListener,
+        BlankFragment.OnFragmentInteractionListener,
         FragmentMembers.OnFragmentInteractionListener,
         FragmentFaq.OnFragmentInteractionListener,
         FragmentJobPosting.OnFragmentInteractionListener,
@@ -43,7 +44,7 @@ public class ActivityMember extends AppCompatActivity implements
 
     public FragmentJobs mFragmentJob = new FragmentJobs().newInstance("","");
 
-    Fragment mFragment;
+    BlankFragment mFragment;
 
     Bus mBus = new Bus();
 
@@ -63,13 +64,11 @@ public class ActivityMember extends AppCompatActivity implements
 
         mFragmentManager = getSupportFragmentManager();
 
-
-
         //setting
         mFragmentTransaction = mFragmentManager.beginTransaction();
         mFragmentTransaction.add(R.id.fragment_container,new FragmentMembers().newInstance(null,null));
         mFragmentTransaction.commit();
-
+    
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -96,20 +95,20 @@ public class ActivityMember extends AppCompatActivity implements
     @Subscribe
     public void changingFragment(Integer id){
         switch (id){
-            case R.id.linearLayout_home :
+            case R.id.button_home :
                 mBackToMainScreen=true;
                 changeFragment(new FragmentMembers().newInstance(null,null));
                 break;
 
-            case R.id.linearLayout_filter :
+            case R.id.button_filter :
                 mBackToMainScreen=true;
                 break;
 
-            case R.id.linearLayout_jobs :
+            case R.id.button_jobs :
                 mBackToMainScreen=true;
                 break;
 
-            case R.id.linearLayout_settings :
+            case R.id.button_settings :
                 mBackToMainScreen=true;
                 break;
 
@@ -124,6 +123,8 @@ public class ActivityMember extends AppCompatActivity implements
                 mBackToSettings=false;
                 mBackToMainScreen=false;
                 break;
+            default:
+                Log.d("j0","");
         }
     }
 
@@ -135,7 +136,7 @@ public class ActivityMember extends AppCompatActivity implements
                 changeFragment(new FragmentSettings().newInstance(null,null));
             }
             else if (mBackToJobList==true){
-                changeFragment(mFragmentJob);
+                changeFragment(new FragmentJobs().newInstance("",""));
             }
         }
         else

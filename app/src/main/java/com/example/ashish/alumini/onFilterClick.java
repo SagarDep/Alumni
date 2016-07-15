@@ -41,8 +41,6 @@ public class onFilterClick extends AppCompatActivity implements View.OnClickList
 
 
 
-
-
         ImageButton imageButton_home ,  imageButton_job, imageButton_setting;
         imageButton_home = (ImageButton) findViewById(R.id.button_home);
         imageButton_job = (ImageButton) findViewById(R.id.button_jobs);
