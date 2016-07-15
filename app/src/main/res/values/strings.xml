@@ -47,4 +47,7 @@
 
     <!--TODO static data -->
 
+    <!--Filter-->
+    <string name="filter">FILTER</string>
+
 </resources>

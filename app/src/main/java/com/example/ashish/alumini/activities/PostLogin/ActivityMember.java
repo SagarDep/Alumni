@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.ashish.alumini.Fragments.BlankFragment;
+import com.example.ashish.alumini.Fragments.FragmentFilter;
 import com.example.ashish.alumini.Fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.Fragments.FragmentJobDetails;
 import com.example.ashish.alumini.Fragments.FragmentJobs;
@@ -37,7 +38,8 @@ public class ActivityMember extends AppCompatActivity implements
         FragmentProfile.OnFragmentInteractionListener,
         FragmentJobDetails.OnFragmentInteractionListener,
         FragmentGetProfileData.OnFragmentInteractionListener,
-        FragmentWebView.OnFragmentInteractionListener{
+        FragmentWebView.OnFragmentInteractionListener,
+        FragmentFilter.OnFragmentInteractionListener{
 
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
@@ -59,6 +61,7 @@ public class ActivityMember extends AppCompatActivity implements
         //Setting the Action Bar
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.appTheme)));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setElevation(0);
 
         mBus.register(this);
 

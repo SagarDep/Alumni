@@ -126,7 +126,7 @@ public class FragmentMenu extends Fragment {
     public void changeToFilterFragment(){
 
         setVisibleView(getView().findViewById(R.id.view_filter),mImageViewFilter);
-        mActivity.changeFragment(new BlankFragment().newInstance(null,null));
+        mActivity.changeFragment(new FragmentFilter().newInstance(null,null));
     }
     @OnClick(R.id.linearLayout_jobs)
     public void changeToJobsFragment(){

@@ -24,9 +24,6 @@
         <activity android:name=".profile" />
         <activity android:name=".Edit_Profile" />
         <activity android:name=".onSearch" />
-        <activity
-            android:name=".onFilterClick"
-            android:label="Filter" />
 
         <activity
             android:name=".About_app"
