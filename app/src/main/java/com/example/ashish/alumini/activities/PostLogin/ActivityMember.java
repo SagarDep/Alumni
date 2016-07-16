@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -52,13 +53,19 @@ public class ActivityMember extends AppCompatActivity implements
     Boolean mBackToSettings = true;
     Boolean mBackToJobList = true;
 
+    ActionBar mActionBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity_member);
         //Setting the Action Bar
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.appTheme)));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mActionBar = getSupportActionBar();
+        mActionBar.setDisplayHomeAsUpEnabled(true);
+        mActionBar.setElevation(0);
+
+
+
 
         mBus.register(this);
 

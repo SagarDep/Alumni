@@ -33,7 +33,8 @@ public class Login extends Activity
         password=(EditText)findViewById(R.id.password);
         loginButton=(Button)findViewById(R.id.login);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(
+                new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {

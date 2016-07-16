@@ -23,8 +23,8 @@
             app:iiv_icon="faw-users" />
         <View
             android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginTop="7dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="8dp"
             android:background="@color/appTheme"
             android:id="@+id/view_home"
 
@@ -47,8 +47,8 @@
             app:iiv_icon="faw-filter" />
         <View
             android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginTop="7dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="8dp"
             android:background="@color/appTheme"
             android:id="@+id/view_filter"
             android:visibility="gone"
@@ -72,8 +72,8 @@
             app:iiv_icon="faw-briefcase"/>
         <View
             android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginTop="7dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="8dp"
             android:background="@color/appTheme"
             android:visibility="gone"
             android:id="@+id/view_jobs"
@@ -98,8 +98,8 @@
             app:iiv_icon="faw-ellipsis-h"/>
         <View
             android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginTop="12dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="13dp"
             android:background="@color/appTheme"
             android:visibility="gone"
             android:id="@+id/view_settings"

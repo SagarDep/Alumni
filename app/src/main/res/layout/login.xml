@@ -9,7 +9,6 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:drawableLeft="@drawable/emaillll"
-        android:drawablePadding="8dp"
         android:paddingStart="12dp"
         android:hint="Email-Id"
         android:paddingTop="7dp"
@@ -24,8 +23,8 @@
         android:paddingLeft="10dp"
         android:paddingRight="20dp"
         android:layout_marginTop="20dp"
-
-        android:text="s@g.in" />
+        android:text="s@g.in"
+        android:drawablePadding="8dp" />
 
     <EditText
         android:id="@+id/password"
@@ -77,7 +76,6 @@
         android:layout_marginRight="15dp"
         android:layout_marginLeft="6dp"
         android:background="@drawable/sign_login_button"
-
         android:layout_below="@+id/password"
         android:layout_alignLeft="@+id/password"
         android:layout_alignStart="@+id/password"
