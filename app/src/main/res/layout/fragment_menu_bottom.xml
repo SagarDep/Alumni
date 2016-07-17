@@ -26,19 +26,19 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.mikepenz.iconics.view.IconicsImageView
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:layout_marginTop="11dp"
-                android:id="@+id/button_home"
-                app:iiv_color="@color/appTheme"
-                app:iiv_icon="faw-users" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_marginTop="7dp"
-                android:background="@color/appTheme"
-                android:id="@+id/view_home"
+        <com.mikepenz.iconics.view.IconicsImageView
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_marginTop="11dp"
+            android:id="@+id/button_home"
+            app:iiv_color="@color/appTheme"
+            app:iiv_icon="faw-users" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="7dp"
+            android:background="@color/appTheme"
+            android:id="@+id/view_home"
 
                 />
 
@@ -50,21 +50,21 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.mikepenz.iconics.view.IconicsImageView
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:layout_marginTop="11dp"
-                android:id="@+id/button_filter"
-                app:iiv_color="@android:color/black"
-                app:iiv_icon="faw-filter" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_marginTop="7dp"
-                android:background="@color/appTheme"
-                android:id="@+id/view_filter"
-                android:visibility="gone"
-                />
+        <com.mikepenz.iconics.view.IconicsImageView
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_marginTop="11dp"
+            android:id="@+id/button_filter"
+            app:iiv_color="@android:color/black"
+            app:iiv_icon="faw-filter" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="7dp"
+            android:background="@color/appTheme"
+            android:id="@+id/view_filter"
+            android:visibility="gone"
+            />
 
         </LinearLayout>
 
@@ -75,21 +75,21 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.mikepenz.iconics.view.IconicsImageView
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:layout_marginTop="11dp"
-                android:id="@+id/button_jobs"
-                app:iiv_color="@android:color/black"
-                app:iiv_icon="faw-briefcase"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_marginTop="7dp"
-                android:background="@color/appTheme"
-                android:visibility="gone"
-                android:id="@+id/view_jobs"
-                />
+        <com.mikepenz.iconics.view.IconicsImageView
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_marginTop="11dp"
+            android:id="@+id/button_jobs"
+            app:iiv_color="@android:color/black"
+            app:iiv_icon="faw-briefcase"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="7dp"
+            android:background="@color/appTheme"
+            android:visibility="gone"
+            android:id="@+id/view_jobs"
+            />
 
         </LinearLayout>
 
@@ -101,21 +101,21 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.mikepenz.iconics.view.IconicsImageView
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:layout_marginTop="16dp"
-                android:id="@+id/button_settings"
-                app:iiv_color="@android:color/black"
-                app:iiv_icon="faw-ellipsis-h"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_marginTop="12dp"
-                android:background="@color/appTheme"
-                android:visibility="gone"
-                android:id="@+id/view_settings"
-                />
+        <com.mikepenz.iconics.view.IconicsImageView
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="16dp"
+            android:id="@+id/button_settings"
+            app:iiv_color="@android:color/black"
+            app:iiv_icon="faw-ellipsis-h"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/appTheme"
+            android:visibility="gone"
+            android:id="@+id/view_settings"
+            />
 
         </LinearLayout>
 

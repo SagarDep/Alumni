@@ -47,4 +47,6 @@
 
     <!--TODO static data -->
 
+    <string name="save_data">SAVE CHANGES</string>
+
 </resources>
