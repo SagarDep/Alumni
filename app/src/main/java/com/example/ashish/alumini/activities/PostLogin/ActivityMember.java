@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.ashish.alumini.Fragments.BlankFragment;
+import com.example.ashish.alumini.Fragments.FragmentFilter;
 import com.example.ashish.alumini.Fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.Fragments.FragmentJobDetails;
 import com.example.ashish.alumini.Fragments.FragmentJobs;
@@ -38,6 +39,7 @@ public class ActivityMember extends AppCompatActivity implements
         FragmentProfile.OnFragmentInteractionListener,
         FragmentJobDetails.OnFragmentInteractionListener,
         FragmentGetProfileData.OnFragmentInteractionListener,
+        FragmentFilter.OnFragmentInteractionListener,
         FragmentWebView.OnFragmentInteractionListener{
 
     FragmentManager mFragmentManager;
