@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.Job;
+package com.example.ashish.alumini.Fragments;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;

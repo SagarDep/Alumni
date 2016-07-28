@@ -2,8 +2,6 @@ package com.example.ashish.alumini;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
@@ -11,7 +9,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.android.volley.Request;
@@ -21,7 +18,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ashish.alumini.activities.PostLogin.MainScreen;
-import com.example.ashish.alumini.ListMembers.ListVar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,7 +46,7 @@ public class Edit_Profile extends Activity {
 
 //        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.image);
 //        ImageView mImage = (ImageView) findViewById(R.id.imageView_companyLogo);
-//        mImage.setImageBitmap(ListVar.getCircleBitmap(bm));
+//        mImage.setImageBitmap(MemberListInstance.getCircleBitmap(bm));
 
         final Spinner spinner_year  = (Spinner) findViewById(R.id.spinner_year);
         ArrayAdapter <CharSequence> adapter_year = ArrayAdapter.createFromResource(this,R.array.year_array,R.layout.support_simple_spinner_dropdown_item);
