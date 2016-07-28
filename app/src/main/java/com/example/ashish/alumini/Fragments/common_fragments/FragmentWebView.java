@@ -1,18 +1,24 @@
 package com.example.ashish.alumini.Fragments.common_fragments;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.iconics.view.IconicsImageView;
 import com.squareup.otto.Bus;
 
 import butterknife.Bind;
@@ -46,6 +52,9 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
     ProgressBar mProgressBar;
     @Bind(R.id.webView)
     WebView mWebView;
+
+    @Bind(R.id.imageViewWebViewError)
+    IconicsImageView mImageView;
 
     Bus mBus = new Bus();
 
@@ -114,7 +123,14 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
                 return true;
             }
 
-
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                super.onReceivedError(view, request, error);
+                mImageView.setBackgroundDrawable(new IconicsDrawable(getActivity())
+                        .icon(FontAwesome.Icon.faw_exclamation_triangle)
+                        .color(Color.RED)
+                        .sizeDp(200));
+            }
         });
 
         mWebView.setWebChromeClient(new WebChromeClient() {
