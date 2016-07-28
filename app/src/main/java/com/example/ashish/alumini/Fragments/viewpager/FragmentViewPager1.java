@@ -3,6 +3,9 @@ package com.example.ashish.alumini.Fragments.viewpager;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +18,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ashish.alumini.Fragments.Movie;
 import com.example.ashish.alumini.ListMembers.ListVar;
 import com.example.ashish.alumini.ListMembers.MemberAdapter;
+import com.example.ashish.alumini.ListMembers.MoviesAdapter;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.profile;
 
@@ -26,15 +31,22 @@ import org.json.JSONTokener;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * Created by ashish on 14/3/16.
  */
-public class FragmentViewPager1 extends android.support.v4.app.ListFragment {
+public class FragmentViewPager1 extends android.support.v4.app.Fragment {
 
     private String TAG = getClass().getSimpleName();
 
-    private ArrayList<ListVar> mArrayList;
-    private MemberAdapter mMemberAdapter;
+    @Bind(R.id.recycler_view)
+    RecyclerView recyclerView;
+
+    private ArrayList<Movie> movieList = new ArrayList<>();
+    private MoviesAdapter mAdapter;
+
     public FragmentViewPager1() {
         // Required empty public constructor
     }
@@ -51,6 +63,16 @@ public class FragmentViewPager1 extends android.support.v4.app.ListFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_one, container, false);
 
+        //butterknife injections
+        ButterKnife.bind(this,view);
+        mAdapter = new MoviesAdapter(movieList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(mAdapter);
+
+        prepareMovieData();
+
         return view;
     }
 
@@ -58,17 +80,94 @@ public class FragmentViewPager1 extends android.support.v4.app.ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-//        mArrayList.add(new ListVar("01","ashish",null,"a","a","a","a","a"));
-
-//        MemberAdapter memberAdapter= new MemberAdapter(getActivity(),R.layout.simple_list_item,mArrayList);
-//        setListAdapter(memberAdapter);
-
 
     }
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-        Intent intent = new Intent(getContext(),profile.class);
-        startActivity(intent);
+    private void prepareMovieData() {
+        Movie movie = new Movie("Mad Max: Fury Road", "Action & Adventure", "2015");
+        movieList.add(movie);
+
+        movie = new Movie("Inside Out", "Animation, Kids & Family", "2015");
+        movieList.add(movie);
+
+        movie = new Movie("Star Wars: Episode VII - The Force Awakens", "Action", "2015");
+        movieList.add(movie);
+
+        movie = new Movie("Shaun the Sheep", "Animation", "2015");
+        movieList.add(movie);
+
+        movie = new Movie("The Martian", "Science Fiction & Fantasy", "2015");
+        movieList.add(movie);
+
+        movie = new Movie("Mission: Impossible Rogue Nation", "Action", "2015");
+        movieList.add(movie);
+
+        movie = new Movie("Up", "Animation", "2009");
+        movieList.add(movie);
+
+        movie = new Movie("Star Trek", "Science Fiction", "2009");
+        movieList.add(movie);
+
+        movie = new Movie("The LEGO Movie", "Animation", "2014");
+        movieList.add(movie);
+
+        movie = new Movie("Iron Man", "Action & Adventure", "2008");
+        movieList.add(movie);
+
+        movie = new Movie("Aliens", "Science Fiction", "1986");
+        movieList.add(movie);
+
+        movie = new Movie("Chicken Run", "Animation", "2000");
+        movieList.add(movie);
+
+        movie = new Movie("Back to the Future", "Science Fiction", "1985");
+        movieList.add(movie);
+
+        movie = new Movie("Raiders of the Lost Ark", "Action & Adventure", "1981");
+        movieList.add(movie);
+
+        movie = new Movie("Goldfinger", "Action & Adventure", "1965");
+        movieList.add(movie);
+
+        movie = new Movie("Guardians of the Galaxy", "Science Fiction & Fantasy", "2014");
+        movieList.add(movie);
+
+        movie = new Movie("The Martian", "Science Fiction & Fantasy", "2015");
+        movieList.add(movie);
+
+        movie = new Movie("Mission: Impossible Rogue Nation", "Action", "2015");
+        movieList.add(movie);
+
+        movie = new Movie("Up", "Animation", "2009");
+        movieList.add(movie);
+
+        movie = new Movie("Star Trek", "Science Fiction", "2009");
+        movieList.add(movie);
+
+        movie = new Movie("The LEGO Movie", "Animation", "2014");
+        movieList.add(movie);
+
+        movie = new Movie("Iron Man", "Action & Adventure", "2008");
+        movieList.add(movie);
+
+        movie = new Movie("Aliens", "Science Fiction", "1986");
+        movieList.add(movie);
+
+        movie = new Movie("Chicken Run", "Animation", "2000");
+        movieList.add(movie);
+
+        movie = new Movie("Back to the Future", "Science Fiction", "1985");
+        movieList.add(movie);
+
+        movie = new Movie("Raiders of the Lost Ark", "Action & Adventure", "1981");
+        movieList.add(movie);
+
+        movie = new Movie("Goldfinger", "Action & Adventure", "1965");
+        movieList.add(movie);
+
+        movie = new Movie("Guardians of the Galaxy", "Science Fiction & Fantasy", "2014");
+        movieList.add(movie);
+
+        mAdapter.notifyDataSetChanged();
     }
+
 }

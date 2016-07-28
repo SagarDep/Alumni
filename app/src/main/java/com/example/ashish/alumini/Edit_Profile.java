@@ -48,9 +48,9 @@ public class Edit_Profile extends Activity {
         adapter_branch.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner_branch.setAdapter(adapter_branch);
 
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.image);
-        ImageView mImage = (ImageView) findViewById(R.id.imageView_companyLogo);
-        mImage.setImageBitmap(ListVar.getCircleBitmap(bm));
+//        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.image);
+//        ImageView mImage = (ImageView) findViewById(R.id.imageView_companyLogo);
+//        mImage.setImageBitmap(ListVar.getCircleBitmap(bm));
 
         final Spinner spinner_year  = (Spinner) findViewById(R.id.spinner_year);
         ArrayAdapter <CharSequence> adapter_year = ArrayAdapter.createFromResource(this,R.array.year_array,R.layout.support_simple_spinner_dropdown_item);
@@ -60,7 +60,6 @@ public class Edit_Profile extends Activity {
         final EditText name , description , location_home , location_work  , designation , company , course , institute , twitter , email , phone;
 
 //        name= (EditText) findViewById(R.id.editText_name);
-//
 //        description = (EditText) findViewById(R.id.Edittext_desc);
 //        location_home = (EditText) findViewById(R.id.ediText_home);
 //        location_work = (EditText) findViewById(R.id.editText_jobLocation);

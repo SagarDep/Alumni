@@ -98,7 +98,7 @@
         <activity
             android:name=".deepak.events.microsoft"
             android:label="Microsoft Innovation Center"></activity>
-        <activity android:name=".MemberClick" />
+
         <activity android:name=".activities.PostLogin.ActivityMember"></activity>
     </application>
 
