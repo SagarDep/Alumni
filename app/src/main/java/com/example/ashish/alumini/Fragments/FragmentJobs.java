@@ -113,7 +113,7 @@ public class FragmentJobs extends Fragment {
             mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
             mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
             mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-
+            mListAdapter.notifyDataSetChanged();
         }
 
         mListViewJobs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
