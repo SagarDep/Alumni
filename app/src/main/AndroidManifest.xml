@@ -38,7 +38,7 @@
             android:name=".Job.jobProfile"
             android:label="Company Profile" />
         <activity
-            android:name=".Job.FragmentPostJob"
+            android:name=".Fragments.FragmentPostJob"
             android:label="Post A Job" />
         <activity android:name=".activities.PreLogin.Login"></activity>
         <activity android:name=".activities.PreLogin.SignUp"></activity>
@@ -95,7 +95,7 @@
         <activity
             android:name=".deepak.events.microsoft"
             android:label="Microsoft Innovation Center"></activity>
-        <activity android:name=".MemberClick" />
+
         <activity android:name=".activities.PostLogin.ActivityMember"></activity>
     </application>
 

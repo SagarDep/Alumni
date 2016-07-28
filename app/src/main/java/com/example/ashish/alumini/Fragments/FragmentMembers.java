@@ -37,6 +37,8 @@ public class FragmentMembers extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private String TAG = getClass().getSimpleName();
+
     @Bind(R.id.viewpager) ViewPager mViewPager;
     @Bind(R.id.tabLayout)TabLayout mTabLayout;
 
@@ -83,6 +85,7 @@ public class FragmentMembers extends Fragment {
 
         setupViewPager(mViewPager);
         mTabLayout.setupWithViewPager(mViewPager);
+
 
         return view;
     }

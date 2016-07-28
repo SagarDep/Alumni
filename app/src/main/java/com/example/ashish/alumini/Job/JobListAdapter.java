@@ -56,7 +56,7 @@ public class JobListAdapter extends ArrayAdapter<JobListInstance> {
 //        holder.tv_location = (TextView) convertView.findViewById(R.id.textView_joblocation);
 //        holder.imageView_profilePic = (ImageView) convertView.findViewById(R.id.imageView_logo);
 //
-////        holder.imageView_profilePic.setImageBitmap(ListVar.getCircleBitmap(temp.logo));
+////        holder.imageView_profilePic.setImageBitmap(MemberListInstance.getCircleBitmap(temp.logo));
 //        holder.tv_name.setText("Dummy Name");
 //        holder.tv_location.setText("Bharat");
         mTextViewCompanyName.setText(item.getCompanyName());

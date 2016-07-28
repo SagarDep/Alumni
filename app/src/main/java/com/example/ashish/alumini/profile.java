@@ -11,8 +11,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.ashish.alumini.ListMembers.ListVar;
-
 /**
  * Created by ashish on 4/3/16.
  */
@@ -24,7 +22,7 @@ public class profile extends Activity {
         setContentView(R.layout.fragment_profile);
         Bitmap bm = BitmapFactory.decodeResource(getResources(),R.drawable.image);
         ImageView mImage = (ImageView) findViewById(R.id.imageView_profilepic);
-        mImage.setImageBitmap(ListVar.getCircleBitmap(bm));
+//        mImage.setImageBitmap(MemberListInstance.getCircleBitmap(bm));
 
         TextView textView = (TextView) findViewById(R.id.textView_year);
         ImageButton edit_image = (ImageButton) findViewById(R.id.edit_image);

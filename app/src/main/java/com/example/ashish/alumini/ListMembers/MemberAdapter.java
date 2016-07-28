@@ -1,12 +1,9 @@
 package com.example.ashish.alumini.ListMembers;
 
-import android.content.Context;
-import android.util.Log;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ashish.alumini.R;
@@ -16,57 +13,53 @@ import java.util.List;
 /**
  * Created by ashish on 3/3/16.
  */
-public class MemberAdapter extends ArrayAdapter<ListVar>{
-    List<ListVar> List_members;
-    public  String TAG = "MemberAdapter";
-    public MemberAdapter(Context context,int rid, List<ListVar> list){
-        super(context,rid,list);
-        List_members=list;
-    }
+public class MemberAdapter  extends RecyclerView.Adapter<MemberAdapter.MyViewHolder>{
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ListVar  temp = getItem(position);
+    public  String TAG = getClass().getSimpleName();
 
-        Log.d(TAG,"I'm here");
-        if (convertView == null) {
-            LayoutInflater vi;
-            vi = LayoutInflater.from(getContext());
-            convertView = vi.inflate(R.layout.simple_list_item,parent);
+
+    List<MemberListInstance> mListMembers;
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView name, year, designation, location;
+
+        public MyViewHolder(View view) {
+            super(view);
+            name = (TextView) view.findViewById(R.id.textView_name);
+            designation = (TextView) view.findViewById(R.id.textView_designation);
+            year = (TextView) view.findViewById(R.id.textView_passing_year);
+            location = (TextView) view.findViewById(R.id.textView_location);
+
         }
-
-        Holder holder = new Holder();
-        holder.tv_name = (TextView) convertView.findViewById(R.id.textView_company_name);
-        holder.tv_designation = (TextView) convertView.findViewById(R.id.textView_designation);
-        holder.tv_location = (TextView) convertView.findViewById(R.id.textView_location);
-        holder.tv_passing_year = (TextView) convertView.findViewById(R.id.textView_passing_year);
-        holder.imageView_profilePic= (ImageView) convertView.findViewById(R.id.profileimage);
-        // -----------------------PROFILE PIC-------------------
-
-//        holder.imageView_profilePic.setImageBitmap(ListVar.getCircleBitmap(temp.bitmap));
-//        holder.tv_name.setText(temp.name);
-//        holder.tv_designation.setText(temp.designation + " at " + temp.company);
-//        holder.tv_passing_year.setText(temp.year_passing + " " + temp.branch);
-//        holder.tv_location.setText(temp.location_work);
-
-        holder.tv_name.setText("temp.name");
-        holder.tv_designation.setText(temp.designation + " at " + temp.company);
-        holder.tv_passing_year.setText(temp.year_passing + " " + temp.branch);
-        holder.tv_location.setText(temp.location_work);
-
-        return convertView;
     }
+
+
+    public MemberAdapter(List<MemberListInstance> memberList) {
+        this.mListMembers = memberList;
+    }
+
     @Override
-    public ListVar getItem(int position) {
-        return List_members.get(position);
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.simple_list_item, parent, false);
+
+        return new MyViewHolder(itemView);
     }
-    public static class Holder{
-        public TextView tv_name ;
-        public TextView tv_designation ;
-        public TextView tv_location ;
-        public TextView tv_passing_year ;
-        public ImageView imageView_profilePic;
+
+    @Override
+    public void onBindViewHolder(MyViewHolder holder, int position) {
+        MemberListInstance aInstance = mListMembers.get(position);
+        holder.name.setText(aInstance.getName());
+        holder.designation.setText(aInstance.getDesignation());
+        holder.year.setText(aInstance.getYear_passing());
+        holder.location.setText(aInstance.getLocation_work());
 
     }
+
+    @Override
+    public int getItemCount() {
+        return mListMembers.size();
+    }
+
 
 }

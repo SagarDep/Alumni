@@ -1,62 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1" >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="1">
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:id="@+id/profileimage"
-        android:layout_weight="0.18"
-        android:layout_margin="0dp"
+        android:layout_margin="5dp"
         android:src="@drawable/image"
-        android:layout_marginBottom="0dp"
-        android:layout_marginTop="3dp"
-        android:padding="5dp" />
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textView_company_name"
-        android:layout_weight="0.06"
-        android:textColor="@color/cardview_dark_background"
+        android:id="@+id/textView_name"
+        android:textColor="@color/black_de"
         android:layout_gravity="center_horizontal"
         android:layout_alignTop="@+id/profileimage"
         android:layout_toRightOf="@+id/profileimage"
         android:layout_toEndOf="@+id/profileimage"
-        android:layout_marginBottom="2dp"
-        android:layout_margin="5dp"
-        android:textSize="18dp" />
+
+        android:textSize="18sp"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/textView_designation"
-        android:layout_below="@+id/textView_company_name"
+        android:layout_below="@+id/textView_name"
         android:layout_toRightOf="@+id/briefcase"
         android:layout_toEndOf="@+id/briefcase"
-        android:layout_marginLeft="3dp"
-        android:textSize="14dp" />
+        android:layout_marginLeft="5dp"
+        android:textSize="14sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/textView_location"
+
         android:layout_alignTop="@+id/icon_location"
         android:layout_toRightOf="@+id/icon_location"
         android:layout_toEndOf="@+id/icon_location"
-        android:layout_marginLeft="3dp"
-        android:textSize="14dp" />
+        android:layout_marginLeft="5dp"
+        android:textSize="14sp" />
 
-    <ImageView
+    <com.mikepenz.iconics.view.IconicsImageView
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:id="@+id/icon_location"
-        android:src="@drawable/location"
+        app:iiv_icon="faw-map-marker"
+        app:iiv_color="@color/black_de"
         android:layout_below="@+id/textView_designation"
         android:layout_alignLeft="@+id/briefcase"
         android:layout_alignStart="@+id/briefcase"
@@ -67,27 +68,31 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/textView_passing_year"
-        android:layout_alignTop="@+id/textView_company_name"
+        android:layout_alignTop="@+id/textView_name"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginLeft="0dp"
+
         android:layout_marginRight="10dp"
-        android:textSize="14dp" />
+        android:textSize="14sp" />
 
     <com.mikepenz.iconics.view.IconicsImageView
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:id="@+id/briefcase"
+        app:iiv_icon="faw-briefcase"
+        app:iiv_color="@color/black_de"
         android:layout_above="@+id/icon_location"
-        android:layout_alignLeft="@+id/textView_company_name"
-        android:layout_alignStart="@+id/textView_company_name"
-        android:scaleType="fitXY"/>
+        android:layout_alignLeft="@+id/textView_name"
+        android:layout_alignStart="@+id/textView_name"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="5dp" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_below="@id/profileimage"
-        android:background="#a6a6a6"
+        android:background="@color/grey"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
 </RelativeLayout>
