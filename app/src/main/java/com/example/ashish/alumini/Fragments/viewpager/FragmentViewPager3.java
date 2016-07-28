@@ -8,10 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.ashish.alumini.Fragments.Movie;
 import com.example.ashish.alumini.ListMembers.MemberAdapter;
 import com.example.ashish.alumini.ListMembers.MemberListInstance;
-import com.example.ashish.alumini.ListMembers.MoviesAdapter;
 import com.example.ashish.alumini.R;
 
 import java.util.ArrayList;

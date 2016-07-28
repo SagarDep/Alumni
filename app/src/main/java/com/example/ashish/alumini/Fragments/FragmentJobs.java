@@ -103,6 +103,7 @@ public class FragmentJobs extends Fragment {
 
         mActivity  = (ActivityMember) getActivity();
 
+        mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList);
         mListViewJobs.setAdapter(mListAdapter);
 
         if (mArrayList.size()==0){
@@ -112,7 +113,7 @@ public class FragmentJobs extends Fragment {
             mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
             mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
             mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-            mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList);
+
         }
 
         mListViewJobs.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -8,10 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.ashish.alumini.Fragments.Movie;
 import com.example.ashish.alumini.ListMembers.MemberAdapter;
 import com.example.ashish.alumini.ListMembers.MemberListInstance;
-import com.example.ashish.alumini.ListMembers.MoviesAdapter;
 import com.example.ashish.alumini.R;
 
 import java.util.ArrayList;
@@ -47,6 +45,7 @@ public class FragmentViewPager2 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_one, container, false);
+
         //butterknife injections
         ButterKnife.bind(this,view);
 
@@ -65,7 +64,7 @@ public class FragmentViewPager2 extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ArrayList<MemberListInstance> list_members = new ArrayList<>();
+
 
 
     }
