@@ -1,12 +1,14 @@
 package com.example.ashish.alumini.ListMembers;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.activities.PreLogin.Login;
 
 import java.util.List;
 
@@ -20,7 +22,7 @@ public class MemberAdapter  extends RecyclerView.Adapter<MemberAdapter.MyViewHol
 
     List<MemberListInstance> mListMembers;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView name, year, designation, location;
 
         public MyViewHolder(View view) {
@@ -30,6 +32,11 @@ public class MemberAdapter  extends RecyclerView.Adapter<MemberAdapter.MyViewHol
             year = (TextView) view.findViewById(R.id.textView_passing_year);
             location = (TextView) view.findViewById(R.id.textView_location);
 
+        }
+
+        @Override
+        public void onClick(View v) {
+            Log.d(TAG,"Working" + getAdapterPosition() + " " + getPosition());
         }
     }
 
