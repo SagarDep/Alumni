@@ -31,7 +31,6 @@ public class ActivityMember extends AppCompatActivity implements
         FragmentMenu.OnFragmentInteractionListener,
         FragmentSettings.OnFragmentInteractionListener,
         FragmentJobs.OnFragmentInteractionListener,
-        BlankFragment.OnFragmentInteractionListener,
         FragmentMembers.OnFragmentInteractionListener,
         FragmentFaq.OnFragmentInteractionListener,
         FragmentJobPosting.OnFragmentInteractionListener,
@@ -39,7 +38,6 @@ public class ActivityMember extends AppCompatActivity implements
         FragmentProfile.OnFragmentInteractionListener,
         FragmentJobDetails.OnFragmentInteractionListener,
         FragmentGetProfileData.OnFragmentInteractionListener,
-        FragmentFilter.OnFragmentInteractionListener,
         FragmentWebView.OnFragmentInteractionListener{
 
     FragmentManager mFragmentManager;
@@ -133,7 +131,6 @@ public class ActivityMember extends AppCompatActivity implements
                 mBackToMainScreen=false;
                 break;
             default:
-                Log.d("j0","");
         }
     }
 

@@ -21,7 +21,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="jcghvjblkn"
         android:textColor="@color/black_de"
         android:id="@+id/textView_companyName"
         android:layout_marginLeft="19dp"
@@ -68,7 +67,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Intern"
         android:id="@+id/textView_jobPosition"
         android:layout_alignBottom="@+id/imageView_logo"
         android:layout_alignLeft="@+id/textView_joblocation"
@@ -80,7 +78,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="End-Date"
         android:id="@+id/textView_lastDate"
         android:textSize="14dp"
         android:layout_below="@+id/imageView4"
@@ -95,8 +92,7 @@
         android:textSize="14dp"
         android:layout_below="@+id/textView_companyName"
         android:layout_alignRight="@+id/textView_lastDate"
-        android:layout_alignEnd="@+id/textView_lastDate"
-        android:text="Technical" />
+        android:layout_alignEnd="@+id/textView_lastDate" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
