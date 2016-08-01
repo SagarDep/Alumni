@@ -6,13 +6,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ashish.alumini.Job.JobListInstance;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
 import com.squareup.otto.Bus;
-import com.squareup.otto.Subscribe;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -43,8 +43,14 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     /*
     * Butterknife
     * */
-    @Bind(R.id.textView_name)
-    TextView mTextViewName;
+    @Bind(R.id.imageView_companyImage) ImageView imageView_companyImage;
+    @Bind(R.id.textView_companyName_jobDetails) TextView mTextViewName;
+    @Bind(R.id.textView_jobType_jobDetails) TextView mTextViewJobType;
+    @Bind(R.id.textView_location_jobDetails) TextView mTextViewLocation;
+    @Bind(R.id.textView_designation_jobDetails) TextView mTextViewJobDesignation;
+    @Bind(R.id.textView_jobDescription) TextView mTextViewJobDescription;
+    @Bind(R.id.textView_email_jobDetails) TextView mTextViewemail;
+    @Bind(R.id.textView_website) TextView mTextViewWebsite;
 
     Bus mBus = new Bus();
 
@@ -140,5 +146,11 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
 
     public void showData(){
         mTextViewName.setText(mJobListInstance.getCompanyName());
+        mTextViewLocation.setText(mJobListInstance.getJobLocation());
+        mTextViewJobType.setText(mJobListInstance.getJobType());
+        mTextViewJobDesignation.setText(mJobListInstance.getJobPost());
+        mTextViewWebsite.setText("www.temp.com");
+        mTextViewemail.setText("www@temp.com");
+        mTextViewJobDescription.setText("Job Description - kahani");
     }
 }

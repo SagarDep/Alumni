@@ -16,8 +16,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Dummy name"
-            android:id="@+id/textView_name"
-            android:layout_below="@+id/imageView_profilepic"
+            android:id="@+id/textView_companyName_jobDetails"
+            android:layout_below="@+id/imageView_companyImage"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
 
@@ -26,8 +26,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Asst. Engg at IBM"
-            android:id="@+id/textView_desigNCom"
-            android:layout_below="@+id/textView_name"
+            android:id="@+id/textView_jobType_jobDetails"
+            android:layout_below="@+id/textView_companyName_jobDetails"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
 
@@ -48,7 +48,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:id="@+id/imageView_profilepic"
+            android:id="@+id/imageView_companyImage"
             android:layout_centerHorizontal="true"
             android:src="@drawable/image"
             android:layout_marginTop="10dp" />
@@ -59,7 +59,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="BIO BIO BIO BIO BIO BIO  BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BiIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO BIO "
             android:id="@+id/textView_bio"
-            android:layout_below="@+id/textView_branch"
+            android:layout_below="@+id/textView_location_jobDetails"
             android:layout_alignRight="@+id/textView_year"
             android:layout_alignEnd="@+id/textView_year"
             android:layout_marginTop="5dp"
@@ -73,8 +73,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Branch - CSE"
-            android:id="@+id/textView_branch"
-            android:layout_below="@+id/textView_desigNCom"
+            android:id="@+id/textView_location_jobDetails"
+            android:layout_below="@+id/textView_jobType_jobDetails"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
 
@@ -245,7 +245,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Facebook"
                     android:clickable="true"
-                    android:id="@+id/textView_fbLink"
+                    android:id="@+id/textView_email_jobDetails"
                     android:layout_below="@+id/textView_twitterlink"
                     android:layout_alignLeft="@+id/textView_twitterlink"
                     android:layout_alignStart="@+id/textView_twitterlink"
@@ -256,9 +256,9 @@
                     android:background="@color/grey"
                     android:layout_toEndOf="@+id/imageView_email"
                     android:layout_toRightOf="@id/imageView_email"
-                    android:layout_below="@+id/textView_fbLink"
-                    android:layout_alignLeft="@+id/textView_fbLink"
-                    android:layout_alignStart="@+id/textView_fbLink"
+                    android:layout_below="@+id/textView_email_jobDetails"
+                    android:layout_alignLeft="@+id/textView_email_jobDetails"
+                    android:layout_alignStart="@+id/textView_email_jobDetails"
                     android:layout_marginTop="5dp" />
 
                 <TextView
@@ -267,10 +267,10 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Phone"
                     android:clickable="true"
-                    android:id="@+id/textView_contact"
-                    android:layout_below="@+id/textView_fbLink"
-                    android:layout_alignLeft="@+id/textView_fbLink"
-                    android:layout_alignStart="@+id/textView_fbLink"
+                    android:id="@+id/textView_website"
+                    android:layout_below="@+id/textView_email_jobDetails"
+                    android:layout_alignLeft="@+id/textView_email_jobDetails"
+                    android:layout_alignStart="@+id/textView_email_jobDetails"
                     android:layout_marginTop="10dp" />
                 <View
                     android:layout_width="match_parent"
@@ -278,9 +278,9 @@
                     android:background="@color/grey"
                     android:layout_toEndOf="@+id/imageView_email"
                     android:layout_toRightOf="@id/imageView_email"
-                    android:layout_below="@+id/textView_contact"
-                    android:layout_alignLeft="@+id/textView_fbLink"
-                    android:layout_alignStart="@+id/textView_fbLink"
+                    android:layout_below="@+id/textView_website"
+                    android:layout_alignLeft="@+id/textView_email_jobDetails"
+                    android:layout_alignStart="@+id/textView_email_jobDetails"
                     android:layout_marginTop="5dp"
                     android:id="@+id/view15" />
 
@@ -291,9 +291,9 @@
                     android:text="Email"
                     android:clickable="true"
                     android:id="@+id/textView_mail"
-                    android:layout_below="@+id/textView_contact"
-                    android:layout_alignLeft="@+id/textView_fbLink"
-                    android:layout_alignStart="@+id/textView_fbLink"
+                    android:layout_below="@+id/textView_website"
+                    android:layout_alignLeft="@+id/textView_email_jobDetails"
+                    android:layout_alignStart="@+id/textView_email_jobDetails"
                     android:layout_marginTop="10dp" />
 
                 <com.mikepenz.iconics.view.IconicsImageView
@@ -302,7 +302,7 @@
                     android:id="@+id/imageView_phonejhbk"
                     app:iiv_icon="faw-phone"
                     app:iiv_color="@color/black_de"
-                    android:layout_alignTop="@+id/textView_contact"
+                    android:layout_alignTop="@+id/textView_website"
                     android:layout_alignLeft="@+id/imageView_email"
                     android:layout_alignStart="@+id/imageView_email"
                     android:layout_marginTop="2dp" />
@@ -331,7 +331,7 @@
                     android:id="@+id/imageView_email"
                     app:iiv_icon="faw-facebook"
                     app:iiv_color="@color/black_de"
-                    android:layout_alignTop="@+id/textView_fbLink"
+                    android:layout_alignTop="@+id/textView_email_jobDetails"
                     android:layout_alignLeft="@+id/textView_Contact"
                     android:layout_alignStart="@+id/textView_Contact"
                     android:layout_marginTop="2dp" />

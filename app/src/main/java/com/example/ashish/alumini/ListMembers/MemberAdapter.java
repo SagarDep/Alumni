@@ -36,7 +36,7 @@ public class MemberAdapter extends ArrayAdapter<ListVar>{
         }
 
         Holder holder = new Holder();
-        holder.tv_name = (TextView) convertView.findViewById(R.id.textView_name);
+        holder.tv_name = (TextView) convertView.findViewById(R.id.textView_companyName_jobDetails);
         holder.tv_designation = (TextView) convertView.findViewById(R.id.textView_designation);
         holder.tv_location = (TextView) convertView.findViewById(R.id.textView_location);
         holder.tv_passing_year = (TextView) convertView.findViewById(R.id.textView_passing_year);

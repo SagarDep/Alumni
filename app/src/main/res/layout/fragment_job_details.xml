@@ -8,7 +8,7 @@
     android:layout_width="match_parent">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingRight="5dp"
         android:paddingLeft="5dp"
         >
@@ -17,9 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Company Name"
-            android:id="@+id/textView_name"
-            android:layout_below="@+id/imageView_profilepic"
+            android:id="@+id/textView_companyName_jobDetails"
+            android:layout_below="@+id/imageView_companyImage"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
 
@@ -27,56 +26,47 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Type"
-            android:id="@+id/textView_desigNCom"
-            android:layout_below="@+id/textView_name"
+            android:id="@+id/textView_jobType_jobDetails"
+            android:layout_below="@+id/textView_companyName_jobDetails"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
 
 
-        <ImageButton
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:id="@+id/edit_image"
-            android:background="@android:color/transparent"
-            android:layout_below="@+id/textView_year"
-            android:layout_alignRight="@+id/textView_bio"
-            android:layout_alignEnd="@+id/textView_bio" />
+
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:id="@+id/imageView_profilepic"
+            android:id="@+id/imageView_companyImage"
             android:layout_centerHorizontal="true"
             android:src="@drawable/image"
+            android:contentDescription="@string/image_company"
             android:layout_marginTop="10dp" />
 
 
-        <TextView
+         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/location"
-            android:id="@+id/textView_branch"
-            android:layout_below="@+id/textView_desigNCom"
+            android:id="@+id/textView_location_jobDetails"
+            android:layout_below="@+id/textView_jobType_jobDetails"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp" />
+            android:layout_marginTop="5dp"
+             android:text="nb " />
 
 
         <android.support.v7.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView_description"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp"
-            android:padding="5dp">
+            android:layout_below="@+id/textView_designation_jobDetails"
+            android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:text="Job  Description - khdblhboh ouyg ouygfuyg ouy gouyf giauygfiuy foauygf oasyufg ausoyfg asuydfg oasuyfg asuyfg siuyfgisu yfsi ufysf gsuyf g"/>
+                android:text="Job  Description - khdblhboh ouyg ouygfuyg ouy gouyf giauygfiuy foauygf oasyufg ausoyfg asuydfg oasuyfg asuyfg siuyfgisu yfsi ufysf gsuyf g"
+                android:id="@+id/textView_jobDescription"
+                android:layout_margin="5dp"/>
 
 
 
@@ -84,12 +74,11 @@
 
 
         <android.support.v7.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view_contact"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="0dp"
+
             android:layout_below="@+id/card_view_description"
             android:layout_alignLeft="@+id/card_view_description"
             android:layout_alignStart="@+id/card_view_description"
@@ -102,84 +91,62 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
                 android:nestedScrollingEnabled="false"
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp">
+                android:layout_margin="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:textAppearanceMedium"
-                    android:text="Contact"
+                    android:text="@string/contact"
                     android:id="@+id/textView_Contact"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Twitter"
-                    android:id="@+id/textView_twitterlink"
-                    android:layout_below="@+id/textView_Contact"
-                    android:layout_toRightOf="@+id/imageView_fb"
-                    android:layout_toEndOf="@+id/imageView_fb"
-                    android:layout_margin="5dp" />
-
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
+                    android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="email"
-                    android:id="@+id/textView_fbLink"
-                    android:layout_below="@+id/imageView_fb"
-                    android:layout_alignLeft="@+id/textView_twitterlink"
-                    android:layout_alignStart="@+id/textView_twitterlink"
-                    android:layout_marginTop="5dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Website"
-                    android:id="@+id/textView_contact"
-                    android:layout_below="@+id/imageView_email"
-                    android:layout_alignLeft="@+id/textView_fbLink"
-                    android:layout_alignStart="@+id/textView_fbLink"
+                    android:id="@+id/textView_email_jobDetails"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"/>
+                    android:layout_toRightOf="@+id/imageView_email"
+                    android:layout_marginLeft="10dp"
+                    android:text="aughvsdc"
+                    android:layout_below="@+id/textView_Contact" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/textView_website"
+                    android:layout_below="@+id/imageView_email"
+                    android:layout_alignLeft="@+id/textView_email_jobDetails"
+                    android:text="aughvsdc"
+                    android:layout_marginTop="5dp" />
 
 
                 <com.mikepenz.iconics.view.IconicsImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:id="@+id/imageView_fb"
-                    app:iiv_icon="faw-twitter"
-                    app:iiv_color="@color/black_de"
-                    android:layout_alignTop="@+id/textView_twitterlink"
-                    android:layout_alignLeft="@+id/imageView_email"
-                    android:layout_alignStart="@+id/imageView_email"
-                    android:layout_marginTop="2dp" />
-                 <com.mikepenz.iconics.view.IconicsImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
                     android:id="@+id/imageView_phone"
                      app:iiv_icon="faw-link"
                      app:iiv_color="@color/black_de"
-                     android:layout_alignTop="@+id/textView_contact"
-                    android:layout_alignLeft="@+id/imageView_email"
-                    android:layout_alignStart="@+id/imageView_email"
-                    android:layout_marginTop="2dp" />
+                    android:layout_alignBottom="@+id/textView_website"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="5dp" />
                 <com.mikepenz.iconics.view.IconicsImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:id="@+id/imageView_email"
                     app:iiv_icon="faw-envelope"
                     app:iiv_color="@color/black_de"
-                    android:layout_alignTop="@+id/textView_fbLink"
-                    android:layout_alignLeft="@+id/textView_Contact"
-                    android:layout_alignStart="@+id/textView_Contact"
-                    android:layout_marginTop="2dp" />
+                    android:layout_alignBottom="@+id/textView_email_jobDetails"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="5dp" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
@@ -187,22 +154,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Description"
-            android:id="@+id/textView_description"
-            android:layout_below="@+id/textView_branch"
+
+            android:id="@+id/textView_designation_jobDetails"
+            android:layout_below="@+id/textView_location_jobDetails"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
 
         <com.mikepenz.iconics.view.IconicsImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:id="@+id/imageView"
             app:iiv_icon="faw-map-marker"
             app:iiv_color="@color/black_de"
-            android:layout_alignBottom="@+id/textView_branch"
-            android:layout_toLeftOf="@+id/textView_branch"
-            android:layout_toStartOf="@+id/textView_branch"
-            android:layout_marginRight="10dp" />
+            android:layout_alignBottom="@+id/textView_location_jobDetails"
+            android:layout_toLeftOf="@+id/textView_location_jobDetails"
+            android:layout_toStartOf="@+id/textView_location_jobDetails"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="3dp" />
 
 
     </RelativeLayout>
