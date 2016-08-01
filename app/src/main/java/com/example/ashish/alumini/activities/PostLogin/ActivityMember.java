@@ -8,18 +8,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.example.ashish.alumini.Fragments.Fragment;
-import com.example.ashish.alumini.Fragments.common_fragments.FragmentGetProfileData;
-import com.example.ashish.alumini.Fragments.FragmentJobDetails;
-import com.example.ashish.alumini.Fragments.FragmentJobs;
-import com.example.ashish.alumini.Fragments.FragmentMembers;
-import com.example.ashish.alumini.Fragments.FragmentMenu;
-import com.example.ashish.alumini.Fragments.FragmentSettings;
-import com.example.ashish.alumini.Fragments.common_fragments.FragmentWebView;
-import com.example.ashish.alumini.Fragments.settings.FragmentAboutApp;
-import com.example.ashish.alumini.Fragments.settings.FragmentFaq;
-import com.example.ashish.alumini.Fragments.settings.FragmentJobPosting;
-import com.example.ashish.alumini.Fragments.settings.FragmentProfile;
+import com.example.ashish.alumini.fragments.Fragment;
+import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
+import com.example.ashish.alumini.fragments.FragmentJobDetails;
+import com.example.ashish.alumini.fragments.FragmentJobs;
+import com.example.ashish.alumini.fragments.FragmentMembers;
+import com.example.ashish.alumini.fragments.FragmentMenu;
+import com.example.ashish.alumini.fragments.FragmentSettings;
+import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
+import com.example.ashish.alumini.fragments.settings.FragmentAboutApp;
+import com.example.ashish.alumini.fragments.settings.FragmentFaq;
+import com.example.ashish.alumini.fragments.settings.FragmentJobPosting;
+import com.example.ashish.alumini.fragments.settings.FragmentProfile;
 import com.example.ashish.alumini.R;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
@@ -129,12 +129,12 @@ public class ActivityMember extends AppCompatActivity implements
 
     @Override
     public void onBackPressed() {
-        if (mBackToMainScreen==false){
+        if (!mBackToMainScreen){
             mBackToMainScreen=true;
-            if (mBackToSettings==true){
+            if (mBackToSettings){
                 changeFragment(new FragmentSettings().newInstance(null,null));
             }
-            else if (mBackToJobList==true){
+            else if (mBackToJobList){
                 changeFragment(mFragmentJob);
             }
         }

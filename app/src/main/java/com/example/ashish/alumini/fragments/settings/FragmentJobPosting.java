@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.Fragments.settings;
+package com.example.ashish.alumini.fragments.settings;
 
 import android.content.Context;
 import android.net.Uri;

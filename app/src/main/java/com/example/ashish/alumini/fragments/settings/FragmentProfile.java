@@ -1,22 +1,17 @@
-package com.example.ashish.alumini.Fragments;
+package com.example.ashish.alumini.fragments.settings;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
-import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
-import com.example.ashish.alumini.activities.PostLogin.MainScreen;
+import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.R;
-import com.mikepenz.iconics.view.IconicsImageView;
+import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
 import com.squareup.otto.Bus;
-
-import butterknife.Bind;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -24,28 +19,15 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragmentMenu.OnFragmentInteractionListener} interface
+ * {@link FragmentProfile.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragmentMenu#newInstance} factory method to
+ * Use the {@link FragmentProfile#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentMenu extends Fragment {
-
-    /*
-    * GLOBAL DECLARATIONS & BUTTERKNIFE INJECTIONS
-    *
-    * */
-    @Bind(R.id.linearLayout_home) LinearLayout mLinearLayoutHome;
-    @Bind(R.id.linearLayout_filter) LinearLayout mLinearLayoutFilter;
-    @Bind(R.id.linearLayout_jobs) LinearLayout mLinearLayoutJobs;
-    @Bind(R.id.linearLayout_settings) LinearLayout mLinearLayoutSettings;
-
-    View mViewPrevious;
-    LinearLayout mLinearLayoutPrevious;
-    View mViewCurrent;
-
+public class FragmentProfile extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -53,16 +35,17 @@ public class FragmentMenu extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    Bus mBus = new Bus();
     private OnFragmentInteractionListener mListener;
 
-    ActivityMember mActivity;
+    /*
+    * Butterknife
+    * */
 
+    Bus mBus = new Bus();
 
+    ActivityMember mActivity ;
 
-
-
-    public FragmentMenu() {
+    public FragmentProfile() {
         // Required empty public constructor
     }
 
@@ -72,11 +55,11 @@ public class FragmentMenu extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentMenu.
+     * @return A new instance of fragment Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentMenu newInstance(String param1, String param2) {
-        FragmentMenu fragment = new FragmentMenu();
+    public static FragmentProfile newInstance(String param1, String param2) {
+        FragmentProfile fragment = new FragmentProfile();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -97,40 +80,23 @@ public class FragmentMenu extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_menu_bottom, container, false);
-        //Butterknife Binding
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
         ButterKnife.bind(this,view);
-        //event bus registering
+        //Bus Registering
         mBus.register(getActivity());
 
         mActivity = (ActivityMember) getActivity();
 
-        mViewPrevious = view.findViewById(R.id.view_home);
-        mLinearLayoutPrevious = (LinearLayout) view.findViewById(R.id.linearLayout_home);
-        mLinearLayoutHome.setBackgroundColor(getResources().getColor(R.color.grey));
 
         return view;
     }
 
-    @OnClick(R.id.linearLayout_home)
-    public void changeToHomeFragment(){
-        setVisibleView(getView().findViewById(R.id.view_home),mLinearLayoutHome);
+    @OnClick(R.id.imageView_edit)
+    public void editProfile(){
+        mActivity.changeFragment(new FragmentGetProfileData().newInstance("edit",""));
     }
-    @OnClick(R.id.linearLayout_filter)
-    public void changeToFilterFragment(){
-        setVisibleView(getView().findViewById(R.id.view_filter),mLinearLayoutFilter);
-        mActivity.changeFragment(new com.example.ashish.alumini.Fragments.Fragment().newInstance(null,null));
-    }
-    @OnClick(R.id.linearLayout_jobs)
-    public void changeToJobsFragment(){
-        setVisibleView(getView().findViewById(R.id.view_jobs),mLinearLayoutJobs);
-        mActivity.changeFragment(mActivity.mFragmentJob);
-    }
-    @OnClick(R.id.linearLayout_settings)
-    public void changeFragment(){
-        setVisibleView(getView().findViewById(R.id.view_settings),mLinearLayoutSettings);
-        mActivity.changeFragment(new FragmentSettings().newInstance(null,null));
-    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -169,22 +135,5 @@ public class FragmentMenu extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-    }
-
-    public void setVisibleView(View viewUnderLine,LinearLayout layout){
-        //setting the previously clicked view to visibility=gone
-        mViewPrevious.setVisibility(View.GONE);
-        //setting the previously clicked Button to default
-        mLinearLayoutPrevious.setBackgroundColor(getResources().getColor(R.color.card_background));
-
-        //changing color and visibility
-        layout.setBackgroundColor(getResources().getColor(R.color.grey));
-        viewUnderLine.setVisibility(View.VISIBLE);
-
-        //updating the previous elements for changing the visibility in next click
-        mViewPrevious=viewUnderLine;
-        mLinearLayoutPrevious = layout;
-
-        mBus.post(layout.getId()); // Posting the clicked layout to the Fragment activity (ActivityMember)
     }
 }

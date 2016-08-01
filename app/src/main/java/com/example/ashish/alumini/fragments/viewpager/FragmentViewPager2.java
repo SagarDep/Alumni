@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.Fragments.viewpager;
+package com.example.ashish.alumini.fragments.viewpager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.ashish.alumini.ListMembers.ListVar;
-import com.example.ashish.alumini.ListMembers.MemberAdapter;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.profile;
 
@@ -18,9 +17,9 @@ import java.util.ArrayList;
 /**
  * Created by ashish on 14/3/16.
  */
-public class FragmentViewPager3 extends ListFragment{
+public class FragmentViewPager2 extends ListFragment{
 
-    public FragmentViewPager3() {
+    public FragmentViewPager2() {
         // Required empty public constructor
     }
 
@@ -39,16 +38,16 @@ public class FragmentViewPager3 extends ListFragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ArrayList<ListVar> list_members = new ArrayList<>();
-//        for (int i = 0; i<5; i++){
-//            ListVar listVar = new ListVar(" Name " + i,BitmapFactory.decodeResource(getResources(),R.drawable.image),"CS","IBM","Mumbai","CS","2017");
-//            list_members.add(listVar);
-//        } //------TEMP
 
-        MemberAdapter memberAdapter= new MemberAdapter(getActivity(),R.layout.simple_list_item,list_members);
-        setListAdapter(memberAdapter);
+//            list_members.add(listVar);
+
+//        MemberAdapter memberAdapter= new MemberAdapter(getActivity(),R.layout.lis,list_members);
+
+//        setListAdapter(memberAdapter);
 
 
     }
+
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);

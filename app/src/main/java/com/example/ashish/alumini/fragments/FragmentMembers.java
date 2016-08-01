@@ -1,33 +1,35 @@
-package com.example.ashish.alumini.Fragments.settings;
+package com.example.ashish.alumini.fragments;
 
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
+import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager1;
+import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager3;
+import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager2;
 import com.example.ashish.alumini.R;
-import com.squareup.otto.Bus;
+import com.example.ashish.alumini.supporting_classes.ViewPagerAdapter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * A simple {@link android.support.v4.app.Fragment} subclass.
+ * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragmentAboutApp.OnFragmentInteractionListener} interface
+ * {@link FragmentMembers.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragmentAboutApp#newInstance} factory method to
+ * Use the {@link FragmentMembers#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentAboutApp extends android.support.v4.app.Fragment {
+public class FragmentMembers extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -35,17 +37,13 @@ public class FragmentAboutApp extends android.support.v4.app.Fragment {
     private String mParam1;
     private String mParam2;
 
+    @Bind(R.id.viewpager) ViewPager mViewPager;
+    @Bind(R.id.tabLayout)TabLayout mTabLayout;
+
     private OnFragmentInteractionListener mListener;
 
-    /*
-    * Butterknife
-    * */
-    @Bind(R.id.textView_version)
-    TextView mTextViewVersion;
 
-    Bus mBus = new Bus();
-
-    public FragmentAboutApp() {
+    public FragmentMembers() {
         // Required empty public constructor
     }
 
@@ -55,11 +53,11 @@ public class FragmentAboutApp extends android.support.v4.app.Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment.
+     * @return A new instance of fragment FragmentJobs.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentAboutApp newInstance(String param1, String param2) {
-        FragmentAboutApp fragment = new FragmentAboutApp();
+    public static FragmentMembers newInstance(String param1, String param2) {
+        FragmentMembers fragment = new FragmentMembers();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -79,21 +77,13 @@ public class FragmentAboutApp extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_aboutapp, container, false);
+        View view = inflater.inflate(R.layout.activity_member, container, false);
 
         ButterKnife.bind(this,view);
-        //Bus Registering
-        mBus.register(getActivity());
 
-        try {
-            PackageInfo pInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
-            mTextViewVersion.setText(pInfo.versionName);
 
-        }
-        catch (PackageManager.NameNotFoundException e){
-            e.printStackTrace();
-        }
+        setupViewPager(mViewPager);
+        mTabLayout.setupWithViewPager(mViewPager);
 
 
 
@@ -106,6 +96,14 @@ public class FragmentAboutApp extends android.support.v4.app.Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
+        adapter.addFragment(new FragmentViewPager1(), "ALL");
+        adapter.addFragment(new FragmentViewPager2(),"ACE");
+        adapter.addFragment(new FragmentViewPager3(),  "NERDS");
+        viewPager.setAdapter(adapter);
     }
 
     @Override

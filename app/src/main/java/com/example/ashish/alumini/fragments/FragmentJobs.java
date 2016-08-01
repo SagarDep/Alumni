@@ -1,51 +1,66 @@
-package com.example.ashish.alumini.Fragments.common_fragments;
+package com.example.ashish.alumini.fragments;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
+import com.example.ashish.alumini.Job.JobListAdapter;
+import com.example.ashish.alumini.Job.JobListInstance;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
 import com.squareup.otto.Bus;
 
+import java.util.ArrayList;
+
+import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 
 /**
- * A simple {@link android.support.v4.app.Fragment} subclass.
+ * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragmentGetProfileData.OnFragmentInteractionListener} interface
+ * {@link FragmentJobs.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragmentGetProfileData#newInstance} factory method to
+ * Use the {@link FragmentJobs#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentGetProfileData extends android.support.v4.app.Fragment {
+public class FragmentJobs extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    @Bind(R.id.listView_jobs)
+    ListView mListViewJobs;
+
+    ArrayList<JobListInstance> mArrayList = new ArrayList<>();
+    JobListAdapter mListAdapter;
+
+    ActivityMember mActivity;
+
+    Bus mBus = new Bus();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
-    /*
-    * Butterknife
-    * */
-//    @Bind(R.id.button_settings)
-//    Button j;
-
-    Bus mBus = new Bus();
-
-    ActivityMember mActivity = (ActivityMember) getActivity();
-
-    public FragmentGetProfileData() {
+    public FragmentJobs() {
         // Required empty public constructor
+        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+
     }
 
     /**
@@ -54,11 +69,11 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment.
+     * @return A new instance of fragment FragmentJobs.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentGetProfileData newInstance(String param1, String param2) {
-        FragmentGetProfileData fragment = new FragmentGetProfileData();
+    public static FragmentJobs newInstance(String param1, String param2) {
+        FragmentJobs fragment = new FragmentJobs();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -73,17 +88,29 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+       mListAdapter = new JobListAdapter(getActivity(),R.layout.simple_list_item_job,mArrayList);
+    }
+
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+
+        mActivity  = (ActivityMember) getActivity();
+
+        mListViewJobs.setAdapter(mListAdapter);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_getprofiledata, container, false);
+        View view = inflater.inflate(R.layout.fragment_jobs,container,false);
 
         ButterKnife.bind(this,view);
-        //Bus Registering
-        mBus.register(getActivity());
 
 
         return view;
@@ -95,6 +122,30 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
+
+    @OnItemClick(R.id.listView_jobs)
+    public void listClickHandler(int position){
+        FragmentJobDetails fragmentJobDetails = new FragmentJobDetails();
+        fragmentJobDetails.setData(mArrayList.get(position));
+        mActivity.changeFragment(fragmentJobDetails);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mBus.unregister(getActivity());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        //Bus Registering
+        mBus.register(getActivity());
+
+    }
+
+
 
     @Override
     public void onAttach(Context context) {
@@ -127,6 +178,4 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
-
 }

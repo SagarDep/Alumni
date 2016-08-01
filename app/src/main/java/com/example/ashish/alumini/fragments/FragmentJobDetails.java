@@ -1,30 +1,31 @@
-package com.example.ashish.alumini.Fragments.settings;
+package com.example.ashish.alumini.fragments;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.example.ashish.alumini.Fragments.common_fragments.FragmentGetProfileData;
+import com.example.ashish.alumini.Job.JobListInstance;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
 import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple {@link android.support.v4.app.Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragmentProfile.OnFragmentInteractionListener} interface
+ * {@link FragmentJobDetails.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragmentProfile#newInstance} factory method to
+ * Use the {@link FragmentJobDetails#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentProfile extends Fragment {
+public class FragmentJobDetails extends android.support.v4.app.Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
@@ -37,15 +38,19 @@ public class FragmentProfile extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    private JobListInstance mJobListInstance;
+
     /*
     * Butterknife
     * */
+    @Bind(R.id.textView_name)
+    TextView mTextViewName;
 
     Bus mBus = new Bus();
 
-    ActivityMember mActivity ;
+    ActivityMember mActivity = (ActivityMember) getActivity();
 
-    public FragmentProfile() {
+    public FragmentJobDetails() {
         // Required empty public constructor
     }
 
@@ -58,10 +63,10 @@ public class FragmentProfile extends Fragment {
      * @return A new instance of fragment Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentProfile newInstance(String param1, String param2) {
-        FragmentProfile fragment = new FragmentProfile();
+    public static FragmentJobDetails newInstance(Object param1, String param2) {
+        FragmentJobDetails fragment = new FragmentJobDetails();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
+        args.putSerializable(ARG_PARAM1, param1.toString());
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
@@ -80,23 +85,15 @@ public class FragmentProfile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_job_details, container, false);
 
         ButterKnife.bind(this,view);
         //Bus Registering
         mBus.register(getActivity());
 
-        mActivity = (ActivityMember) getActivity();
-
-
+        showData();
         return view;
     }
-
-    @OnClick(R.id.imageView_edit)
-    public void editProfile(){
-        mActivity.changeFragment(new FragmentGetProfileData().newInstance("edit",""));
-    }
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -135,5 +132,13 @@ public class FragmentProfile extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void setData(JobListInstance item){
+        mJobListInstance = item;
+    }
+
+    public void showData(){
+        mTextViewName.setText(mJobListInstance.getCompanyName());
     }
 }

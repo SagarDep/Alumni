@@ -1,20 +1,19 @@
-package com.example.ashish.alumini.Fragments;
+package com.example.ashish.alumini.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.ashish.alumini.Fragments.common_fragments.FragmentWebView;
-import com.example.ashish.alumini.Fragments.settings.FragmentAboutApp;
-import com.example.ashish.alumini.Fragments.settings.FragmentFaq;
-import com.example.ashish.alumini.Fragments.settings.FragmentJobPosting;
-import com.example.ashish.alumini.Fragments.settings.FragmentProfile;
+import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
+import com.example.ashish.alumini.fragments.settings.FragmentAboutApp;
+import com.example.ashish.alumini.fragments.settings.FragmentFaq;
+import com.example.ashish.alumini.fragments.settings.FragmentJobPosting;
+import com.example.ashish.alumini.fragments.settings.FragmentProfile;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
 import com.squareup.otto.Bus;

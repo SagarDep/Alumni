@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.Fragments;
+package com.example.ashish.alumini.fragments.common_fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -16,12 +16,12 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Fragment.OnFragmentInteractionListener} interface
+ * {@link FragmentGetProfileData.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Fragment#newInstance} factory method to
+ * Use the {@link FragmentGetProfileData#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment extends android.support.v4.app.Fragment {
+public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
@@ -42,9 +42,9 @@ public class Fragment extends android.support.v4.app.Fragment {
 
     Bus mBus = new Bus();
 
-    ActivityMember mActivity ;
+    ActivityMember mActivity = (ActivityMember) getActivity();
 
-    public Fragment() {
+    public FragmentGetProfileData() {
         // Required empty public constructor
     }
 
@@ -57,8 +57,8 @@ public class Fragment extends android.support.v4.app.Fragment {
      * @return A new instance of fragment Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragment newInstance(String param1, String param2) {
-        Fragment fragment = new Fragment();
+    public static FragmentGetProfileData newInstance(String param1, String param2) {
+        FragmentGetProfileData fragment = new FragmentGetProfileData();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -79,9 +79,7 @@ public class Fragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_blank2, container, false);
-
-        mActivity = (ActivityMember) getActivity();
+        View view = inflater.inflate(R.layout.fragment_getprofiledata, container, false);
 
         ButterKnife.bind(this,view);
         //Bus Registering
@@ -110,17 +108,6 @@ public class Fragment extends android.support.v4.app.Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        mBus.unregister(getActivity());
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
@@ -140,4 +127,6 @@ public class Fragment extends android.support.v4.app.Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }

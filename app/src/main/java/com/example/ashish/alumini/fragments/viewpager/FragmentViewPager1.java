@@ -1,8 +1,8 @@
-package com.example.ashish.alumini.Fragments.viewpager;
+package com.example.ashish.alumini.fragments.viewpager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,37 +18,42 @@ import java.util.ArrayList;
 /**
  * Created by ashish on 14/3/16.
  */
-public class FragmentViewPager2 extends ListFragment{
+public class FragmentViewPager1 extends android.support.v4.app.ListFragment {
 
-    public FragmentViewPager2() {
+    private String TAG = getClass().getSimpleName();
+
+    private ArrayList<ListVar> mArrayList;
+    private MemberAdapter mMemberAdapter;
+    public FragmentViewPager1() {
         // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_two, container, false);
+        View view = inflater.inflate(R.layout.fragment_one, container, false);
+
+        return view;
     }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ArrayList<ListVar> list_members = new ArrayList<>();
 
-//            list_members.add(listVar);
+//        mArrayList.add(new ListVar("01","ashish",null,"a","a","a","a","a"));
 
-//        MemberAdapter memberAdapter= new MemberAdapter(getActivity(),R.layout.lis,list_members);
-
+//        MemberAdapter memberAdapter= new MemberAdapter(getActivity(),R.layout.simple_list_item,mArrayList);
 //        setListAdapter(memberAdapter);
 
 
     }
-
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
@@ -56,4 +61,3 @@ public class FragmentViewPager2 extends ListFragment{
         startActivity(intent);
     }
 }
-

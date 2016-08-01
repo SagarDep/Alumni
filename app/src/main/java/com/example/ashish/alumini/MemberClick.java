@@ -16,9 +16,9 @@ import android.widget.ImageButton;
 
 //import com.example.ashish.alumini.Job.OnJobClick;
 
-import com.example.ashish.alumini.Fragments.viewpager.FragmentViewPager1;
-import com.example.ashish.alumini.Fragments.viewpager.FragmentViewPager3;
-import com.example.ashish.alumini.Fragments.viewpager.FragmentViewPager2;
+import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager1;
+import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager3;
+import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager2;
 
 import com.example.ashish.alumini.supporting_classes.*;
 
