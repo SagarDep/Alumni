@@ -37,9 +37,6 @@
         <activity
             android:name=".Job.jobProfile"
             android:label="Company Profile" />
-        <activity
-            android:name=".Fragments.FragmentPostJob"
-            android:label="Post A Job" />
         <activity android:name=".activities.PreLogin.Login"></activity>
         <activity android:name=".activities.PreLogin.SignUp"></activity>
         <activity android:name=".activities.PostLogin.MainScreen"></activity>

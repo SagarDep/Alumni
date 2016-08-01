@@ -89,7 +89,7 @@ public class FragmentJobs extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-       mListAdapter = new JobListAdapter(getActivity(),R.layout.simple_list_item_job,mArrayList);
+       mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList);
     }
 
 
@@ -141,10 +141,7 @@ public class FragmentJobs extends Fragment {
 
         //Bus Registering
         mBus.register(getActivity());
-
     }
-
-
 
     @Override
     public void onAttach(Context context) {

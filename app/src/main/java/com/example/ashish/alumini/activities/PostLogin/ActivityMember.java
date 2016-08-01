@@ -10,20 +10,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.example.ashish.alumini.Fragments.BlankFragment;
-import com.example.ashish.alumini.Fragments.FragmentFilter;
-import com.example.ashish.alumini.Fragments.common_fragments.FragmentGetProfileData;
-import com.example.ashish.alumini.Fragments.FragmentJobDetails;
-import com.example.ashish.alumini.Fragments.FragmentJobs;
-import com.example.ashish.alumini.Fragments.FragmentMembers;
-import com.example.ashish.alumini.Fragments.FragmentMenu;
-import com.example.ashish.alumini.Fragments.FragmentSettings;
-import com.example.ashish.alumini.Fragments.common_fragments.FragmentWebView;
-import com.example.ashish.alumini.Fragments.settings.FragmentAboutApp;
-import com.example.ashish.alumini.Fragments.settings.FragmentFaq;
-import com.example.ashish.alumini.Fragments.settings.FragmentJobPosting;
-import com.example.ashish.alumini.Fragments.settings.FragmentProfile;
+
+import com.example.ashish.alumini.fragments.FragmentMenu;
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.fragments.FragmentJobDetails;
+import com.example.ashish.alumini.fragments.FragmentJobs;
+import com.example.ashish.alumini.fragments.FragmentMembers;
+import com.example.ashish.alumini.fragments.FragmentSettings;
+import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
+import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
+import com.example.ashish.alumini.fragments.settings.FragmentAboutApp;
+import com.example.ashish.alumini.fragments.settings.FragmentFaq;
+import com.example.ashish.alumini.fragments.settings.FragmentJobPosting;
+import com.example.ashish.alumini.fragments.settings.FragmentProfile;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
@@ -31,7 +30,6 @@ public class ActivityMember extends AppCompatActivity implements
         FragmentMenu.OnFragmentInteractionListener,
         FragmentSettings.OnFragmentInteractionListener,
         FragmentJobs.OnFragmentInteractionListener,
-        Fragment.OnFragmentInteractionListener,
         FragmentMembers.OnFragmentInteractionListener,
         FragmentFaq.OnFragmentInteractionListener,
         FragmentJobPosting.OnFragmentInteractionListener,
@@ -46,7 +44,7 @@ public class ActivityMember extends AppCompatActivity implements
 
     public FragmentJobs mFragmentJob = new FragmentJobs();
 
-    Fragment mFragment;
+
 
     Bus mBus = new Bus();
 

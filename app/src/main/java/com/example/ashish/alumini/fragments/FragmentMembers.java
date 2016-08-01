@@ -10,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager1;
-import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager3;
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager2;
+import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager3;
+
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.supporting_classes.ViewPagerAdapter;
 
