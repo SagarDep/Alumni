@@ -156,7 +156,7 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView_fbLink"
+                    android:id="@+id/textView_email_jobDetails"
                     android:layout_toRightOf="@+id/imageView_email"
                     android:layout_below="@+id/textView_Contact">
 
@@ -174,9 +174,9 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView_contact"
+                    android:id="@+id/textView_website"
                     android:layout_toRightOf="@+id/imageView_email"
-                    android:layout_below="@+id/textView_fbLink">
+                    android:layout_below="@+id/textView_email_jobDetails">
 
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
@@ -194,7 +194,7 @@
                     android:layout_height="wrap_content"
 
                     android:layout_toRightOf="@+id/imageView_email"
-                    android:layout_below="@+id/textView_contact">
+                    android:layout_below="@+id/textView_website">
 
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
@@ -214,9 +214,9 @@
                     android:id="@+id/imageView_phone"
                     app:iiv_icon="faw-phone"
                     app:iiv_color="@color/black_de"
-                    android:layout_alignTop="@+id/textView_contact"
-                    android:layout_toLeftOf="@+id/textView_contact"
-                    android:layout_toStartOf="@+id/textView_contact"
+                    android:layout_alignTop="@+id/textView_website"
+                    android:layout_toLeftOf="@+id/textView_website"
+                    android:layout_toStartOf="@+id/textView_website"
                     android:layout_marginTop="20dp" />
                 <com.mikepenz.iconics.view.IconicsImageView
                     android:layout_width="20dp"
@@ -224,7 +224,7 @@
                     android:id="@+id/imageView_email"
                     app:iiv_icon="faw-envelope"
                     app:iiv_color="@color/black_de"
-                    android:layout_alignTop="@+id/textView_fbLink"
+                    android:layout_alignTop="@+id/textView_email_jobDetails"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="20dp" />
@@ -237,7 +237,7 @@
                     app:iiv_color="@color/black_de"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_below="@+id/textView_contact"
+                    android:layout_below="@+id/textView_website"
                     android:layout_marginTop="20dp" />
 
 

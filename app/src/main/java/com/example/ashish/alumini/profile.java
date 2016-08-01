@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ashish.alumini.ListMembers.ListVar;
+
 /**
  * Created by ashish on 4/3/16.
  */
@@ -21,25 +23,25 @@ public class profile extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_profile);
         Bitmap bm = BitmapFactory.decodeResource(getResources(),R.drawable.image);
-        ImageView mImage = (ImageView) findViewById(R.id.imageView_profilepic);
-//        mImage.setImageBitmap(MemberListInstance.getCircleBitmap(bm));
+        ImageView mImage = (ImageView) findViewById(R.id.imageView_companyImage);
+        mImage.setImageBitmap(ListVar.getCircleBitmap(bm));
 
         TextView textView = (TextView) findViewById(R.id.textView_year);
-        ImageButton edit_image = (ImageButton) findViewById(R.id.edit_image);
-        edit_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(profile.this, Edit_Profile.class);
-                intent.putExtra("SIGN_UP","update");
-                intent.putExtra("EMAIL","email");
-                intent.putExtra("NAME","email");
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
-            }
-        });
-        phone = (TextView) findViewById(R.id.textView_contact);
+//        ImageButton edit_image = (ImageButton) findViewById(R.id.edit_image);
+//        edit_image.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(profile.this, Edit_Profile.class);
+//                intent.putExtra("SIGN_UP","update");
+//                intent.putExtra("EMAIL","email");
+//                intent.putExtra("NAME","email");
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+//            }
+//        });
+        phone = (TextView) findViewById(R.id.textView_website);
         tw_twitter = (TextView) findViewById(R.id.textView_twitterlink);
-        mail = (TextView) findViewById(R.id.textView_fbLink);
+        mail = (TextView) findViewById(R.id.textView_email_jobDetails);
         mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

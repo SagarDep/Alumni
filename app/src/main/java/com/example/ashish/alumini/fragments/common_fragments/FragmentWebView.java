@@ -1,18 +1,25 @@
-package com.example.ashish.alumini.Fragments;
+package com.example.ashish.alumini.fragments.common_fragments;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
-import com.example.ashish.alumini.Job.JobListInstance;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.iconics.view.IconicsImageView;
 import com.squareup.otto.Bus;
-import com.squareup.otto.Subscribe;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,12 +27,12 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragmentJobDetails.OnFragmentInteractionListener} interface
+ * {@link FragmentWebView.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragmentJobDetails#newInstance} factory method to
+ * Use the {@link FragmentWebView#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentJobDetails extends android.support.v4.app.Fragment {
+public class FragmentWebView extends android.support.v4.app.Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
@@ -41,19 +48,19 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     /*
     * Butterknife
     * */
-    @Bind(R.id.textView_company_name)
-    TextView mTextViewName;
+    @Bind(R.id.progressBar)
+    ProgressBar mProgressBar;
+    @Bind(R.id.webView)
+    WebView mWebView;
 
+    @Bind(R.id.imageViewWebViewError)
+    IconicsImageView mImageView;
 
     Bus mBus = new Bus();
 
-    JobListInstance mListInstance;
+    ActivityMember mActivity ;
 
-
-
-    ActivityMember mActivity = (ActivityMember) getActivity();
-
-    public FragmentJobDetails() {
+    public FragmentWebView() {
         // Required empty public constructor
     }
 
@@ -66,13 +73,12 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
      * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentJobDetails newInstance(JobListInstance param1, String param2) {
-        FragmentJobDetails fragment = new FragmentJobDetails();
+    public static FragmentWebView newInstance(String param1, String param2) {
+        FragmentWebView fragment = new FragmentWebView();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, "");
+        args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
-        fragment.setData(param1);
         return fragment;
     }
 
@@ -82,7 +88,6 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-
         }
     }
 
@@ -90,12 +95,57 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_job_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_web_view, container, false);
+
+        mActivity = (ActivityMember) getActivity();
 
         ButterKnife.bind(this,view);
         //Bus Registering
         mBus.register(getActivity());
 
+
+        mProgressBar.setVisibility(View.VISIBLE);
+        mProgressBar.setMax(100);
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.loadUrl(mParam1);
+        mWebView.canGoBackOrForward(5);
+
+        mWebView.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+//                setContentView(R.layout.activity_main);
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                super.onReceivedError(view, request, error);
+                mImageView.setBackgroundDrawable(new IconicsDrawable(getActivity())
+                        .icon(FontAwesome.Icon.faw_exclamation_triangle)
+                        .color(Color.RED)
+                        .sizeDp(200));
+            }
+        });
+
+        mWebView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                if (mProgressBar.getVisibility() == View.GONE) {
+                    mProgressBar.setVisibility(View.VISIBLE);
+                }
+                mProgressBar.setProgress(newProgress);
+                if (newProgress == 100) {
+                    mProgressBar.setVisibility(View.GONE);
+                }
+            }
+
+        });
 
         return view;
     }
@@ -119,6 +169,17 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mBus.unregister(getActivity());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
@@ -137,10 +198,5 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-    }
-
-    @Subscribe
-    public void setData(JobListInstance item){
-        mTextViewName.setText(item.getCompanyName());
     }
 }

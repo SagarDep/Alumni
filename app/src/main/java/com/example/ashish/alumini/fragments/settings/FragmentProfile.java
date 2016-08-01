@@ -1,35 +1,33 @@
-package com.example.ashish.alumini.Fragments;
+package com.example.ashish.alumini.fragments.settings;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.ashish.alumini.Fragments.viewpager.FragmentViewPager1;
-import com.example.ashish.alumini.Fragments.viewpager.FragmentViewPager3;
-import com.example.ashish.alumini.Fragments.viewpager.FragmentViewPager2;
+import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.supporting_classes.ViewPagerAdapter;
+import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
+import com.squareup.otto.Bus;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragmentMembers.OnFragmentInteractionListener} interface
+ * {@link FragmentProfile.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragmentMembers#newInstance} factory method to
+ * Use the {@link FragmentProfile#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentMembers extends Fragment {
+public class FragmentProfile extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -37,14 +35,17 @@ public class FragmentMembers extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private String TAG = getClass().getSimpleName();
-
-    @Bind(R.id.viewpager) ViewPager mViewPager;
-    @Bind(R.id.tabLayout)TabLayout mTabLayout;
-
     private OnFragmentInteractionListener mListener;
 
-    public FragmentMembers() {
+    /*
+    * Butterknife
+    * */
+
+    Bus mBus = new Bus();
+
+    ActivityMember mActivity ;
+
+    public FragmentProfile() {
         // Required empty public constructor
     }
 
@@ -54,11 +55,11 @@ public class FragmentMembers extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentJobs.
+     * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentMembers newInstance(String param1, String param2) {
-        FragmentMembers fragment = new FragmentMembers();
+    public static FragmentProfile newInstance(String param1, String param2) {
+        FragmentProfile fragment = new FragmentProfile();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -78,31 +79,30 @@ public class FragmentMembers extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_member, container, false);
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         ButterKnife.bind(this,view);
+        //Bus Registering
+        mBus.register(getActivity());
 
-
-        setupViewPager(mViewPager);
-        mTabLayout.setupWithViewPager(mViewPager);
+        mActivity = (ActivityMember) getActivity();
 
 
         return view;
     }
+
+    @OnClick(R.id.imageView_edit)
+    public void editProfile(){
+        mActivity.changeFragment(new FragmentGetProfileData().newInstance("edit",""));
+    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
-    }
-
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(new FragmentViewPager1(), "ALL");
-        adapter.addFragment(new FragmentViewPager2(),"ACE");
-        adapter.addFragment(new FragmentViewPager3(),  "NERDS");
-        viewPager.setAdapter(adapter);
     }
 
     @Override

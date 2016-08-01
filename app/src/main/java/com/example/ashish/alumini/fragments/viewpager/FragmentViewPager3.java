@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.Fragments.viewpager;
+package com.example.ashish.alumini.fragments.viewpager;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

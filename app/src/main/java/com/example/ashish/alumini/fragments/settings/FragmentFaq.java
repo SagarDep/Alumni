@@ -1,30 +1,35 @@
-package com.example.ashish.alumini.Fragments.settings;
+package com.example.ashish.alumini.fragments.settings;
 
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.ExpandableListView;
 
+import com.example.ashish.alumini.ListMembers.ExpandableList.ExpandableListAdapter;
 import com.example.ashish.alumini.R;
 import com.squareup.otto.Bus;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * A simple {@link android.support.v4.app.Fragment} subclass.
+ * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragmentAboutApp.OnFragmentInteractionListener} interface
+ * {@link FragmentFaq.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragmentAboutApp#newInstance} factory method to
+ * Use the {@link FragmentFaq#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentAboutApp extends android.support.v4.app.Fragment {
+public class FragmentFaq extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
@@ -40,12 +45,20 @@ public class FragmentAboutApp extends android.support.v4.app.Fragment {
     /*
     * Butterknife
     * */
-    @Bind(R.id.textView_version)
-    TextView mTextViewVersion;
+    @Bind(R.id.button_filter)
+    Button mButtonFilter;
+    @Bind(R.id.expandableListView)
+    ExpandableListView mExpListView;
+
+    android.widget.ExpandableListAdapter mListAdapter;
+
+    List<String> mListHeaders;
+    HashMap<String, List<String>> mListChild;
+
 
     Bus mBus = new Bus();
 
-    public FragmentAboutApp() {
+    public FragmentFaq() {
         // Required empty public constructor
     }
 
@@ -58,8 +71,8 @@ public class FragmentAboutApp extends android.support.v4.app.Fragment {
      * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentAboutApp newInstance(String param1, String param2) {
-        FragmentAboutApp fragment = new FragmentAboutApp();
+    public static FragmentFaq newInstance(String param1, String param2) {
+        FragmentFaq fragment = new FragmentFaq();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -80,20 +93,30 @@ public class FragmentAboutApp extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_aboutapp, container, false);
+        View view = inflater.inflate(R.layout.fragment_expandable_list, container, false);
 
         ButterKnife.bind(this,view);
         //Bus Registering
         mBus.register(getActivity());
 
-        try {
-            PackageInfo pInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
-            mTextViewVersion.setText(pInfo.versionName);
+        mButtonFilter.setVisibility(View.INVISIBLE);
 
-        }
-        catch (PackageManager.NameNotFoundException e){
-            e.printStackTrace();
-        }
+        mListHeaders = new ArrayList<>();
+        mListChild = new HashMap<>();
+        mListHeaders.add("Why this App?");
+        mListHeaders.add("What we want?");
+        mListChild = new HashMap<>();
+        List<String> branch = new ArrayList<>();
+        branch.add(getResources().getString(R.string.answer1));
+        List<String> year = new ArrayList<>();
+        year.add(getResources().getString(R.string.answer2));
+        mListChild.put(mListHeaders.get(0), branch);
+        mListChild.put(mListHeaders.get(1), year);
+        mListAdapter = new ExpandableListAdapter(getActivity(), mListHeaders, mListChild);
+
+        // setting list adapter
+
+        mExpListView.setAdapter(mListAdapter);
 
 
 

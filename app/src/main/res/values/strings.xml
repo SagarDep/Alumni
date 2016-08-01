@@ -34,7 +34,7 @@
     <string name="location">Location</string>
     <string name="contact">Contact</string>
 
-    <!--For the About app BlankFragment-->
+    <!--For the About app Fragment-->
     <string name="developed_by">Designed &amp; Developed By Arya</string>
 
     <!--Urls used in webviews-->
@@ -44,6 +44,9 @@
     <!--Keys used in shared preferences-->
     <string name="login_key">LOGIN_KEY</string>
     <string name="preference_file_key">com.example.myapp.PREFERENCE_FILE_KEY</string>
+
+    <!--Image Descriptions-->
+    <string name="image_company">Company Image</string>
 
     <!--TODO static data -->
 

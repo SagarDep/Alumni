@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.Application;
+package com.example.ashish.alumini.application;
 
 import android.app.Application;
 
