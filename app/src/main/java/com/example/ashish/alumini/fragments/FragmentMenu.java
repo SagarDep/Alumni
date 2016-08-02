@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,6 @@ import android.widget.LinearLayout;
 
 import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.fragments.FragmentFilter;
-import com.example.ashish.alumini.fragments.FragmentJobs;
-import com.example.ashish.alumini.fragments.FragmentSettings;
 import com.mikepenz.iconics.view.IconicsImageView;
 import com.squareup.otto.Bus;
 
@@ -65,6 +63,7 @@ public class FragmentMenu extends Fragment {
 
     ActivityMember mActivity;
 
+    ActionBar mActionBar;
 
 
 
@@ -111,11 +110,11 @@ public class FragmentMenu extends Fragment {
         mBus.register(getActivity());
 
         mActivity = (ActivityMember) getActivity();
+        mActionBar = mActivity.getSupportActionBar();
 
         mLineViewPrevious = view.findViewById(R.id.view_home);
         mLinearLayoutPrevious = (LinearLayout) view.findViewById(R.id.linearLayout_home);
         mPreviousIconicsImageView = (IconicsImageView) view.findViewById(R.id.button_home) ;
-//        mLinearLayoutHome.setBackgroundColor(getResources().getColor(R.color.grey));
 
 
         return view;
@@ -125,25 +124,27 @@ public class FragmentMenu extends Fragment {
     public void changeToHomeFragment(){
         setVisibleView(getView().findViewById(R.id.view_home),mImageViewMembers);
         mActivity.changeFragment(new FragmentMembers().newInstance(null,null));
-
+        mActionBar.setTitle("Members");
     }
     @OnClick(R.id.linearLayout_filter)
     public void changeToFilterFragment(){
 
         setVisibleView(getView().findViewById(R.id.view_filter),mImageViewFilter);
         mActivity.changeFragment(new FragmentFilter().newInstance(null,null));
-
+        mActionBar.setTitle("Filter");
     }
     @OnClick(R.id.linearLayout_jobs)
     public void changeToJobsFragment(){
         setVisibleView(getView().findViewById(R.id.view_jobs),mImageViewJobs);
         mActivity.changeFragment(new FragmentJobs().newInstance(null,null));
+        mActionBar.setTitle("Jobs");
     }
     @OnClick(R.id.linearLayout_settings)
     public void changeFragment(){
 //        setVisibleView(getView().findViewById(R.id.view_settings),mLinearLayoutSettings);
         setVisibleView(getView().findViewById(R.id.view_settings),mImageViewSettings);
         mActivity.changeFragment(new FragmentSettings().newInstance(null,null));
+        mActionBar.setTitle("Settings");
     }
 
     // TODO: Rename method, update argument and hook method into UI event

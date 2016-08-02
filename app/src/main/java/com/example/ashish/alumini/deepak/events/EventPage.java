@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.deepak.CardAdapter;
@@ -33,6 +34,12 @@ public class EventPage extends AppCompatActivity {
         mAdapter = new CardAdapter();
         mRecyclerView.setAdapter(mAdapter);
 
+        mRecyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
     @Override
