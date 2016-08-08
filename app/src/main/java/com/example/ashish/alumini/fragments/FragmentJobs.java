@@ -52,7 +52,7 @@ public class FragmentJobs extends Fragment {
     @Bind(R.id.listView_jobs)
     ListView mListViewJobs;
 
-    List<JobListInstance> mArrayList = new List<>();
+    List<JobListInstance> mArrayList = new ArrayList<>();
     JobListAdapter mListAdapter;
 
     ActivityMember mActivity;
@@ -85,7 +85,7 @@ public class FragmentJobs extends Fragment {
         call.enqueue(new Callback<List<Job>>() {
             @Override
             public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
-                response.body();
+
             }
 
             @Override
