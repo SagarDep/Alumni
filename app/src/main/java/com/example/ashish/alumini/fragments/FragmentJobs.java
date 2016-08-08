@@ -16,13 +16,22 @@ import com.example.ashish.alumini.Job.JobListAdapter;
 import com.example.ashish.alumini.Job.JobListInstance;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
+import com.example.ashish.alumini.network.ApiClient;
+import com.example.ashish.alumini.network.BooksApi;
+import com.example.ashish.alumini.network.pojo.Job;
 import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,10 +47,12 @@ public class FragmentJobs extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    String baseurl = "http://localhost:3000";
+
     @Bind(R.id.listView_jobs)
     ListView mListViewJobs;
 
-    ArrayList<JobListInstance> mArrayList = new ArrayList<>();
+    List<JobListInstance> mArrayList = new List<>();
     JobListAdapter mListAdapter;
 
     ActivityMember mActivity;
@@ -55,11 +66,35 @@ public class FragmentJobs extends Fragment {
 
     public FragmentJobs() {
         // Required empty public constructor
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.169.5.93:3000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        BooksApi service = retrofit.create(BooksApi.class);
+
+        Call<List<Job>> call = service.GetJobList();
+
+        call.enqueue(new Callback<List<Job>>() {
+            @Override
+            public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
+                response.body();
+            }
+
+            @Override
+            public void onFailure(Call<List<Job>> call, Throwable t) {
+                Log.d("Successful","cessful");
+            }
+        });
+
+
 
     }
 
