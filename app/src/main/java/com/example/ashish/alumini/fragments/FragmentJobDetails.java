@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.ashish.alumini.Job.JobListInstance;
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
+import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.squareup.otto.Bus;
 
 import butterknife.Bind;
@@ -54,7 +54,7 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
 
     Bus mBus = new Bus();
 
-    ActivityMember mActivity = (ActivityMember) getActivity();
+    PostLoginActivity mActivity = (PostLoginActivity) getActivity();
 
     public FragmentJobDetails() {
         // Required empty public constructor

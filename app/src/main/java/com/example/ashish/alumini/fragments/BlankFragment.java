@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
+import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.squareup.otto.Bus;
 
 import butterknife.ButterKnife;
@@ -43,7 +43,7 @@ public class BlankFragment extends android.support.v4.app.Fragment {
 
     Bus mBus ;
 
-    ActivityMember mActivity ;
+    PostLoginActivity mActivity ;
 
     public BlankFragment() {
         // Required empty public constructor
@@ -82,7 +82,7 @@ public class BlankFragment extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_blank2, container, false);
 
-        mActivity = (ActivityMember) getActivity();
+        mActivity = (PostLoginActivity) getActivity();
 
         ButterKnife.bind(this,view);
         //Bus Registering

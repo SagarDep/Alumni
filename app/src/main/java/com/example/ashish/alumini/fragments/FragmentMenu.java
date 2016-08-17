@@ -10,8 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
+import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.fragments.settings.FragmentSettings;
 import com.mikepenz.iconics.view.IconicsImageView;
 import com.squareup.otto.Bus;
 
@@ -61,7 +62,7 @@ public class FragmentMenu extends Fragment {
     Bus mBus = new Bus();
     private OnFragmentInteractionListener mListener;
 
-    ActivityMember mActivity;
+    PostLoginActivity mActivity;
 
     ActionBar mActionBar;
 
@@ -109,7 +110,7 @@ public class FragmentMenu extends Fragment {
         //event bus registering
         mBus.register(getActivity());
 
-        mActivity = (ActivityMember) getActivity();
+        mActivity = (PostLoginActivity) getActivity();
         mActionBar = mActivity.getSupportActionBar();
 
         mLineViewPrevious = view.findViewById(R.id.view_home);
@@ -202,6 +203,6 @@ public class FragmentMenu extends Fragment {
         mLineViewPrevious =viewUnderLine;
         mPreviousIconicsImageView = imageView;
 
-        mBus.post(imageView.getId()); // Posting the clicked layout to the BlankFragment activity (ActivityMember)
+        mBus.post(imageView.getId()); // Posting the clicked layout to the BlankFragment activity (PostLoginActivity)
     }
 }

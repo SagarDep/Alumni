@@ -72,7 +72,7 @@ public class Login extends Activity
 
                         pDialog.dismiss();
                     }
-                }, 100);
+                }, 1000);
 
     }
 

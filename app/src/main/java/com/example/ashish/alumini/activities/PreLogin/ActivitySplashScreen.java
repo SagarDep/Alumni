@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.ashish.alumini.MainActivity;
 import com.example.ashish.alumini.R;
@@ -14,7 +16,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
     SharedPreferences mSharedPreferences;
     Intent mIntent;
-    String mLoginKey = "IS_LOGGED_IN";
+    String mLoginKey = "LOGIN_KEY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
         Boolean spLogin = mSharedPreferences.getBoolean(mLoginKey,false);
 
+        Log.d("Preference Data",spLogin.toString());
+
 
 
         if (spLogin==true){
@@ -44,7 +48,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
         Thread Splashtimer = new Thread(){
             public void run(){
                 try{
-                    sleep(1);
+                    sleep(2000);
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }finally{

@@ -1,13 +1,11 @@
 package com.example.ashish.alumini.activities.PostLogin;
 
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 
 
@@ -16,7 +14,7 @@ import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.fragments.FragmentJobDetails;
 import com.example.ashish.alumini.fragments.FragmentJobs;
 import com.example.ashish.alumini.fragments.FragmentMembers;
-import com.example.ashish.alumini.fragments.FragmentSettings;
+import com.example.ashish.alumini.fragments.settings.FragmentSettings;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
 import com.example.ashish.alumini.fragments.settings.FragmentAboutApp;
@@ -26,7 +24,7 @@ import com.example.ashish.alumini.fragments.settings.FragmentProfile;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
-public class ActivityMember extends AppCompatActivity implements
+public class PostLoginActivity extends AppCompatActivity implements
         FragmentMenu.OnFragmentInteractionListener,
         FragmentSettings.OnFragmentInteractionListener,
         FragmentJobs.OnFragmentInteractionListener,

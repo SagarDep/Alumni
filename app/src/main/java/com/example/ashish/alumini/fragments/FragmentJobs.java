@@ -5,17 +5,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.ashish.alumini.Job.JobListAdapter;
 import com.example.ashish.alumini.Job.JobListInstance;
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
+import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
@@ -44,7 +42,7 @@ public class FragmentJobs extends Fragment {
     ArrayList<JobListInstance> mArrayList = new ArrayList<>();
     JobListAdapter mListAdapter;
 
-    ActivityMember mActivity;
+    PostLoginActivity mActivity;
 
     Bus mBus = new Bus();
     // TODO: Rename and change types of parameters
@@ -99,7 +97,7 @@ public class FragmentJobs extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
 
-        mActivity  = (ActivityMember) getActivity();
+        mActivity  = (PostLoginActivity) getActivity();
 
         mListViewJobs.setAdapter(mListAdapter);
 

@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
 import com.squareup.otto.Bus;
 
 import butterknife.ButterKnife;
@@ -43,7 +43,7 @@ public class FragmentProfile extends Fragment {
 
     Bus mBus = new Bus();
 
-    ActivityMember mActivity ;
+    PostLoginActivity mActivity ;
 
     public FragmentProfile() {
         // Required empty public constructor
@@ -86,7 +86,7 @@ public class FragmentProfile extends Fragment {
         //Bus Registering
         mBus.register(getActivity());
 
-        mActivity = (ActivityMember) getActivity();
+        mActivity = (PostLoginActivity) getActivity();
 
 
         return view;

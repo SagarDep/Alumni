@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.fragments;
+package com.example.ashish.alumini.fragments.settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,12 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
-import com.example.ashish.alumini.fragments.settings.FragmentAboutApp;
-import com.example.ashish.alumini.fragments.settings.FragmentFaq;
-import com.example.ashish.alumini.fragments.settings.FragmentJobPosting;
-import com.example.ashish.alumini.fragments.settings.FragmentProfile;
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
+import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.squareup.otto.Bus;
 
 import butterknife.ButterKnife;
@@ -67,7 +63,7 @@ public class FragmentSettings extends Fragment  {
 //    Button mButtonLogOut;
 
     Bus mBus = new Bus();
-    ActivityMember mActivity;
+    PostLoginActivity mActivity;
 
     SharedPreferences mSharedPreferences;
 
@@ -112,7 +108,7 @@ public class FragmentSettings extends Fragment  {
         //Bus Registering
         mBus.register(getActivity());
 
-        mActivity = (ActivityMember) getActivity();
+        mActivity = (PostLoginActivity) getActivity();
 
         mSharedPreferences = getActivity().getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);

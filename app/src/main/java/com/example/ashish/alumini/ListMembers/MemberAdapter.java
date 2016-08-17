@@ -31,7 +31,6 @@ public class MemberAdapter  extends RecyclerView.Adapter<MemberAdapter.MyViewHol
             designation = (TextView) view.findViewById(R.id.textView_designation);
             year = (TextView) view.findViewById(R.id.textView_passing_year);
             location = (TextView) view.findViewById(R.id.textView_location);
-
         }
 
         @Override

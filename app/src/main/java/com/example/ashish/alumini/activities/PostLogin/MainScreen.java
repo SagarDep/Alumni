@@ -1,7 +1,6 @@
 package com.example.ashish.alumini.activities.PostLogin;
 
 import android.content.Intent;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -49,7 +48,7 @@ public class MainScreen extends AppCompatActivity  implements View.OnClickListen
                 break;
 
             case R.id.member:
-                Intent moveToMember=new Intent(this,ActivityMember.class);
+                Intent moveToMember=new Intent(this,PostLoginActivity.class);
                 startActivity(moveToMember);
                 break;
             default:

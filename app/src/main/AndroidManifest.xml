@@ -32,9 +32,6 @@
             android:name=".Contact_us"
             android:label="Contact Us" />
         <activity
-            android:name=".Faq"
-            android:label="FAQs" />
-        <activity
             android:name=".Job.jobProfile"
             android:label="Company Profile" />
         <activity android:name=".activities.PreLogin.Login"></activity>
@@ -93,7 +90,7 @@
             android:name=".deepak.events.microsoft"
             android:label="Microsoft Innovation Center"></activity>
 
-        <activity android:name=".activities.PostLogin.ActivityMember"></activity>
+        <activity android:name=".activities.PostLogin.PostLoginActivity"></activity>
     </application>
 
 </manifest>

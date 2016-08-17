@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
-    tools:context=".activities.PostLogin.ActivityMember">
+    tools:context=".activities.PostLogin.PostLoginActivity">
 
 
    <android.support.v7.widget.RecyclerView

@@ -15,7 +15,7 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
+import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.iconics.view.IconicsImageView;
@@ -58,7 +58,7 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
 
     Bus mBus = new Bus();
 
-    ActivityMember mActivity ;
+    PostLoginActivity mActivity ;
 
     public FragmentWebView() {
         // Required empty public constructor
@@ -97,7 +97,7 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_web_view, container, false);
 
-        mActivity = (ActivityMember) getActivity();
+        mActivity = (PostLoginActivity) getActivity();
 
         ButterKnife.bind(this,view);
         //Bus Registering

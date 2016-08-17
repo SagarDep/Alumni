@@ -10,7 +10,7 @@ import android.widget.ExpandableListView;
 
 import com.example.ashish.alumini.ListMembers.ExpandableList.ExpandableListAdapter;
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
+import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
 
     Bus mBus = new Bus();
 
-    ActivityMember mActivity ;
+    PostLoginActivity mActivity ;
 
     public FragmentFilter() {
         // Required empty public constructor
@@ -94,7 +94,7 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_expandable_list, container, false);
 
-        mActivity = (ActivityMember) getActivity();
+        mActivity = (PostLoginActivity) getActivity();
 
         ButterKnife.bind(this,view);
         //Bus Registering
