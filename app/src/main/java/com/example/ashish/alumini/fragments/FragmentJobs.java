@@ -5,34 +5,55 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.ashish.alumini.Job.JobListAdapter;
 import com.example.ashish.alumini.Job.JobListInstance;
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.activities.PostLogin.ActivityMember;
+import com.example.ashish.alumini.network.ApiClient;
+import com.example.ashish.alumini.network.BooksApi;
+import com.example.ashish.alumini.network.pojo.Job;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link FragmentJobs.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the {@link FragmentJobs#newInstance} factory method to
+ * create an instance of this fragment.
+ */
 public class FragmentJobs extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    String baseurl = "http://localhost:3000";
+
     @Bind(R.id.listView_jobs)
     ListView mListViewJobs;
 
-    ArrayList<JobListInstance> mArrayList = new ArrayList<>();
+    List<JobListInstance> mArrayList = new ArrayList<>();
     JobListAdapter mListAdapter;
 
     PostLoginActivity mActivity;
@@ -42,14 +63,39 @@ public class FragmentJobs extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private OnFragmentInteractionListener mListener;
 
     public FragmentJobs() {
         // Required empty public constructor
-//        mArrayList.add(new JobListInstance(null,"Zillion","Gurgaon","Android Dev","5","12/5/16","Technical"));
-//        mArrayList.add(new JobListInstance(null,"GenPact","Jaipur","Team Leader","3","12/5/16","Non Technical"));
-//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Web Dev","5","25/8/16","Technical"));
-//        mArrayList.add(new JobListInstance(null,"Innovaccer","NOIDA","Python Dev","5","12/5/16","Technical"));
-//        mArrayList.add(new JobListInstance(null,"zillion","Delhi","Analytics","5","18/5/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.43.115:3000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        BooksApi service = retrofit.create(BooksApi.class);
+
+        Call<List<Job>> call = service.GetJobList();
+
+        call.enqueue(new Callback<List<Job>>() {
+            @Override
+            public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Job>> call, Throwable t) {
+                Log.d("Successful","cessful");
+            }
+        });
+
+
 
     }
 
@@ -89,7 +135,7 @@ public class FragmentJobs extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
 
-        mActivity  = (PostLoginActivity) getActivity();
+        mActivity  = (ActivityMember) getActivity();
 
         mListViewJobs.setAdapter(mListAdapter);
 
@@ -105,15 +151,18 @@ public class FragmentJobs extends Fragment {
         return view;
     }
 
-
+    // TODO: Rename method, update argument and hook method into UI event
+    public void onButtonPressed(Uri uri) {
+        if (mListener != null) {
+            mListener.onFragmentInteraction(uri);
+        }
+    }
 
     @OnItemClick(R.id.listView_jobs)
     public void listClickHandler(int position){
         FragmentJobDetails fragmentJobDetails = new FragmentJobDetails();
         fragmentJobDetails.setData(mArrayList.get(position));
         mActivity.changeFragment(fragmentJobDetails);
-        mBus.post(8888);
-
     }
 
     @Override
@@ -133,14 +182,32 @@ public class FragmentJobs extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-
+        mListener = null;
     }
 
-
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p/>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
+    }
 }

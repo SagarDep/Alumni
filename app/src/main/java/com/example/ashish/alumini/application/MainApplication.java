@@ -2,7 +2,6 @@ package com.example.ashish.alumini.application;
 
 import android.app.Application;
 
-import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.facebook.stetho.Stetho;
 
 /**
@@ -13,8 +12,23 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        //Stetho inititialization
+        /*
+        * Stetho init
+        * */
         Stetho.initializeWithDefaults(this);
+
+        /*
+        * Retrofit declaration and init
+        * */
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.stackexchange.com")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+
 
         GlobalPrefs.mContext = getApplicationContext();
 
