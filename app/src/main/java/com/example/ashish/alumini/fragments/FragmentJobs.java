@@ -45,11 +45,11 @@ public class FragmentJobs extends Fragment {
 
     public FragmentJobs() {
         // Required empty public constructor
-        mArrayList.add(new JobListInstance(null,"Zillion","Gurgaon","Android Dev","5","12/5/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"GenPact","Jaipur","Team Leader","3","12/5/16","Non Technical"));
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Web Dev","5","25/8/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"Innovaccer","NOIDA","Python Dev","5","12/5/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"zillion","Delhi","Analytics","5","18/5/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"Zillion","Gurgaon","Android Dev","5","12/5/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"GenPact","Jaipur","Team Leader","3","12/5/16","Non Technical"));
+//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Web Dev","5","25/8/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"Innovaccer","NOIDA","Python Dev","5","12/5/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"zillion","Delhi","Analytics","5","18/5/16","Technical"));
 
     }
 

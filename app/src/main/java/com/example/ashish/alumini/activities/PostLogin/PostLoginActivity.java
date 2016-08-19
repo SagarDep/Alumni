@@ -128,6 +128,12 @@ public class PostLoginActivity extends AppCompatActivity implements
                 mBackToSettings=false;
                 mBackToMainScreen=false;
                 break;
+            case R.id.recycler_view :
+                mBackToJobList = null;
+                mBackToSettings=false;
+                mBackToMainScreen=false;
+                break;
+
         }
     }
 
@@ -138,9 +144,13 @@ public class PostLoginActivity extends AppCompatActivity implements
             if (mBackToSettings){
                 changeFragment(new FragmentSettings().newInstance(null,null));
             }
+            else if (mBackToJobList==null){
+                changeFragment(new FragmentMembers().newInstance("",""));
+            }
             else if (mBackToJobList){
                 changeFragment(mFragmentJob);
             }
+
         }
         else
             super.onBackPressed();

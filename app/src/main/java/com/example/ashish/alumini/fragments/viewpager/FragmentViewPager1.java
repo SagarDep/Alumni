@@ -10,7 +10,11 @@ import android.view.ViewGroup;
 
 import com.example.ashish.alumini.ListMembers.MemberListInstance;
 import com.example.ashish.alumini.ListMembers.MemberAdapter;
+import com.example.ashish.alumini.ListMembers.RecyclerItemClickListener;
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.fragments.settings.FragmentProfile;
+import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
 
@@ -30,6 +34,9 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
     private ArrayList<MemberListInstance> varArrayList = new ArrayList<>();
     private MemberAdapter mAdapter;
 
+    PostLoginActivity mActivity;
+
+    Bus mBus = new Bus();
 
     public FragmentViewPager1() {
         // Required empty public constructor
@@ -53,10 +60,31 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
         //initialization of adapter
         mAdapter = new MemberAdapter(varArrayList);
 
+        //getting instance of activity
+        mActivity = (PostLoginActivity) getActivity();
+
+        mBus.register(getActivity());
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
 
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(mAdapter);
+
+
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getActivity(), recyclerView ,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        mActivity.changeFragment(new FragmentProfile().newInstance("",""));
+                        mBus.post(R.id.recycler_view);
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
+
 
         prepareList();
 
