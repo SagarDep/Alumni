@@ -1,14 +1,18 @@
 package com.example.ashish.alumini.fragments.settings;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+;
+import com.example.ashish.alumini.activities.PreLogin.MainActivity;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
@@ -41,26 +45,7 @@ public class FragmentSettings extends Fragment  {
     /*
     * Butterknife
     * */
-//    @Bind(R.id.button_postjob)
-//    Button mButtonJobPost;
-//    @Bind(R.id.button_myprofile)
-//    Button mButtonProfile;
-//    @Bind(R.id.button_fbPage)
-//    Button mButtonFbPage;
-//    @Bind(R.id.button_about_app)
-//    Button mButtonAboutApp;
-//    @Bind(R.id.button_about_college)
-//    Button mButtonAboutCollege;
-//    @Bind(R.id.button_support)
-//    Button mButtonSupport;
-//    @Bind(R.id.button_contact_us)
-//    Button mButtonContactUs;
-//    @Bind(R.id.button_faq)
-//    Button mButtonFaqs;
-//    @Bind(R.id.button_rate_us)
-//    Button mButtonRateUs;
-//    @Bind(R.id.button_logout)
-//    Button mButtonLogOut;
+
 
     Bus mBus = new Bus();
     PostLoginActivity mActivity;
@@ -207,6 +192,11 @@ public class FragmentSettings extends Fragment  {
       SharedPreferences.Editor editor = mSharedPreferences.edit();
       editor.putBoolean(getString(R.string.login_key),false);
       editor.commit();
+
+        Snackbar.make(getView(),"Loout",Snackbar.LENGTH_SHORT);
+
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        startActivity(intent);
     }
 
 }

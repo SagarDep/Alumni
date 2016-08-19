@@ -24,14 +24,7 @@ import com.squareup.otto.Bus;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-/**
- * A simple {@link android.support.v4.app.Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentWebView.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentWebView#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FragmentWebView extends android.support.v4.app.Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,7 +36,7 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+
 
     /*
     * Butterknife
@@ -58,7 +51,7 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
 
     Bus mBus = new Bus();
 
-    PostLoginActivity mActivity ;
+
 
     public FragmentWebView() {
         // Required empty public constructor
@@ -97,7 +90,7 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_web_view, container, false);
 
-        mActivity = (PostLoginActivity) getActivity();
+
 
         ButterKnife.bind(this,view);
         //Bus Registering
@@ -150,22 +143,12 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+
     }
 
     @Override
@@ -182,7 +165,7 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+
     }
 
     /**
@@ -195,8 +178,5 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+
 }

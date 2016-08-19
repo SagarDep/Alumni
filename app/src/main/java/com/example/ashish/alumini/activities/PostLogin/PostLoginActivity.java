@@ -34,8 +34,8 @@ public class PostLoginActivity extends AppCompatActivity implements
         FragmentAboutApp.OnFragmentInteractionListener,
         FragmentProfile.OnFragmentInteractionListener,
         FragmentJobDetails.OnFragmentInteractionListener,
-        FragmentGetProfileData.OnFragmentInteractionListener,
-        FragmentWebView.OnFragmentInteractionListener{
+        FragmentGetProfileData.OnFragmentInteractionListener
+        {
 
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
@@ -46,6 +46,9 @@ public class PostLoginActivity extends AppCompatActivity implements
 
     Bus mBus = new Bus();
 
+    /*
+    * To manage the back press button
+    * */
     Boolean mBackToMainScreen = true;
     Boolean mBackToSettings = true;
     Boolean mBackToJobList = true;
@@ -60,8 +63,6 @@ public class PostLoginActivity extends AppCompatActivity implements
         mActionBar = getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
         mActionBar.setElevation(0);
-
-
 
 
         mBus.register(this);

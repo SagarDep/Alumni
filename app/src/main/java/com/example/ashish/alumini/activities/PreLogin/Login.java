@@ -69,7 +69,6 @@ public class Login extends Activity
                 new Runnable() {
                     public void run() {
                         onLoginSuccess();
-
                         pDialog.dismiss();
                     }
                 }, 1000);

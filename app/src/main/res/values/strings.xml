@@ -37,7 +37,7 @@
     <!--For the About app Fragment-->
     <string name="developed_by">Designed &amp; Developed By Arya</string>
 
-    <!--Urls used in webviews-->
+    <!--Urls used in web views-->
     <string name="url_facebook_page">https://google.com/</string>
     <string name="url_college">https://google.com/</string>
 
@@ -55,6 +55,12 @@
     <!--Filter-->
     <string name="filter">FILTER</string>
 
+    <!--Faq data-->
     <string name="answer1">This is the answer to 1 FAQ</string>
     <string name="answer2">This is the answer to 2 FAQ</string>
+
+    <!--Main Screen-->
+    <string name="members">Members</string>
+    <string name="events">Events</string>
+    <string name="about">About</string>
 </resources>

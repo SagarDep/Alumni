@@ -3,30 +3,29 @@ package com.example.ashish.alumini.fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.example.ashish.alumini.EventListAdapter;
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.activities.PostLogin.MainScreen;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.deepak.events.EventListInstance;
+import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
 import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 
-/**
- * A simple {@link android.support.v4.app.Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentEvents.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentEvents#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class FragmentEvents extends android.support.v4.app.ListFragment {
+
+public class FragmentEvents extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
@@ -50,9 +49,9 @@ public class FragmentEvents extends android.support.v4.app.ListFragment {
 
     ArrayList<EventListInstance> mInstanceArrayList = new ArrayList<>();
 
-    Bus mBus ;
+    Bus mBus = new Bus() ;
 
-    PostLoginActivity mActivity ;
+    MainScreen mActivity ;
 
     public FragmentEvents() {
         // Required empty public constructor
@@ -83,6 +82,9 @@ public class FragmentEvents extends android.support.v4.app.ListFragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
     }
 
     @Override
@@ -91,12 +93,63 @@ public class FragmentEvents extends android.support.v4.app.ListFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_events, container, false);
 
-        mActivity = (PostLoginActivity) getActivity();
+        mActivity = (MainScreen) getActivity();
 
         ButterKnife.bind(this,view);
         //Bus Registering
         mBus.register(getActivity());
 
+        EventListInstance listInstance = new EventListInstance();
+        listInstance.setEventName("Tehnika");
+        listInstance.setWebViewLink("http://google.com");
+        mInstanceArrayList.add(listInstance);
+
+        listInstance = new EventListInstance();
+        listInstance.setEventName("Microsoft Innovation Center");
+        listInstance.setWebViewLink("http://google.com");
+        mInstanceArrayList.add(listInstance);
+
+        listInstance = new EventListInstance();
+        listInstance.setEventName("Sanghosti");
+        listInstance.setWebViewLink("http://google.com");
+        mInstanceArrayList.add(listInstance);
+
+        listInstance = new EventListInstance();
+        listInstance.setEventName("International Conference");
+        listInstance.setWebViewLink("http://google.com");
+        mInstanceArrayList.add(listInstance);
+
+        listInstance = new EventListInstance();
+        listInstance.setEventName("Engineer Day");
+        listInstance.setWebViewLink("http://google.com");
+        mInstanceArrayList.add(listInstance);
+
+        listInstance = new EventListInstance();
+        listInstance.setEventName("Zephr");
+        listInstance.setWebViewLink("http://google.com");
+        mInstanceArrayList.add(listInstance);
+
+
+        listInstance = new EventListInstance();
+        listInstance.setEventName("Auto Ignition");
+        listInstance.setWebViewLink("http://google.com");
+        mInstanceArrayList.add(listInstance);
+
+        listInstance = new EventListInstance();
+        listInstance.setEventName("TopGun");
+        listInstance.setWebViewLink("http://google.com");
+        mInstanceArrayList.add(listInstance);
+
+        listInstance = new EventListInstance();
+        listInstance.setEventName("Exergie");
+        listInstance.setWebViewLink("http://google.com");
+        mInstanceArrayList.add(listInstance);
+
+
+
+        EventListAdapter adapter = new EventListAdapter(getActivity(),R.layout.list_layout_events,mInstanceArrayList);
+        mListView.setDivider(null);
+        mListView.setAdapter(adapter);
 
         return view;
     }
@@ -129,5 +182,10 @@ public class FragmentEvents extends android.support.v4.app.ListFragment {
 
     }
 
+    @OnItemClick(R.id.listView_events)
+    public void listClickListener(int position){
+        Log.d(position+"", " clicked" );
+        mActivity.changeFragment(new FragmentWebView().newInstance("url",""));
+    }
 
 }

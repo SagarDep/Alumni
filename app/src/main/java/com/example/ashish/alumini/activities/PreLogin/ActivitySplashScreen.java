@@ -5,10 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
-import com.example.ashish.alumini.MainActivity;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.MainScreen;
 
@@ -32,8 +29,6 @@ public class ActivitySplashScreen extends AppCompatActivity {
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
         Boolean spLogin = mSharedPreferences.getBoolean(mLoginKey,false);
-
-        Log.d("Preference Data",spLogin.toString());
 
 
 

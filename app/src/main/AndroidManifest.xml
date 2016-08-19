@@ -17,80 +17,80 @@
             android:label="Alumni">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".profile" />
         <activity android:name=".Edit_Profile" />
-        <activity android:name=".onSearch" />
 
-        <activity
-            android:name=".About_app"
-            android:label="About App" />
-        <activity
-            android:name=".Contact_us"
-            android:label="Contact Us" />
         <activity
             android:name=".Job.jobProfile"
             android:label="Company Profile" />
-        <activity android:name=".activities.PreLogin.Login"></activity>
-        <activity android:name=".activities.PreLogin.SignUp"></activity>
-        <activity android:name=".activities.PostLogin.MainScreen"></activity>
-        <activity
-            android:name=".deepak.events.EventPage"
-            android:label="Events"></activity>
+        <activity android:name=".activities.PreLogin.Login"/>
+        <activity android:name=".activities.PreLogin.SignUp"/>
+        <activity android:name=".activities.PostLogin.MainScreen"/>
+
         <activity
             android:name=".deepak.about_college.About_college"
-            android:label="ACEIT"></activity>
-        <activity android:name=".MainActivity"></activity>
+            android:label="ACEIT"/>
+        <activity android:name=".activities$PreLogin.MainActivity"/>
         <activity
             android:name=".deepak.events.Technica"
-            android:label="Technica Naitus"></activity>
+            android:label="Technica Naitus"/>
         <activity
             android:name=".deepak.events.Shrandhan"
-            android:label="Shrandhanjali"></activity>
+            android:label="Shrandhanjali"/>
         <activity
             android:name=".deepak.events.AryaRatan"
-            android:label="Arya Ratan"></activity>
+            android:label="Arya Ratan"/>
         <activity
             android:name=".deepak.events.Eupo"
-            android:label="Euphonious"></activity>
+            android:label="Euphonious"/>
         <activity
             android:name=".deepak.events.AryaCup"
-            android:label="Arya Cup"></activity>
+            android:label="Arya Cup"/>
         <activity
             android:name=".deepak.events.Victory"
-            android:label="Victory"></activity>
+            android:label="Victory"/>
         <activity
             android:name=".deepak.events.Exergie"
-            android:label="Exergie"></activity>
+            android:label="Exergie"/>
         <activity
             android:name=".deepak.events.Social"
-            android:label="Social Event"></activity>
+            android:label="Social Event"/>
         <activity
             android:name=".deepak.events.TopGun"
-            android:label="TopGun"></activity>
+            android:label="TopGun"/>
         <activity
             android:name=".deepak.events.Auto"
-            android:label="Auto"></activity>
+            android:label="Auto"/>
         <activity
             android:name=".deepak.events.Zephr"
-            android:label="Zephr"></activity>
+            android:label="Zephr"/>
         <activity
             android:name=".deepak.events.Engineer"
-            android:label="Engineer Day"></activity>
+            android:label="Engineer Day"/>
         <activity
             android:name=".deepak.events.Confernce"
-            android:label="International Conference"></activity>
+            android:label="International Conference"/>
         <activity
             android:name=".deepak.events.sanghosti"
-            android:label="Sanghosti"></activity>
+            android:label="Sanghosti"/>
         <activity
             android:name=".deepak.events.microsoft"
-            android:label="Microsoft Innovation Center"></activity>
+            android:label="Microsoft Innovation Center"/>
 
-        <activity android:name=".activities.PostLogin.PostLoginActivity"></activity>
+        <activity android:name=".activities.PostLogin.PostLoginActivity"/>
+        <activity android:name=".activities.PreLogin.MainActivity"/>
     </application>
 
 </manifest>
+
+
+
+
+
+
+
+
