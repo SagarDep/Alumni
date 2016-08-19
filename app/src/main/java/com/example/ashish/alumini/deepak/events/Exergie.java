@@ -29,7 +29,7 @@ public class Exergie extends AppCompatActivity implements BaseSliderView.OnSlide
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exergie);
+//        setContentView(R.layout.activity_exergie);
        // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);

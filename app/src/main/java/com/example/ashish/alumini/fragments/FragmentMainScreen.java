@@ -2,28 +2,21 @@ package com.example.ashish.alumini.fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.MainScreen;
+import com.example.ashish.alumini.activities.PostLogin.ActivityMainScreen;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
 import com.squareup.otto.Bus;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * A simple {@link android.support.v4.app.Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentMainScreen.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentMainScreen#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FragmentMainScreen extends android.support.v4.app.Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,7 +39,7 @@ public class FragmentMainScreen extends android.support.v4.app.Fragment {
 
     Bus mBus = new Bus();
 
-    MainScreen mActivity ;
+    ActivityMainScreen mActivity ;
 
     public FragmentMainScreen() {
         // Required empty public constructor
@@ -85,7 +78,7 @@ public class FragmentMainScreen extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.activity_main_screen2, container, false);
 
-        mActivity = (MainScreen) getActivity();
+        mActivity = (ActivityMainScreen) getActivity();
 
         ButterKnife.bind(this,view);
         //Bus Registering
@@ -127,6 +120,11 @@ public class FragmentMainScreen extends android.support.v4.app.Fragment {
     @OnClick(R.id.circleButton_event)
     public void changeEventFragment(){
         mActivity.changeFragment(new FragmentEvents().newInstance("",""));
+    }
+
+    @OnClick(R.id.circleButton_about)
+    public void showWebView(){
+        mActivity.changeFragment(new FragmentWebView().newInstance("http://aryacollege.in",""));
     }
 
 }

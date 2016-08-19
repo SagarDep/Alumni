@@ -25,15 +25,10 @@ import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
 public class PostLoginActivity extends AppCompatActivity implements
-        FragmentMenu.OnFragmentInteractionListener,
-        FragmentSettings.OnFragmentInteractionListener,
-        FragmentJobs.OnFragmentInteractionListener,
         FragmentMembers.OnFragmentInteractionListener,
         FragmentFaq.OnFragmentInteractionListener,
         FragmentJobPosting.OnFragmentInteractionListener,
-        FragmentAboutApp.OnFragmentInteractionListener,
         FragmentProfile.OnFragmentInteractionListener,
-        FragmentJobDetails.OnFragmentInteractionListener,
         FragmentGetProfileData.OnFragmentInteractionListener
         {
 
@@ -61,10 +56,13 @@ public class PostLoginActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_activity_member);
         //Setting the Action Bar
         mActionBar = getSupportActionBar();
+
+
         mActionBar.setDisplayHomeAsUpEnabled(true);
         mActionBar.setElevation(0);
+        mActionBar.setTitle("Members");
 
-
+        //event bus registering
         mBus.register(this);
 
         mFragmentManager = getSupportFragmentManager();
@@ -80,7 +78,7 @@ public class PostLoginActivity extends AppCompatActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==android.R.id.home)
-            this.finish();
+            onBackPressed();
         return true;
     }
 

@@ -64,7 +64,8 @@
         android:textColor="#fff"
         android:layout_below="@+id/password"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:id="@+id/textView2" />
 
     <Button
         android:id="@+id/login"
@@ -73,13 +74,11 @@
         android:text="Continue"
         android:textSize="18dp"
         android:textColor="#fff"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="6dp"
         android:background="@drawable/sign_login_button"
-        android:layout_below="@+id/password"
-        android:layout_alignLeft="@+id/password"
-        android:layout_alignStart="@+id/password"
-        android:layout_marginTop="70dp" />
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="30dp" />
 
 
 </RelativeLayout>

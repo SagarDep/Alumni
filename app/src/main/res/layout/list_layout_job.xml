@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="5dp">
+    android:layout_marginBottom="5dp"
+    android:paddingTop="5dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="70dp"
@@ -15,7 +16,8 @@
         android:layout_marginLeft="10dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:src="@drawable/image" />
+        android:src="@drawable/image"
+        android:layout_marginTop="3dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,7 +26,7 @@
         android:textColor="@color/black_de"
         android:id="@+id/textView_companyName"
         android:layout_marginLeft="19dp"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/imageView_logo"
         android:layout_toEndOf="@+id/imageView_logo"
@@ -38,20 +40,18 @@
         app:iiv_color="@color/black_de"
         android:layout_alignTop="@+id/textView_joblocation"
         android:layout_alignLeft="@+id/textView_companyName"
-        android:layout_alignStart="@+id/textView_companyName" />
+        android:layout_alignStart="@+id/textView_companyName"
+        android:layout_marginRight="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text=""
         android:id="@+id/textView_joblocation"
+        android:textSize="14sp"
         android:layout_below="@+id/textView_companyName"
         android:layout_toRightOf="@+id/imageView4"
-        android:layout_toEndOf="@+id/imageView4"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:textSize="14dp" />
+        android:layout_toEndOf="@+id/imageView4" />
 
     <com.mikepenz.iconics.view.IconicsImageView
         android:layout_width="16dp"
@@ -59,7 +59,7 @@
         android:id="@+id/imageView5"
         app:iiv_icon="faw-briefcase"
         app:iiv_color="@color/black_de"
-        android:layout_alignTop="@+id/textView_jobPosition"
+        android:layout_alignBottom="@+id/textView_jobPosition"
         android:layout_alignLeft="@+id/imageView4"
         android:layout_alignStart="@+id/imageView4" />
 
@@ -68,36 +68,41 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/textView_jobPosition"
-        android:layout_alignBottom="@+id/imageView_logo"
+        android:textSize="14sp"
+        android:layout_below="@+id/textView_joblocation"
         android:layout_alignLeft="@+id/textView_joblocation"
         android:layout_alignStart="@+id/textView_joblocation"
-        android:layout_marginTop="5dp"
-        android:textSize="14dp" />
+        android:layout_marginTop="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/textView_lastDate"
-        android:textSize="14dp"
+        android:textSize="14sp"
         android:layout_below="@+id/imageView4"
         android:layout_alignRight="@+id/view14"
-        android:layout_alignEnd="@+id/view14" />
+        android:layout_alignEnd="@+id/view14"
+        android:layout_marginTop="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/textView_jobType"
-        android:textSize="14dp"
+        android:textSize="14sp"
         android:layout_below="@+id/textView_companyName"
         android:layout_alignRight="@+id/textView_lastDate"
         android:layout_alignEnd="@+id/textView_lastDate" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_below="@id/imageView_logo"
         android:background="@color/grey"
-        android:layout_margin="5dp"
-        android:id="@+id/view14" />
+        android:id="@+id/view14"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/imageView5"
+        android:layout_toRightOf="@+id/imageView_logo"
+        android:layout_toEndOf="@+id/imageView_logo"
+        android:layout_marginTop="15dp" />
 </RelativeLayout>

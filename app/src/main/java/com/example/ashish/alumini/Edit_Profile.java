@@ -17,7 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.ashish.alumini.activities.PostLogin.MainScreen;
+import com.example.ashish.alumini.activities.PostLogin.ActivityMainScreen;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -114,7 +114,7 @@ public class Edit_Profile extends Activity {
                                 }
                                 if (response.contains("uid") && foo.equals("signup")) {
                                     Log.d("SAVING", "WORK");
-                                    Intent intent = new Intent(Edit_Profile.this, MainScreen.class);
+                                    Intent intent = new Intent(Edit_Profile.this, ActivityMainScreen.class);
                                     startActivity(intent);
                                     overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
                                     try {
@@ -163,7 +163,7 @@ public class Edit_Profile extends Activity {
 
 
 
-//                Intent intent = new Intent(Edit_Profile.this, MainScreen.class);
+//                Intent intent = new Intent(Edit_Profile.this, ActivityMainScreen.class);
 //                startActivity(intent);
 //                overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
 

@@ -35,14 +35,14 @@
     <string name="contact">Contact</string>
 
     <!--For the About app Fragment-->
-    <string name="developed_by">Designed &amp; Developed By Arya</string>
+    <string name="developed_by">Designed &amp; Developed By Ashish</string>
 
     <!--Urls used in web views-->
     <string name="url_facebook_page">https://google.com/</string>
     <string name="url_college">https://google.com/</string>
 
     <!--Keys used in shared preferences-->
-    <string name="login_key">LOGIN_KEY</string>
+    <string name="is_logged_in">IS_LOGGED_IN</string>
     <string name="preference_file_key">com.example.myapp.PREFERENCE_FILE_KEY</string>
 
     <!--Image Descriptions-->
@@ -63,4 +63,17 @@
     <string name="members">Members</string>
     <string name="events">Events</string>
     <string name="about">About</string>
+
+    <!--Settings-->
+    <string name="my_profile">My Profile</string>
+    <string name="facebook">Facebook</string>
+    <string name="post_a_job">Post a Job</string>
+    <string name="about_app">About Arya Alumni App</string>
+    <string name="about_college">About College</string>
+    <string name="support_us">Support Us</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="faqs">FAQs</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="log_out">Log Out</string>
+
 </resources>

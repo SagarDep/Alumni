@@ -52,7 +52,6 @@ public class MainActivity extends TabActivity {
 
     @Override
     public void onBackPressed() {
-
         moveTaskToBack(true);
     }
 

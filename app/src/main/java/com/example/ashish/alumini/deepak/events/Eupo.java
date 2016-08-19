@@ -29,7 +29,7 @@ public class Eupo extends AppCompatActivity implements BaseSliderView.OnSliderCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eupo);
+//        setContentView(R.layout.activity_eupo);
         //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);

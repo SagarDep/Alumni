@@ -67,13 +67,12 @@ public class FragmentViewPager3 extends Fragment {
     }
 
     private void prepareList() {
-        varArrayList.add(new MemberListInstance("a","b","c","a","b","c","d"));
-        varArrayList.add(new MemberListInstance("o1","Ashish","Android Dev","Parkzap","Gurgaon","CS","2017"));
-        varArrayList.add(new MemberListInstance("a","b","c","a","b","c","d"));
-        varArrayList.add(new MemberListInstance("a","b","c","a","b","c","d"));
-        varArrayList.add(new MemberListInstance("a","b","c","a","b","c","d"));
-        varArrayList.add(new MemberListInstance("a","b","c","a","b","c","d"));
-        varArrayList.add(new MemberListInstance("a","b","c","a","b","c","d"));
+        varArrayList.add(new MemberListInstance("o1", "Ashish", "Android Dev", "Parkzap", "Gurgaon", "CS", "2017"));
+        varArrayList.add(new MemberListInstance("03","Lavish Aggarwal","Full Stack Developer","HackerEarth","Bangalore","CS","2012"));
+        varArrayList.add(new MemberListInstance("04","Hari Om","Web Developer","zillion","Gurgaon","IT","2011"));
+        varArrayList.add(new MemberListInstance("05","Ayush Sharma","Full Stack Developer","Innovaccer","NOIDA","CS","2013"));
+        varArrayList.add(new MemberListInstance("06","Ashwin Devarajan","Data Scientist","Moksha Tech","Jaipur","CS","2013"));
+
 
         mAdapter.notifyDataSetChanged();
     }

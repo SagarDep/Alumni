@@ -30,7 +30,7 @@ public class Social extends AppCompatActivity implements BaseSliderView.OnSlider
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_social);
+//        setContentView(R.layout.activity_social);
 
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);

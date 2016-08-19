@@ -22,14 +22,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentJobs.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentJobs#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FragmentJobs extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,15 +42,14 @@ public class FragmentJobs extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
 
     public FragmentJobs() {
         // Required empty public constructor
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"Zillion","Gurgaon","Android Dev","5","12/5/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"GenPact","Jaipur","Team Leader","3","12/5/16","Non Technical"));
+        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Web Dev","5","25/8/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"Innovaccer","NOIDA","Python Dev","5","12/5/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"zillion","Delhi","Analytics","5","18/5/16","Technical"));
 
     }
 
@@ -120,6 +112,8 @@ public class FragmentJobs extends Fragment {
         FragmentJobDetails fragmentJobDetails = new FragmentJobDetails();
         fragmentJobDetails.setData(mArrayList.get(position));
         mActivity.changeFragment(fragmentJobDetails);
+        mBus.post(8888);
+
     }
 
     @Override
@@ -139,32 +133,14 @@ public class FragmentJobs extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+
 }

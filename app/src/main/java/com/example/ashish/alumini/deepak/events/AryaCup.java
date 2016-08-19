@@ -29,7 +29,7 @@ public class AryaCup extends AppCompatActivity  implements BaseSliderView.OnSlid
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_arya_cup);
+//        setContentView(R.layout.activity_arya_cup);
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);

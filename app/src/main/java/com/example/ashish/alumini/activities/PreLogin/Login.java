@@ -11,8 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.ashish.alumini.activities.PostLogin.MainScreen;
+import com.example.ashish.alumini.activities.PostLogin.ActivityMainScreen;
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 
 //import com.example.ashish.alumini.R;
 
@@ -77,12 +78,10 @@ public class Login extends Activity
 
     public void onLoginSuccess() {
         loginButton.setEnabled(true);
-        Intent move=new Intent(Login.this,MainScreen.class);
+        Intent move=new Intent(Login.this,ActivityMainScreen.class);
         startActivity(move);
 
-        SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putBoolean(getString(R.string.login_key),true);
-        editor.commit();
+        GlobalPrefs.putBooloean(getString(R.string.is_logged_in),true);
     }
 
     public void onLoginFailed() {

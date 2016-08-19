@@ -100,7 +100,10 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
         mProgressBar.setVisibility(View.VISIBLE);
         mProgressBar.setMax(100);
         mWebView.getSettings().setJavaScriptEnabled(true);
+
+        // 1st param is url
         mWebView.loadUrl(mParam1);
+
         mWebView.canGoBackOrForward(5);
 
         mWebView.setWebViewClient(new WebViewClient() {
@@ -119,10 +122,10 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
-                mImageView.setBackgroundDrawable(new IconicsDrawable(getActivity())
-                        .icon(FontAwesome.Icon.faw_exclamation_triangle)
-                        .color(Color.RED)
-                        .sizeDp(200));
+//                mImageView.setBackgroundDrawable(new IconicsDrawable(getActivity())
+//                        .icon(FontAwesome.Icon.faw_exclamation_triangle)
+//                        .color(Color.RED)
+//                        .sizeDp(200));
             }
         });
 

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +12,7 @@ import android.widget.ListView;
 
 import com.example.ashish.alumini.EventListAdapter;
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.MainScreen;
-import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.activities.PostLogin.ActivityMainScreen;
 import com.example.ashish.alumini.deepak.events.EventListInstance;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
 import com.squareup.otto.Bus;
@@ -51,7 +50,9 @@ public class FragmentEvents extends Fragment {
 
     Bus mBus = new Bus() ;
 
-    MainScreen mActivity ;
+    ActivityMainScreen mActivity ;
+
+    ActionBar mActionBar;
 
     public FragmentEvents() {
         // Required empty public constructor
@@ -83,8 +84,6 @@ public class FragmentEvents extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
-
     }
 
     @Override
@@ -93,11 +92,13 @@ public class FragmentEvents extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_events, container, false);
 
-        mActivity = (MainScreen) getActivity();
+        mActivity = (ActivityMainScreen) getActivity();
 
         ButterKnife.bind(this,view);
         //Bus Registering
         mBus.register(getActivity());
+
+        mActionBar = mActivity.getSupportActionBar();
 
         EventListInstance listInstance = new EventListInstance();
         listInstance.setEventName("Tehnika");
@@ -151,6 +152,11 @@ public class FragmentEvents extends Fragment {
         mListView.setDivider(null);
         mListView.setAdapter(adapter);
 
+        //ActionBar operations
+        mActionBar.setDisplayHomeAsUpEnabled(true);
+        mActionBar.setTitle("Events");
+        mActionBar.show();
+
         return view;
     }
 
@@ -184,8 +190,9 @@ public class FragmentEvents extends Fragment {
 
     @OnItemClick(R.id.listView_events)
     public void listClickListener(int position){
-        Log.d(position+"", " clicked" );
-        mActivity.changeFragment(new FragmentWebView().newInstance("url",""));
+        // getting the web link of event
+        String url = mInstanceArrayList.get(position).getWebViewLink();
+        mActivity.changeFragment(new FragmentWebView().newInstance(url,""));
     }
 
 }

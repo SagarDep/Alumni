@@ -29,7 +29,7 @@ public class Technica extends AppCompatActivity implements BaseSliderView.OnSlid
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_technica);
+//        setContentView(R.layout.activity_technica);
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);

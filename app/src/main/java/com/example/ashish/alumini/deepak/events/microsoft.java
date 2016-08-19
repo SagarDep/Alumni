@@ -29,7 +29,7 @@ public class microsoft extends AppCompatActivity implements BaseSliderView.OnSli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_microsoft);
+//        setContentView(R.layout.activity_microsoft);
        // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);

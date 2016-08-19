@@ -7,7 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.MainScreen;
+import com.example.ashish.alumini.activities.PostLogin.ActivityMainScreen;
+import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 
 public class ActivitySplashScreen extends AppCompatActivity {
 
@@ -25,18 +26,20 @@ public class ActivitySplashScreen extends AppCompatActivity {
         //hide the actionBar
         getSupportActionBar().hide();
 
-        mSharedPreferences = this.getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
-        Boolean spLogin = mSharedPreferences.getBoolean(mLoginKey,false);
+        boolean spLogin = GlobalPrefs.getBoolean(getString(R.string.is_logged_in));
 
 
 
         if (spLogin==true){
-            mIntent = new Intent(this, MainScreen.class);
+            // skip the login/signup tabbed activities
+            mIntent = new Intent(this, ActivityMainScreen.class);
         }
-        else
+        else{
+            // SWITCH TO login/signup screens
             mIntent = new Intent(this,MainActivity.class);
+        }
+
 
 
         //creating thread to hold screen for splash

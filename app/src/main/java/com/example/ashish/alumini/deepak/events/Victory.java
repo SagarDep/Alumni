@@ -30,7 +30,7 @@ public class Victory extends AppCompatActivity implements BaseSliderView.OnSlide
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_victory);
+//        setContentView(R.layout.activity_victory);
        // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("e53935")));
         mainScroll=(ScrollView)findViewById(R.id.scroll);
         Description = (TextView) findViewById(R.id.desc);

@@ -5,30 +5,25 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 ;
 import com.example.ashish.alumini.activities.PreLogin.MainActivity;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.squareup.otto.Bus;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentSettings.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentSettings#newInstance} factory method to
- * create an instance of this fragment.
- */
+
+
 public class FragmentSettings extends Fragment  {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,7 +35,6 @@ public class FragmentSettings extends Fragment  {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
 
     /*
     * Butterknife
@@ -95,6 +89,7 @@ public class FragmentSettings extends Fragment  {
 
         mActivity = (PostLoginActivity) getActivity();
 
+
         mSharedPreferences = getActivity().getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
@@ -103,26 +98,18 @@ public class FragmentSettings extends Fragment  {
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
     /**
@@ -135,10 +122,7 @@ public class FragmentSettings extends Fragment  {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+
 
 
     @OnClick(R.id.button_postjob)
@@ -187,16 +171,38 @@ public class FragmentSettings extends Fragment  {
     public void handlerRatingButton(){
         mBus.post(R.id.button_faq);
     }
+
+
     @OnClick(R.id.button_logout)
     public void handlerLogoutButton(){
-      SharedPreferences.Editor editor = mSharedPreferences.edit();
-      editor.putBoolean(getString(R.string.login_key),false);
-      editor.commit();
+//      SharedPreferences.Editor editor = mSharedPreferences.edit();
+//      editor.putBoolean(getString(R.string.login_key),false);
+//      editor.commit();
 
-        Snackbar.make(getView(),"Loout",Snackbar.LENGTH_SHORT);
 
-        Intent intent = new Intent(getActivity(), MainActivity.class);
-        startActivity(intent);
+        GlobalPrefs.putBooloean(getString(R.string.is_logged_in),false);
+
+        Toast.makeText(getActivity(),"You are successfully logged Out", Toast.LENGTH_SHORT).show();
+
+
+//        Intent intent = new Intent(getActivity(), MainActivity.class);
+//        startActivity(intent);
+
+
+        Thread Splashtimer = new Thread(){
+            public void run(){
+                try{
+                    sleep(Toast.LENGTH_SHORT);
+                }catch(InterruptedException e){
+                    e.printStackTrace();
+                }finally{
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
+                }
+            }
+        };
+        Splashtimer.start();
+
     }
 
 }
