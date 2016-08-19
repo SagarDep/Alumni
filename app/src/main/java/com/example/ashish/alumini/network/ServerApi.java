@@ -11,7 +11,7 @@ import retrofit2.http.GET;
 /**
  * Created by ashish on 8/8/16.
  */
-public interface BooksApi {
+public interface ServerApi {
 
     @GET("/jobs")
     Call<List<Job>> GetJobList();

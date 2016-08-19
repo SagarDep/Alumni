@@ -1,7 +1,6 @@
 package com.example.ashish.alumini.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.ashish.alumini.Job.JobListAdapter;
@@ -18,7 +16,7 @@ import com.example.ashish.alumini.R;
 
 
 import com.example.ashish.alumini.network.ApiClient;
-import com.example.ashish.alumini.network.BooksApi;
+import com.example.ashish.alumini.network.ServerApi;
 import com.example.ashish.alumini.network.pojo.Job;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.squareup.otto.Bus;
@@ -32,9 +30,6 @@ import butterknife.OnItemClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
 
 
 public class FragmentJobs extends Fragment {
@@ -61,28 +56,20 @@ public class FragmentJobs extends Fragment {
 
     public FragmentJobs() {
         // Required empty public constructor
-//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
-//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Android Dev","5","12/5/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"Zillion","Gurgaon","Android Dev","5","12/5/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"GenPact","Jaipur","Team Leader","3","12/5/16","Non Technical"));
+        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Web Dev","5","25/8/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"Innovaccer","NOIDA","Python Dev","5","12/5/16","Technical"));
+        mArrayList.add(new JobListInstance(null,"zillion","Delhi","Analytics","5","18/5/16","Technical"));
 
-
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl("http://192.168.43.115:3000/")
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//
-//        BooksApi service = retrofit.create(BooksApi.class);
-
-//        Call<List<Job>> call = service.GetJobList();
-        Call<List<Job>> call = ApiClient.getClient().create(BooksApi.class).GetJobList();
-
+        Call<List<Job>> call = ApiClient.getClient().create(ServerApi.class).GetJobList();
 
         call.enqueue(new Callback<List<Job>>() {
             @Override
             public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
                 Log.d("API call ","Successfull");
+
+
             }
 
             @Override
@@ -182,6 +169,8 @@ public class FragmentJobs extends Fragment {
         super.onDetach();
 
     }
+
+
 
 
 }

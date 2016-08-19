@@ -22,14 +22,14 @@ public class ApiClient {
         return retrofit;
     }
 
-    public static BooksApi getServerApi() {
+    public static ServerApi getServerApi() {
         if (retrofit==null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
-        return retrofit.create(BooksApi.class);
+        return retrofit.create(ServerApi.class);
     }
 
 
