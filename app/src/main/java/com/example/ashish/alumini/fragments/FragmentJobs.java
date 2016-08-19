@@ -74,7 +74,7 @@ public class FragmentJobs extends Fragment {
 
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.169.5.93:3000/")
+                .baseUrl("http://192.168.43.115:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
