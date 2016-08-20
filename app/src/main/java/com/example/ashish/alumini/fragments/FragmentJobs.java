@@ -44,6 +44,7 @@ public class FragmentJobs extends Fragment {
     ListView mListViewJobs;
 
     List<JobListInstance> mArrayList = new ArrayList<>();
+    List<Job> mArrayList2 = new ArrayList<>();
     JobListAdapter mListAdapter;
 
     PostLoginActivity mActivity;
@@ -56,27 +57,13 @@ public class FragmentJobs extends Fragment {
 
     public FragmentJobs() {
         // Required empty public constructor
-        mArrayList.add(new JobListInstance(null,"Zillion","Gurgaon","Android Dev","5","12/5/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"GenPact","Jaipur","Team Leader","3","12/5/16","Non Technical"));
-        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Web Dev","5","25/8/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"Innovaccer","NOIDA","Python Dev","5","12/5/16","Technical"));
-        mArrayList.add(new JobListInstance(null,"zillion","Delhi","Analytics","5","18/5/16","Technical"));
-
-        Call<List<Job>> call = ApiClient.getClient().create(ServerApi.class).GetJobList();
-
-        call.enqueue(new Callback<List<Job>>() {
-            @Override
-            public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
-                Log.d("API call ","Successfull");
+//        mArrayList.add(new JobListInstance(null,"Zillion","Gurgaon","Android Dev","5","12/5/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"GenPact","Jaipur","Team Leader","3","12/5/16","Non Technical"));
+//        mArrayList.add(new JobListInstance(null,"Parkzap","Gurgaon","Web Dev","5","25/8/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"Innovaccer","NOIDA","Python Dev","5","12/5/16","Technical"));
+//        mArrayList.add(new JobListInstance(null,"zillion","Delhi","Analytics","5","18/5/16","Technical"));
 
 
-            }
-
-            @Override
-            public void onFailure(Call<List<Job>> call, Throwable t) {
-                Log.d("API call ","Failed");
-            }
-        });
 
 
 
@@ -108,7 +95,10 @@ public class FragmentJobs extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-       mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList);
+//       mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList);
+//       mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList2);
+
+
     }
 
 
@@ -117,10 +107,7 @@ public class FragmentJobs extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-
         mActivity  = (PostLoginActivity) getActivity();
-
-        mListViewJobs.setAdapter(mListAdapter);
 
     }
 
@@ -130,6 +117,27 @@ public class FragmentJobs extends Fragment {
         View view = inflater.inflate(R.layout.fragment_jobs,container,false);
 
         ButterKnife.bind(this,view);
+
+
+        Call<List<Job>> call = ApiClient.getClient().create(ServerApi.class).GetJobList();
+
+        call.enqueue(new Callback<List<Job>>() {
+            @Override
+            public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
+                Log.d("API call ","Successfull");
+                mArrayList2 = response.body();
+
+                mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList2);
+                mListViewJobs.setAdapter(mListAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Job>> call, Throwable t) {
+                Log.d("API call ","Failed");
+            }
+        });
+
+
         
         return view;
     }
@@ -140,8 +148,9 @@ public class FragmentJobs extends Fragment {
     @OnItemClick(R.id.listView_jobs)
     public void listClickHandler(int position){
         FragmentJobDetails fragmentJobDetails = new FragmentJobDetails();
-        fragmentJobDetails.setData(mArrayList.get(position));
+        fragmentJobDetails.setData(mArrayList2.get(position));
         mActivity.changeFragment(fragmentJobDetails);
+        mBus.post(8888);
     }
 
     @Override

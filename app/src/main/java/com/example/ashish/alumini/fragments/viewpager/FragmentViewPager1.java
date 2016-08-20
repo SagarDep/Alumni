@@ -63,7 +63,6 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
         //getting instance of activity
         mActivity = (PostLoginActivity) getActivity();
 
-        mBus.register(getActivity());
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
 
@@ -75,7 +74,9 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
                 new RecyclerItemClickListener(getActivity(), recyclerView ,
                         new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
-                        mActivity.changeFragment(new FragmentProfile().newInstance("",""));
+                        FragmentProfile fragmentProfile = new FragmentProfile().newInstance("","");
+//                        fragmentProfile.setData(m);
+                        mActivity.changeFragment(fragmentProfile);
                         mBus.post(R.id.recycler_view);
                     }
 
@@ -96,6 +97,23 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
         super.onActivityCreated(savedInstanceState);
 
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mBus.unregister(getActivity());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mBus.register(getActivity());
+
+    }
+
+    /*
+        * Function to create the list
+        * */
     private void prepareList() {
         varArrayList.add(new MemberListInstance("o1","Ashish","Android Dev","Parkzap","Gurgaon","CS","2017"));
         varArrayList.add(new MemberListInstance("02","Priyank Jain","Devops","Yatra.com","NOIDA","CS","2013"));

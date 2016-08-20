@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.network.pojo.Job;
 
 import java.util.List;
 
@@ -18,8 +19,8 @@ import butterknife.ButterKnife;
 /**
  * Created by ashish on 11/3/16.
  */
-public class JobListAdapter extends ArrayAdapter<JobListInstance> {
-    List<JobListInstance> mListJobs;
+public class JobListAdapter extends ArrayAdapter<Job> {
+    List<Job> mListJobs;
 
     @Bind(R.id.imageView_logo)
     ImageView mImageView;
@@ -31,8 +32,9 @@ public class JobListAdapter extends ArrayAdapter<JobListInstance> {
 
 
 
-    public JobListAdapter(Context context, int resource, List<JobListInstance> objects) {
+    public JobListAdapter(Context context, int resource, List<Job> objects) {
         super(context, resource, objects);
+
         mListJobs =objects;
 
     }
@@ -48,29 +50,25 @@ public class JobListAdapter extends ArrayAdapter<JobListInstance> {
         //Butterknife Injections
         ButterKnife.bind(this,convertView);
 
-        JobListInstance item = getItem(position);
-//
-//
-//        Holder holder = new Holder();
-//        holder.tv_name = (TextView) convertView.findViewById(R.id.textView_companyName);
-//        holder.tv_location = (TextView) convertView.findViewById(R.id.textView_joblocation);
-//        holder.imageView_profilePic = (ImageView) convertView.findViewById(R.id.imageView_logo);
-//
-////        holder.imageView_profilePic.setImageBitmap(MemberListInstance.getCircleBitmap(temp.logo));
-//        holder.tv_name.setText("Dummy Name");
-//        holder.tv_location.setText("Bharat");
-        mTextViewCompanyName.setText(item.getCompanyName());
-        mTextViewJobLocation.setText(item.getJobLocation());
-        mTextViewJobPosition.setText(item.getJobPost());
-        mTextViewJobType.setText(item.getJobType());
-        mTextViewLastDate.setText(item.getLastDate());
+        Job item = getItem(position);
 
+
+//        mTextViewCompanyName.setText(item.getCompanyName());
+//        mTextViewJobLocation.setText(item.getJobLocation());
+//        mTextViewJobPosition.setText(item.getJobPost());
+//        mTextViewJobType.setText(item.getJobType());
+//        mTextViewLastDate.setText(item.getLastDate());
+
+        mTextViewCompanyName.setText(item.getName());
+        mTextViewJobLocation.setText(item.getLocation());
+        mTextViewJobPosition.setText(item.getRole());
+        mTextViewJobType.setText(item.getType());
 
         return convertView;
     }
 
     @Override
-    public JobListInstance getItem(int position) {
+    public Job getItem(int position) {
         return mListJobs.get(position);
     }
 

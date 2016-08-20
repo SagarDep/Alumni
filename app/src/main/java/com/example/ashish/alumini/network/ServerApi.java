@@ -13,6 +13,9 @@ import retrofit2.http.GET;
  */
 public interface ServerApi {
 
+    /*
+    * to get the list of job posted
+    * */
     @GET("/jobs")
     Call<List<Job>> GetJobList();
 }

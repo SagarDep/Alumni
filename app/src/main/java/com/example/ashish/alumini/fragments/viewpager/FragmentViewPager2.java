@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.example.ashish.alumini.ListMembers.MemberAdapter;
 import com.example.ashish.alumini.ListMembers.MemberListInstance;
 import com.example.ashish.alumini.R;
+import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
 
@@ -30,6 +31,8 @@ public class FragmentViewPager2 extends Fragment {
     private ArrayList<MemberListInstance> varArrayList = new ArrayList<>();
     private MemberAdapter mAdapter;
 
+
+    Bus mBus = new Bus();
 
     public FragmentViewPager2() {
         // Required empty public constructor
@@ -64,6 +67,19 @@ public class FragmentViewPager2 extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mBus.unregister(getActivity());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mBus.register(getActivity());
 
     }
 

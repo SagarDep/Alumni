@@ -22,7 +22,7 @@ public class MemberAdapter  extends RecyclerView.Adapter<MemberAdapter.MyViewHol
 
     List<MemberListInstance> mListMembers;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, year, designation, location;
 
         public MyViewHolder(View view) {
@@ -33,10 +33,7 @@ public class MemberAdapter  extends RecyclerView.Adapter<MemberAdapter.MyViewHol
             location = (TextView) view.findViewById(R.id.textView_location);
         }
 
-        @Override
-        public void onClick(View v) {
-            Log.d(TAG,"Working" + getAdapterPosition() + " " + getPosition());
-        }
+
     }
 
 

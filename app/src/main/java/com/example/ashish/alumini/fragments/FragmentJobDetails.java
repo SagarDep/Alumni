@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.ashish.alumini.Job.JobListInstance;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.network.pojo.Job;
 import com.squareup.otto.Bus;
 
 import butterknife.Bind;
@@ -31,7 +32,7 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     private String mParam2;
 
 
-    private JobListInstance mJobListInstance;
+    private Job mJobListInstance;
 
     /*
     * Butterknife
@@ -91,6 +92,7 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         mBus.register(getActivity());
 
         showData();
+        makeServerCallToGetRemainingData();
         return view;
     }
 
@@ -113,15 +115,25 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
 
 
 
-    public void setData(JobListInstance item){
+    /*
+    * For setting the data passed from the list
+    * */
+    public void setData(Job item){
         mJobListInstance = item;
     }
 
+
     public void showData(){
-        mTextViewName.setText(mJobListInstance.getCompanyName());
-        mTextViewLocation.setText(mJobListInstance.getJobLocation());
-        mTextViewJobType.setText(mJobListInstance.getJobType());
-        mTextViewJobDesignation.setText(mJobListInstance.getJobPost());
+        /*
+        * setting the text to the text fields
+        * data was recieved by the list directly
+        * */
+        mTextViewName.setText(mJobListInstance.getName());
+        mTextViewLocation.setText(mJobListInstance.getLocation());
+        mTextViewJobType.setText(mJobListInstance.getType());
+        mTextViewJobDesignation.setText(mJobListInstance.getRole());
+    }
+    public void makeServerCallToGetRemainingData(){
         mTextViewWebsite.setText("www.temp.com");
         mTextViewemail.setText("www@temp.com");
         mTextViewJobDescription.setText("Job Description - kahani");
