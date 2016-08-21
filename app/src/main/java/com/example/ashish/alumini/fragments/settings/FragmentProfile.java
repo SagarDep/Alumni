@@ -22,13 +22,10 @@ import butterknife.OnClick;
 
 
 public class FragmentProfile extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -37,10 +34,13 @@ public class FragmentProfile extends Fragment {
     /*
     * Butterknife
     * */
-    @Bind(R.id.imageView_edit)
-    ImageView mImageViewEdit;
-    @Bind(R.id.textView_member_name)
-    TextView mTextView_name;
+    @Bind(R.id.imageView_edit) ImageView mImageViewEdit;
+    @Bind(R.id.textView_member_name) TextView mTextView_name;
+    @Bind(R.id.textView_designation_n_CompanyName) TextView mTextViewDesignationNCompanyName;
+    @Bind(R.id.textView_branch) TextView mTextViewBranch;
+    @Bind(R.id.textView_homeLocation) TextView mTextViewHomeLocation;
+    @Bind(R.id.editText_jobLocation) TextView mTextViewJobLocation;
+    @Bind(R.id.textView_year) TextView mTextViewYear;
 
     Bus mBus = new Bus();
 
@@ -96,6 +96,12 @@ public class FragmentProfile extends Fragment {
         mImageViewEdit.setVisibility(View.GONE);
 
         mTextView_name.setText(mListInstance.getName());
+        mTextViewDesignationNCompanyName.setText(mListInstance.getDesignation()
+                + " at " +
+                mListInstance.getCompany());
+        mTextViewBranch.setText("Branch : "+mListInstance.getBranch().toUpperCase());
+        mTextViewJobLocation.setText(mListInstance.getLocation_work());
+        mTextViewYear.setText(mListInstance.getYear_passing());
 
 
         return view;

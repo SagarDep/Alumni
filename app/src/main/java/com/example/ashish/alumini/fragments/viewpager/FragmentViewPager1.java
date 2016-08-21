@@ -87,7 +87,7 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
         );
 
 
-        prepareList();
+        makeServerCallToGetMemberList();
 
         return view;
     }
@@ -114,7 +114,7 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
     /*
         * Function to create the list
         * */
-    private void prepareList() {
+    private void makeServerCallToGetMemberList() {
         mArrayList.add(new MemberListInstance("o1","Ashish","Android Dev","Parkzap","Gurgaon","CS","2017"));
         mArrayList.add(new MemberListInstance("02","Priyank Jain","Devops","Yatra.com","NOIDA","CS","2013"));
         mArrayList.add(new MemberListInstance("03","Lavish Aggarwal","Full Stack Developer","HackerEarth","Bangalore","CS","2012"));

@@ -15,6 +15,8 @@ import com.example.ashish.alumini.activities.PostLogin.ActivityMainScreen;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 
+import butterknife.OnClick;
+
 //import com.example.ashish.alumini.R;
 
 public class Login extends Activity
@@ -32,20 +34,14 @@ public class Login extends Activity
         setContentView(R.layout.login);
         email=(EditText)findViewById(R.id.editText_login_email);
         password=(EditText)findViewById(R.id.editText_login_password);
-        loginButton=(Button)findViewById(R.id.login);
 
-        loginButton.setOnClickListener(
-                new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
-
-        mSharedPreferences = this.getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
     }
+    @OnClick(R.id.login)
+    public void logInButtonHandler(){
+        login();
+    }
+
 
     //body of login method
     public void login() {

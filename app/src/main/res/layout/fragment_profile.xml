@@ -24,8 +24,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Asst. Engg at IBM"
-            android:id="@+id/textView_desigNCom"
+
+            android:id="@+id/textView_designation_n_CompanyName"
+
             android:layout_below="@+id/textView_member_name"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
@@ -73,7 +74,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Branch - CSE"
             android:id="@+id/textView_branch"
-            android:layout_below="@+id/textView_desigNCom"
+            android:layout_below="@+id/textView_designation_n_CompanyName"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
 
