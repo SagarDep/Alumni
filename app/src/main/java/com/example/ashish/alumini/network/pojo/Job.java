@@ -4,7 +4,6 @@ package com.example.ashish.alumini.network.pojo;
  * Created by ashish on 8/8/16.
  */
 
-
 public class Job {
 
     private String _id;
@@ -16,7 +15,7 @@ public class Job {
     /**
      *
      * @return
-     *     The _id
+     * The _id
      */
     public String get_id() {
         return _id;
@@ -25,7 +24,7 @@ public class Job {
     /**
      *
      * @param _id
-     *     The _id
+     * The _id
      */
     public void set_id(String _id) {
         this._id = _id;
@@ -34,7 +33,7 @@ public class Job {
     /**
      *
      * @return
-     *     The name
+     * The name
      */
     public String getName() {
         return name;
@@ -43,7 +42,7 @@ public class Job {
     /**
      *
      * @param name
-     *     The name
+     * The name
      */
     public void setName(String name) {
         this.name = name;
@@ -52,7 +51,7 @@ public class Job {
     /**
      *
      * @return
-     *     The location
+     * The location
      */
     public String getLocation() {
         return location;
@@ -61,7 +60,7 @@ public class Job {
     /**
      *
      * @param location
-     *     The location
+     * The location
      */
     public void setLocation(String location) {
         this.location = location;
@@ -70,7 +69,7 @@ public class Job {
     /**
      *
      * @return
-     *     The role
+     * The role
      */
     public String getRole() {
         return role;
@@ -79,7 +78,7 @@ public class Job {
     /**
      *
      * @param role
-     *     The Role
+     * The Role
      */
     public void setRole(String role) {
         this.role = role;
@@ -88,7 +87,7 @@ public class Job {
     /**
      *
      * @return
-     *     The type
+     * The type
      */
     public String getType() {
         return type;
@@ -97,7 +96,7 @@ public class Job {
     /**
      *
      * @param type
-     *     The type
+     * The type
      */
     public void setType(String type) {
         this.type = type;

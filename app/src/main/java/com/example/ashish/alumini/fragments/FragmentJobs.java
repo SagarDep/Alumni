@@ -119,23 +119,9 @@ public class FragmentJobs extends Fragment {
         ButterKnife.bind(this,view);
 
 
-        Call<List<Job>> call = ApiClient.getClient().create(ServerApi.class).GetJobList();
+//        Call<List<Job>> call = ApiClient.getClient().create(ServerApi.class).GetJobList();
 
-        call.enqueue(new Callback<List<Job>>() {
-            @Override
-            public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
-                Log.d("API call ","Successfull");
-                mArrayList2 = response.body();
-
-                mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList2);
-                mListViewJobs.setAdapter(mListAdapter);
-            }
-
-            @Override
-            public void onFailure(Call<List<Job>> call, Throwable t) {
-                Log.d("API call ","Failed");
-            }
-        });
+        makeServerCallToGetTheList();
 
 
         
@@ -180,6 +166,25 @@ public class FragmentJobs extends Fragment {
     }
 
 
+    public void makeServerCallToGetTheList(){
+        Call<List<Job>> call = ApiClient.getServerApi().GetJobList();
+
+        call.enqueue(new Callback<List<Job>>() {
+            @Override
+            public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
+                Log.d("API call ","Successfull");
+                mArrayList2 = response.body();
+
+                mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList2);
+                mListViewJobs.setAdapter(mListAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Job>> call, Throwable t) {
+                Log.d("API call ","Failed");
+            }
+        });
+    }
 
 
 }
