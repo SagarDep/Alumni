@@ -31,7 +31,7 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
 
-    private ArrayList<MemberListInstance> varArrayList = new ArrayList<>();
+    private ArrayList<MemberListInstance> mArrayList = new ArrayList<>();
     private MemberAdapter mAdapter;
 
     PostLoginActivity mActivity;
@@ -58,7 +58,7 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
         ButterKnife.bind(this,view);
 
         //initialization of adapter
-        mAdapter = new MemberAdapter(varArrayList);
+        mAdapter = new MemberAdapter(mArrayList);
 
         //getting instance of activity
         mActivity = (PostLoginActivity) getActivity();
@@ -75,7 +75,7 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
                         new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         FragmentProfile fragmentProfile = new FragmentProfile().newInstance("","");
-//                        fragmentProfile.setData(m);
+                        fragmentProfile.setData(mArrayList.get(position));
                         mActivity.changeFragment(fragmentProfile);
                         mBus.post(R.id.recycler_view);
                     }
@@ -115,13 +115,13 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
         * Function to create the list
         * */
     private void prepareList() {
-        varArrayList.add(new MemberListInstance("o1","Ashish","Android Dev","Parkzap","Gurgaon","CS","2017"));
-        varArrayList.add(new MemberListInstance("02","Priyank Jain","Devops","Yatra.com","NOIDA","CS","2013"));
-        varArrayList.add(new MemberListInstance("03","Lavish Aggarwal","Full Stack Developer","HackerEarth","Bangalore","CS","2012"));
-        varArrayList.add(new MemberListInstance("04","Hari Om","Web Developer","zillion","Gurgaon","IT","2011"));
-        varArrayList.add(new MemberListInstance("05","Ayush Sharma","Full Stack Developer","Innovaccer","NOIDA","CS","2013"));
-        varArrayList.add(new MemberListInstance("06","Ashwin Devarajan","Data Scientist","Moksha Tech","Jaipur","CS","2013"));
-        varArrayList.add(new MemberListInstance("a","b","c","a","b","c","d"));
+        mArrayList.add(new MemberListInstance("o1","Ashish","Android Dev","Parkzap","Gurgaon","CS","2017"));
+        mArrayList.add(new MemberListInstance("02","Priyank Jain","Devops","Yatra.com","NOIDA","CS","2013"));
+        mArrayList.add(new MemberListInstance("03","Lavish Aggarwal","Full Stack Developer","HackerEarth","Bangalore","CS","2012"));
+        mArrayList.add(new MemberListInstance("04","Hari Om","Web Developer","zillion","Gurgaon","IT","2011"));
+        mArrayList.add(new MemberListInstance("05","Ayush Sharma","Full Stack Developer","Innovaccer","NOIDA","CS","2013"));
+        mArrayList.add(new MemberListInstance("06","Ashwin Devarajan","Data Scientist","Moksha Tech","Jaipur","CS","2013"));
+        mArrayList.add(new MemberListInstance("a","b","c","a","b","c","d"));
         mAdapter.notifyDataSetChanged();
     }
 

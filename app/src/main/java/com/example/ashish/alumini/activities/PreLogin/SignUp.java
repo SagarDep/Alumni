@@ -26,11 +26,11 @@ public class SignUp extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
 
-        email=(EditText)findViewById(R.id.email);
-        password=(EditText)findViewById(R.id.password);
-        name=(EditText)findViewById(R.id.name);
-       confirmPassword=(EditText)findViewById(R.id.confirm_password);
-        SignUpButton=(Button)findViewById(R.id.signup);
+        email=(EditText)findViewById(R.id.editText_signup_name);
+        password=(EditText)findViewById(R.id.editText_signup_email);
+        name=(EditText)findViewById(R.id.editText_signup_password);
+        confirmPassword=(EditText)findViewById(R.id.editText_signup_passwordConfirm);
+        SignUpButton=(Button)findViewById(R.id.button_signup);
 
 
         SignUpButton.setOnClickListener(new View.OnClickListener() {

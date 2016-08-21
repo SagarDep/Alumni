@@ -136,7 +136,7 @@ public class FragmentMenu extends Fragment {
     @OnClick(R.id.linearLayout_jobs)
     public void changeToJobsFragment(){
         setVisibleView(getView().findViewById(R.id.view_jobs),mImageViewJobs);
-        mActivity.changeFragment(new FragmentJobs().newInstance(null,null));
+        mActivity.changeFragment(mActivity.mFragmentJob);
         mActionBar.setTitle("Jobs");
     }
     @OnClick(R.id.linearLayout_settings)

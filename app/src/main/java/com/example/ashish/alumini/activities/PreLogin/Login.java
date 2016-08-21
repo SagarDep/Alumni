@@ -30,8 +30,8 @@ public class Login extends Activity
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        email=(EditText)findViewById(R.id.email);
-        password=(EditText)findViewById(R.id.password);
+        email=(EditText)findViewById(R.id.editText_login_email);
+        password=(EditText)findViewById(R.id.editText_login_password);
         loginButton=(Button)findViewById(R.id.login);
 
         loginButton.setOnClickListener(

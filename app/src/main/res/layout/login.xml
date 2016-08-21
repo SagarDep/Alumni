@@ -1,84 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:drawableLeft="@drawable/emaillll"
-        android:paddingStart="12dp"
-        android:hint="Email-Id"
-        android:paddingTop="7dp"
-        android:paddingBottom="7dp"
-        android:background="@drawable/tab_bg"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textColorHint="#ccc"
-        android:textSize="20dp"
-        android:inputType="textEmailAddress"
-        android:textColor="#fff"
-        android:paddingLeft="10dp"
-        android:paddingRight="20dp"
-        android:layout_marginTop="20dp"
-        android:text="s@g.in"
-        android:drawablePadding="8dp" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:background="@drawable/tab_bg"
-        android:drawableLeft="@drawable/password"
-        android:drawablePadding="8dp"
-        android:paddingStart="14dp"
-        android:paddingTop="7dp"
-        android:paddingEnd="7dp"
-        android:padding="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:hint="Password"
-        android:textColorHint="#ccc"
-        android:textColor="#fff"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textSize="20dp"
-        android:layout_marginTop="12dp"
-        android:inputType="textPassword"
-
-        android:layout_below="@+id/email"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="dddddd" />
+    android:layout_height="fill_parent"
+    android:padding="@dimen/activity_horizontal_margin"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="Forget Password"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="17dp"
-        android:textSize="15dp"
-        android:textColor="#fff"
-        android:layout_below="@+id/password"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/textView2" />
+        android:text="@string/forget_password"
+        android:textSize="15sp"
+        android:textColor="@color/card_background"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/linearLayout_password"
+        android:layout_alignRight="@+id/linearLayout_password"
+        android:layout_alignEnd="@+id/linearLayout_password"
+        android:layout_marginTop="15dp" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:text="Continue"
-        android:textSize="18dp"
+        android:text="LOGIN"
+        android:textSize="18sp"
         android:textColor="#fff"
-        android:background="@drawable/sign_login_button"
-        android:layout_below="@+id/textView2"
+        android:background="@drawable/solid_red_background"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tab_bg"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
-        android:layout_marginRight="30dp" />
+        android:id="@+id/linearLayout_email">
+        <com.mikepenz.iconics.view.IconicsImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:iiv_icon="faw-envelope"
+            android:layout_gravity="center"
+            app:iiv_color="@color/card_background"
+            android:layout_marginLeft="3dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:text="km"
+            android:inputType="textEmailAddress"
+            android:id="@+id/editText_login_email"
+            android:textColor="@android:color/white"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tab_bg"
+        android:padding="10dp"
+        android:layout_below="@+id/linearLayout_email"
+        android:layout_alignLeft="@+id/linearLayout_email"
+        android:layout_alignStart="@+id/linearLayout_email"
+        android:layout_marginTop="10dp"
+        android:id="@+id/linearLayout_password">
+        <com.mikepenz.iconics.view.IconicsImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:iiv_icon="faw-envelope"
+            android:layout_gravity="center"
+            app:iiv_color="@color/card_background"
+            android:layout_marginLeft="3dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:text="km"
+            android:inputType="textPassword"
+            android:id="@+id/editText_login_password"
+            android:textColor="@android:color/white"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
 
 
 </RelativeLayout>

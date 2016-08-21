@@ -28,16 +28,13 @@ public class PostLoginActivity extends AppCompatActivity implements
         FragmentMembers.OnFragmentInteractionListener,
         FragmentFaq.OnFragmentInteractionListener,
         FragmentJobPosting.OnFragmentInteractionListener,
-        FragmentProfile.OnFragmentInteractionListener,
-        FragmentGetProfileData.OnFragmentInteractionListener
-        {
+        FragmentGetProfileData.OnFragmentInteractionListener {
 
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
 
+    // creating instance so that one instance can be used over the whole app
     public FragmentJobs mFragmentJob = new FragmentJobs();
-
-
 
     Bus mBus = new Bus();
 
@@ -57,7 +54,7 @@ public class PostLoginActivity extends AppCompatActivity implements
         //Setting the Action Bar
         mActionBar = getSupportActionBar();
 
-
+        //setting up the bar
         mActionBar.setDisplayHomeAsUpEnabled(true);
         mActionBar.setElevation(0);
         mActionBar.setTitle("Members");
@@ -69,7 +66,7 @@ public class PostLoginActivity extends AppCompatActivity implements
 
 
 
-        //setting
+        //setting first fragement
         mFragmentTransaction = mFragmentManager.beginTransaction();
         mFragmentTransaction.add(R.id.fragment_container,new FragmentMembers().newInstance(null,null));
         mFragmentTransaction.commit();

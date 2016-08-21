@@ -8,15 +8,14 @@
     android:layout_width="match_parent">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="5dp" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Dummy name"
-            android:id="@+id/textView_company_name"
+            android:id="@+id/textView_member_name"
             android:layout_below="@+id/imageView_profilepic"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
@@ -27,7 +26,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Asst. Engg at IBM"
             android:id="@+id/textView_desigNCom"
-            android:layout_below="@+id/textView_company_name"
+            android:layout_below="@+id/textView_member_name"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
 

@@ -1,119 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+<!--<RelativeLayout -->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto">-->
 
-    <EditText
-        android:id="@+id/name"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tab_bg"
+            android:padding="10dp">
+            <com.mikepenz.iconics.view.IconicsImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:iiv_icon="faw-envelope"
+                android:layout_marginLeft="3dp"
+                app:iiv_color="@color/card_background"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:inputType="text"
+                android:id="@+id/editText_signup_name"
+                android:textColor="@android:color/white"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tab_bg"
+            android:layout_marginTop="15dp"
+            android:padding="10dp">
+            <com.mikepenz.iconics.view.IconicsImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:iiv_icon="faw-envelope"
+                android:layout_marginLeft="3dp"
+                app:iiv_color="@color/card_background"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:text=""
+                android:inputType="textEmailAddress"
+                android:id="@+id/editText_signup_email"
+                android:textColor="@android:color/white"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tab_bg"
+            android:layout_marginTop="15dp"
+            android:padding="10dp">
+            <com.mikepenz.iconics.view.IconicsImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:iiv_icon="faw-envelope"
+                android:layout_marginLeft="3dp"
+                app:iiv_color="@color/card_background"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:text=""
+                android:inputType="textPassword"
+                android:id="@+id/editText_signup_password"
+                android:textColor="@android:color/white"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tab_bg"
+            android:layout_marginTop="15dp"
+            android:padding="10dp">
+            <com.mikepenz.iconics.view.IconicsImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:iiv_icon="faw-envelope"
+                android:layout_marginLeft="3dp"
+                app:iiv_color="@color/card_background"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:text=""
+                android:inputType="textPassword"
+                android:id="@+id/editText_signup_passwordConfirm"
+                android:textColor="@android:color/white"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
+
+        <Button
+        android:id="@+id/button_signup"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:hint="Name"
-        android:paddingStart="12dp"
-        android:paddingLeft="10dp"
-        android:drawableLeft="@drawable/profileee"
-        android:drawablePadding="10dp"
-        android:background="@drawable/tab_bg"
-        android:paddingTop="7dp"
-        android:paddingBottom="7dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textSize="20dp"
-        android:textColorHint="#ccc"
+        android:text="Sign Up"
+        android:textSize="18sp"
         android:textColor="#fff"
-        android:inputType="text"
-        android:layout_marginTop="20dp"
+        android:background="@drawable/solid_red_background"
 
-        android:text="AShish" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:hint="Password"
-        android:layout_marginBottom="10dp"
-        android:paddingStart="12dp"
-        android:paddingLeft="10dp"
-        android:drawableLeft="@drawable/password"
-        android:drawablePadding="8dp"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/tab_bg"
-        android:paddingTop="7dp"
-        android:paddingBottom="7dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textColorHint="#ccc"
-        android:textColor="#fff"
-        android:inputType="textPassword"
-        android:layout_below="@+id/email"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="ashish" />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:hint="Email-Id"
-        android:drawableLeft="@drawable/emaillll"
-        android:drawablePadding="8dp"
-        android:textSize="20dp"
-        android:paddingStart="12dp"
-        android:paddingLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/tab_bg"
-        android:paddingTop="7dp"
-        android:paddingBottom="7dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textColorHint="#ccc"
-        android:textColor="#fff"
-        android:inputType="textEmailAddress"
-        android:layout_below="@+id/name"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="s@g.vom" />
-
-    <EditText
-        android:id="@+id/confirm_password"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:hint="Confirm Password"
-        android:textSize="20dp"
-        android:background="@drawable/tab_bg"
-        android:drawableLeft="@drawable/password"
-        android:drawablePadding="8dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="7dp"
-        android:paddingLeft="10dp"
-        android:paddingStart="12dp"
-        android:layout_marginTop="129dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textColorHint="#ccc"
-        android:textColor="#fff"
-
-        android:inputType="textPassword"
-
-        android:layout_below="@+id/name"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="ashish" />
-
-    <Button
-        android:id="@+id/signup"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:text="Continue"
-        android:textSize="18dp"
-        android:textColor="#fff"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/sign_login_button"
-
-        android:layout_below="@+id/password"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp" />
+    </LinearLayout>
 
-</RelativeLayout>
+
+    <!--<EditText-->
+        <!--android:id="@+id/name"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:hint="Name"-->
+        <!--android:paddingStart="12dp"-->
+        <!--android:paddingLeft="10dp"-->
+        <!--android:drawableLeft="@drawable/profileee"-->
+        <!--android:drawablePadding="10dp"-->
+        <!--android:background="@drawable/tab_bg"-->
+        <!--android:paddingTop="7dp"-->
+        <!--android:paddingBottom="7dp"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:textSize="20dp"-->
+        <!--android:textColorHint="#ccc"-->
+        <!--android:textColor="#fff"-->
+        <!--android:inputType="text"-->
+        <!--android:layout_marginTop="20dp"-->
+
+        <!--android:text="AShish" />-->
+
+    <!--<EditText-->
+        <!--android:id="@+id/password"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:hint="Password"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:paddingStart="12dp"-->
+        <!--android:paddingLeft="10dp"-->
+        <!--android:drawableLeft="@drawable/password"-->
+        <!--android:drawablePadding="8dp"-->
+        <!--android:textSize="20dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:background="@drawable/tab_bg"-->
+        <!--android:paddingTop="7dp"-->
+        <!--android:paddingBottom="7dp"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:textColorHint="#ccc"-->
+        <!--android:textColor="#fff"-->
+        <!--android:inputType="textPassword"-->
+        <!--android:layout_below="@+id/email"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:text="ashish" />-->
+
+    <!--<EditText-->
+        <!--android:id="@+id/email"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:hint="Email-Id"-->
+        <!--android:drawableLeft="@drawable/emaillll"-->
+        <!--android:drawablePadding="8dp"-->
+        <!--android:textSize="20dp"-->
+        <!--android:paddingStart="12dp"-->
+        <!--android:paddingLeft="10dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:background="@drawable/tab_bg"-->
+        <!--android:paddingTop="7dp"-->
+        <!--android:paddingBottom="7dp"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:textColorHint="#ccc"-->
+        <!--android:textColor="#fff"-->
+        <!--android:inputType="textEmailAddress"-->
+        <!--android:layout_below="@+id/name"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:text="s@g.vom" />-->
+
+    <!--<EditText-->
+        <!--android:id="@+id/confirm_password"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:hint="Confirm Password"-->
+        <!--android:textSize="20dp"-->
+        <!--android:background="@drawable/tab_bg"-->
+        <!--android:drawableLeft="@drawable/password"-->
+        <!--android:drawablePadding="8dp"-->
+        <!--android:paddingTop="8dp"-->
+        <!--android:paddingBottom="7dp"-->
+        <!--android:paddingLeft="10dp"-->
+        <!--android:paddingStart="12dp"-->
+        <!--android:layout_marginTop="129dp"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:textColorHint="#ccc"-->
+        <!--android:textColor="#fff"-->
+
+        <!--android:inputType="textPassword"-->
+
+        <!--android:layout_below="@+id/name"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:text="ashish" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/signup"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="48dp"-->
+        <!--android:text="Continue"-->
+        <!--android:textSize="18dp"-->
+        <!--android:textColor="#fff"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:background="@drawable/solid_red_background"-->
+
+        <!--android:layout_below="@+id/password"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="65dp" />-->
+
+<!--</RelativeLayout>-->

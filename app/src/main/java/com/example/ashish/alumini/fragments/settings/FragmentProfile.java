@@ -7,23 +7,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.ashish.alumini.ListMembers.MemberListInstance;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.R;
 import com.squareup.otto.Bus;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentProfile.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentProfile#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FragmentProfile extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,11 +32,15 @@ public class FragmentProfile extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    MemberListInstance mListInstance;
 
     /*
     * Butterknife
     * */
+    @Bind(R.id.imageView_edit)
+    ImageView mImageViewEdit;
+    @Bind(R.id.textView_member_name)
+    TextView mTextView_name;
 
     Bus mBus = new Bus();
 
@@ -82,11 +83,19 @@ public class FragmentProfile extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        // butterknife binding
         ButterKnife.bind(this,view);
+
         //Bus Registering
         mBus.register(getActivity());
 
+        // getting activity instance
         mActivity = (PostLoginActivity) getActivity();
+
+        // hiding the edit button
+        mImageViewEdit.setVisibility(View.GONE);
+
+        mTextView_name.setText(mListInstance.getName());
 
 
         return view;
@@ -98,42 +107,28 @@ public class FragmentProfile extends Fragment {
     }
 
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    public void setData(MemberListInstance data){
+
+        mListInstance = data;
+        makeServerCallToGetMoreData();
+
     }
+    public void makeServerCallToGetMoreData(){
+        // TODo : retrofit server call
+    }
+
+
 }

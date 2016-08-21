@@ -38,7 +38,7 @@ public class FragmentJobs extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    String baseurl = "http://localhost:3000";
+    String TAG = getClass().getSimpleName();
 
     @Bind(R.id.listView_jobs)
     ListView mListViewJobs;
@@ -65,6 +65,7 @@ public class FragmentJobs extends Fragment {
 
 
 
+        makeServerCallToGetTheList();
 
 
     }
@@ -116,12 +117,14 @@ public class FragmentJobs extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_jobs,container,false);
 
+        //Butter knife binding
         ButterKnife.bind(this,view);
 
+        mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList2);
+        mListViewJobs.setAdapter(mListAdapter);
 
-//        Call<List<Job>> call = ApiClient.getClient().create(ServerApi.class).GetJobList();
 
-        makeServerCallToGetTheList();
+
 
 
         
@@ -175,13 +178,12 @@ public class FragmentJobs extends Fragment {
                 Log.d("API call ","Successfull");
                 mArrayList2 = response.body();
 
-                mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList2);
-                mListViewJobs.setAdapter(mListAdapter);
+
             }
 
             @Override
             public void onFailure(Call<List<Job>> call, Throwable t) {
-                Log.d("API call ","Failed");
+                Log.d(TAG,"API call Failed");
             }
         });
     }

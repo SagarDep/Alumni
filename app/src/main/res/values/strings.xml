@@ -76,4 +76,7 @@
     <string name="rate_us">Rate Us</string>
     <string name="log_out">Log Out</string>
 
+    <!--Login/signup-->
+
+    <string name="forget_password">Forget Password</string>
 </resources>
