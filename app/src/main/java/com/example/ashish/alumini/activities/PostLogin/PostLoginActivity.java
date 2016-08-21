@@ -27,8 +27,7 @@ import com.squareup.otto.Subscribe;
 public class PostLoginActivity extends AppCompatActivity implements
         FragmentMembers.OnFragmentInteractionListener,
         FragmentFaq.OnFragmentInteractionListener,
-        FragmentJobPosting.OnFragmentInteractionListener,
-        FragmentGetProfileData.OnFragmentInteractionListener {
+        FragmentJobPosting.OnFragmentInteractionListener {
 
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;

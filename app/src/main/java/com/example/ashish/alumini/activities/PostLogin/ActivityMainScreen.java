@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.fragments.BlankFragment;
 import com.example.ashish.alumini.fragments.FragmentEvents;
 import com.example.ashish.alumini.fragments.FragmentMainScreen;
+import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
 import com.squareup.otto.Bus;
 
@@ -37,8 +39,19 @@ public class ActivityMainScreen extends AppCompatActivity
         mBus.register(this);
         mFragmentManager = getSupportFragmentManager();
 
+        Boolean foo = false;
+        Bundle bundle = getIntent().getExtras();
+        if (bundle!=null){
+             foo = (Boolean) bundle.get("SIGNUP");
+        }
+
+
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.add(R.id.container_main_screen, new FragmentMainScreen().newInstance("",""));
+        if (foo==true){
+            mFragmentTransaction.add(R.id.container_main_screen, new FragmentGetProfileData().newInstance("",""));
+        }else {
+            mFragmentTransaction.add(R.id.container_main_screen, new FragmentMainScreen().newInstance("",""));
+        }
         mFragmentTransaction.commit();
         mCurrentFragment = new FragmentMainScreen();
 

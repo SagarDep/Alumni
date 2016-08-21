@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.ashish.alumini.Edit_Profile;
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.activities.PostLogin.ActivityMainScreen;
 
 
 public class SignUp extends Activity
@@ -74,12 +75,15 @@ public class SignUp extends Activity
 
     public void onSignUpSuccess() {
         SignUpButton.setEnabled(true);
-        Intent move=new Intent(SignUp.this,Edit_Profile.class);
-        move.putExtra("SIGN_UP","signup");
-        move.putExtra("NAME",name.getText());
-        move.putExtra("EMAIL",email.getText());
-        move.putExtra("PASS",password.getText());
-
+//        Intent move=new Intent(SignUp.this,Edit_Profile.class);
+//        move.putExtra("SIGN_UP","signup");
+//        move.putExtra("NAME",name.getText());
+//        move.putExtra("EMAIL",email.getText());
+//        move.putExtra("PASS",password.getText());
+//
+//        startActivity(move);
+        Intent move=new Intent(SignUp.this,ActivityMainScreen.class);
+        move.putExtra("SIGNUP",true);
         startActivity(move);
     }
 
