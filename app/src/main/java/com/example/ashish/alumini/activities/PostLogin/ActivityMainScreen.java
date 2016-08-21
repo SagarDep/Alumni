@@ -39,17 +39,19 @@ public class ActivityMainScreen extends AppCompatActivity
         mBus.register(this);
         mFragmentManager = getSupportFragmentManager();
 
-        Boolean foo = false;
+        Boolean isSignup = false;
         Bundle bundle = getIntent().getExtras();
         if (bundle!=null){
-             foo = (Boolean) bundle.get("SIGNUP");
+             isSignup = (Boolean) bundle.get("SIGNUP");
         }
 
 
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        if (foo==true){
+        if (isSignup==true){
+            // show the get Data fragment
             mFragmentTransaction.add(R.id.container_main_screen, new FragmentGetProfileData().newInstance("",""));
         }else {
+            //else show the min screen fragment
             mFragmentTransaction.add(R.id.container_main_screen, new FragmentMainScreen().newInstance("",""));
         }
         mFragmentTransaction.commit();

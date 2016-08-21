@@ -14,7 +14,9 @@ import android.widget.Toast;
 import com.example.ashish.alumini.activities.PostLogin.ActivityMainScreen;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
+import com.sdsmdg.tastytoast.TastyToast;
 
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 //import com.example.ashish.alumini.R;
@@ -34,14 +36,18 @@ public class Login extends Activity
         setContentView(R.layout.login);
         email=(EditText)findViewById(R.id.editText_login_email);
         password=(EditText)findViewById(R.id.editText_login_password);
+        loginButton=(Button)findViewById(R.id.login);
 
+        loginButton.setOnClickListener(
+                new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                login();
+            }
+        });
 
     }
-    @OnClick(R.id.login)
-    public void logInButtonHandler(){
-        login();
-    }
-
 
     //body of login method
     public void login() {
@@ -81,7 +87,8 @@ public class Login extends Activity
     }
 
     public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+//        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        TastyToast.makeText(getApplicationContext(),"Login Failed",TastyToast.LENGTH_LONG,TastyToast.ERROR);
 
         loginButton.setEnabled(true);
     }
