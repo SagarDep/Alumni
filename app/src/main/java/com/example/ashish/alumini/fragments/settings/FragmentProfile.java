@@ -95,13 +95,16 @@ public class FragmentProfile extends Fragment {
         // hiding the edit button
         mImageViewEdit.setVisibility(View.GONE);
 
-        mTextView_name.setText(mListInstance.getName());
-        mTextViewDesignationNCompanyName.setText(mListInstance.getDesignation()
-                + " at " +
-                mListInstance.getCompany());
-        mTextViewBranch.setText("Branch : "+mListInstance.getBranch().toUpperCase());
-        mTextViewJobLocation.setText(mListInstance.getLocation_work());
-        mTextViewYear.setText(mListInstance.getYear_passing());
+        if (mListInstance!=null){
+            mTextView_name.setText(mListInstance.getName());
+            mTextViewDesignationNCompanyName.setText(mListInstance.getDesignation()
+                    + " at " +
+                    mListInstance.getCompany());
+            mTextViewBranch.setText("Branch : "+mListInstance.getBranch().toUpperCase());
+            mTextViewJobLocation.setText(mListInstance.getLocation_work());
+            mTextViewYear.setText(mListInstance.getYear_passing());
+        }
+
 
 
         return view;

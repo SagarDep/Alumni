@@ -82,10 +82,6 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-
-    }
 
     @Override
     public void onAttach(Context context) {

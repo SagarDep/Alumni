@@ -3,6 +3,7 @@ package com.example.ashish.alumini.fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +13,16 @@ import android.widget.TextView;
 import com.example.ashish.alumini.Job.JobListInstance;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.Job;
+import com.example.ashish.alumini.network.pojo.JobDetail;
 import com.squareup.otto.Bus;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class FragmentJobDetails extends android.support.v4.app.Fragment {
@@ -134,8 +139,26 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         mTextViewJobDesignation.setText(mJobListInstance.getRole());
     }
     public void makeServerCallToGetRemainingData(){
-        mTextViewWebsite.setText("www.temp.com");
-        mTextViewemail.setText("www@temp.com");
-        mTextViewJobDescription.setText("Job Description - kahani");
+
+        Call<JobDetail> call = ApiClient.getServerApi().getJobDetails(mJobListInstance.get_id());
+
+        call.enqueue(new Callback<JobDetail>() {
+            @Override
+            public void onResponse(Call<JobDetail> call, Response<JobDetail> response) {
+                Log.d("API cal","Successful");
+                JobDetail jobDetail = response.body();
+                mTextViewWebsite.setText(jobDetail.getContactweb());
+
+                mTextViewemail.setText(jobDetail.getContactemail());
+                mTextViewJobDescription.setText("Job Description - " + jobDetail.getKahani());
+            }
+
+            @Override
+            public void onFailure(Call<JobDetail> call, Throwable t) {
+                Log.d("API cal","Failed");
+            }
+        });
+
+
     }
 }

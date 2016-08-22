@@ -16,7 +16,6 @@ import com.example.ashish.alumini.R;
 
 
 import com.example.ashish.alumini.network.ApiClient;
-import com.example.ashish.alumini.network.ServerApi;
 import com.example.ashish.alumini.network.pojo.Job;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.squareup.otto.Bus;
@@ -170,7 +169,7 @@ public class FragmentJobs extends Fragment {
 
 
     public void makeServerCallToGetTheList(){
-        Call<List<Job>> call = ApiClient.getServerApi().GetJobList();
+        Call<List<Job>> call = ApiClient.getServerApi().getJobList();
 
         call.enqueue(new Callback<List<Job>>() {
             @Override
