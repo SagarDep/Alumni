@@ -147,6 +147,17 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginBottom="3dp"
                     android:layout_marginLeft="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="dfffbsfgnbsfggadf"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/textView_postedby"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_marginBottom="5dp"
+                    android:layout_below="@+id/imageView_phone"
+                    android:layout_alignLeft="@+id/imageView_phone"
+                    android:layout_alignStart="@+id/imageView_phone" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
@@ -171,6 +182,7 @@
             android:layout_toStartOf="@+id/textView_location_jobDetails"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="3dp" />
+
 
 
     </RelativeLayout>

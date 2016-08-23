@@ -177,7 +177,6 @@ public class FragmentJobs extends Fragment {
                 Log.d("API call ","Successfull");
                 mArrayList2 = response.body();
 
-
             }
 
             @Override

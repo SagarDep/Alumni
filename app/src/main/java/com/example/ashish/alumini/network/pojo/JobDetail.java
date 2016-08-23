@@ -9,8 +9,10 @@ import java.util.Map;
 public class JobDetail {
 
     private String kahani;
-    private String contactweb;
     private String contactemail;
+    private String contactweb;
+    private String postedby;
+    private String postedbyid;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
@@ -34,6 +36,24 @@ public class JobDetail {
     /**
      *
      * @return
+     * The contactemail
+     */
+    public String getContactemail() {
+        return contactemail;
+    }
+
+    /**
+     *
+     * @param contactemail
+     * The contactemail
+     */
+    public void setContactemail(String contactemail) {
+        this.contactemail = contactemail;
+    }
+
+    /**
+     *
+     * @return
      * The contactweb
      */
     public String getContactweb() {
@@ -52,19 +72,37 @@ public class JobDetail {
     /**
      *
      * @return
-     * The contactemail
+     * The postedby
      */
-    public String getContactemail() {
-        return contactemail;
+    public String getPostedby() {
+        return postedby;
     }
 
     /**
      *
-     * @param contactemail
-     * The contactemail
+     * @param postedby
+     * The postedby
      */
-    public void setContactemail(String contactemail) {
-        this.contactemail = contactemail;
+    public void setPostedby(String postedby) {
+        this.postedby = postedby;
+    }
+
+    /**
+     *
+     * @return
+     * The postedbyid
+     */
+    public String getPostedbyid() {
+        return postedbyid;
+    }
+
+    /**
+     *
+     * @param postedbyid
+     * The postedbyid
+     */
+    public void setPostedbyid(String postedbyid) {
+        this.postedbyid = postedbyid;
     }
 
     public Map<String, Object> getAdditionalProperties() {
@@ -73,5 +111,4 @@ public class JobDetail {
 
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
-    }
-}
+    }}

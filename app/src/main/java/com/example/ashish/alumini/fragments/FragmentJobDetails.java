@@ -50,6 +50,7 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     @Bind(R.id.textView_jobDescription) TextView mTextViewJobDescription;
     @Bind(R.id.textView_email_jobDetails) TextView mTextViewemail;
     @Bind(R.id.textView_website) TextView mTextViewWebsite;
+    @Bind(R.id.textView_postedby) TextView mTextViewPostedBy;
 
     Bus mBus = new Bus();
 
@@ -148,9 +149,9 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
                 Log.d("API cal","Successful");
                 JobDetail jobDetail = response.body();
                 mTextViewWebsite.setText(jobDetail.getContactweb());
-
                 mTextViewemail.setText(jobDetail.getContactemail());
                 mTextViewJobDescription.setText("Job Description - " + jobDetail.getKahani());
+                mTextViewPostedBy.setText("Posted By : " + jobDetail.getPostedby());
             }
 
             @Override
