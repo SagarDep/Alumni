@@ -44,7 +44,6 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     * */
     @Bind(R.id.imageView_companyImage) ImageView imageView_companyImage;
     @Bind(R.id.textView_companyName_jobDetails) TextView mTextViewName;
-    @Bind(R.id.textView_jobType_jobDetails) TextView mTextViewJobType;
     @Bind(R.id.textView_location_jobDetails) TextView mTextViewLocation;
     @Bind(R.id.textView_designation_jobDetails) TextView mTextViewJobDesignation;
     @Bind(R.id.textView_jobDescription) TextView mTextViewJobDescription;
@@ -136,7 +135,6 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         * */
         mTextViewName.setText(mJobListInstance.getName());
         mTextViewLocation.setText(mJobListInstance.getLocation());
-        mTextViewJobType.setText(mJobListInstance.getType());
         mTextViewJobDesignation.setText(mJobListInstance.getRole());
     }
     public void makeServerCallToGetRemainingData(){

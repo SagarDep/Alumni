@@ -22,16 +22,6 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/textView_jobType_jobDetails"
-            android:layout_below="@+id/textView_companyName_jobDetails"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp" />
-
-
 
         <ImageView
             android:layout_width="150dp"
@@ -48,10 +38,10 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/textView_location_jobDetails"
-            android:layout_below="@+id/textView_jobType_jobDetails"
-            android:layout_centerHorizontal="true"
+             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-             android:text="nb " />
+             android:text="nb "
+             android:layout_below="@+id/textView_companyName_jobDetails" />
 
 
         <android.support.v7.widget.CardView

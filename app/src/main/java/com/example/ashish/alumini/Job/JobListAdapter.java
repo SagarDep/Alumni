@@ -27,8 +27,7 @@ public class JobListAdapter extends ArrayAdapter<Job> {
     @Bind(R.id.textView_companyName) TextView mTextViewCompanyName;
     @Bind(R.id.textView_joblocation) TextView mTextViewJobLocation;
     @Bind(R.id.textView_jobPosition) TextView mTextViewJobPosition;
-    @Bind(R.id.textView_jobType) TextView mTextViewJobType;
-    @Bind(R.id.textView_lastDate) TextView mTextViewLastDate;
+
 
 
 
@@ -53,16 +52,12 @@ public class JobListAdapter extends ArrayAdapter<Job> {
         Job item = getItem(position);
 
 
-//        mTextViewCompanyName.setText(item.getCompanyName());
-//        mTextViewJobLocation.setText(item.getJobLocation());
-//        mTextViewJobPosition.setText(item.getJobPost());
-//        mTextViewJobType.setText(item.getJobType());
-//        mTextViewLastDate.setText(item.getLastDate());
+
 
         mTextViewCompanyName.setText(item.getName());
         mTextViewJobLocation.setText(item.getLocation());
         mTextViewJobPosition.setText(item.getRole());
-        mTextViewJobType.setText(item.getType());
+
 
         return convertView;
     }

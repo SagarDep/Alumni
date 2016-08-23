@@ -74,26 +74,6 @@
         android:layout_alignStart="@+id/textView_joblocation"
         android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/textView_lastDate"
-        android:textSize="14sp"
-        android:layout_below="@+id/imageView4"
-        android:layout_alignRight="@+id/view14"
-        android:layout_alignEnd="@+id/view14"
-        android:layout_marginTop="5dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/textView_jobType"
-        android:textSize="14sp"
-        android:layout_below="@+id/textView_companyName"
-        android:layout_alignRight="@+id/textView_lastDate"
-        android:layout_alignEnd="@+id/textView_lastDate" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
