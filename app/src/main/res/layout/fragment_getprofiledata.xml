@@ -324,7 +324,7 @@
                         android:layout_marginLeft="10dp"
                         android:maxLines="1"
                         android:inputType="textEmailAddress"
-                        android:id="@+id/editText_memberEmail"
+                        android:id="@+id/editText_company_email"
                         android:hint="e-mail address"/>
 
                 </android.support.design.widget.TextInputLayout>

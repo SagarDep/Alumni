@@ -49,7 +49,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
-                        android:id="@+id/editText_companyDescription"
+                        android:id="@+id/editText_designation"
                         android:hint="Role"/>
 
                 </android.support.design.widget.TextInputLayout>
@@ -181,7 +181,7 @@
                     android:id="@+id/imageView_email"
                     app:iiv_icon="faw-envelope"
                     app:iiv_color="@color/black_de"
-                    android:layout_alignTop="@+id/editText_memberEmail"
+                    android:layout_alignTop="@+id/editText_company_email"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="10dp" />
@@ -213,7 +213,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:inputType="textEmailAddress"
-                    android:id="@+id/editText_memberEmail"
+                    android:id="@+id/editText_company_email"
                     android:hint="e-mail address"
                     android:layout_below="@+id/editText_companyWebLink"
                     android:layout_alignParentRight="true"

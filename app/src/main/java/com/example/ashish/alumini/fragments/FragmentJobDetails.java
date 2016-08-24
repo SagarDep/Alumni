@@ -146,6 +146,7 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
             public void onResponse(Call<JobDetail> call, Response<JobDetail> response) {
                 Log.d("API cal","Successful");
                 JobDetail jobDetail = response.body();
+
                 mTextViewWebsite.setText(jobDetail.getContactweb());
                 mTextViewemail.setText(jobDetail.getContactemail());
                 mTextViewJobDescription.setText("Job Description - " + jobDetail.getKahani());

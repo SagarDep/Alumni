@@ -1,20 +1,26 @@
 package com.example.ashish.alumini.fragments.settings;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.network.ApiClient;
+import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class FragmentJobPosting extends Fragment {
@@ -24,6 +30,8 @@ public class FragmentJobPosting extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    String TAG = getClass().getSimpleName();
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -32,8 +40,23 @@ public class FragmentJobPosting extends Fragment {
     /*
     * Butterknife
     * */
-    @Bind( R.id.button_post_job)
-    Button mButtonPostJob;
+    @Bind(R.id.editText_companyName)
+    TextInputEditText mInputEditTextCompanyName;
+
+    @Bind(R.id.editText_designation)
+    TextInputEditText mInputEditTextRole;
+
+    @Bind(R.id.editText_jobDescription)
+    TextInputEditText mInputEditTextJobDescription;
+
+    @Bind(R.id.editText_jobLocation)
+    TextInputEditText mInputEditTextJobLocation;
+
+    @Bind(R.id.editText_companyWebLink)
+    EditText mEditTextWebLink;
+
+    @Bind(R.id.editText_company_email)
+    EditText mEditTextemail;
 
     Bus mBus = new Bus();
 
@@ -84,7 +107,7 @@ public class FragmentJobPosting extends Fragment {
 
     @OnClick(R.id.button_post_job)
     public void buttonPostJobHandler(){
-
+        collectData();
     }
 
 
@@ -97,6 +120,39 @@ public class FragmentJobPosting extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+
+    }
+
+    public void collectData(){
+
+
+        makeServerCallToPostData();
+    }
+
+    public void makeServerCallToPostData(){
+        Call<String> call = ApiClient.getServerApi().postJob(
+                mInputEditTextCompanyName.getText().toString(),
+                mInputEditTextRole.getText().toString(),
+                mInputEditTextJobDescription.getText().toString(),
+                mInputEditTextJobLocation.getText().toString(),
+                mEditTextWebLink.getText().toString(),
+                mEditTextemail.getText().toString(),
+                "Ayush Sharma",
+                "skajfdfbvkoljsdhbfv"
+        );
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.d(TAG,"Successful");
+                TastyToast.makeText(getActivity(),"Posted! yeah",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.d("API Call ","Failed");
+            }
+        });
 
     }
 

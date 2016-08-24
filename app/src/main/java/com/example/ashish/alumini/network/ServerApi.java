@@ -10,6 +10,7 @@ import retrofit2.Callback;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Created by ashish on 8/8/16.
@@ -27,7 +28,14 @@ public interface ServerApi {
 
 
 
-//    @POST('jobs/post')
-//    Callback
-//    postJob();
+    @POST("jobs/post")
+    Call<String> postJob(@Query("name") String name,
+                         @Query("role") String role,
+                         @Query("kahani") String description,
+                         @Query("location") String location,
+                         @Query("contactweb") String webLink,
+                         @Query("contactemail") String email,
+                         @Query("postedby") String postedBy,
+                         @Query("postedbyid") String postdById
+                         );
 }
