@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.Job;
+package com.example.ashish.alumini.job;
 
 import android.content.Context;
 import android.view.LayoutInflater;

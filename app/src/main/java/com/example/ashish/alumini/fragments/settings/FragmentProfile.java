@@ -1,7 +1,6 @@
 package com.example.ashish.alumini.fragments.settings;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.ashish.alumini.ListMembers.MemberListInstance;
+import com.example.ashish.alumini.members.MemberListInstance;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.R;

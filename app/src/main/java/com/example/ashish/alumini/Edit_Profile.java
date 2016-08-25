@@ -72,7 +72,7 @@ public class Edit_Profile extends Activity {
 
 
 
-        Button  button = (Button) findViewById(R.id.button_save);
+        Button  button = (Button) findViewById(R.id.button_save_profile_data);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

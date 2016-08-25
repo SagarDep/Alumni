@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.example.ashish.alumini.Job.JobListAdapter;
-import com.example.ashish.alumini.Job.JobListInstance;
+import com.example.ashish.alumini.job.JobListAdapter;
+import com.example.ashish.alumini.job.JobListInstance;
 import com.example.ashish.alumini.R;
 
 

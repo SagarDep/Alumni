@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.ashish.alumini.ListMembers.MemberListInstance;
-import com.example.ashish.alumini.ListMembers.MemberAdapter;
-import com.example.ashish.alumini.ListMembers.RecyclerItemClickListener;
+import com.example.ashish.alumini.members.MemberListInstance;
+import com.example.ashish.alumini.members.MemberAdapter;
+import com.example.ashish.alumini.members.RecyclerItemClickListener;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.fragments.settings.FragmentProfile;

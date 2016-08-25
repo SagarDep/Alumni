@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.ashish.alumini.Job.JobListInstance;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.network.ApiClient;

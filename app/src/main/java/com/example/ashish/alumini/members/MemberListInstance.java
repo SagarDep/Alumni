@@ -1,16 +1,7 @@
-package com.example.ashish.alumini.ListMembers;
+package com.example.ashish.alumini.members;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
 import android.media.Image;
-import android.util.Log;
 
 /**
  * Created by ashish on 3/3/16.

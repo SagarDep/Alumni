@@ -1,14 +1,12 @@
-package com.example.ashish.alumini.ListMembers;
+package com.example.ashish.alumini.members;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PreLogin.Login;
 
 import java.util.List;
 

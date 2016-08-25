@@ -12,6 +12,7 @@ import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.squareup.otto.Bus;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class FragmentGetProfileData extends android.support.v4.app.Fragment {
@@ -80,6 +81,11 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
 
         return view;
+    }
+
+    @OnClick(R.id.button_save_profile_data)
+    public void saveDataHandler(){
+
     }
 
 

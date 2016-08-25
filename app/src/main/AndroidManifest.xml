@@ -25,7 +25,7 @@
         <activity android:name=".Edit_Profile" />
 
         <activity
-            android:name=".Job.jobProfile"
+            android:name=".job.jobProfile"
             android:label="Company Profile" />
         <activity android:name=".activities.PreLogin.Login"/>
         <activity android:name=".activities.PreLogin.SignUp"/>

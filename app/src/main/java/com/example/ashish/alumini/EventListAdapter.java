@@ -22,7 +22,7 @@ public class EventListAdapter extends ArrayAdapter<EventListInstance> {
 
 //    @Bind(R.id.imageView_logo)
 //    ImageView mImageView;
-    @Bind(R.id.list_layout_eventName) TextView mTextViewEventName;
+    @Bind(R.id.TextView_eventName) TextView mTextViewEventName;
 
 
 

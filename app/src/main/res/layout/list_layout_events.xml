@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/list_layout_eventName"
+        android:id="@+id/TextView_eventName"
         android:layout_alignBottom="@+id/imageView_eventPic_list_layout"
         android:layout_toRightOf="@+id/imageView_eventPic_list_layout"
         android:layout_toEndOf="@+id/imageView_eventPic_list_layout"
@@ -34,15 +34,19 @@
     <View
         android:layout_width="wrap_content"
         android:layout_height="1px"
-        android:layout_below="@+id/list_layout_eventName"
+        android:layout_below="@+id/TextView_eventName"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="10dp"
         android:layout_marginEnd="10dp"
         android:background="@color/grey"
-        android:layout_toRightOf="@+id/imageView_eventPic_list_layout"
-        android:layout_toEndOf="@+id/imageView_eventPic_list_layout"
+
+
+
+
         android:layout_marginTop="8dp"
-        android:id="@+id/linearLayout" />
+        android:id="@+id/linearLayout"
+        android:layout_alignLeft="@+id/TextView_eventName"
+        android:layout_alignStart="@+id/TextView_eventName" />
 
 </RelativeLayout>

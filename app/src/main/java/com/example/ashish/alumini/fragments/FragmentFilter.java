@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
-import com.example.ashish.alumini.ListMembers.ExpandableList.ExpandableListAdapter;
+import com.example.ashish.alumini.members.expandable_list.ExpandableListAdapter;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.squareup.otto.Bus;

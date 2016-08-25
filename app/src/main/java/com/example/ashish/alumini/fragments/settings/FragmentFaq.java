@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 
-import com.example.ashish.alumini.ListMembers.ExpandableList.ExpandableListAdapter;
+import com.example.ashish.alumini.members.expandable_list.ExpandableListAdapter;
 import com.example.ashish.alumini.R;
 import com.squareup.otto.Bus;
 

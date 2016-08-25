@@ -124,19 +124,48 @@ public class FragmentJobPosting extends Fragment {
     }
 
     public void collectData(){
+        /*
+        * Function will validate the data and then make the server call
+        * */
+        boolean validDeta = false;
+        if (mInputEditTextCompanyName.getText().toString().isEmpty()){
+            mInputEditTextCompanyName.setError("Invalid Name");
+        }
+        else if (mInputEditTextRole.getText().toString().isEmpty()){
+            mInputEditTextRole.setError("Empty Fields");
+        }
+        else if (mInputEditTextJobDescription.getText().toString().length()<6){
+            mInputEditTextJobDescription.setError("Invalid details");
+        }
+        else if (mInputEditTextJobLocation.getText().toString().length()<3){
+            mInputEditTextJobLocation.setError("Invalid details");
+        }
+        else if (mEditTextWebLink.getText().toString().length()<6){
+            mEditTextWebLink.setError("Invalid WebLink");
+        }
+        else if (mEditTextemail.getText().toString().length()<6 && android.util.Patterns.EMAIL_ADDRESS.matcher(mEditTextemail.getText()).matches()){
+            mEditTextemail.setError("Invalid Email address");
+        }
+        else {
+            validDeta = true;
+        }
 
 
-        makeServerCallToPostData();
+        if (validDeta){
+            makeServerCallToPostData();
+        }
     }
 
     public void makeServerCallToPostData(){
         Call<String> call = ApiClient.getServerApi().postJob(
-                mInputEditTextCompanyName.getText().toString(),
-                mInputEditTextRole.getText().toString(),
-                mInputEditTextJobDescription.getText().toString(),
-                mInputEditTextJobLocation.getText().toString(),
-                mEditTextWebLink.getText().toString(),
-                mEditTextemail.getText().toString(),
+                mInputEditTextCompanyName.getText().toString().trim(),
+                mInputEditTextRole.getText().toString().trim(),
+                mInputEditTextJobDescription.getText().toString().trim(),
+                mInputEditTextJobLocation.getText().toString().trim(),
+                mEditTextWebLink.getText().toString().trim(),
+                mEditTextemail.getText().toString().trim(),
+
+                // TODO : values from shared pref /  db
                 "Ayush Sharma",
                 "skajfdfbvkoljsdhbfv"
         );
@@ -145,15 +174,34 @@ public class FragmentJobPosting extends Fragment {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 Log.d(TAG,"Successful");
+                /*
+                * Show toast
+                * */
                 TastyToast.makeText(getActivity(),"Posted! yeah",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+                /*
+                * Clear all the textFields
+                * */
+                cleardata();
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 Log.d("API Call ","Failed");
+                /*
+                * only show toast for now
+                * */
+                TastyToast.makeText(getActivity(),"Posting Failed",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
             }
         });
 
     }
 
+    public void cleardata(){
+        mInputEditTextCompanyName.setText("");
+                mInputEditTextRole.setText("");
+                mInputEditTextJobDescription.setText("");
+                mInputEditTextJobLocation.setText("");
+                mEditTextWebLink.setText("");
+                mEditTextemail.setText("");
+    }
 }
