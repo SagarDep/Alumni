@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by ashish on 1/7/16.
  */
 public class MyApplication extends Application {
-//    public FragmentJobs fragmentJobs;
+    public FragmentJobs fragmentJobs;
     @Override
     public void onCreate() {
         super.onCreate();

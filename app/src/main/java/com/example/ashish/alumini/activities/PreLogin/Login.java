@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,9 +22,9 @@ import butterknife.OnClick;
 
 //import com.example.ashish.alumini.R;
 
-public class Login extends Activity
-{
+public class Login extends Activity {
 
+    String TAG = getClass().getSimpleName();
     EditText email,password;
     Button loginButton;
 
@@ -117,6 +118,10 @@ public class Login extends Activity
     }
 
 
+    @Override
+    public void onBackPressed() {
 
+        Log.d(TAG,"Back pressed");
+    }
 
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import android.app.TabActivity;
 import android.content.Intent;
+import android.util.Log;
 import android.util.TypedValue;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -49,7 +50,8 @@ public class MainActivity extends TabActivity {
 
     @Override
     public void onBackPressed() {
-        finish();
+//        finish();
+        Log.d("back pressed","yes");
     }
 
 

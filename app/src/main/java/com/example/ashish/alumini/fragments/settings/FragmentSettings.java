@@ -17,6 +17,7 @@ import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
+import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
 import butterknife.ButterKnife;
@@ -182,7 +183,7 @@ public class FragmentSettings extends Fragment  {
 
         GlobalPrefs.putBooloean(getString(R.string.is_logged_in),false);
 
-        Toast.makeText(getActivity(),"You are successfully logged Out", Toast.LENGTH_SHORT).show();
+        TastyToast.makeText(getActivity(),"You are successfully logged Out", Toast.LENGTH_SHORT,TastyToast.DEFAULT);
 
 
 //        Intent intent = new Intent(getActivity(), MainActivity.class);

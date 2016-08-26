@@ -16,6 +16,7 @@ import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager2;
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager3;
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.example.ashish.alumini.supporting_classes.ViewPagerAdapter;
 
 import butterknife.Bind;
@@ -102,9 +103,12 @@ public class FragmentMembers extends Fragment {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(new FragmentViewPager1(), "ALL");
-        adapter.addFragment(new FragmentViewPager2(),"ACE");
-        adapter.addFragment(new FragmentViewPager3(),  "NERDS");
+//        adapter.addFragment(new FragmentViewPager1(), "ALL");
+//        adapter.addFragment(new FragmentViewPager2(),"ACE");
+//        adapter.addFragment(new FragmentViewPager3(),  "NERDS");
+        adapter.addFragment(CommonData.fragmentViewPager1, "ALL");
+        adapter.addFragment(CommonData.fragmentViewPager2,"ACE");
+        adapter.addFragment(CommonData.fragmentViewPager3,  "NERDS");
         viewPager.setAdapter(adapter);
     }
 

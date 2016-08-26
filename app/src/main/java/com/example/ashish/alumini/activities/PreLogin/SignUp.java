@@ -158,4 +158,10 @@ public class SignUp extends Activity {
         move.putExtra("SIGNUP",true);
         startActivity(move);
     }
+
+    @Override
+    public void onBackPressed() {
+
+        Log.d(TAG,"Back pressed");
+    }
 }
