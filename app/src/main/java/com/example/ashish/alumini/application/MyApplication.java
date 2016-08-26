@@ -2,6 +2,8 @@ package com.example.ashish.alumini.application;
 
 import android.app.Application;
 
+import com.example.ashish.alumini.fragments.FragmentJobs;
+import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.facebook.stetho.Stetho;
 import com.google.gson.Gson;
@@ -13,7 +15,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by ashish on 1/7/16.
  */
-public class MainApplication extends Application {
+public class MyApplication extends Application {
+//    public FragmentJobs fragmentJobs;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -23,20 +26,14 @@ public class MainApplication extends Application {
         * */
         Stetho.initializeWithDefaults(this);
 
-        /*
-        * Retrofit declaration and init
-        * */
-        Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-                .create();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.stackexchange.com")
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
+//        fragmentJobs = new FragmentJobs().newInstance("","");
 
 
         GlobalPrefs.mContext = getApplicationContext();
 
+        CommonData  commonData = new CommonData();
+
     }
+
+
 }

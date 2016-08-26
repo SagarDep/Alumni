@@ -21,6 +21,7 @@ import com.example.ashish.alumini.fragments.settings.FragmentAboutApp;
 import com.example.ashish.alumini.fragments.settings.FragmentFaq;
 import com.example.ashish.alumini.fragments.settings.FragmentJobPosting;
 import com.example.ashish.alumini.fragments.settings.FragmentProfile;
+import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
@@ -32,7 +33,7 @@ public class PostLoginActivity extends AppCompatActivity implements
     FragmentTransaction mFragmentTransaction;
 
     // creating instance so that one instance can be used over the whole app
-    public FragmentJobs mFragmentJob = new FragmentJobs();
+//    public FragmentJobs mFragmentJob = new FragmentJobs();
 
     Bus mBus = new Bus();
 
@@ -143,7 +144,7 @@ public class PostLoginActivity extends AppCompatActivity implements
                 changeFragment(new FragmentMembers().newInstance("",""));
             }
             else if (mBackToJobList){
-                changeFragment(mFragmentJob);
+                changeFragment(CommonData.fragmentJobs);
             }
 
         }

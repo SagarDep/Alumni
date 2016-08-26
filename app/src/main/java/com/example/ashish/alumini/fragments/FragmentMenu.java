@@ -12,7 +12,9 @@ import android.widget.LinearLayout;
 
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.application.MyApplication;
 import com.example.ashish.alumini.fragments.settings.FragmentSettings;
+import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.mikepenz.iconics.view.IconicsImageView;
 import com.squareup.otto.Bus;
 
@@ -64,8 +66,6 @@ public class FragmentMenu extends Fragment {
     PostLoginActivity mActivity;
 
     ActionBar mActionBar;
-
-
 
 
     public FragmentMenu() {
@@ -137,7 +137,8 @@ public class FragmentMenu extends Fragment {
     @OnClick(R.id.linearLayout_jobs)
     public void changeToJobsFragment(View view){
         setVisibleView(getView().findViewById(R.id.view_jobs),mImageViewJobs);
-        mActivity.changeFragment(mActivity.mFragmentJob);
+//        mActivity.changeFragment(mActivity.mFragmentJob);
+        mActivity.changeFragment(CommonData.fragmentJobs);
         mActionBar.setTitle("Jobs");
         mBus.post(view.getId());
     }
