@@ -45,14 +45,11 @@ public class MainActivity extends TabActivity {
             tv.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
         }
 
-
     }
-
-
 
     @Override
     public void onBackPressed() {
-        moveTaskToBack(true);
+        finish();
     }
 
 

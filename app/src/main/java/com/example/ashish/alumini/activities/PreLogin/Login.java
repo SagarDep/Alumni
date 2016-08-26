@@ -100,7 +100,7 @@ public class Login extends Activity
         String passwordString = password.getText().toString();
 
         if (emailString.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(emailString).matches()) {
-            email.setError("enter a valid email address");
+            email.setError("enter a valid mEditTextemail address");
             valid = false;
         } else {
             email.setError(null);

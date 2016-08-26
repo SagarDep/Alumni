@@ -121,30 +121,33 @@ public class FragmentMenu extends Fragment {
     }
 
     @OnClick(R.id.linearLayout_home)
-    public void changeToHomeFragment(){
+    public void changeToHomeFragment(View view){
         setVisibleView(getView().findViewById(R.id.view_home),mImageViewMembers);
         mActivity.changeFragment(new FragmentMembers().newInstance(null,null));
         mActionBar.setTitle("Members");
+        mBus.post(view.getId());
     }
     @OnClick(R.id.linearLayout_filter)
-    public void changeToFilterFragment(){
-
+    public void changeToFilterFragment(View view){
         setVisibleView(getView().findViewById(R.id.view_filter),mImageViewFilter);
         mActivity.changeFragment(new FragmentFilter().newInstance(null,null));
         mActionBar.setTitle("Filter");
+        mBus.post(view.getId());
     }
     @OnClick(R.id.linearLayout_jobs)
-    public void changeToJobsFragment(){
+    public void changeToJobsFragment(View view){
         setVisibleView(getView().findViewById(R.id.view_jobs),mImageViewJobs);
         mActivity.changeFragment(mActivity.mFragmentJob);
         mActionBar.setTitle("Jobs");
+        mBus.post(view.getId());
     }
     @OnClick(R.id.linearLayout_settings)
-    public void changeFragment(){
+    public void changeFragment(View view){
 //        setVisibleView(getView().findViewById(R.id.view_settings),mLinearLayoutSettings);
         setVisibleView(getView().findViewById(R.id.view_settings),mImageViewSettings);
         mActivity.changeFragment(new FragmentSettings().newInstance(null,null));
         mActionBar.setTitle("Settings");
+        mBus.post(view.getId());
     }
 
 

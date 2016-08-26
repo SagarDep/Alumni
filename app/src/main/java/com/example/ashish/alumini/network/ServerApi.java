@@ -2,6 +2,7 @@ package com.example.ashish.alumini.network;
 
 import com.example.ashish.alumini.network.pojo.Job;
 import com.example.ashish.alumini.network.pojo.JobDetail;
+import com.example.ashish.alumini.network.pojo.SignupPart;
 
 import java.util.List;
 
@@ -28,6 +29,9 @@ public interface ServerApi {
 
 
 
+    /*
+    * to post a job from settings menu
+    * */
     @POST("jobs/post")
     Call<String> postJob(@Query("name") String name,
                          @Query("role") String role,
@@ -38,4 +42,9 @@ public interface ServerApi {
                          @Query("postedby") String postedBy,
                          @Query("postedbyid") String postdById
                          );
+
+    @POST("members/signup/partial")
+    Call<SignupPart> signupPartial(@Query("name") String name,
+                                   @Query("email") String email,
+                                   @Query("password") String password);
 }
