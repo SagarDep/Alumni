@@ -118,12 +118,37 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout_checkbox"
+                    android:layout_marginLeft="5dp">
+                    <com.github.lguipeng.library.animcheckbox.AnimCheckBox
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/checkBox_isNerd"
+                        app:stroke_width="4dp"
+                        app:stroke_color="@color/appTheme"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="I&apos;m doing Higher studies"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"/>
+                </LinearLayout>
+
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Work"
+                    android:layout_below="@+id/linearLayout_checkbox"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/textView_work"/>
+                    android:id="@+id/textView_work"
+                    android:layout_marginTop="5dp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -266,7 +291,6 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="10dp" />
 
-                <!-- Edit text of new twitter -->
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -281,7 +305,7 @@
                         android:layout_marginLeft="10dp"
                         android:maxLines="1"
                         android:inputType="textEmailAddress"
-                        android:id="@+id/editText_company_email"
+                        android:id="@+id/editText_member_email"
                         android:hint="e-mail address"/>
 
                 </android.support.design.widget.TextInputLayout>
@@ -325,7 +349,7 @@
 
 
 
-                <!-- image of new twitter -->
+
 
                 <com.mikepenz.iconics.view.IconicsImageView
                     android:layout_width="20dp"

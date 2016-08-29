@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.fragments.BlankFragment;
@@ -13,6 +14,7 @@ import com.example.ashish.alumini.fragments.FragmentEvents;
 import com.example.ashish.alumini.fragments.FragmentMainScreen;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
+import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
 
@@ -90,8 +92,8 @@ public class ActivityMainScreen extends AppCompatActivity
     @Override
     public void onBackPressed() {
         if (mCurrentFragment instanceof FragmentMainScreen){
-            super.onBackPressed();
-
+//            super.onBackPressed();
+            TastyToast.makeText(getApplicationContext(),"Press back again",Toast.LENGTH_SHORT,TastyToast.INFO);
         }
 
         if (mPreviousFragment instanceof FragmentEvents && mCurrentFragment instanceof FragmentWebView){

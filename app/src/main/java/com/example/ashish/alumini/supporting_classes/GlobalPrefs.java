@@ -24,9 +24,11 @@ public class GlobalPrefs {
 
     }
     public static String getString(String preferenceKey){
-        String value = "";
+        SharedPreferences preferences = mContext.getSharedPreferences(mContext.getString(R.string.preference_file_key)
+                , Context.MODE_PRIVATE);
 
-        return value;
+
+        return preferences.getString(preferenceKey,"");
     }
 
     public static void putBooloean(String key, boolean value){

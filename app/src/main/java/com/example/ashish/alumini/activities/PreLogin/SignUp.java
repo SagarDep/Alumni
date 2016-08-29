@@ -5,10 +5,13 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.ashish.alumini.R;
@@ -30,6 +33,9 @@ public class SignUp extends Activity {
     EditText mEditTextemail, mEditTextName, mEditTextPassword, mEditTextConfirmPassword;
     Button mButtonSignup;
 
+    LinearLayout mRelativeLayout;
+    int mCounter=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -41,6 +47,7 @@ public class SignUp extends Activity {
         mEditTextPassword =(EditText)findViewById(R.id.editText_signup_password);
         mEditTextConfirmPassword =(EditText)findViewById(R.id.editText_signup_passwordConfirm);
         mButtonSignup =(Button)findViewById(R.id.button_signup);
+        mRelativeLayout = (LinearLayout) findViewById(R.id.linearLayout_signup);
 
 
         mButtonSignup.setOnClickListener(new View.OnClickListener() {
@@ -57,9 +64,9 @@ public class SignUp extends Activity {
 
         if (!validate()) {
             onSignupFailed();
-            return;
+//            return;
         }
-        onSignUpSuccess();
+//        onSignUpSuccess();
 
 //        final ProgressDialog pDialog = new ProgressDialog(this);
 //        pDialog.setMessage("Loading...");
@@ -71,6 +78,7 @@ public class SignUp extends Activity {
         String confirmPasswordString= mEditTextConfirmPassword.getText().toString().trim();
 
 
+        startMainScreenActivity(null);
     }
 
     public void onSignUpSuccess() {
@@ -162,6 +170,16 @@ public class SignUp extends Activity {
     @Override
     public void onBackPressed() {
 
-        Log.d(TAG,"Back pressed");
+        mCounter++;
+        if (mCounter==1){
+            Snackbar snackbar = Snackbar
+                    .make(mRelativeLayout, "Press Back again to exit", Snackbar.LENGTH_LONG);
+            snackbar.show();
+        }
+
+        if (mCounter==2){
+            finish();
+        }
+
     }
 }

@@ -2,23 +2,20 @@ package com.example.ashish.alumini.activities.PreLogin;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 
 import com.example.ashish.alumini.activities.PostLogin.ActivityMainScreen;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.sdsmdg.tastytoast.TastyToast;
-
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 //import com.example.ashish.alumini.R;
 
@@ -27,6 +24,9 @@ public class Login extends Activity {
     String TAG = getClass().getSimpleName();
     EditText email,password;
     Button loginButton;
+
+    RelativeLayout mRelativeLayout;
+    int mCounter=0;
 
     SharedPreferences mSharedPreferences;
 
@@ -47,6 +47,8 @@ public class Login extends Activity {
                 login();
             }
         });
+
+        mRelativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout_login);
 
     }
 
@@ -120,8 +122,17 @@ public class Login extends Activity {
 
     @Override
     public void onBackPressed() {
+        mCounter++;
+        if (mCounter==1){
+            Snackbar snackbar = Snackbar
+                    .make(mRelativeLayout, "Press Back again to exit", Snackbar.LENGTH_LONG);
+            snackbar.show();
+        }
 
-        Log.d(TAG,"Back pressed");
+        if (mCounter==2){
+            finish();
+        }
+
     }
 
 }

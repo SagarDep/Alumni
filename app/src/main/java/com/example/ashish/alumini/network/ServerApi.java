@@ -28,7 +28,6 @@ public interface ServerApi {
     Call<JobDetail> getJobDetails(@Path("id") String id);
 
 
-
     /*
     * to post a job from settings menu
     * */
@@ -47,4 +46,9 @@ public interface ServerApi {
     Call<SignupPart> signupPartial(@Query("name") String name,
                                    @Query("email") String email,
                                    @Query("password") String password);
+
+
+    @POST("members/signup/complete")
+    Call<String> signupComplete(@Query("_id") String id);
+
 }

@@ -55,7 +55,7 @@ public class FragmentJobPosting extends Fragment {
     @Bind(R.id.editText_companyWebLink)
     EditText mEditTextWebLink;
 
-    @Bind(R.id.editText_company_email)
+    @Bind(R.id.editText_member_email)
     EditText mEditTextemail;
 
     Bus mBus = new Bus();

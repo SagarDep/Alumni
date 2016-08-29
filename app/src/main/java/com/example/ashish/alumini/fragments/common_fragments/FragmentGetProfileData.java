@@ -3,21 +3,30 @@ package com.example.ashish.alumini.fragments.common_fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.network.ApiClient;
+import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
+import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
 import com.squareup.otto.Bus;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class FragmentGetProfileData extends android.support.v4.app.Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -26,13 +35,34 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     private String mParam1;
     private String mParam2;
 
-
+    String TAG = getClass().getSimpleName();
 
     /*
     * Butterknife
     * */
-//    @Bind(R.id.button_settings)
-//    Button j;
+    @Bind(R.id.button_save_profile_data)
+    Button mButtonSave;
+
+    //contacts
+    @Bind(R.id.editText_member_email)
+    EditText mEditTextEmail;
+    @Bind(R.id.editText_memberPhone)
+    EditText mEditTextPhone;
+    @Bind(R.id.editText_memberWebLink)
+    EditText mEditTextWebLink;
+
+    //location
+    @Bind(R.id.editText_locationHome)
+            EditText mEditTextLocationHome;
+    @Bind(R.id.editText_locationWork)
+           EditText mEditTextLocationWork;
+
+    //Spinners
+
+
+    //checkBox
+    @Bind(R.id.checkBox_isNerd)
+    AnimCheckBox checkbox;
 
     Bus mBus = new Bus();
 
@@ -80,12 +110,19 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         mBus.register(getActivity());
 
 
+        checkbox.setChecked(false);
+        boolean animation = true;
+        checkbox.setChecked(false, animation);
+
+
         return view;
     }
 
     @OnClick(R.id.button_save_profile_data)
     public void saveDataHandler(){
-
+        if (validate()){
+            makeServerCalltoPostCompleteData();
+        }
     }
 
 
@@ -101,7 +138,25 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
     }
 
+    public void makeServerCalltoPostCompleteData(){
+        String id = GlobalPrefs.getString("Userid");
+        Call<String> call = ApiClient.getServerApi().signupComplete(id);
 
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.d(TAG, "API call successful");
+            }
 
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.d(TAG, "API call failed");
+            }
+        });
 
+    }
+
+    public boolean validate(){
+        return true;
+    }
 }
