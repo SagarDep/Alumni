@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
@@ -58,6 +59,10 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
            EditText mEditTextLocationWork;
 
     //Spinners
+    @Bind(R.id.spinner_branch)
+    Spinner mSpinnerBranch;
+    @Bind(R.id.spinner_year)
+    Spinner mSpinnerYear;
 
 
     //checkBox
@@ -139,8 +144,15 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     }
 
     public void makeServerCalltoPostCompleteData(){
+        // getting the id from shared preffernece which was stored during partial signup
         String id = GlobalPrefs.getString("Userid");
-        Call<String> call = ApiClient.getServerApi().signupComplete(id);
+
+
+        Call<String> call = ApiClient.getServerApi().signupComplete(id,
+                mEditTextPhone.getText().toString(),
+                mEditTextWebLink.getText().toString(),
+                mSpinnerBranch.getSelectedItem().toString(),
+                mSpinnerYear.getSelectedItem().toString());
 
         call.enqueue(new Callback<String>() {
             @Override

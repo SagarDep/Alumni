@@ -64,13 +64,9 @@ public class SignUp extends Activity {
 
         if (!validate()) {
             onSignupFailed();
-//            return;
+            return;
         }
-//        onSignUpSuccess();
-
-//        final ProgressDialog pDialog = new ProgressDialog(this);
-//        pDialog.setMessage("Loading...");
-//        pDialog.show();
+        onSignUpSuccess();
 
         String emailString = mEditTextemail.getText().toString().trim();
         String passwordString = mEditTextPassword.getText().toString().trim();
@@ -132,9 +128,9 @@ public class SignUp extends Activity {
 
     public void makeserverCallToPostSignupPartialData(){
         Call<SignupPart> call = ApiClient.getServerApi().signupPartial(
-                mEditTextName.getText().toString(),
-                mEditTextemail.getText().toString(),
-                mEditTextPassword.getText().toString());
+                mEditTextName.getText().toString().trim(),
+                mEditTextemail.getText().toString().trim(),
+                mEditTextPassword.getText().toString().trim());
 
         call.enqueue(new Callback<SignupPart>() {
             @Override

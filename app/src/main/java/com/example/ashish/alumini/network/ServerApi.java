@@ -49,6 +49,10 @@ public interface ServerApi {
 
 
     @POST("members/signup/complete")
-    Call<String> signupComplete(@Query("_id") String id);
+    Call<String> signupComplete(@Query("_id") String id,
+                                @Query("phone") String phone,
+                                @Query("weblink") String weblink,
+                                @Query("branch") String branch,
+                                @Query("year") String year);
 
 }
