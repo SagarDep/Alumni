@@ -181,7 +181,7 @@ public class FragmentSettings extends Fragment  {
 //      editor.commit();
 
 
-        GlobalPrefs.putBooloean(getString(R.string.is_logged_in),false);
+        new GlobalPrefs(getContext()).putBooloean(getString(R.string.is_logged_in),false);
 
         TastyToast.makeText(getActivity(),"You are successfully logged Out", Toast.LENGTH_SHORT,TastyToast.DEFAULT);
 

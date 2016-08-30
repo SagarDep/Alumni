@@ -86,7 +86,7 @@ public class Login extends Activity {
         Intent move=new Intent(Login.this,ActivityMainScreen.class);
         startActivity(move);
 
-        GlobalPrefs.putBooloean(getString(R.string.is_logged_in),true);
+        new GlobalPrefs(getApplicationContext()).putBooloean(getString(R.string.is_logged_in),true);
     }
 
     public void onLoginFailed() {

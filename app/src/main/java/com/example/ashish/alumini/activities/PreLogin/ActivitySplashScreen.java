@@ -27,7 +27,8 @@ public class ActivitySplashScreen extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-        boolean spLogin = GlobalPrefs.getBoolean(getString(R.string.is_logged_in));
+        boolean spLogin = new GlobalPrefs(getApplicationContext())
+                .getBoolean(getString(R.string.is_logged_in));
 
 
 

@@ -137,8 +137,8 @@ public class SignUp extends Activity {
             public void onResponse(Call<SignupPart> call, Response<SignupPart> response) {
                 Log.d(TAG,"API successful");
                 SignupPart signupPart = response.body();
-                GlobalPrefs.putString("Userid",signupPart.get_id());
-                GlobalPrefs.putString("Username",signupPart.getName());
+                new GlobalPrefs(getApplicationContext()).putString("Userid",signupPart.get_id());
+                new GlobalPrefs(getApplicationContext()).putString("Username",signupPart.getName());
 
                 /*
                 * Start Activity main screen in which the fragments will be displayed

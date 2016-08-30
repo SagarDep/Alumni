@@ -145,7 +145,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
     public void makeServerCalltoPostCompleteData(){
         // getting the id from shared preffernece which was stored during partial signup
-        String id = GlobalPrefs.getString("Userid");
+        String id = new GlobalPrefs(getContext()).getString("Userid");
 
 
         Call<String> call = ApiClient.getServerApi().signupComplete(id,

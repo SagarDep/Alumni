@@ -29,7 +29,7 @@ public class MyApplication extends Application {
 //        fragmentJobs = new FragmentJobs().newInstance("","");
 
 
-        GlobalPrefs.mContext = getApplicationContext();
+        new GlobalPrefs(getApplicationContext()).mContext = getApplicationContext();
 
         CommonData  commonData = new CommonData();
 
