@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 import com.example.ashish.alumini.EventListAdapter;
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.ActivityMainScreen;
+import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
 import com.example.ashish.alumini.deepak.events.EventListInstance;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
 import com.squareup.otto.Bus;
@@ -50,7 +50,7 @@ public class FragmentEvents extends Fragment {
 
     Bus mBus = new Bus() ;
 
-    ActivityMainScreen mActivity ;
+    MainScreenActivity mActivity ;
 
     ActionBar mActionBar;
 
@@ -92,7 +92,7 @@ public class FragmentEvents extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_events, container, false);
 
-        mActivity = (ActivityMainScreen) getActivity();
+        mActivity = (MainScreenActivity) getActivity();
 
         ButterKnife.bind(this,view);
         //Bus Registering

@@ -1,25 +1,25 @@
 package com.example.ashish.alumini.activities.PreLogin;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.ActivityMainScreen;
+import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 
 public class ActivitySplashScreen extends AppCompatActivity {
 
-    SharedPreferences mSharedPreferences;
+
+    // to start either login or main screen
     Intent mIntent;
-    String mLoginKey = "LOGIN_KEY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+
 
 
 
@@ -32,9 +32,10 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
 
 
+
         if (spLogin==true){
             // skip the login/signup tabbed activities
-            mIntent = new Intent(this, ActivityMainScreen.class);
+            mIntent = new Intent(this, MainScreenActivity.class);
         }
         else{
             // SWITCH TO login/signup screens

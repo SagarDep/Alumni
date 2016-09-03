@@ -1,5 +1,6 @@
 package com.example.ashish.alumini.activities.PostLogin;
 
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -18,17 +19,21 @@ import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
 
-public class ActivityMainScreen extends AppCompatActivity
+public class MainScreenActivity extends AppCompatActivity
 {
 
 
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
 
+    // for backpressed actions
     Fragment mCurrentFragment;
     Fragment mPreviousFragment;
 
+    // event bus
     Bus mBus = new Bus();
+
+    int mBackCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -41,16 +46,18 @@ public class ActivityMainScreen extends AppCompatActivity
         mBus.register(this);
         mFragmentManager = getSupportFragmentManager();
 
+        // checking if the activity is started from signup activity or splash activity
         Boolean isSignup = false;
         Bundle bundle = getIntent().getExtras();
         if (bundle!=null){
-             isSignup = (Boolean) bundle.get("SIGNUP");
+            // this means activity is started from signup activity
+            isSignup = (Boolean) bundle.get("SIGNUP");
         }
 
 
         mFragmentTransaction = mFragmentManager.beginTransaction();
         if (isSignup==true){
-            // show the get Data fragment
+            // show the getData fragment
             mFragmentTransaction.add(R.id.container_main_screen, new FragmentGetProfileData().newInstance("",""));
         }else {
             //else show the min screen fragment
@@ -92,8 +99,13 @@ public class ActivityMainScreen extends AppCompatActivity
     @Override
     public void onBackPressed() {
         if (mCurrentFragment instanceof FragmentMainScreen){
-//            super.onBackPressed();
             TastyToast.makeText(getApplicationContext(),"Press back again",Toast.LENGTH_SHORT,TastyToast.INFO);
+            mBackCounter++;
+            if (mBackCounter==2){
+
+
+                System.exit(0);
+            }
         }
 
         if (mPreviousFragment instanceof FragmentEvents && mCurrentFragment instanceof FragmentWebView){

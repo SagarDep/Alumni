@@ -2,7 +2,6 @@ package com.example.ashish.alumini.activities.PreLogin;
 
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -11,11 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.ActivityMainScreen;
+import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.SignupPart;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
@@ -34,7 +32,8 @@ public class SignUp extends Activity {
     Button mButtonSignup;
 
     LinearLayout mRelativeLayout;
-    int mCounter=0;
+
+    int mBackCounter =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,15 +73,15 @@ public class SignUp extends Activity {
         String confirmPasswordString= mEditTextConfirmPassword.getText().toString().trim();
 
 
-        startMainScreenActivity(null);
+//        startMainScreenActivity(null);
     }
 
     public void onSignUpSuccess() {
         mButtonSignup.setEnabled(true);
 
+
+        // make API call
         makeserverCallToPostSignupPartialData();
-
-
     }
 
     public void onSignupFailed() {
@@ -121,7 +120,9 @@ public class SignUp extends Activity {
         }
 
 
-        return valid;
+        // TODO : proper validations
+        return true; // temp during testing
+//        return valid;
 
     }
 
@@ -137,9 +138,16 @@ public class SignUp extends Activity {
             public void onResponse(Call<SignupPart> call, Response<SignupPart> response) {
                 Log.d(TAG,"API successful");
                 SignupPart signupPart = response.body();
-                new GlobalPrefs(getApplicationContext()).putString("Userid",signupPart.get_id());
-                new GlobalPrefs(getApplicationContext()).putString("Username",signupPart.getName());
 
+                /*
+                * saving the name, id, email in shared prefs
+                * */
+                GlobalPrefs globalPrefs = new GlobalPrefs(getApplicationContext());
+                globalPrefs.putString("Userid",signupPart.get_id());
+                globalPrefs.putString("Username",signupPart.getName());
+                globalPrefs.putString("Useremail",signupPart.getEmail());
+
+                globalPrefs.putBooloean(getString(R.string.is_logged_in),true);
                 /*
                 * Start Activity main screen in which the fragments will be displayed
                 * */
@@ -152,8 +160,10 @@ public class SignUp extends Activity {
             }
         });
     }
+
+    // function to start activity through intent
     public void startMainScreenActivity(SignupPart  signupPart){
-        Intent move=new Intent(SignUp.this,ActivityMainScreen.class);
+        Intent move=new Intent(SignUp.this,MainScreenActivity.class);
                 /*
                 * SIGNUP is sent beacuse when the login is successful,
                  * then from another session the login/signup will be skipped
@@ -166,14 +176,14 @@ public class SignUp extends Activity {
     @Override
     public void onBackPressed() {
 
-        mCounter++;
-        if (mCounter==1){
+        mBackCounter++;
+        if (mBackCounter ==1){
             Snackbar snackbar = Snackbar
                     .make(mRelativeLayout, "Press Back again to exit", Snackbar.LENGTH_LONG);
             snackbar.show();
         }
 
-        if (mCounter==2){
+        if (mBackCounter ==2){
             finish();
         }
 

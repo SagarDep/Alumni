@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.ActivityMainScreen;
+import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
 import com.squareup.otto.Bus;
@@ -39,7 +39,7 @@ public class FragmentMainScreen extends android.support.v4.app.Fragment {
 
     Bus mBus = new Bus();
 
-    ActivityMainScreen mActivity ;
+    MainScreenActivity mActivity ;
 
     public FragmentMainScreen() {
         // Required empty public constructor
@@ -78,7 +78,7 @@ public class FragmentMainScreen extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.activity_main_screen2, container, false);
 
-        mActivity = (ActivityMainScreen) getActivity();
+        mActivity = (MainScreenActivity) getActivity();
 
         ButterKnife.bind(this,view);
         //Bus Registering

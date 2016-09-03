@@ -29,7 +29,7 @@
             android:label="Company Profile" />
         <activity android:name=".activities.PreLogin.Login"/>
         <activity android:name=".activities.PreLogin.SignUp"/>
-        <activity android:name=".activities.PostLogin.ActivityMainScreen"/>
+        <activity android:name=".activities.PostLogin.MainScreenActivity"/>
 
         <activity
             android:name=".deepak.about_college.About_college"

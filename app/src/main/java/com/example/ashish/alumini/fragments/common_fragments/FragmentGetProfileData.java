@@ -1,7 +1,6 @@
 package com.example.ashish.alumini.fragments.common_fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,7 +11,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.fragments.FragmentMainScreen;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
@@ -69,7 +70,18 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     @Bind(R.id.checkBox_isNerd)
     AnimCheckBox checkbox;
 
+    // name and bio
+    @Bind(R.id.editText_memberName)
+            EditText mEditTextName;
+    @Bind(R.id.editText_memberBio)
+    EditText mEditTextBio;
+
+    // event bus registering
     Bus mBus = new Bus();
+
+    // activities
+    MainScreenActivity mMainScreenActivity;
+    PostLoginActivity mPostLoginActivity;
 
 
 
@@ -114,10 +126,21 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         //Bus Registering
         mBus.register(getActivity());
 
+        if (getActivity() instanceof MainScreenActivity){
+            mMainScreenActivity = (MainScreenActivity) getActivity();
+        }
+        else {
+            mPostLoginActivity = (PostLoginActivity) getActivity();
+        }
 
-        checkbox.setChecked(false);
+        // displaying the data which is strored in shared preference from previous page
+        mEditTextName.setText(new GlobalPrefs(getContext()).getString("Username"));
+        mEditTextEmail.setText(new GlobalPrefs(getContext()).getString("Useremail"));
+
+        // check box functions
         boolean animation = true;
         checkbox.setChecked(false, animation);
+
 
 
         return view;
@@ -148,16 +171,22 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         String id = new GlobalPrefs(getContext()).getString("Userid");
 
 
-        Call<String> call = ApiClient.getServerApi().signupComplete(id,
-                mEditTextPhone.getText().toString(),
-                mEditTextWebLink.getText().toString(),
-                mSpinnerBranch.getSelectedItem().toString(),
-                mSpinnerYear.getSelectedItem().toString());
+        Call<String> call = ApiClient.getServerApi().signupComplete(id, //id
+                true,
+                mEditTextBio.getText().toString().trim(),                      // bio
+                mEditTextPhone.getText().toString().trim(),                    // phone
+                mEditTextWebLink.getText().toString().trim(),                  // web
+                mSpinnerBranch.getSelectedItem().toString().trim(),            // spinner
+                mSpinnerYear.getSelectedItem().toString().trim(),              // year
+                mEditTextLocationHome.getText().toString().trim(),      // home locstion
+                mEditTextLocationWork.getText().toString().trim()       // work location
+        );     //
 
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                Log.d(TAG, "API call successful");
+                mMainScreenActivity.changeFragment(new FragmentMainScreen().newInstance("",""));
+                Log.d(TAG,"API Successful");
             }
 
             @Override
