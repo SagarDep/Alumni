@@ -2,6 +2,7 @@ package com.example.ashish.alumini.network;
 
 import com.example.ashish.alumini.network.pojo.Job;
 import com.example.ashish.alumini.network.pojo.JobDetail;
+import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.network.pojo.SignupPart;
 
 import java.util.List;
@@ -58,7 +59,14 @@ public interface ServerApi {
                                 @Query("branch") String branch,
                                 @Query("year") String year,
                                 @Query("home") String home,
-                                @Query("work") String work
+                                @Query("work") String work,
+                                @Query("designation") String designation,
+                                @Query("company") String company
                                 );
+
+
+    // getting the list of members
+    @GET("members/")
+    Call<List<MemberInstance>> getMemberList();
 
 }

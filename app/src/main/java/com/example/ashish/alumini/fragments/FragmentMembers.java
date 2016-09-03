@@ -6,21 +6,25 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager1;
-import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager2;
-import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager3;
-
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.network.ApiClient;
+import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.example.ashish.alumini.supporting_classes.ViewPagerAdapter;
 
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,7 +49,9 @@ public class FragmentMembers extends Fragment {
     @Bind(R.id.viewpager) ViewPager mViewPager;
     @Bind(R.id.tabLayout)TabLayout mTabLayout;
 
-    private OnFragmentInteractionListener mListener;
+
+    // list of all members
+    List<MemberInstance> memberInstanceList;
 
 
     public FragmentMembers() {
@@ -90,15 +96,17 @@ public class FragmentMembers extends Fragment {
         setupViewPager(mViewPager);
         mTabLayout.setupWithViewPager(mViewPager);
 
+        makeServerCallToGetTheList();
+
 
         return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+
+
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -115,32 +123,28 @@ public class FragmentMembers extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    public void makeServerCallToGetTheList(){
+        Call<List<MemberInstance>> call = ApiClient.getServerApi().getMemberList();
+
+        call.enqueue(new Callback<List<MemberInstance>>() {
+            @Override
+            public void onResponse(Call<List<MemberInstance>> call, Response<List<MemberInstance>> response) {
+                Log.d(TAG,"API call successful");
+            }
+
+            @Override
+            public void onFailure(Call<List<MemberInstance>> call, Throwable t) {
+                Log.d(TAG,"API call failed");
+            }
+        });
     }
 }

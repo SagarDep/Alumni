@@ -76,6 +76,13 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     @Bind(R.id.editText_memberBio)
     EditText mEditTextBio;
 
+    // designation and company
+    @Bind(R.id.editText_Designation)
+    EditText mEditTextDesignation;
+    @Bind(R.id.editText_company)
+    EditText mEditTextCompany;
+
+
     // event bus registering
     Bus mBus = new Bus();
 
@@ -179,8 +186,10 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
                 mSpinnerBranch.getSelectedItem().toString().trim(),            // spinner
                 mSpinnerYear.getSelectedItem().toString().trim(),              // year
                 mEditTextLocationHome.getText().toString().trim(),      // home locstion
-                mEditTextLocationWork.getText().toString().trim()       // work location
-        );     //
+                mEditTextLocationWork.getText().toString().trim(),       // work location
+                mEditTextDesignation.getText().toString().trim(),               // designation
+                mEditTextCompany.getText().toString().trim()                    // company
+                );     //
 
         call.enqueue(new Callback<String>() {
             @Override

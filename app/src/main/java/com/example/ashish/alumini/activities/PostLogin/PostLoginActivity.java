@@ -25,9 +25,7 @@ import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
-public class PostLoginActivity extends AppCompatActivity implements
-        FragmentMembers.OnFragmentInteractionListener,
-        FragmentFaq.OnFragmentInteractionListener{
+public class PostLoginActivity extends AppCompatActivity {
 
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
@@ -76,11 +74,6 @@ public class PostLoginActivity extends AppCompatActivity implements
         if (item.getItemId()==android.R.id.home)
             onBackPressed();
         return true;
-    }
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
     }
 
 

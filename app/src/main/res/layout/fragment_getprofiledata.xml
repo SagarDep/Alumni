@@ -164,7 +164,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"            xmlns:card_view="http://schemas.android.com/apk/res-auto"
                         android:maxLines="1"
-                        android:id="@+id/editText_jobDescription"
+                        android:id="@+id/editText_Designation"
                         android:hint="Designation / Post Grad."
                         android:text="CRO" />
 

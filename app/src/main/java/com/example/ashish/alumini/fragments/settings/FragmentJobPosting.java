@@ -46,7 +46,7 @@ public class FragmentJobPosting extends Fragment {
     @Bind(R.id.editText_designation)
     TextInputEditText mInputEditTextRole;
 
-    @Bind(R.id.editText_jobDescription)
+    @Bind(R.id.editText_Designation)
     TextInputEditText mInputEditTextJobDescription;
 
     @Bind(R.id.editText_jobLocation)
