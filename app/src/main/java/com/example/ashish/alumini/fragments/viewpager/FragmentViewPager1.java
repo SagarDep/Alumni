@@ -16,10 +16,12 @@ import com.example.ashish.alumini.members.RecyclerItemClickListener;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.fragments.settings.FragmentProfile;
+import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.supporting_classes.MemberLists;
 import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -34,7 +36,8 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
 
-    private ArrayList<MemberListInstance> mArrayList = new ArrayList<>();
+    private List<MemberListInstance> mArrayList = new ArrayList<>();
+    private List<MemberInstance> mArrayList2 = new ArrayList<>();
     private MemberAdapter mAdapter;
 
     PostLoginActivity mActivity;
@@ -61,7 +64,7 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
         ButterKnife.bind(this,view);
 
         //initialization of adapter
-        mAdapter = new MemberAdapter(mArrayList);
+        mAdapter = new MemberAdapter(mArrayList2);
 
         //getting instance of activity
         mActivity = (PostLoginActivity) getActivity();
@@ -90,10 +93,11 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
         );
 
 
-//        makeServerCallToGetMemberList();
+        makeServerCallToGetMemberList();
         MyApplication myApplication = (MyApplication) getActivity().getApplication();
         MemberLists memberLists = myApplication.getmMemberListsInstance();
-        Log.d(TAG,String.valueOf(memberLists.list.size()));
+        mArrayList2 = memberLists.list;
+//        Log.d(TAG,String.valueOf(memberLists.list.size()));
         return view;
     }
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
+import com.example.ashish.alumini.application.MyApplication;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 
 public class ActivitySplashScreen extends AppCompatActivity {
@@ -35,6 +36,8 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
         if (spLogin==true){
             // skip the login/signup tabbed activities
+            MyApplication mApplication = (MyApplication) getApplication();
+            mApplication.createListCLass();
             mIntent = new Intent(this, MainScreenActivity.class);
         }
         else{
