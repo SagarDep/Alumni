@@ -4,16 +4,19 @@ import android.os.Bundle;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ashish.alumini.application.MyApplication;
 import com.example.ashish.alumini.members.MemberListInstance;
 import com.example.ashish.alumini.members.MemberAdapter;
 import com.example.ashish.alumini.members.RecyclerItemClickListener;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.fragments.settings.FragmentProfile;
+import com.example.ashish.alumini.supporting_classes.MemberLists;
 import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
@@ -87,8 +90,10 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
         );
 
 
-        makeServerCallToGetMemberList();
-
+//        makeServerCallToGetMemberList();
+        MyApplication myApplication = (MyApplication) getActivity().getApplication();
+        MemberLists memberLists = myApplication.getmMemberListsInstance();
+        Log.d(TAG,String.valueOf(memberLists.list.size()));
         return view;
     }
 

@@ -17,6 +17,7 @@ import com.example.ashish.alumini.fragments.FragmentMainScreen;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
+import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
 import butterknife.Bind;
@@ -148,8 +149,6 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         boolean animation = true;
         checkbox.setChecked(false, animation);
 
-
-
         return view;
     }
 
@@ -179,7 +178,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
 
         Call<String> call = ApiClient.getServerApi().signupComplete(id, //id
-                true,
+                true,                                                           // isNerd
                 mEditTextBio.getText().toString().trim(),                      // bio
                 mEditTextPhone.getText().toString().trim(),                    // phone
                 mEditTextWebLink.getText().toString().trim(),                  // web
@@ -195,7 +194,8 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 mMainScreenActivity.changeFragment(new FragmentMainScreen().newInstance("",""));
-                Log.d(TAG,"API Successful");
+                TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+
             }
 
             @Override

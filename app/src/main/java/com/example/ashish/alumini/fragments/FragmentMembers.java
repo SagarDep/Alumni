@@ -26,14 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentMembers.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentMembers#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FragmentMembers extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,6 +49,7 @@ public class FragmentMembers extends Fragment {
 
     public FragmentMembers() {
         // Required empty public constructor
+        Log.d(TAG,"Fragment Member created");
     }
 
     /**
@@ -96,7 +90,8 @@ public class FragmentMembers extends Fragment {
         setupViewPager(mViewPager);
         mTabLayout.setupWithViewPager(mViewPager);
 
-        makeServerCallToGetTheList();
+//        makeServerCallToGetTheList();
+
 
 
         return view;

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
+import com.example.ashish.alumini.application.MyApplication;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.SignupPart;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
@@ -35,6 +36,8 @@ public class SignUp extends Activity {
 
     int mBackCounter =0;
 
+    MyApplication mApplication;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -55,6 +58,8 @@ public class SignUp extends Activity {
                 signUp();
             }
         });
+
+        mApplication  = (MyApplication) getApplication();
 
     }
 
@@ -147,11 +152,18 @@ public class SignUp extends Activity {
                 globalPrefs.putString("Username",signupPart.getName());
                 globalPrefs.putString("Useremail",signupPart.getEmail());
 
+                // for session maintaining
                 globalPrefs.putBooloean(getString(R.string.is_logged_in),true);
+
+                // function for creating list class to make server class and fetch data
+                mApplication.createListCLass();
+
                 /*
                 * Start Activity main screen in which the fragments will be displayed
                 * */
                 startMainScreenActivity(signupPart);
+
+
             }
 
             @Override
@@ -170,6 +182,7 @@ public class SignUp extends Activity {
                  * to change the fragment of signup, "SIGNUP" is used
                 * */
         move.putExtra("SIGNUP",true);
+
         startActivity(move);
     }
 

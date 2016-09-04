@@ -117,6 +117,7 @@ public class FragmentMenu extends Fragment {
         mPreviousIconicsImageView = (IconicsImageView) view.findViewById(R.id.button_home) ;
 
 
+
         return view;
     }
 
@@ -144,7 +145,6 @@ public class FragmentMenu extends Fragment {
     }
     @OnClick(R.id.linearLayout_settings)
     public void changeFragment(View view){
-//        setVisibleView(getView().findViewById(R.id.view_settings),mLinearLayoutSettings);
         setVisibleView(getView().findViewById(R.id.view_settings),mImageViewSettings);
         mActivity.changeFragment(new FragmentSettings().newInstance(null,null));
         mActionBar.setTitle("Settings");

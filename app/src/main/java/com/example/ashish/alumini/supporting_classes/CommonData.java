@@ -16,7 +16,6 @@ public class CommonData {
     public CommonData(){
         fragmentJobs = new FragmentJobs();
         fragmentViewPager1 = new FragmentViewPager1();
-
         fragmentViewPager2 = new FragmentViewPager2();
         fragmentViewPager3 = new FragmentViewPager3();
     }
