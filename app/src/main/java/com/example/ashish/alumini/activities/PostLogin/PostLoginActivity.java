@@ -91,7 +91,7 @@ public class PostLoginActivity extends AppCompatActivity {
         switch (id){
             case R.id.linearLayout_home :
                 mBackToMainScreen=true;
-                changeFragment(new FragmentMembers().newInstance(null,null));
+
                 break;
 
             case R.id.linearLayout_filter :

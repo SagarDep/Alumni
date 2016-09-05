@@ -41,6 +41,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
             mIntent = new Intent(this, MainScreenActivity.class);
         }
         else{
+
             // SWITCH TO login/signup screens
             mIntent = new Intent(this,MainActivity.class);
         }

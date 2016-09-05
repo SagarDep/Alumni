@@ -178,17 +178,17 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
 
         Call<String> call = ApiClient.getServerApi().signupComplete(id, //id
-                true,                                                           // isNerd
+                checkbox.isChecked(),                                          // isNerd
                 mEditTextBio.getText().toString().trim(),                      // bio
                 mEditTextPhone.getText().toString().trim(),                    // phone
                 mEditTextWebLink.getText().toString().trim(),                  // web
                 mSpinnerBranch.getSelectedItem().toString().trim(),            // spinner
                 mSpinnerYear.getSelectedItem().toString().trim(),              // year
-                mEditTextLocationHome.getText().toString().trim(),      // home locstion
-                mEditTextLocationWork.getText().toString().trim(),       // work location
-                mEditTextDesignation.getText().toString().trim(),               // designation
-                mEditTextCompany.getText().toString().trim()                    // company
-                );     //
+                mEditTextLocationHome.getText().toString().trim(),             // home locstion
+                mEditTextLocationWork.getText().toString().trim(),             // work location
+                mEditTextDesignation.getText().toString().trim(),              // designation
+                mEditTextCompany.getText().toString().trim()                   // company
+                );
 
         call.enqueue(new Callback<String>() {
             @Override

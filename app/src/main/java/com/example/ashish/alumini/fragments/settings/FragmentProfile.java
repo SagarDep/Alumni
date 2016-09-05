@@ -13,6 +13,7 @@ import com.example.ashish.alumini.members.MemberListInstance;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.squareup.otto.Bus;
 
 import butterknife.Bind;
@@ -28,7 +29,7 @@ public class FragmentProfile extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    MemberListInstance mListInstance;
+    MemberInstance mListInstance;
 
     /*
     * Butterknife
@@ -99,9 +100,9 @@ public class FragmentProfile extends Fragment {
             mTextViewDesignationNCompanyName.setText(mListInstance.getDesignation()
                     + " at " +
                     mListInstance.getCompany());
-            mTextViewBranch.setText("Branch : "+mListInstance.getBranch().toUpperCase());
-            mTextViewJobLocation.setText(mListInstance.getLocation_work());
-            mTextViewYear.setText(mListInstance.getYear_passing());
+//            mTextViewBranch.setText("Branch : "+mListInstance.getBranch().toUpperCase());
+//            mTextViewJobLocation.setText(mListInstance.getLocation_work());
+//            mTextViewYear.setText(mListInstance.getYear_passing());
         }
 
 
@@ -128,7 +129,7 @@ public class FragmentProfile extends Fragment {
 
     }
 
-    public void setData(MemberListInstance data){
+    public void setData(MemberInstance data){
 
         mListInstance = data;
         makeServerCallToGetMoreData();

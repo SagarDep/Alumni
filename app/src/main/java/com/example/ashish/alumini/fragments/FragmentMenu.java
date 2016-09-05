@@ -67,6 +67,8 @@ public class FragmentMenu extends Fragment {
 
     ActionBar mActionBar;
 
+    FragmentMembers mFragmentMembers = new FragmentMembers();
+
 
     public FragmentMenu() {
         // Required empty public constructor
@@ -114,9 +116,7 @@ public class FragmentMenu extends Fragment {
 
         mLineViewPrevious = view.findViewById(R.id.view_home);
         mLinearLayoutPrevious = (LinearLayout) view.findViewById(R.id.linearLayout_home);
-        mPreviousIconicsImageView = (IconicsImageView) view.findViewById(R.id.button_home) ;
-
-
+        mPreviousIconicsImageView = (IconicsImageView) view.findViewById(R.id.button_home);
 
         return view;
     }
@@ -124,14 +124,14 @@ public class FragmentMenu extends Fragment {
     @OnClick(R.id.linearLayout_home)
     public void changeToHomeFragment(View view){
         setVisibleView(getView().findViewById(R.id.view_home),mImageViewMembers);
-        mActivity.changeFragment(new FragmentMembers().newInstance(null,null));
+        mActivity.changeFragment(mFragmentMembers);
         mActionBar.setTitle("Members");
         mBus.post(view.getId());
     }
     @OnClick(R.id.linearLayout_filter)
     public void changeToFilterFragment(View view){
         setVisibleView(getView().findViewById(R.id.view_filter),mImageViewFilter);
-        mActivity.changeFragment(new FragmentFilter().newInstance(null,null));
+        mActivity.changeFragment(new FragmentFilter());
         mActionBar.setTitle("Filter");
         mBus.post(view.getId());
     }
@@ -146,7 +146,7 @@ public class FragmentMenu extends Fragment {
     @OnClick(R.id.linearLayout_settings)
     public void changeFragment(View view){
         setVisibleView(getView().findViewById(R.id.view_settings),mImageViewSettings);
-        mActivity.changeFragment(new FragmentSettings().newInstance(null,null));
+        mActivity.changeFragment(new FragmentSettings());
         mActionBar.setTitle("Settings");
         mBus.post(view.getId());
     }

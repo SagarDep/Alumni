@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.network.pojo.MemberInstance;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class MemberAdapter  extends RecyclerView.Adapter<MemberAdapter.MyViewHol
     public  String TAG = getClass().getSimpleName();
 
 
-    List<MemberListInstance> mListMembers;
+    List<MemberInstance> mListMembers;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, year, designation, location;
@@ -35,8 +36,8 @@ public class MemberAdapter  extends RecyclerView.Adapter<MemberAdapter.MyViewHol
     }
 
 
-    public MemberAdapter(List<MemberListInstance> memberList) {
-        this.mListMembers = memberList;
+    public MemberAdapter(List<MemberInstance> memberList) {
+        mListMembers = memberList;
     }
 
     @Override
@@ -49,11 +50,12 @@ public class MemberAdapter  extends RecyclerView.Adapter<MemberAdapter.MyViewHol
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        MemberListInstance aInstance = mListMembers.get(position);
+        MemberInstance aInstance = mListMembers.get(position);
         holder.name.setText(aInstance.getName());
         holder.designation.setText(aInstance.getDesignation());
-        holder.year.setText(aInstance.getYear_passing());
-        holder.location.setText(aInstance.getLocation_work());
+        holder.year.setText(aInstance.getYear());
+        holder.location.setText(aInstance.getCompany()
+        );
 
     }
 

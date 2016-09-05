@@ -24,6 +24,7 @@ public class MemberLists {
     makeServerCallToGetAllMemberData();
     }
     public void makeServerCallToGetAllMemberData(){
+        Log.d(TAG, "Class/API created");
         Call<List<MemberInstance>> call = ApiClient.getServerApi().getMemberList();
 
         call.enqueue(new Callback<List<MemberInstance>>() {

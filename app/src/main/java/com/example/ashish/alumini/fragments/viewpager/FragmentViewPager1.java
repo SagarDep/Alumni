@@ -63,6 +63,10 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
         //butterknife injections
         ButterKnife.bind(this,view);
 
+        MyApplication myApplication = (MyApplication) getActivity().getApplication();
+        MemberLists memberLists = myApplication.getmMemberListsInstance();
+        mArrayList2 = memberLists.list;
+
         //initialization of adapter
         mAdapter = new MemberAdapter(mArrayList2);
 
@@ -81,7 +85,7 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
                         new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         FragmentProfile fragmentProfile = new FragmentProfile().newInstance("","");
-                        fragmentProfile.setData(mArrayList.get(position));
+                        fragmentProfile.setData(mArrayList2.get(position));
                         mActivity.changeFragment(fragmentProfile);
                         mBus.post(R.id.recycler_view);
                     }
@@ -93,10 +97,9 @@ public class FragmentViewPager1 extends android.support.v4.app.Fragment {
         );
 
 
-        makeServerCallToGetMemberList();
-        MyApplication myApplication = (MyApplication) getActivity().getApplication();
-        MemberLists memberLists = myApplication.getmMemberListsInstance();
-        mArrayList2 = memberLists.list;
+//        makeServerCallToGetMemberList();
+
+
 //        Log.d(TAG,String.valueOf(memberLists.list.size()));
         return view;
     }
