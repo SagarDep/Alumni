@@ -142,6 +142,12 @@ public class SignUp extends Activity {
             @Override
             public void onResponse(Call<SignupPart> call, Response<SignupPart> response) {
                 Log.d(TAG,"API successful");
+                if (response.code()==600){
+                    TastyToast.makeText(getBaseContext(), "Email Already Exists", Toast.LENGTH_LONG,TastyToast.ERROR);
+                }
+                else {
+
+
                 SignupPart signupPart = response.body();
 
                 /*
@@ -162,6 +168,7 @@ public class SignUp extends Activity {
                 * Start Activity main screen in which the fragments will be displayed
                 * */
                 startMainScreenActivity(signupPart);
+                }
 
 
             }

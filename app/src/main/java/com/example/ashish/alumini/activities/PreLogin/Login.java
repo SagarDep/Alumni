@@ -67,16 +67,10 @@ public class Login extends Activity {
         pDialog.show();
 
         String emailString = email.getText().toString().trim();
-        String wordString = password.getText().toString().trim();
+        String password = this.password.getText().toString().trim();
 
 
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        onLoginSuccess();
-                        pDialog.dismiss();
-                    }
-                }, 1000);
+      makeServerCallToLogin(emailString, password);
 
     }
 
@@ -133,5 +127,9 @@ public class Login extends Activity {
         }
 
     }
+    public void makeServerCallToLogin(String email, String password){
+
+    }
+
 
 }
