@@ -67,7 +67,7 @@ public class FragmentMenu extends Fragment {
 
     ActionBar mActionBar;
 
-    FragmentMembers mFragmentMembers = new FragmentMembers();
+//    FragmentMembers mFragmentMembers = new FragmentMembers();
 
 
     public FragmentMenu() {
@@ -124,7 +124,7 @@ public class FragmentMenu extends Fragment {
     @OnClick(R.id.linearLayout_home)
     public void changeToHomeFragment(View view){
         setVisibleView(getView().findViewById(R.id.view_home),mImageViewMembers);
-        mActivity.changeFragment(mFragmentMembers);
+        mActivity.changeFragment(mActivity.mFragmentMembers);
         mActionBar.setTitle("Members");
         mBus.post(view.getId());
     }

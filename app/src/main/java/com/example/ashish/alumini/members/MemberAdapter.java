@@ -54,7 +54,7 @@ public class MemberAdapter  extends RecyclerView.Adapter<MemberAdapter.MyViewHol
         holder.name.setText(aInstance.getName());
         holder.designation.setText(aInstance.getDesignation());
         holder.year.setText(aInstance.getYear());
-        holder.location.setText(aInstance.getCompany()
+        holder.location.setText(aInstance.getWork()
         );
 
     }

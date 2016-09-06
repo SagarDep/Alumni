@@ -98,8 +98,9 @@ public class FragmentProfile extends Fragment {
         if (mListInstance!=null){
             mTextView_name.setText(mListInstance.getName());
             mTextViewDesignationNCompanyName.setText(mListInstance.getDesignation()
-                    + " at " +
-                    mListInstance.getCompany());
+                    + " at "
+//                    mListInstance.getCompany()
+            );
 //            mTextViewBranch.setText("Branch : "+mListInstance.getBranch().toUpperCase());
 //            mTextViewJobLocation.setText(mListInstance.getLocation_work());
 //            mTextViewYear.setText(mListInstance.getYear_passing());

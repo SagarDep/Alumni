@@ -119,7 +119,7 @@ public class FragmentMainScreen extends android.support.v4.app.Fragment {
 
     @OnClick(R.id.circleButton_event)
     public void changeEventFragment(){
-        mActivity.changeFragment(new FragmentEvents().newInstance("",""));
+        mActivity.changeFragment(new FragmentEvents());
     }
 
     @OnClick(R.id.circleButton_about)

@@ -31,7 +31,9 @@ public class PostLoginActivity extends AppCompatActivity {
     FragmentTransaction mFragmentTransaction;
 
     // creating instance so that one instance can be used over the whole app
-//    public FragmentJobs mFragmentJob = new FragmentJobs();
+    public FragmentMembers mFragmentMembers =new FragmentMembers();
+
+
 
     Bus mBus = new Bus();
 
@@ -62,65 +64,65 @@ public class PostLoginActivity extends AppCompatActivity {
         mFragmentManager = getSupportFragmentManager();
 
 
-
         //setting first fragement
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.add(R.id.fragment_container,new FragmentMembers().newInstance(null,null));
+        mFragmentTransaction.add(R.id.fragment_container, mFragmentMembers);
         mFragmentTransaction.commit();
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==android.R.id.home)
+        if (item.getItemId() == android.R.id.home)
             onBackPressed();
         return true;
     }
 
 
-    public void changeFragment(android.support.v4.app.Fragment fragment){
-        if (findViewById(R.id.fragment_container)!=null){
+    public void changeFragment(android.support.v4.app.Fragment fragment) {
+        if (findViewById(R.id.fragment_container) != null) {
             mFragmentTransaction = mFragmentManager.beginTransaction();
-            mFragmentTransaction.replace(R.id.fragment_container,fragment);
+            mFragmentTransaction.replace(R.id.fragment_container, fragment);
             mFragmentTransaction.commit();
         }
 
     }
 
     @Subscribe
-    public void changingFragment(Integer id){
-        switch (id){
-            case R.id.linearLayout_home :
-                mBackToMainScreen=true;
+    public void changingFragment(Integer id) {
+        switch (id) {
+            case R.id.linearLayout_home:
+                mBackToMainScreen = true;
 
                 break;
 
-            case R.id.linearLayout_filter :
-                mBackToMainScreen=true;
+            case R.id.linearLayout_filter:
+                mBackToMainScreen = true;
                 break;
 
-            case R.id.linearLayout_jobs :
-                mBackToMainScreen=true;
+            case R.id.linearLayout_jobs:
+                mBackToMainScreen = true;
                 break;
 
-            case R.id.linearLayout_settings :
-                mBackToMainScreen=true;
+            case R.id.linearLayout_settings:
+                mBackToMainScreen = true;
                 break;
 
-            case 9999 :
-                mBackToSettings=true;
-                mBackToJobList=false;
-                mBackToMainScreen=false;
+            case 9999:
+                mBackToSettings = true;
+                mBackToJobList = false;
+                mBackToMainScreen = false;
                 break;
 
-            case 8888 :
+            case 8888:
                 mBackToJobList = true;
-                mBackToSettings=false;
-                mBackToMainScreen=false;
+                mBackToSettings = false;
+                mBackToMainScreen = false;
                 break;
-            case R.id.recycler_view :
+            case R.id.recycler_view:
                 mBackToJobList = null;
-                mBackToSettings=false;
-                mBackToMainScreen=false;
+                mBackToSettings = false;
+                mBackToMainScreen = false;
                 break;
 
         }
@@ -128,20 +130,17 @@ public class PostLoginActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (!mBackToMainScreen){
-            mBackToMainScreen=true;
-            if (mBackToSettings){
-                changeFragment(new FragmentSettings().newInstance(null,null));
-            }
-            else if (mBackToJobList==null){
-                changeFragment(new FragmentMembers().newInstance("",""));
-            }
-            else if (mBackToJobList){
+        if (!mBackToMainScreen) {
+            mBackToMainScreen = true;
+            if (mBackToSettings) {
+                changeFragment(new FragmentSettings().newInstance(null, null));
+            } else if (mBackToJobList == null) {
+                changeFragment(mFragmentMembers);
+            } else if (mBackToJobList) {
                 changeFragment(CommonData.fragmentJobs);
             }
 
-        }
-        else
+        } else
             super.onBackPressed();
     }
 }

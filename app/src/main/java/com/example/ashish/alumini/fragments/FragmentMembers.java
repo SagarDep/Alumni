@@ -1,7 +1,6 @@
 package com.example.ashish.alumini.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -13,9 +12,11 @@ import android.view.ViewGroup;
 
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager0;
+import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager1;
+import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager2;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
-import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.example.ashish.alumini.supporting_classes.ViewPagerAdapter;
 
 import java.util.List;
@@ -88,6 +89,7 @@ public class FragmentMembers extends Fragment {
 
 
         setupViewPager(mViewPager);
+
         mTabLayout.setupWithViewPager(mViewPager);
 
 //        makeServerCallToGetTheList();
@@ -97,21 +99,15 @@ public class FragmentMembers extends Fragment {
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-
-
-
-    }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-//        adapter.addFragment(new FragmentViewPager1(), "ALL");
-//        adapter.addFragment(new FragmentViewPager2(),"ACE");
-//        adapter.addFragment(new FragmentViewPager3(),  "NERDS");
-        adapter.addFragment(CommonData.fragmentViewPager1, "ALL");
-        adapter.addFragment(CommonData.fragmentViewPager2,"ACE");
-        adapter.addFragment(CommonData.fragmentViewPager3,  "NERDS");
+        adapter.addFragment(new FragmentViewPager0(), "ALL");
+        adapter.addFragment(new FragmentViewPager1(),"ACE");
+        adapter.addFragment(new FragmentViewPager2(),  "NERDS");
+//        adapter.addFragment(CommonData.fragmentViewPager0, "ALL");
+//        adapter.addFragment(CommonData.fragmentViewPager1,"ACE");
+//        adapter.addFragment(CommonData.fragmentViewPager2,  "NERDS");
         viewPager.setAdapter(adapter);
     }
 

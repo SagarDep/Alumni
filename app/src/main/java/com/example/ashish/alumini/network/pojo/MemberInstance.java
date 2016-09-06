@@ -11,9 +11,10 @@ public class MemberInstance {
 
     private String _id;
     private String name;
+    private Boolean isNerd;
     private String year;
+    private String work;
     private String designation;
-    private String company;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
@@ -55,6 +56,24 @@ public class MemberInstance {
     /**
      *
      * @return
+     * The isNerd
+     */
+    public Boolean getIsNerd() {
+        return isNerd;
+    }
+
+    /**
+     *
+     * @param isNerd
+     * The isNerd
+     */
+    public void setIsNerd(Boolean isNerd) {
+        this.isNerd = isNerd;
+    }
+
+    /**
+     *
+     * @return
      * The year
      */
     public String getYear() {
@@ -68,6 +87,24 @@ public class MemberInstance {
      */
     public void setYear(String year) {
         this.year = year;
+    }
+
+    /**
+     *
+     * @return
+     * The work
+     */
+    public String getWork() {
+        return work;
+    }
+
+    /**
+     *
+     * @param work
+     * The work
+     */
+    public void setWork(String work) {
+        this.work = work;
     }
 
     /**
@@ -88,24 +125,6 @@ public class MemberInstance {
         this.designation = designation;
     }
 
-    /**
-     *
-     * @return
-     * The company
-     */
-    public String getCompany() {
-        return company;
-    }
-
-    /**
-     *
-     * @param company
-     * The company
-     */
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
     }
@@ -115,5 +134,3 @@ public class MemberInstance {
     }
 
 }
-
-
