@@ -54,13 +54,17 @@ public class FragmentViewPager2 extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // getting instance of application
-        mApplication = (MyApplication) getActivity().getApplication();
+        mActivity = (PostLoginActivity) getActivity();
+        mApplication = (MyApplication) mActivity.getApplication();
 
-        prepareList();
+        // getting the instance of class to access the lists
+        MemberLists memberLists = mApplication.getmMemberListsInstance();
+        //obtaining the list
+        mArrayList3 = memberLists.list;
 
         for (int i = 0; i< mArrayList3.size(); i++){
-            if (!mArrayList3.get(i).getIsNerd()){
-//                mArrayList3.remove(i);
+//            chgecking the state of isNerd in every item and then adding to the new list
+            if (mArrayList3.get(i).getIsNerd()!=null && mArrayList3.get(i).getIsNerd()){
                 mArrayList.add(mArrayList3.get(i));
             }
         }
@@ -92,7 +96,7 @@ public class FragmentViewPager2 extends Fragment {
                                 FragmentProfile fragmentProfile = new FragmentProfile();
 
                                 // setting the data of clicked item
-                                fragmentProfile.setData(mArrayList3.get(position));
+                                fragmentProfile.setData(mArrayList.get(position));
 
                                 // change the fragment
                                 mActivity.changeFragment(fragmentProfile);
@@ -132,11 +136,6 @@ public class FragmentViewPager2 extends Fragment {
 
     }
 
-    private void prepareList() {
-// getting the instance of class to access the lists
-        MemberLists memberLists = mApplication.getmMemberListsInstance();
-        mArrayList3 = memberLists.list;
-    }
 
 }
 

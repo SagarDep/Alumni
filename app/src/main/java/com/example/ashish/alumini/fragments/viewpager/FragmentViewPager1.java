@@ -60,12 +60,17 @@ public class FragmentViewPager1 extends Fragment {
         //getting instance of activity
         mActivity = (PostLoginActivity) getActivity();
 
-        prepareList();
+        // get the list from the MemberLists activity
+        MemberLists memberLists = mApplication.getmMemberListsInstance();
+        // copying the obtained list
+        mArrayList2 = memberLists.list;
 
         if (mArrayList2!=null){
             for (int i = 0; i< mArrayList2.size(); i++){
-                if (mArrayList2.get(i).getIsNerd()){
-//                mArrayList3.remove(i);
+                //checking the status of isNerd in every item
+
+                if (mArrayList2.get(i).getIsNerd()!=null && !mArrayList2.get(i).getIsNerd()){
+
                     mArrayList.add(mArrayList2.get(i));
                 }
             }
@@ -79,23 +84,13 @@ public class FragmentViewPager1 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_one, container, false);
 
-
-
         //butterknife injections
         ButterKnife.bind(this,view);
-
-
-
-//        Log.d(TAG, "oncreate called");
-//        Log.d(TAG, "Size " + mArrayList2.size());
-
-
 
         //initialization of adapter
         mAdapter = new MemberAdapter(mArrayList);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-
 
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(mAdapter);
@@ -109,7 +104,7 @@ public class FragmentViewPager1 extends Fragment {
                                 FragmentProfile fragmentProfile = new FragmentProfile();
 
                                 // setting the data of clicked item
-                                fragmentProfile.setData(mArrayList2.get(position));
+                                fragmentProfile.setData(mArrayList.get(position));
 
                                 // change the fragment
                                 mActivity.changeFragment(fragmentProfile);
@@ -124,7 +119,6 @@ public class FragmentViewPager1 extends Fragment {
                         })
         );
 
-        Log.d(TAG, "Size " + mArrayList2.size());
 
         return view;
     }
@@ -147,10 +141,6 @@ public class FragmentViewPager1 extends Fragment {
 
     }
 
-    private void prepareList() {
-// getting the instance of class to access the lists
-        MemberLists memberLists = mApplication.getmMemberListsInstance();
-        mArrayList2 = memberLists.list;
-    }
+
 }
 

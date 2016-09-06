@@ -64,6 +64,7 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
         MemberLists memberLists = mApplication.getmMemberListsInstance();
         mArrayList = memberLists.list;
 
+
     }
 
     @Override
