@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.network.ApiClient;
+import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
@@ -165,9 +166,10 @@ public class FragmentJobPosting extends Fragment {
                 mEditTextWebLink.getText().toString().trim(),
                 mEditTextemail.getText().toString().trim(),
 
+
                 // TODO : values from shared pref /  db
-                "Ayush Sharma",
-                "skajfdfbvkoljsdhbfv"
+                new GlobalPrefs(getActivity()).getString("Username"),
+                new GlobalPrefs(getActivity()).getString("Userid")
         );
 
         call.enqueue(new Callback<String>() {
