@@ -114,8 +114,6 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
                     }
                 })
         );
-        Log.d(TAG, "Size " + mArrayList.size());
-
         return view;
     }
 

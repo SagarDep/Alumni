@@ -3,6 +3,7 @@ package com.example.ashish.alumini.fragments.settings;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,12 +23,16 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class FragmentProfile extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    String  TAG = getClass().getSimpleName();
 
     private String mParam1;
     private String mParam2;
@@ -39,11 +44,16 @@ public class FragmentProfile extends Fragment {
     * */
     @Bind(R.id.imageView_edit) ImageView mImageViewEdit;
     @Bind(R.id.textView_member_name) TextView mTextView_name;
+    @Bind(R.id.textView_bio) TextView mTextView_bio;
     @Bind(R.id.textView_designation_n_CompanyName) TextView mTextViewDesignationNCompanyName;
     @Bind(R.id.textView_branch) TextView mTextViewBranch;
     @Bind(R.id.textView_homeLocation) TextView mTextViewHomeLocation;
     @Bind(R.id.editText_jobLocation) TextView mTextViewJobLocation;
     @Bind(R.id.textView_year) TextView mTextViewYear;
+
+    @Bind(R.id.textView_contact) TextView mTextViewContact;
+    @Bind(R.id.textView_mail) TextView mTextViewMail;
+
 
     Bus mBus = new Bus();
 
@@ -85,6 +95,7 @@ public class FragmentProfile extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        makeServerCallToGetMoreData();
 
         // butterknife binding
         ButterKnife.bind(this,view);
@@ -105,8 +116,8 @@ public class FragmentProfile extends Fragment {
 //                    mListInstance.getCompany()
             );
 //            mTextViewBranch.setText("Branch : "+mListInstance.getBranch().toUpperCase());
-//            mTextViewJobLocation.setText(mListInstance.getLocation_work());
-//            mTextViewYear.setText(mListInstance.getYear_passing());
+            mTextViewJobLocation.setText(mListInstance.getWork());
+            mTextViewYear.setText(mListInstance.getYear());
         }
 
 
@@ -136,12 +147,33 @@ public class FragmentProfile extends Fragment {
     public void setData(MemberInstance data){
 
         mListInstance = data;
-        makeServerCallToGetMoreData();
 
     }
     public void makeServerCallToGetMoreData(){
         // TODo : retrofit server call
-//        Call<Example> call = ApiClient.getServerApi().
+        Call<Example> call = ApiClient.getServerApi().
+                getRemainingDataForRecyclerView(mListInstance.get_id().toString());
+
+        call.enqueue(new Callback<Example>() {
+            @Override
+            public void onResponse(Call<Example> call, Response<Example> response) {
+                Log.d(TAG, "API call successful");
+                Example example = response.body();
+                if (example!=null){
+                    mTextViewBranch.setText("Branch : " + example.getBranch());
+                    mTextViewDesignationNCompanyName.append(example.getCompany());
+                    mTextView_bio.setText(example.getBio());
+                    mTextViewContact.setText(example.getPhone());
+                    mTextViewHomeLocation.setText(example.getHome());
+                    mTextViewMail.setText(example.getEmail());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Example> call, Throwable t) {
+                Log.d(TAG, "API call failed");
+            }
+        });
     }
 
 

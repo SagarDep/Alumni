@@ -79,7 +79,10 @@ public interface ServerApi {
                               @Query("password") String password);
 
     // getting complete data
-//    @POST("/")
-//    Call<Example>
+    @POST("/profile")
+    Call<Example> getCompleteProfileData(@Query("_id") String id);
+
+    @POST("members/remaining-data")
+    Call<Example> getRemainingDataForRecyclerView(@Query("_id") String id);
 
 }
