@@ -1,7 +1,9 @@
 package com.example.ashish.alumini.network;
 
+import com.example.ashish.alumini.activities.PreLogin.Login;
 import com.example.ashish.alumini.network.pojo.Job;
 import com.example.ashish.alumini.network.pojo.JobDetail;
+import com.example.ashish.alumini.network.pojo.LoginResponse;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.network.pojo.SignupPart;
 
@@ -68,5 +70,11 @@ public interface ServerApi {
     // getting the list of members
     @GET("members/")
     Call<List<MemberInstance>> getMemberList();
+
+
+    // login
+    @POST("members/login/")
+    Call<LoginResponse> login(@Query("email") String email,
+                              @Query("password") String password);
 
 }

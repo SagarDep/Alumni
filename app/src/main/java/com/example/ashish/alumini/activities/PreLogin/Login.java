@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,8 +14,15 @@ import android.widget.RelativeLayout;
 
 import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.application.MyApplication;
+import com.example.ashish.alumini.network.ApiClient;
+import com.example.ashish.alumini.network.pojo.LoginResponse;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.sdsmdg.tastytoast.TastyToast;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 //import com.example.ashish.alumini.R;
 
@@ -27,7 +35,8 @@ public class Login extends Activity {
     RelativeLayout mRelativeLayout;
     int mCounter=0;
 
-    SharedPreferences mSharedPreferences;
+    MyApplication mApplication;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +58,9 @@ public class Login extends Activity {
 
         mRelativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout_login);
 
+        mApplication  = (MyApplication) getApplication();
+
+
     }
 
     //body of login method
@@ -60,11 +72,9 @@ public class Login extends Activity {
         }
 
 
-        loginButton.setEnabled(false);
+//        loginButton.setEnabled(false);
 
-        final ProgressDialog pDialog = new ProgressDialog(this);
-        pDialog.setMessage("Loading...");
-        pDialog.show();
+
 
         String emailString = email.getText().toString().trim();
         String password = this.password.getText().toString().trim();
@@ -75,11 +85,12 @@ public class Login extends Activity {
     }
 
     public void onLoginSuccess() {
+
+
         loginButton.setEnabled(true);
         Intent move=new Intent(Login.this,MainScreenActivity.class);
         startActivity(move);
 
-        new GlobalPrefs(getApplicationContext()).putBooloean(getString(R.string.is_logged_in),true);
     }
 
     public void onLoginFailed() {
@@ -128,6 +139,45 @@ public class Login extends Activity {
 
     }
     public void makeServerCallToLogin(String email, String password){
+
+        Call<LoginResponse> call = ApiClient.getServerApi().login(email, password);
+
+        call.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                Log.d(TAG, "API successful");
+                if (response.code()==200){
+                    TastyToast.makeText(getBaseContext(),"Successful",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+                    LoginResponse response1 = response.body();
+
+                    GlobalPrefs globalPrefs = new GlobalPrefs(getApplicationContext());
+                    if (response1!=null){
+                        // storing id and name in shared pref
+                        globalPrefs.putString("Userid",response1.getId());
+                        globalPrefs.putString("Username",response1.getName());
+                    }
+                    // for maintaining session
+                    globalPrefs.putBooloean(getString(R.string.is_logged_in),true);
+
+                    // function for creating list class to make server class and fetch data
+                    mApplication.createListCLass();
+                    // function to change activity and
+                    onLoginSuccess();
+
+                }
+                else if (response.code()==600){
+                    TastyToast.makeText(getBaseContext(),"User not found",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+                }
+                else if (response.code()==700){
+                    TastyToast.makeText(getBaseContext(),"Password ot Matched",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                Log.d(TAG, "API failed");
+            }
+        });
 
     }
 
