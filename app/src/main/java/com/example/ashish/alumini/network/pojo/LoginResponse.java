@@ -9,32 +9,32 @@ import java.util.Map;
 
 public class LoginResponse {
 
-    private String id;
+    private String _id;
     private String name;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      *
      * @return
-     * The id
+     *     The _id
      */
-    public String getId() {
-        return id;
+    public String get_id() {
+        return _id;
     }
 
     /**
      *
-     * @param id
-     * The _id
+     * @param _id
+     *     The _id
      */
-    public void setId(String id) {
-        this.id = id;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     /**
      *
      * @return
-     * The name
+     *     The name
      */
     public String getName() {
         return name;
@@ -43,7 +43,7 @@ public class LoginResponse {
     /**
      *
      * @param name
-     * The name
+     *     The name
      */
     public void setName(String name) {
         this.name = name;
@@ -56,5 +56,4 @@ public class LoginResponse {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
-
 }

@@ -1,6 +1,7 @@
 package com.example.ashish.alumini.network;
 
 import com.example.ashish.alumini.activities.PreLogin.Login;
+import com.example.ashish.alumini.network.pojo.Example;
 import com.example.ashish.alumini.network.pojo.Job;
 import com.example.ashish.alumini.network.pojo.JobDetail;
 import com.example.ashish.alumini.network.pojo.LoginResponse;
@@ -76,5 +77,9 @@ public interface ServerApi {
     @POST("members/login/")
     Call<LoginResponse> login(@Query("email") String email,
                               @Query("password") String password);
+
+    // getting complete data
+//    @POST("/")
+//    Call<Example>
 
 }

@@ -165,9 +165,6 @@ public class FragmentJobPosting extends Fragment {
                 mInputEditTextJobLocation.getText().toString().trim(),
                 mEditTextWebLink.getText().toString().trim(),
                 mEditTextemail.getText().toString().trim(),
-
-
-                // TODO : values from shared pref /  db
                 new GlobalPrefs(getActivity()).getString("Username"),
                 new GlobalPrefs(getActivity()).getString("Userid")
         );

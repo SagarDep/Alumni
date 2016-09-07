@@ -159,6 +159,18 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         }
     }
 
+    @OnClick(R.id.linearLayout_checkbox)
+    public void textChangingOfEditText(){
+        if (checkbox.isChecked()){
+            mEditTextDesignation.setHint("Course");
+            mEditTextCompany.setHint("University / College");
+        }
+        else if (!checkbox.isChecked()){
+            mEditTextDesignation.setHint("Designation");
+            mEditTextCompany.setHint("Organization");
+        }
+    }
+
 
     @Override
     public void onAttach(Context context) {

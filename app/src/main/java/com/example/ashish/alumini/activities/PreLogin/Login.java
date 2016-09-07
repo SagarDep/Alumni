@@ -153,7 +153,7 @@ public class Login extends Activity {
                     GlobalPrefs globalPrefs = new GlobalPrefs(getApplicationContext());
                     if (response1!=null){
                         // storing id and name in shared pref
-                        globalPrefs.putString("Userid",response1.getId());
+                        globalPrefs.putString("Userid",response1.get_id());
                         globalPrefs.putString("Username",response1.getName());
                     }
                     // for maintaining session

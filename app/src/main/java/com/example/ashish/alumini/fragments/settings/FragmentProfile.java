@@ -13,12 +13,15 @@ import com.example.ashish.alumini.members.MemberListInstance;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.network.ApiClient;
+import com.example.ashish.alumini.network.pojo.Example;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.squareup.otto.Bus;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
 
 
 public class FragmentProfile extends Fragment {
@@ -138,6 +141,7 @@ public class FragmentProfile extends Fragment {
     }
     public void makeServerCallToGetMoreData(){
         // TODo : retrofit server call
+//        Call<Example> call = ApiClient.getServerApi().
     }
 
 

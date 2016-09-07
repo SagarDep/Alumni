@@ -124,10 +124,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/linearLayout_checkbox"
+                    android:padding="5dp"
                     android:layout_marginLeft="5dp">
                     <com.github.lguipeng.library.animcheckbox.AnimCheckBox
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:id="@+id/checkBox_isNerd"
                         app:stroke_width="4dp"
                         app:stroke_color="@color/appTheme"
@@ -165,7 +166,7 @@
                         android:layout_marginLeft="10dp"            xmlns:card_view="http://schemas.android.com/apk/res-auto"
                         android:maxLines="1"
                         android:id="@+id/editText_Designation"
-                        android:hint="Designation / Post Grad."
+                        android:hint="Designation"
                         android:text="CRO" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -184,7 +185,7 @@
                         android:layout_marginLeft="10dp"            xmlns:card_view="http://schemas.android.com/apk/res-auto"
                         android:maxLines="1"
                         android:id="@+id/editText_company"
-                        android:hint="Company / University"
+                        android:hint="Company"
                         android:text="mycom" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -232,7 +233,7 @@
                         android:maxLines="1"
 
                         android:id="@+id/editText_locationWork"
-                        android:hint="Company"
+                        android:hint="Current Place"
                         android:text="bhl" />
 
                 </android.support.design.widget.TextInputLayout>
