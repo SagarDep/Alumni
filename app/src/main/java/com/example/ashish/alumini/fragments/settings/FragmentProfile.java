@@ -15,7 +15,7 @@ import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.network.ApiClient;
-import com.example.ashish.alumini.network.pojo.Example;
+
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.squareup.otto.Bus;
@@ -169,14 +169,14 @@ public class FragmentProfile extends Fragment {
     // whent the user will click on the recycler view in view pager to get more details about the user
     public void makeServerCallToGetMoreData(){
         // TODo : retrofit server call
-        Call<Example> call = ApiClient.getServerApi().
+        Call<MemberInstance> call = ApiClient.getServerApi().
                 getRemainingDataForRecyclerView(mListInstance.get_id().toString());
 
-        call.enqueue(new Callback<Example>() {
+        call.enqueue(new Callback<MemberInstance>() {
             @Override
-            public void onResponse(Call<Example> call, Response<Example> response) {
+            public void onResponse(Call<MemberInstance> call, Response<MemberInstance> response) {
                 Log.d(TAG, "API call successful");
-                Example example = response.body();
+                MemberInstance example = response.body();
                 if (example!=null){
                     mTextViewBranch.setText("Branch : " + example.getBranch());
                     mTextViewDesignationNCompanyName.append( " at "+example.getCompany());
@@ -188,7 +188,7 @@ public class FragmentProfile extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<Example> call, Throwable t) {
+            public void onFailure(Call<MemberInstance> call, Throwable t) {
                 Log.d(TAG, "API call failed");
             }
         });
@@ -196,11 +196,11 @@ public class FragmentProfile extends Fragment {
 
     // when the user clicks on my profile options from settings
     public void makeServerCallToGetCompleteProfile(String id){
-        Call<Example> call = ApiClient.getServerApi().getCompleteProfileData(id);
+        Call<MemberInstance> call = ApiClient.getServerApi().getCompleteProfileData(id);
 
-        call.enqueue(new Callback<Example>() {
+        call.enqueue(new Callback<MemberInstance>() {
             @Override
-            public void onResponse(Call<Example> call, Response<Example> response) {
+            public void onResponse(Call<MemberInstance> call, Response<MemberInstance> response) {
 
                 if (response.code()==200 && response.body()!=null){
                     setCompleteData(response.body());
@@ -209,13 +209,13 @@ public class FragmentProfile extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<Example> call, Throwable t) {
+            public void onFailure(Call<MemberInstance> call, Throwable t) {
                 Log.d(TAG, "API call failed");
             }
         });
     }
 
-    public void setCompleteData(Example completeData){
+    public void setCompleteData(MemberInstance completeData){
         mTextViewBranch.setText("Branch : " + completeData.getBranch());
         mTextViewDesignationNCompanyName.append(" at "+completeData.getCompany());
         mTextView_bio.setText(completeData.getBio());

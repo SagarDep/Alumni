@@ -1,7 +1,7 @@
 package com.example.ashish.alumini.network;
 
 import com.example.ashish.alumini.activities.PreLogin.Login;
-import com.example.ashish.alumini.network.pojo.Example;
+
 import com.example.ashish.alumini.network.pojo.Job;
 import com.example.ashish.alumini.network.pojo.JobDetail;
 import com.example.ashish.alumini.network.pojo.LoginResponse;
@@ -80,10 +80,10 @@ public interface ServerApi {
 
     // getting complete data
     @POST("members/profile")
-    Call<Example> getCompleteProfileData(@Query("_id") String id);
+    Call<MemberInstance> getCompleteProfileData(@Query("_id") String id);
 
     // on click recyvler view (to get the remaining data of member)
     @POST("members/remaining-data")
-    Call<Example> getRemainingDataForRecyclerView(@Query("_id") String id);
+    Call<MemberInstance> getRemainingDataForRecyclerView(@Query("_id") String id);
 
 }
