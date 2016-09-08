@@ -17,6 +17,7 @@ import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.Example;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
+import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.squareup.otto.Bus;
 
 import butterknife.Bind;
@@ -95,7 +96,11 @@ public class FragmentProfile extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        makeServerCallToGetMoreData();
+
+        if (mListInstance==null){
+
+            makeServerCallToGetCompleteProfile(new GlobalPrefs(getActivity()).getString("Userid").toString());
+        }
 
         // butterknife binding
         ButterKnife.bind(this,view);
@@ -110,6 +115,9 @@ public class FragmentProfile extends Fragment {
         mImageViewEdit.setVisibility(View.GONE);
 
         if (mListInstance!=null){
+            // make server call to get more data
+            makeServerCallToGetMoreData();
+
             mTextView_name.setText(mListInstance.getName());
             mTextViewDesignationNCompanyName.setText(mListInstance.getDesignation()
                     + " at "
@@ -167,6 +175,23 @@ public class FragmentProfile extends Fragment {
                     mTextViewHomeLocation.setText(example.getHome());
                     mTextViewMail.setText(example.getEmail());
                 }
+            }
+
+            @Override
+            public void onFailure(Call<Example> call, Throwable t) {
+                Log.d(TAG, "API call failed");
+            }
+        });
+    }
+
+    public void makeServerCallToGetCompleteProfile(String id){
+        Call<Example> call = ApiClient.getServerApi().getCompleteProfileData(id);
+
+        call.enqueue(new Callback<Example>() {
+            @Override
+            public void onResponse(Call<Example> call, Response<Example> response) {
+
+                Log.d(TAG, "API call successful");
             }
 
             @Override
