@@ -97,13 +97,22 @@ public class FragmentProfile extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        if (mListInstance==null){
-
-            makeServerCallToGetCompleteProfile(new GlobalPrefs(getActivity()).getString("Userid").toString());
-        }
-
         // butterknife binding
         ButterKnife.bind(this,view);
+
+        if (mListInstance==null){
+
+            // show the option to edit the profile
+            mImageViewEdit.setVisibility(View.VISIBLE);
+
+            // gettign if of loggedin user from shared prefs
+            String id = new GlobalPrefs(getActivity()).getString("Userid").toString();
+
+            // make server call to get the remaingin data of user
+            makeServerCallToGetCompleteProfile(id);
+        }
+
+
 
         //Bus Registering
         mBus.register(getActivity());
@@ -111,18 +120,17 @@ public class FragmentProfile extends Fragment {
         // getting activity instance
         mActivity = (PostLoginActivity) getActivity();
 
-        // hiding the edit button
-        mImageViewEdit.setVisibility(View.GONE);
+
 
         if (mListInstance!=null){
+            // hiding the edit button
+            mImageViewEdit.setVisibility(View.GONE);
+
             // make server call to get more data
             makeServerCallToGetMoreData();
 
             mTextView_name.setText(mListInstance.getName());
-            mTextViewDesignationNCompanyName.setText(mListInstance.getDesignation()
-                    + " at "
-//                    mListInstance.getCompany()
-            );
+            mTextViewDesignationNCompanyName.setText(mListInstance.getDesignation());
 //            mTextViewBranch.setText("Branch : "+mListInstance.getBranch().toUpperCase());
             mTextViewJobLocation.setText(mListInstance.getWork());
             mTextViewYear.setText(mListInstance.getYear());
@@ -152,11 +160,13 @@ public class FragmentProfile extends Fragment {
 
     }
 
+    // getting the data of clicked members
     public void setData(MemberInstance data){
-
         mListInstance = data;
 
     }
+
+    // whent the user will click on the recycler view in view pager to get more details about the user
     public void makeServerCallToGetMoreData(){
         // TODo : retrofit server call
         Call<Example> call = ApiClient.getServerApi().
@@ -169,7 +179,7 @@ public class FragmentProfile extends Fragment {
                 Example example = response.body();
                 if (example!=null){
                     mTextViewBranch.setText("Branch : " + example.getBranch());
-                    mTextViewDesignationNCompanyName.append(example.getCompany());
+                    mTextViewDesignationNCompanyName.append( " at "+example.getCompany());
                     mTextView_bio.setText(example.getBio());
                     mTextViewContact.setText(example.getPhone());
                     mTextViewHomeLocation.setText(example.getHome());
@@ -184,6 +194,7 @@ public class FragmentProfile extends Fragment {
         });
     }
 
+    // when the user clicks on my profile options from settings
     public void makeServerCallToGetCompleteProfile(String id){
         Call<Example> call = ApiClient.getServerApi().getCompleteProfileData(id);
 
@@ -191,6 +202,9 @@ public class FragmentProfile extends Fragment {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
 
+                if (response.code()==200 && response.body()!=null){
+                    setCompleteData(response.body());
+                }
                 Log.d(TAG, "API call successful");
             }
 
@@ -201,5 +215,17 @@ public class FragmentProfile extends Fragment {
         });
     }
 
+    public void setCompleteData(Example completeData){
+        mTextViewBranch.setText("Branch : " + completeData.getBranch());
+        mTextViewDesignationNCompanyName.append(" at "+completeData.getCompany());
+        mTextView_bio.setText(completeData.getBio());
+        mTextViewContact.setText(completeData.getPhone());
+        mTextViewHomeLocation.setText(completeData.getHome());
+        mTextViewMail.setText(completeData.getEmail());
+        mTextView_name.setText(completeData.getName());
+        mTextViewDesignationNCompanyName.setText(completeData.getDesignation());
+        mTextViewJobLocation.setText(completeData.getWork());
+        mTextViewYear.setText(completeData.getYear());
+    }
 
 }

@@ -33,16 +33,16 @@
 
 
         <com.mikepenz.iconics.view.IconicsImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_margin="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             app:iiv_icon="faw-pencil-square-o"
             app:iiv_color="@color/black_de"
             android:id="@+id/imageView_edit"
             android:background="@android:color/transparent"
             android:layout_below="@+id/textView_year"
-            android:layout_alignRight="@+id/textView_bio"
-            android:layout_alignEnd="@+id/textView_bio" />
+            android:layout_alignLeft="@+id/textView_year"
+            android:layout_alignStart="@+id/textView_year"
+            android:layout_marginTop="5dp" />
 
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -57,7 +57,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="BIO"
             android:id="@+id/textView_bio"
             android:layout_below="@+id/textView_branch"
             android:layout_alignParentLeft="true"
@@ -70,7 +69,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Branch - CSE"
             android:id="@+id/textView_branch"
             android:layout_below="@+id/textView_designation_n_CompanyName"
             android:layout_centerHorizontal="true"
@@ -80,7 +78,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="2008"
             android:id="@+id/textView_year"
             android:layout_marginTop="10dp"
             android:paddingRight="10dp"
@@ -117,7 +114,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Jaipur"
                     android:id="@+id/textView_homeLocation"
                     android:layout_below="@+id/info_text"
 
@@ -162,7 +158,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Mumbai"
                     android:id="@+id/editText_jobLocation"
                     android:layout_below="@+id/textView_homeLocation"
                     android:layout_toRightOf="@+id/imageView_work"
@@ -216,7 +211,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="http://twitter.com/"
                     android:clickable="true"
                     android:id="@+id/textView_twitterlink"
                     android:layout_below="@+id/textView_Contact"
@@ -241,7 +235,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Facebook"
                     android:clickable="true"
                     android:id="@+id/textView_fbLink"
                     android:layout_below="@+id/textView_twitterlink"
@@ -286,7 +279,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Email"
                     android:clickable="true"
                     android:id="@+id/textView_mail"
                     android:layout_below="@+id/textView_contact"
