@@ -2,6 +2,7 @@ package com.example.ashish.alumini.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +12,12 @@ import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
 import com.squareup.otto.Bus;
 
+import at.markushi.ui.CircleButton;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -34,8 +39,14 @@ public class FragmentMainScreen extends android.support.v4.app.Fragment {
     /*
     * Butterknife
     * */
-//    @Bind(R.id.button_settings)
-//    Button j;
+    @Bind(R.id.circleButton_about)
+    CircleButton mCirecularButtonAbout;
+
+    @Bind(R.id.circleButton_event)
+    CircleButton mCirecularButtonEvents;
+
+    @Bind(R.id.circleButton_member)
+    CircleButton mCirecularButtonMembers;
 
     Bus mBus = new Bus();
 
@@ -83,6 +94,20 @@ public class FragmentMainScreen extends android.support.v4.app.Fragment {
         ButterKnife.bind(this,view);
         //Bus Registering
         mBus.register(getActivity());
+        mCirecularButtonMembers.setImageDrawable(new IconicsDrawable(getActivity())
+                .icon(FontAwesome.Icon.faw_users)
+                .color(Color.WHITE)
+                .sizeDp(25));
+
+        mCirecularButtonAbout.setImageDrawable(new IconicsDrawable(getActivity())
+                .icon(FontAwesome.Icon.faw_info)
+                .color(Color.WHITE)
+                .sizeDp(25));
+
+        mCirecularButtonEvents.setImageDrawable(new IconicsDrawable(getActivity())
+                .icon(FontAwesome.Icon.faw_calendar)
+                .color(Color.WHITE)
+                .sizeDp(25));
 
 
         return view;
