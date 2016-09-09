@@ -18,11 +18,13 @@ import com.example.ashish.alumini.application.MyApplication;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.LoginResponse;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
+import com.example.ashish.alumini.supporting_classes.RetrofitErrorHandler;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 //import com.example.ashish.alumini.R;
 
@@ -146,6 +148,8 @@ public class Login extends Activity {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 Log.d(TAG, "API successful");
+                RetrofitErrorHandler errorHandler = new RetrofitErrorHandler();
+                errorHandler.statusCodeHandler(getBaseContext(),response.code());
                 if (response.code()==200){
                     TastyToast.makeText(getBaseContext(),"Successful",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
                     LoginResponse response1 = response.body();
@@ -165,9 +169,9 @@ public class Login extends Activity {
                     onLoginSuccess();
 
                 }
-                else if (response.code()==600){
-                    TastyToast.makeText(getBaseContext(),"User not found",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
-                }
+//                else if (response.code()==600){
+//                    TastyToast.makeText(getBaseContext(),"User not found",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+//                }
                 else if (response.code()==700){
                     TastyToast.makeText(getBaseContext(),"Password ot Matched",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
                 }

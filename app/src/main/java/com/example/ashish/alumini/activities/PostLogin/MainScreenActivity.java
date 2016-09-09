@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -35,19 +36,22 @@ public class MainScreenActivity extends AppCompatActivity
 
     int mBackCounter;
 
+    ActionBar mActionBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
 
-
         setContentView(R.layout.activity_main_screen);
 
+        mActionBar = getSupportActionBar();
 
         mBus.register(this);
         mFragmentManager = getSupportFragmentManager();
 
         // checking if the activity is started from signup activity or splash activity
         Boolean isSignup = false;
+
         Bundle bundle = getIntent().getExtras();
         if (bundle!=null){
             // this means activity is started from signup activity
@@ -67,7 +71,7 @@ public class MainScreenActivity extends AppCompatActivity
         mCurrentFragment = new FragmentMainScreen();
 
 
-        getSupportActionBar().hide();
+        mActionBar.hide();
     }
 
     public void changeFragment(Fragment fragment){
@@ -77,7 +81,16 @@ public class MainScreenActivity extends AppCompatActivity
 
         //checking if actionbar needs to be hidden or not
         if (fragment instanceof FragmentMainScreen){
-            getSupportActionBar().hide();
+            mActionBar.hide();
+        }
+        else if (fragment instanceof  FragmentWebView){
+            mActionBar.setTitle("About College");
+            mActionBar.show();
+        }
+        // to change the titile in case of onCLick the event listView
+        else if (mPreviousFragment instanceof FragmentEvents && mCurrentFragment instanceof FragmentWebView){
+            mActionBar.setTitle("About Event");
+            mActionBar.show();
         }
 
         //changing the fragment
@@ -99,20 +112,22 @@ public class MainScreenActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         if (mCurrentFragment instanceof FragmentMainScreen){
-            TastyToast.makeText(getApplicationContext(),"Press back again",Toast.LENGTH_SHORT,TastyToast.INFO);
+            TastyToast.makeText(getApplicationContext(),"Press back again to exit",Toast.LENGTH_SHORT,TastyToast.INFO);
             mBackCounter++;
             if (mBackCounter==2){
-
-
+                // exit the application
                 System.exit(0);
             }
         }
 
+        // case of list-->list clicked(i.e. web view)
         if (mPreviousFragment instanceof FragmentEvents && mCurrentFragment instanceof FragmentWebView){
-            changeFragment(new FragmentEvents().newInstance("",""));
+            changeFragment(new FragmentEvents());
         }
+        // if any fragment other than main screen
+//        thenreturn to the mainscreen fragment
         else if (!(mCurrentFragment instanceof FragmentMainScreen)){
-            changeFragment(new FragmentMainScreen().newInstance("",""));
+            changeFragment(new FragmentMainScreen());
 
         }
 

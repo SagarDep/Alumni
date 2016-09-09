@@ -13,7 +13,7 @@ import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.application.MyApplication;
 import com.example.ashish.alumini.fragments.settings.FragmentProfile;
 import com.example.ashish.alumini.members.MemberAdapter;
-import com.example.ashish.alumini.members.MemberListInstance;
+
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.members.RecyclerItemClickListener;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
@@ -119,7 +119,6 @@ public class FragmentViewPager2 extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ArrayList<MemberListInstance> list_members = new ArrayList<>();
 
 
     }

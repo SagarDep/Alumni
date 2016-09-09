@@ -3,11 +3,13 @@ package com.example.ashish.alumini.fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
+import com.example.ashish.alumini.activities.PreLogin.Login;
 import com.example.ashish.alumini.members.expandable_list.ExpandableListAdapter;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
@@ -37,6 +39,7 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String TAG = getClass().getSimpleName();
 
 
     /*
@@ -61,15 +64,7 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static FragmentFilter newInstance(String param1, String param2) {
         FragmentFilter fragment = new FragmentFilter();
         Bundle args = new Bundle();
@@ -94,18 +89,23 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_expandable_list, container, false);
 
+        //getting activity instance
         mActivity = (PostLoginActivity) getActivity();
 
+        // butterknife injections
         ButterKnife.bind(this,view);
         //Bus Registering
         mBus.register(getActivity());
 
 
-        listHeader = new ArrayList<>();
         listChild = new HashMap<>();
+
+        // making list of headers
+        listHeader = new ArrayList<>();
         listHeader.add("Branch");
         listHeader.add("Graduation Year");
-        listChild = new HashMap<>();
+
+        // list of branch
         List<String> branch = new ArrayList<>();
         branch.add("CSE");
         branch.add("AE");
@@ -114,16 +114,20 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
         branch.add("IT");
         branch.add("EE");
         branch.add("ECE");
+
+        // list of years
         List<String> year = new ArrayList<>();
         for (int i=2004; i<=2017; i++){
             year.add("" + i);
         }
+
+        //adding the list + header to hashmap
         listChild.put(listHeader.get(0), branch);
         listChild.put(listHeader.get(1), year);
+
         listAdapter = new ExpandableListAdapter(getActivity(), listHeader, listChild);
 
         // setting list adapter
-
         mExpListView.setAdapter(listAdapter);
 
 //         Listview Group click listener
@@ -132,9 +136,8 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v,
                                         int groupPosition, long id) {
-                // Toast.makeText(getApplicationContext(),
-                // "Group Clicked " + listDataHeader.get(groupPosition),
-                // Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Clicked Header " + groupPosition);
+
                 return false;
             }
         });
@@ -165,17 +168,13 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
                 // TODO Auto-generated method stub
+                Log.d(TAG, "clicked" + groupPosition);
                 return true;
             }
         });
 
 
         return view;
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-
     }
 
     @Override
