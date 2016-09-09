@@ -169,9 +169,9 @@ public class Login extends Activity {
                     onLoginSuccess();
 
                 }
-//                else if (response.code()==600){
-//                    TastyToast.makeText(getBaseContext(),"User not found",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
-//                }
+                else if (response.code()==600){
+                    TastyToast.makeText(getBaseContext(),"User not found",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+                }
                 else if (response.code()==700){
                     TastyToast.makeText(getBaseContext(),"Password ot Matched",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
                 }

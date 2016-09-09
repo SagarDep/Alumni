@@ -9,7 +9,7 @@ import com.sdsmdg.tastytoast.TastyToast;
  */
 public class RetrofitErrorHandler {
     public void statusCodeHandler(Context context, int errorCode){
-        if (errorCode == 600){
+        if (errorCode == 500){
             TastyToast.makeText(context,"Oops, Our servers are sick!",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
         }
     }
