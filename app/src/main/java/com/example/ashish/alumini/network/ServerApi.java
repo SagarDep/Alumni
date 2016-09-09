@@ -53,18 +53,21 @@ public interface ServerApi {
     );
 
 
+
     @POST("members/signup/complete")
     Call<String> signupComplete(@Query("_id") String id,
-                                @Query("isNerd") boolean isNerd,
+                                @Query("name") String name,
                                 @Query("bio") String bio,
-                                @Query("phone") String phone,
-                                @Query("weblink") String weblink,
                                 @Query("branch") String branch,
                                 @Query("year") String year,
+                                @Query("isNerd") boolean isNerd,
+                                @Query("designation") String designation,
+                                @Query("company") String company,
                                 @Query("home") String home,
                                 @Query("work") String work,
-                                @Query("designation") String designation,
-                                @Query("company") String company
+                                @Query("phone") String phone,
+                                @Query("weblink") String webLink,
+                                @Query("fblink") String fbLink
                                 );
 
 

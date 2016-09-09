@@ -189,17 +189,19 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         String id = new GlobalPrefs(getContext()).getString("Userid");
 
 
-        Call<String> call = ApiClient.getServerApi().signupComplete(id, //id
-                checkbox.isChecked(),                                          // isNerd
+        Call<String> call = ApiClient.getServerApi().signupComplete(id,        //id
+                mEditTextName.getText().toString().trim(),                     // name
                 mEditTextBio.getText().toString().trim(),                      // bio
+                mSpinnerBranch.getSelectedItem().toString().trim(),            // branch
+                mSpinnerYear.getSelectedItem().toString().trim(),              // year
+                checkbox.isChecked(),                                          // isNerd
+                mEditTextDesignation.getText().toString().trim(),              // designation
+                mEditTextCompany.getText().toString().trim(),                  // company
+                mEditTextLocationHome.getText().toString().trim(),             // home location
+                mEditTextLocationWork.getText().toString().trim(),             // work location
                 mEditTextPhone.getText().toString().trim(),                    // phone
                 mEditTextWebLink.getText().toString().trim(),                  // web
-                mSpinnerBranch.getSelectedItem().toString().trim(),            // spinner
-                mSpinnerYear.getSelectedItem().toString().trim(),              // year
-                mEditTextLocationHome.getText().toString().trim(),             // home locstion
-                mEditTextLocationWork.getText().toString().trim(),             // work location
-                mEditTextDesignation.getText().toString().trim(),              // designation
-                mEditTextCompany.getText().toString().trim()                   // company
+                "facebook link"                                                // fb link
                 );
 
         call.enqueue(new Callback<String>() {
@@ -219,6 +221,43 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     }
 
     public boolean validate(){
+
+
+        if (mEditTextName.getText().toString().trim().length()<=6){
+            mEditTextName.setError("Name must be greater than 6 characters");
+            return false;
+        }
+        else  if (mEditTextBio.getText().toString().trim().length()==0){
+            mEditTextBio.setError("Make it a little Big");
+            return false;
+        }
+        else if (mEditTextDesignation.getText().toString().trim().length()==0){
+            mEditTextDesignation.setError("Invalid Designation");
+            return false;
+        }
+        else if (mEditTextCompany.getText().toString().trim().length()==0){
+            mEditTextCompany.setError("Invalid Designation");
+            return false;
+        }
+
+        if (mEditTextLocationHome.getText().toString().trim().length()==0){
+            mEditTextLocationHome.setError("Invalid Location");
+            return false;
+        }
+        else if (mEditTextLocationWork.getText().toString().trim().length()==0){
+            mEditTextLocationWork.setError("Invalid Location");
+            return false;
+        }else if (mEditTextPhone.getText().toString().trim().length()==10){
+            mEditTextPhone.setError("Invalid Phone Number");
+            return false;
+        }
+        else if (false){
+            mEditTextPhone.setError("Invalid Designation");
+            return false;
+        }
+
+
+
         return true;
     }
 }

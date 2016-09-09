@@ -80,13 +80,10 @@ public class MainScreenActivity extends AppCompatActivity
         mCurrentFragment = fragment;
 
         //checking if actionbar needs to be hidden or not
-        if (fragment instanceof FragmentMainScreen){
+        if (mCurrentFragment instanceof FragmentMainScreen){
             mActionBar.hide();
         }
-        else if (fragment instanceof  FragmentWebView){
-            mActionBar.setTitle("About College");
-            mActionBar.show();
-        }
+
         // to change the titile in case of onCLick the event listView
         else if (mPreviousFragment instanceof FragmentEvents && mCurrentFragment instanceof FragmentWebView){
             mActionBar.setTitle("About Event");
