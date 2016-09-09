@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.ashish.alumini.deepak.events.EventListInstance;
+
+import com.example.ashish.alumini.supporting_classes.EventListInstance;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class EventListAdapter extends ArrayAdapter<EventListInstance> {
 
         EventListInstance item = getItem(position);
 
-        mTextViewEventName.setText(item.getEventName());
+        mTextViewEventName.setText(item.getName());
 
 
         return convertView;

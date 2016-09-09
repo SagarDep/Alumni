@@ -13,8 +13,8 @@ import android.widget.ListView;
 import com.example.ashish.alumini.EventListAdapter;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
-import com.example.ashish.alumini.deepak.events.EventListInstance;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
+import com.example.ashish.alumini.supporting_classes.EventListInstance;
 import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
@@ -101,49 +101,49 @@ public class FragmentEvents extends Fragment {
         mActionBar = mActivity.getSupportActionBar();
 
         EventListInstance listInstance = new EventListInstance();
-        listInstance.setEventName("Tehnika");
-        listInstance.setWebViewLink("http://google.com");
+        listInstance.setName("Tehnika");
+        listInstance.setUrl("http://google.com");
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setEventName("Microsoft Innovation Center");
-        listInstance.setWebViewLink("http://google.com");
+        listInstance.setName("Microsoft Innovation Center");
+        listInstance.setUrl("http://google.com");
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setEventName("Sanghosti");
-        listInstance.setWebViewLink("http://google.com");
+        listInstance.setName("Sanghosti");
+        listInstance.setUrl("http://google.com");
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setEventName("International Conference");
-        listInstance.setWebViewLink("http://google.com");
+        listInstance.setName("International Conference");
+        listInstance.setUrl("http://google.com");
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setEventName("Engineer Day");
-        listInstance.setWebViewLink("http://google.com");
+        listInstance.setName("Engineer Day");
+        listInstance.setUrl("http://google.com");
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setEventName("Zephr");
-        listInstance.setWebViewLink("http://google.com");
+        listInstance.setName("Zephr");
+        listInstance.setUrl("http://google.com");
         mInstanceArrayList.add(listInstance);
 
 
         listInstance = new EventListInstance();
-        listInstance.setEventName("Auto Ignition");
-        listInstance.setWebViewLink("http://google.com");
+        listInstance.setName("Auto Ignition");
+        listInstance.setUrl("http://google.com");
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setEventName("TopGun");
-        listInstance.setWebViewLink("http://google.com");
+        listInstance.setName("TopGun");
+        listInstance.setUrl("http://google.com");
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setEventName("Exergie");
-        listInstance.setWebViewLink("http://google.com");
+        listInstance.setName("Exergie");
+        listInstance.setUrl("http://google.com");
         mInstanceArrayList.add(listInstance);
 
 
@@ -191,7 +191,7 @@ public class FragmentEvents extends Fragment {
     @OnItemClick(R.id.listView_events)
     public void listClickListener(int position){
         // getting the web link of event
-        String url = mInstanceArrayList.get(position).getWebViewLink();
+        String url = mInstanceArrayList.get(position).getUrl();
         mActivity.changeFragment(new FragmentWebView().newInstance(url,""));
     }
 
