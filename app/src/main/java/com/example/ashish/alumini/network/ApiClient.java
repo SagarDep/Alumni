@@ -9,10 +9,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
 //    public static final String BASE_URL = "http://192.168.43.0:3000/";
-//    public static final String BASE_URL = "http://192.168.43.115:3000/"; // mobile hotspot
+    public static final String BASE_URL = "http://192.168.43.115:3000/"; // mobile hotspot
 //    public static final String BASE_URL = "http://192.168.42.179:3000/"; // usb tethring
 //    public static final String BASE_URL = "http://192.168.137.152:3000/";
-    public static final String BASE_URL = "http://172.16.4.107:3000/"; // bangon
+//    public static final String BASE_URL = "http://172.16.4.107:3000/"; // bangon
     private static Retrofit retrofit = null;
 
 

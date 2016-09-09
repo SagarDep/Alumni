@@ -33,7 +33,7 @@
             android:id="@+id/circleButton_event"
             android:layout_width="70dip"
             android:layout_height="70dip"
-            app:cb_color="@color/appTheme"
+            app:cb_color="#e53935"
             app:cb_pressedRingWidth="5dip"
             android:layout_alignTop="@+id/member"
             android:layout_centerHorizontal="true" />
@@ -58,7 +58,7 @@
             android:id="@+id/circleButton_member"
             android:layout_width="70dip"
             android:layout_height="70dip"
-            app:cb_color="@color/appTheme"
+            app:cb_color="#e53935"
             app:cb_pressedRingWidth="5dip"
             android:layout_gravity="center"/>
 
@@ -84,8 +84,7 @@
             android:id="@+id/circleButton_about"
             android:layout_width="70dip"
             android:layout_height="70dip"
-
-            app:cb_color="@color/appTheme"
+            app:cb_color="#e53935"
 
             app:cb_pressedRingWidth="5dip"/>
 
