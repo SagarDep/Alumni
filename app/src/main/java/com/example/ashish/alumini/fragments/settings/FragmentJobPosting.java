@@ -165,8 +165,8 @@ public class FragmentJobPosting extends Fragment {
                 mInputEditTextJobLocation.getText().toString().trim(),
                 mEditTextWebLink.getText().toString().trim(),
                 mEditTextemail.getText().toString().trim(),
-                new GlobalPrefs(getActivity()).getString("Username"),
-                new GlobalPrefs(getActivity()).getString("Userid")
+                new GlobalPrefs(getActivity()).getString(getString(R.string.username)),
+                new GlobalPrefs(getActivity()).getString(getString(R.string.userid))
         );
 
         call.enqueue(new Callback<String>() {

@@ -64,15 +64,7 @@ public class FragmentProfile extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static FragmentProfile newInstance(String param1, String param2) {
         FragmentProfile fragment = new FragmentProfile();
         Bundle args = new Bundle();
@@ -106,20 +98,17 @@ public class FragmentProfile extends Fragment {
             mImageViewEdit.setVisibility(View.VISIBLE);
 
             // gettign if of loggedin user from shared prefs
-            String id = new GlobalPrefs(getActivity()).getString("Userid").toString();
+            String id = new GlobalPrefs(getActivity()).getString(getString(R.string.userid)).toString();
 
-            // make server call to get the remaingin data of user
+            // make server call to get the remaining data of user
             makeServerCallToGetCompleteProfile(id);
         }
-
-
 
         //Bus Registering
         mBus.register(getActivity());
 
         // getting activity instance
         mActivity = (PostLoginActivity) getActivity();
-
 
 
         if (mListInstance!=null){
@@ -129,9 +118,9 @@ public class FragmentProfile extends Fragment {
             // make server call to get more data
             makeServerCallToGetMoreData();
 
+            // set the data which was transfered from previous recycler view though setData
             mTextView_name.setText(mListInstance.getName());
             mTextViewDesignationNCompanyName.setText(mListInstance.getDesignation());
-//            mTextViewBranch.setText("Branch : "+mListInstance.getBranch().toUpperCase());
             mTextViewJobLocation.setText(mListInstance.getWork());
             mTextViewYear.setText(mListInstance.getYear());
         }

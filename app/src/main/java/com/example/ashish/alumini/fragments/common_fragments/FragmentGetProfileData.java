@@ -142,8 +142,8 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         }
 
         // displaying the data which is strored in shared preference from previous page
-        mEditTextName.setText(new GlobalPrefs(getContext()).getString("Username"));
-        mEditTextEmail.setText(new GlobalPrefs(getContext()).getString("Useremail"));
+        mEditTextName.setText(new GlobalPrefs(getContext()).getString(getString(R.string.username)));
+        mEditTextEmail.setText(new GlobalPrefs(getContext()).getString(getString(R.string.useremail)));
 
         // check box functions
         boolean animation = true;
@@ -186,7 +186,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
     public void makeServerCalltoPostCompleteData(){
         // getting the id from shared preffernece which was stored during partial signup
-        String id = new GlobalPrefs(getContext()).getString("Userid");
+        String id = new GlobalPrefs(getContext()).getString(getString(R.string.userid));
 
 
         Call<String> call = ApiClient.getServerApi().signupComplete(id,        //id

@@ -44,7 +44,6 @@ public class FragmentSettings extends Fragment  {
     Bus mBus = new Bus();
     PostLoginActivity mActivity;
 
-    SharedPreferences mSharedPreferences;
 
     public FragmentSettings() {
         // Required empty public constructor
@@ -90,16 +89,11 @@ public class FragmentSettings extends Fragment  {
         mActivity = (PostLoginActivity) getActivity();
 
 
-        mSharedPreferences = getActivity().getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
 
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -175,9 +169,6 @@ public class FragmentSettings extends Fragment  {
 
     @OnClick(R.id.button_logout)
     public void handlerLogoutButton(){
-//      SharedPreferences.Editor editor = mSharedPreferences.edit();
-//      editor.putBoolean(getString(R.string.login_key),false);
-//      editor.commit();
 
 
         new GlobalPrefs(getContext()).putBooloean(getString(R.string.is_logged_in),false);

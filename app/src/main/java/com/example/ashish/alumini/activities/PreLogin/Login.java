@@ -157,8 +157,8 @@ public class Login extends Activity {
                     GlobalPrefs globalPrefs = new GlobalPrefs(getApplicationContext());
                     if (response1!=null){
                         // storing id and name in shared pref
-                        globalPrefs.putString("Userid",response1.get_id());
-                        globalPrefs.putString("Username",response1.getName());
+                        globalPrefs.putString(getString(R.string.userid),response1.get_id());
+                        globalPrefs.putString(getString(R.string.username),response1.getName());
                     }
                     // for maintaining session
                     globalPrefs.putBooloean(getString(R.string.is_logged_in),true);
@@ -173,7 +173,7 @@ public class Login extends Activity {
                     TastyToast.makeText(getBaseContext(),"User not found",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
                 }
                 else if (response.code()==700){
-                    TastyToast.makeText(getBaseContext(),"Password ot Matched",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+                    TastyToast.makeText(getBaseContext(),"Password not Matched",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
                 }
             }
 

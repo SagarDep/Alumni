@@ -22,12 +22,8 @@ public class MyApplication extends Application {
         * */
         Stetho.initializeWithDefaults(this);
 
-//        fragmentJobs = new FragmentJobs().newInstance("","");
-
 
         new GlobalPrefs(getApplicationContext()).mContext = getApplicationContext();
-
-        CommonData  commonData = new CommonData();
 
     }
 

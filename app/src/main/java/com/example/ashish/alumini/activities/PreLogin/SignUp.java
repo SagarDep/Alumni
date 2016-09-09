@@ -154,9 +154,9 @@ public class SignUp extends Activity {
                 * saving the name, id, email in shared prefs
                 * */
                 GlobalPrefs globalPrefs = new GlobalPrefs(getApplicationContext());
-                globalPrefs.putString("Userid",signupPart.get_id());
-                globalPrefs.putString("Username",signupPart.getName());
-                globalPrefs.putString("Useremail",signupPart.getEmail());
+                globalPrefs.putString(getString(R.string.userid),signupPart.get_id());
+                globalPrefs.putString(getString(R.string.username),signupPart.getName());
+                globalPrefs.putString(getString(R.string.useremail),signupPart.getEmail());
 
                 // for session maintaining
                 globalPrefs.putBooloean(getString(R.string.is_logged_in),true);
@@ -182,15 +182,15 @@ public class SignUp extends Activity {
 
     // function to start activity through intent
     public void startMainScreenActivity(SignupPart  signupPart){
-        Intent move=new Intent(SignUp.this,MainScreenActivity.class);
+        Intent intent=new Intent(SignUp.this,MainScreenActivity.class);
                 /*
                 * SIGNUP is sent beacuse when the login is successful,
                  * then from another session the login/signup will be skipped
                  * to change the fragment of signup, "SIGNUP" is used
                 * */
-        move.putExtra("SIGNUP",true);
+        intent.putExtra("SIGNUP",true);
 
-        startActivity(move);
+        startActivity(intent);
     }
 
     @Override
