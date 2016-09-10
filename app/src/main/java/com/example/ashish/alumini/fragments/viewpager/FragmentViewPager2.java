@@ -58,7 +58,7 @@ public class FragmentViewPager2 extends Fragment {
         mApplication = (MyApplication) mActivity.getApplication();
 
         // getting the instance of class to access the lists
-        MemberLists memberLists = mApplication.getmMemberListsInstance();
+        MemberLists memberLists = mApplication.getMemberLists();
         //obtaining the list
         mArrayList3 = memberLists.list;
 

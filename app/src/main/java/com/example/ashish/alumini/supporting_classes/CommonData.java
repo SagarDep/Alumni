@@ -11,13 +11,7 @@ import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager2;
 public class CommonData {
     public static FragmentJobs fragmentJobs ;
 
-    public static FragmentViewPager0 fragmentViewPager0;
-    public static FragmentViewPager1 fragmentViewPager1;
-    public static FragmentViewPager2 fragmentViewPager2;
     public CommonData(){
         fragmentJobs = new FragmentJobs();
-        fragmentViewPager0 = new FragmentViewPager0();
-        fragmentViewPager1 = new FragmentViewPager1();
-        fragmentViewPager2 = new FragmentViewPager2();
     }
 }

@@ -61,7 +61,7 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
         mActivity = (PostLoginActivity) getActivity();
 
 
-        MemberLists memberLists = mApplication.getmMemberListsInstance();
+        MemberLists memberLists = mApplication.getMemberLists();
         mArrayList = memberLists.list;
 
 

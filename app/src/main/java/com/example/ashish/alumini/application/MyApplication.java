@@ -12,7 +12,7 @@ import com.facebook.stetho.Stetho;
  */
 public class MyApplication extends Application {
 
-    public MemberLists mMemberLists;
+    public MemberLists memberLists;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -25,16 +25,17 @@ public class MyApplication extends Application {
 
         new GlobalPrefs(getApplicationContext()).mContext = getApplicationContext();
 
+        // class will create the fragmentjob instance and later can be accessed anywhere
+        CommonData  commonData = new CommonData();
+
     }
 
     public void createListCLass(){
-        mMemberLists = new MemberLists();
+        memberLists = new MemberLists();
 
     }
 
-    public MemberLists getmMemberListsInstance(){
-        return mMemberLists;
+    public MemberLists getMemberLists() {
+        return memberLists;
     }
-
-
 }
