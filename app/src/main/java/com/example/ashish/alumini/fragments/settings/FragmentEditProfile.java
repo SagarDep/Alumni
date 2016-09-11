@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.fragments.common_fragments;
+package com.example.ashish.alumini.fragments.settings;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -29,7 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class FragmentGetProfileData extends android.support.v4.app.Fragment {
+public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -94,7 +94,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
 
 
-    public FragmentGetProfileData() {
+    public FragmentEditProfile() {
         // Required empty public constructor
     }
 
@@ -107,8 +107,8 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
      * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentGetProfileData newInstance(String param1, String param2) {
-        FragmentGetProfileData fragment = new FragmentGetProfileData();
+    public static FragmentEditProfile newInstance(String param1, String param2) {
+        FragmentEditProfile fragment = new FragmentEditProfile();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -135,27 +135,12 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         //Bus Registering
         mBus.register(getActivity());
 
-        // initialization of activity
-        if (getActivity() instanceof MainScreenActivity){
-            mMainScreenActivity = (MainScreenActivity) getActivity();
-        }
-        else {
             mPostLoginActivity = (PostLoginActivity) getActivity();
-        }
 
-        // displaying the data which is strored in shared preference from previous page
-        mEditTextName.setText(new GlobalPrefs(getContext()).getString(getString(R.string.username)));
-        mEditTextEmail.setText(new GlobalPrefs(getContext()).getString(getString(R.string.useremail)));
 
-        // check box functions
-        boolean animation = true;
-        checkbox.setChecked(false, animation);
-
-        // editing
-        if (mParam1=="edit"){
             String id = new GlobalPrefs(getActivity()).getString(getString(R.string.userid));
             makeServerToGetCompleteData(id);
-        }
+
 
         return view;
     }
@@ -215,7 +200,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                mMainScreenActivity.changeFragment(new FragmentMainScreen().newInstance("",""));
+                mPostLoginActivity.changeFragment(new FragmentProfile());
                 TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
 
             }
@@ -293,6 +278,17 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     }
 
     public void setCompleteData(MemberInstance completeData){
+                mEditTextName.setText(completeData.getName());                     // name
+                mEditTextBio.setText(completeData.getBio());                      // bio
+                mSpinnerBranch.getSelectedItem().toString().trim();           // branch
+                mSpinnerYear.getSelectedItem().toString().trim();            // year
+                checkbox.setChecked(completeData.getIsNerd());                                          // isNerd
+                mEditTextDesignation.setText(completeData.getDesignation());              // designation
+                mEditTextCompany.setText(completeData.getCompany());                  // company
+                mEditTextLocationHome.setText(completeData.getHome());             // home location
+                mEditTextLocationWork.setText(completeData.getWork());             // work location
+                mEditTextPhone.setText(completeData.getPhone());                    // phone
+                mEditTextWebLink.setText(completeData.getWeblink());
 
     }
 }

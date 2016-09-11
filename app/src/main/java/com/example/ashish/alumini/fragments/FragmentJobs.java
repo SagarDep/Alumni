@@ -96,9 +96,6 @@ public class FragmentJobs extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-//       mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList);
-//       mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList2);
-
 
     }
 
@@ -122,11 +119,6 @@ public class FragmentJobs extends Fragment {
 
         mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList2);
         mListViewJobs.setAdapter(mListAdapter);
-
-
-
-
-
         
         return view;
     }
@@ -172,7 +164,6 @@ public class FragmentJobs extends Fragment {
     public void makeServerCallToGetTheList(){
         Call<List<Job>> call = ApiClient.getServerApi().getJobList();
 
-//        Log.d(TAG,GlobalBus.check_connectivity(getActivity()).toString());
 
 
         call.enqueue(new Callback<List<Job>>() {
@@ -180,6 +171,7 @@ public class FragmentJobs extends Fragment {
             public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
                 Log.d(TAG,"Successfull");
                 mArrayList2 = response.body();
+                // TODO : adding the datasetmodify method
 
             }
 

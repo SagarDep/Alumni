@@ -58,15 +58,6 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static FragmentJobDetails newInstance(Object param1, String param2) {
         FragmentJobDetails fragment = new FragmentJobDetails();
         Bundle args = new Bundle();
@@ -148,7 +139,7 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
 
                 mTextViewWebsite.setText(jobDetail.getContactweb());
                 mTextViewemail.setText(jobDetail.getContactemail());
-                mTextViewJobDescription.setText("Job Description - " + jobDetail.getKahani());
+                mTextViewJobDescription.setText("Job Description : " + jobDetail.getKahani());
                 mTextViewPostedBy.setText("Posted By : " + jobDetail.getPostedby());
             }
 

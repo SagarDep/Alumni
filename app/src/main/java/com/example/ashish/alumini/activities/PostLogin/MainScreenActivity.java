@@ -59,6 +59,7 @@ public class MainScreenActivity extends AppCompatActivity
         }
 
 
+
         mFragmentTransaction = mFragmentManager.beginTransaction();
         if (isSignup==true){
             // show the getData fragment
@@ -69,7 +70,6 @@ public class MainScreenActivity extends AppCompatActivity
         }
         mFragmentTransaction.commit();
         mCurrentFragment = new FragmentMainScreen();
-
 
         mActionBar.hide();
     }
@@ -122,7 +122,7 @@ public class MainScreenActivity extends AppCompatActivity
             changeFragment(new FragmentEvents());
         }
         // if any fragment other than main screen
-//        thenreturn to the mainscreen fragment
+//        then return to the mainscreen fragment
         else if (!(mCurrentFragment instanceof FragmentMainScreen)){
             changeFragment(new FragmentMainScreen());
 

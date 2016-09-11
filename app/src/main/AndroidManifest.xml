@@ -23,9 +23,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".profile" />
-        <activity android:name=".Edit_Profile" />
-
 
         <activity android:name=".activities.PreLogin.Login"/>
         <activity android:name=".activities.PreLogin.SignUp"/>

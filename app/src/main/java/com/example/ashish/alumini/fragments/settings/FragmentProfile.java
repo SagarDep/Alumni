@@ -132,7 +132,7 @@ public class FragmentProfile extends Fragment {
 
     @OnClick(R.id.imageView_edit)
     public void editProfile(){
-        mActivity.changeFragment(new FragmentGetProfileData().newInstance("edit",""));
+        mActivity.changeFragment(new FragmentEditProfile());
     }
 
 
@@ -157,7 +157,6 @@ public class FragmentProfile extends Fragment {
 
     // whent the user will click on the recycler view in view pager to get more details about the user
     public void makeServerCallToGetMoreData(){
-        // TODo : retrofit server call
         Call<MemberInstance> call = ApiClient.getServerApi().
                 getRemainingDataForRecyclerView(mListInstance.get_id().toString());
 
@@ -206,13 +205,13 @@ public class FragmentProfile extends Fragment {
 
     public void setCompleteData(MemberInstance completeData){
         mTextViewBranch.setText("Branch : " + completeData.getBranch());
+        mTextViewDesignationNCompanyName.setText(completeData.getDesignation());
         mTextViewDesignationNCompanyName.append(" at "+completeData.getCompany());
         mTextView_bio.setText(completeData.getBio());
         mTextViewContact.setText(completeData.getPhone());
         mTextViewHomeLocation.setText(completeData.getHome());
         mTextViewMail.setText(completeData.getEmail());
         mTextView_name.setText(completeData.getName());
-        mTextViewDesignationNCompanyName.setText(completeData.getDesignation());
         mTextViewJobLocation.setText(completeData.getWork());
         mTextViewYear.setText(completeData.getYear());
     }

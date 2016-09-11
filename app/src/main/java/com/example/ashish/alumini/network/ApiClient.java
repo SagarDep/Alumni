@@ -38,6 +38,4 @@ public class ApiClient {
 
         return retrofit.create(ServerApi.class);
     }
-
-
 }
