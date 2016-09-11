@@ -40,7 +40,7 @@
             android:id="@+id/textView_location_jobDetails"
              android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-             android:text="nb "
+
              android:layout_below="@+id/textView_companyName_jobDetails" />
 
 
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:text="Job  Description - khdblhboh ouyg ouygfuyg ouy gouyf giauygfiuy foauygf oasyufg ausoyfg asuydfg oasuyfg asuyfg siuyfgisu yfsi ufysf gsuyf g"
+                android:text="Job  Description - "
                 android:id="@+id/textView_jobDescription"
                 android:layout_margin="5dp"/>
 
@@ -101,7 +101,6 @@
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@+id/imageView_email"
                     android:layout_marginLeft="10dp"
-                    android:text="aughvsdc"
                     android:layout_below="@+id/textView_Contact" />
 
                 <TextView
@@ -111,7 +110,6 @@
                     android:id="@+id/textView_website"
                     android:layout_below="@+id/imageView_email"
                     android:layout_alignLeft="@+id/textView_email_jobDetails"
-                    android:text="aughvsdc"
                     android:layout_marginTop="5dp" />
 
 
@@ -140,7 +138,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="dfffbsfgnbsfggadf"
                     android:layout_marginTop="10dp"
                     android:id="@+id/textView_postedby"
                     android:textAppearance="?android:attr/textAppearanceMedium"

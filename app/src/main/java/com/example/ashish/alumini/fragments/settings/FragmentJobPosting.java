@@ -1,5 +1,6 @@
 package com.example.ashish.alumini.fragments.settings;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.network.ApiClient;
@@ -153,7 +155,8 @@ public class FragmentJobPosting extends Fragment {
 
 
         if (validDeta){
-            makeServerCallToPostData();
+//            makeServerCallToPostData();
+            makeServerCallToUploadData();
         }
     }
 
@@ -202,5 +205,12 @@ public class FragmentJobPosting extends Fragment {
                 mInputEditTextJobLocation.setText("");
                 mEditTextWebLink.setText("");
                 mEditTextemail.setText("");
+    }
+    public void makeServerCallToUploadData(){
+
+        ProgressDialog progressBar = new ProgressDialog( getActivity());
+        progressBar.setMessage("uploading");
+        progressBar.show();
+
     }
 }

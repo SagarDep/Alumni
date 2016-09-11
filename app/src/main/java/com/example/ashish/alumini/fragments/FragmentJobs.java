@@ -18,6 +18,7 @@ import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.Job;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.supporting_classes.GlobalBus;
 import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
@@ -171,10 +172,13 @@ public class FragmentJobs extends Fragment {
     public void makeServerCallToGetTheList(){
         Call<List<Job>> call = ApiClient.getServerApi().getJobList();
 
+//        Log.d(TAG,GlobalBus.check_connectivity(getActivity()).toString());
+
+
         call.enqueue(new Callback<List<Job>>() {
             @Override
             public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
-                Log.d("API call ","Successfull");
+                Log.d(TAG,"Successfull");
                 mArrayList2 = response.body();
 
             }

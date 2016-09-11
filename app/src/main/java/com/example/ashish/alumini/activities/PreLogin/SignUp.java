@@ -147,7 +147,6 @@ public class SignUp extends Activity {
                 }
                 else {
 
-
                 SignupPart signupPart = response.body();
 
                 /*

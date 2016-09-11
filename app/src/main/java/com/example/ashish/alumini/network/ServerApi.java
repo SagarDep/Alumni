@@ -10,10 +10,13 @@ import com.example.ashish.alumini.network.pojo.SignupPart;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -46,6 +49,9 @@ public interface ServerApi {
                          @Query("postedbyid") String postdById
                          );
 
+    /*
+    * API call for partial signup
+    * */
     @POST("members/signup/partial")
     Call<SignupPart> signupPartial(@Query("name") String name,
                                    @Query("email") String email,
@@ -53,7 +59,9 @@ public interface ServerApi {
     );
 
 
-
+    /*
+    * complete signup api
+    * */
     @POST("members/signup/complete")
     Call<String> signupComplete(@Query("_id") String id,
                                 @Query("name") String name,
@@ -88,5 +96,12 @@ public interface ServerApi {
     // on click recyvler view (to get the remaining data of member)
     @POST("members/remaining-data")
     Call<MemberInstance> getRemainingDataForRecyclerView(@Query("_id") String id);
+
+    /*
+    * Multipart file uploading
+    * */
+    @Multipart
+    @POST("/routes/upload")
+    Call<String> upload(@Part MultipartBody.Part file);
 
 }

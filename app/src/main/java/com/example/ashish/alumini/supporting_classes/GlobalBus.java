@@ -1,5 +1,8 @@
 package com.example.ashish.alumini.supporting_classes;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -34,6 +37,15 @@ public class GlobalBus extends Bus {
             });
         }
     }
+//    public static Boolean check_connectivity(Context context){
+//        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+//        if(connectivityManager.getActiveNetworkInfo()!=null
+//                && connectivityManager.getActiveNetworkInfo().isAvailable()
+//                && connectivityManager.getActiveNetworkInfo().isConnected()){
+//            return true;
+//        }
+//        return false;
+//    }
 
 }
 

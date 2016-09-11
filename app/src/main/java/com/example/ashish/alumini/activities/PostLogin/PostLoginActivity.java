@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 
 
@@ -22,6 +23,7 @@ import com.example.ashish.alumini.fragments.settings.FragmentFaq;
 import com.example.ashish.alumini.fragments.settings.FragmentJobPosting;
 import com.example.ashish.alumini.fragments.settings.FragmentProfile;
 import com.example.ashish.alumini.supporting_classes.CommonData;
+import com.example.ashish.alumini.supporting_classes.GlobalBus;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
@@ -32,6 +34,8 @@ public class PostLoginActivity extends AppCompatActivity {
 
     // creating instance so that one instance can be used over the whole app
     public FragmentMembers mFragmentMembers =new FragmentMembers();
+
+    String TAG = getClass().getSimpleName();
 
 
 
@@ -52,6 +56,7 @@ public class PostLoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_activity_member);
         //Setting the Action Bar
         mActionBar = getSupportActionBar();
+
 
         //setting up the bar
         mActionBar.setDisplayHomeAsUpEnabled(true);

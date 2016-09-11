@@ -1,5 +1,9 @@
 package com.example.ashish.alumini.supporting_classes;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 import com.example.ashish.alumini.fragments.FragmentJobs;
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager0;
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager1;
@@ -14,4 +18,6 @@ public class CommonData {
     public CommonData(){
         fragmentJobs = new FragmentJobs();
     }
+
+
 }
