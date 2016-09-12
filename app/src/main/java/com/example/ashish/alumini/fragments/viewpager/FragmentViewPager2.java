@@ -60,7 +60,9 @@ public class FragmentViewPager2 extends Fragment {
         // getting the instance of class to access the lists
         MemberLists memberLists = mApplication.getMemberLists();
         //obtaining the list
-        mArrayList3 = memberLists.list;
+        if (memberLists!=null){
+            mArrayList = memberLists.list;
+        }
 
         for (int i = 0; i< mArrayList3.size(); i++){
 //            chgecking the state of isNerd in every item and then adding to the new list

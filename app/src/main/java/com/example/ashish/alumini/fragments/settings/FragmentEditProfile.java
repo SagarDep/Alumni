@@ -21,6 +21,10 @@ import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -84,12 +88,14 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     @Bind(R.id.editText_company)
     EditText mEditTextCompany;
 
+    String stringArrayList[];
+    ArrayList<String> strings = new ArrayList<>();
+
 
     // event bus registering
     Bus mBus = new Bus();
 
     // activities
-    MainScreenActivity mMainScreenActivity;
     PostLoginActivity mPostLoginActivity;
 
 
@@ -138,8 +144,15 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
             mPostLoginActivity = (PostLoginActivity) getActivity();
 
 
+
             String id = new GlobalPrefs(getActivity()).getString(getString(R.string.userid));
             makeServerToGetCompleteData(id);
+
+        stringArrayList =  getResources().getStringArray(R.array.branch_array);
+
+        for ( String a : stringArrayList){
+            strings.add(a);
+        }
 
 
         return view;
@@ -280,7 +293,8 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     public void setCompleteData(MemberInstance completeData){
                 mEditTextName.setText(completeData.getName());                     // name
                 mEditTextBio.setText(completeData.getBio());                      // bio
-                mSpinnerBranch.getSelectedItem().toString().trim();           // branch
+//                mSpinnerBranch.getSelectedItem().toString().trim();           // branch
+                mSpinnerBranch.setSelection(strings.indexOf(completeData.getBranch()));          // branch
                 mSpinnerYear.getSelectedItem().toString().trim();            // year
                 checkbox.setChecked(completeData.getIsNerd());                                          // isNerd
                 mEditTextDesignation.setText(completeData.getDesignation());              // designation

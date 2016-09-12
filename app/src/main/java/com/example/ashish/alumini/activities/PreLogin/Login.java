@@ -42,7 +42,6 @@ public class Login extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         email=(EditText)findViewById(R.id.editText_login_email);
@@ -136,7 +135,8 @@ public class Login extends Activity {
         }
 
         if (mCounter==2){
-            finish();
+            this.finish();
+            System.exit(0);
         }
 
     }

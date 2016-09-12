@@ -1,6 +1,5 @@
 package com.example.ashish.alumini.activities.PostLogin;
 
-import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -11,8 +10,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.fragments.BlankFragment;
-import com.example.ashish.alumini.fragments.FragmentEvents;
+import com.example.ashish.alumini.fragments.main_screen_fragments.FragmentEvents;
 import com.example.ashish.alumini.fragments.FragmentMainScreen;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
@@ -113,6 +111,7 @@ public class MainScreenActivity extends AppCompatActivity
             mBackCounter++;
             if (mBackCounter==2){
                 // exit the application
+                this.finish();
                 System.exit(0);
             }
         }

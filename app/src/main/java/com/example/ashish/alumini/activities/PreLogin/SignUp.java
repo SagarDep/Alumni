@@ -203,7 +203,8 @@ public class SignUp extends Activity {
         }
 
         if (mBackCounter ==2){
-            finish();
+            this.finish();
+            System.exit(0);
         }
 
     }
