@@ -9,7 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.Job;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -52,11 +54,10 @@ public class JobListAdapter extends ArrayAdapter<Job> {
         Job item = getItem(position);
 
 
-
-
         mTextViewCompanyName.setText(item.getName());
         mTextViewJobLocation.setText(item.getLocation());
         mTextViewJobPosition.setText(item.getRole());
+        Picasso.with(getContext()).load("http://192.168.43.115/2.jpg").into(mImageView);
 
 
         return convertView;
