@@ -61,7 +61,7 @@ public class FragmentViewPager2 extends Fragment {
         MemberLists memberLists = mApplication.getMemberLists();
         //obtaining the list
         if (memberLists!=null){
-            mArrayList = memberLists.list;
+            mArrayList3 = memberLists.list;
         }
 
         for (int i = 0; i< mArrayList3.size(); i++){

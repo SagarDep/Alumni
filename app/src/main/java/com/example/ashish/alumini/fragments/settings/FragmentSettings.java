@@ -37,7 +37,7 @@ public class FragmentSettings extends Fragment  {
 
 
     /*
-    * Butterknife injections
+    * Butterknife
     * */
 
 
@@ -122,7 +122,7 @@ public class FragmentSettings extends Fragment  {
     @OnClick(R.id.button_postjob)
     public void handlerJobPostButton(){
         mBus.post(9999);
-        mActivity.changeFragment(new FragmentJobPosting());
+        mActivity.changeFragment(new FragmentJobPosting().newInstance("",""));
 
     }
     @OnClick(R.id.button_myprofile)

@@ -11,19 +11,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
-import com.example.ashish.alumini.fragments.FragmentMainScreen;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -88,8 +85,10 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     @Bind(R.id.editText_company)
     EditText mEditTextCompany;
 
-    String stringArrayList[];
-    ArrayList<String> strings = new ArrayList<>();
+    String stringArrayBranch[];
+    String stringArrayYear[];
+    ArrayList<String> mArrayListBranch = new ArrayList<>();
+    ArrayList<String> mArrayListYear = new ArrayList<>();
 
 
     // event bus registering
@@ -104,15 +103,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static FragmentEditProfile newInstance(String param1, String param2) {
         FragmentEditProfile fragment = new FragmentEditProfile();
         Bundle args = new Bundle();
@@ -141,18 +132,24 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         //Bus Registering
         mBus.register(getActivity());
 
-            mPostLoginActivity = (PostLoginActivity) getActivity();
+        mPostLoginActivity = (PostLoginActivity) getActivity();
 
+        // getting id from shared pref and initiating ap i call
+        String id = new GlobalPrefs(getActivity()).getString(getString(R.string.userid));
+        makeServerToGetCompleteData(id);
 
+//        fetcing the String array and converting to ArrayList
+        stringArrayBranch =  getResources().getStringArray(R.array.branch_array);
+        stringArrayYear =  getResources().getStringArray(R.array.year_array);
 
-            String id = new GlobalPrefs(getActivity()).getString(getString(R.string.userid));
-            makeServerToGetCompleteData(id);
-
-        stringArrayList =  getResources().getStringArray(R.array.branch_array);
-
-        for ( String a : stringArrayList){
-            strings.add(a);
+        for ( String a : stringArrayBranch){
+            mArrayListBranch.add(a);
         }
+        for ( String a : stringArrayYear){
+            mArrayListYear.add(a);
+        }
+
+
 
 
         return view;
@@ -268,7 +265,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     }
 
     /*
-    * Method to fetch values when the user will press edit option
+    * Method to fetch values from server when the user will press edit option
     * */
     public void makeServerToGetCompleteData(String id){
         Call<MemberInstance> call = ApiClient.getServerApi().getCompleteProfileData(id);
@@ -293,12 +290,11 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     public void setCompleteData(MemberInstance completeData){
                 mEditTextName.setText(completeData.getName());                     // name
                 mEditTextBio.setText(completeData.getBio());                      // bio
-//                mSpinnerBranch.getSelectedItem().toString().trim();           // branch
-                mSpinnerBranch.setSelection(strings.indexOf(completeData.getBranch()));          // branch
-                mSpinnerYear.getSelectedItem().toString().trim();            // year
-                checkbox.setChecked(completeData.getIsNerd());                                          // isNerd
-                mEditTextDesignation.setText(completeData.getDesignation());              // designation
-                mEditTextCompany.setText(completeData.getCompany());                  // company
+                mSpinnerBranch.setSelection(mArrayListBranch.indexOf(completeData.getBranch()));          // branch
+                mSpinnerYear.setSelection(mArrayListYear.indexOf(completeData.getBranch()));            // year
+                checkbox.setChecked(completeData.getIsNerd());                    // isNerd
+                mEditTextDesignation.setText(completeData.getDesignation());       // designation
+                mEditTextCompany.setText(completeData.getCompany());               // company
                 mEditTextLocationHome.setText(completeData.getHome());             // home location
                 mEditTextLocationWork.setText(completeData.getWork());             // work location
                 mEditTextPhone.setText(completeData.getPhone());                    // phone
