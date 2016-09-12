@@ -154,7 +154,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         // editing
         if (mParam1=="edit"){
             String id = new GlobalPrefs(getActivity()).getString(getString(R.string.userid));
-            makeServerToGetCompleteData(id);
+//            makeServerToGetCompleteData(id);
         }
 
         return view;
@@ -192,6 +192,9 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
     }
 
+    /*
+    * Post the edited text
+    * */
     public void makeServerCalltoPostCompleteData(){
         // getting the id from shared preffernece which was stored during partial signup
         String id = new GlobalPrefs(getContext()).getString(getString(R.string.userid));
@@ -269,30 +272,5 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         return true;
     }
 
-    /*
-    * Method to fetch values when the user will press edit option
-    * */
-    public void makeServerToGetCompleteData(String id){
-        Call<MemberInstance> call = ApiClient.getServerApi().getCompleteProfileData(id);
 
-        call.enqueue(new Callback<MemberInstance>() {
-            @Override
-            public void onResponse(Call<MemberInstance> call, Response<MemberInstance> response) {
-
-                if (response.code()==200 && response.body()!=null){
-                    setCompleteData(response.body());
-                }
-                Log.d(TAG, "API call successful");
-            }
-
-            @Override
-            public void onFailure(Call<MemberInstance> call, Throwable t) {
-                Log.d(TAG, "API call failed");
-            }
-        });
-    }
-
-    public void setCompleteData(MemberInstance completeData){
-
-    }
 }
