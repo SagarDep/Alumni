@@ -54,6 +54,7 @@ public class FragmentProfile extends Fragment {
 
     @Bind(R.id.textView_contact) TextView mTextViewContact;
     @Bind(R.id.textView_mail) TextView mTextViewMail;
+    @Bind(R.id.textView_fbLink) TextView mTextViewFb;
 
 
     Bus mBus = new Bus();
@@ -172,6 +173,7 @@ public class FragmentProfile extends Fragment {
                     mTextViewContact.setText(example.getPhone());
                     mTextViewHomeLocation.setText(example.getHome());
                     mTextViewMail.setText(example.getEmail());
+//                    mTextViewFb.setText(example.get);
                 }
             }
             
@@ -215,6 +217,7 @@ public class FragmentProfile extends Fragment {
         mTextView_name.setText(completeData.getName());
         mTextViewJobLocation.setText(completeData.getWork());
         mTextViewYear.setText(completeData.getYear());
+//        mTextViewFb.setText(completeData.get);
     }
 
 }

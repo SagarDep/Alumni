@@ -200,35 +200,14 @@
                     android:id="@+id/textView_Contact"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
-                <View
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:background="@color/grey"
-                    android:layout_below="@id/textView_Contact" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:clickable="true"
-                    android:id="@+id/textView_twitterlink"
-                    android:layout_below="@+id/textView_Contact"
-                    android:layout_toRightOf="@+id/imageView_fb"
-                    android:layout_toEndOf="@+id/imageView_fb"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_margin="10dp" />
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="@color/grey"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/imageView_fb"
-                    android:layout_alignLeft="@+id/textView_twitterlink"
-                    android:layout_alignStart="@+id/textView_twitterlink"
-                    android:layout_marginTop="10dp" />
+                    android:layout_alignBottom="@+id/textView_Contact"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
 
 
                 <TextView
@@ -237,10 +216,12 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:clickable="true"
                     android:id="@+id/textView_fbLink"
-                    android:layout_below="@+id/textView_twitterlink"
-                    android:layout_alignLeft="@+id/textView_twitterlink"
-                    android:layout_alignStart="@+id/textView_twitterlink"
-                    android:layout_marginTop="5dp" />
+
+                    android:text="sadfsdf"
+                    android:layout_toRightOf="@+id/imageView_email"
+                    android:layout_toEndOf="@+id/imageView_email"
+                    android:layout_below="@id/textView_Contact"
+                    android:layout_marginLeft="10dp" />
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1px"
@@ -256,7 +237,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
+                    android:text="adfasdfsdf"
                     android:clickable="true"
                     android:id="@+id/textView_contact"
                     android:layout_below="@+id/textView_fbLink"
@@ -284,7 +265,8 @@
                     android:layout_below="@+id/textView_contact"
                     android:layout_alignLeft="@+id/textView_fbLink"
                     android:layout_alignStart="@+id/textView_fbLink"
-                    android:layout_marginTop="10dp" />
+                    android:layout_marginTop="10dp"
+                    android:text="fdasdf" />
 
                 <com.mikepenz.iconics.view.IconicsImageView
                     android:layout_width="16dp"
@@ -296,16 +278,7 @@
                     android:layout_alignLeft="@+id/imageView_email"
                     android:layout_alignStart="@+id/imageView_email"
                     android:layout_marginTop="2dp" />
-                <com.mikepenz.iconics.view.IconicsImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:id="@+id/imageView_fb"
-                    app:iiv_icon="faw-twitter"
-                    app:iiv_color="@color/black_de"
-                    android:layout_alignTop="@+id/textView_twitterlink"
-                    android:layout_alignLeft="@+id/imageView_email"
-                    android:layout_alignStart="@+id/imageView_email"
-                    android:layout_marginTop="2dp" />
+
                 <com.mikepenz.iconics.view.IconicsImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
@@ -313,9 +286,8 @@
                     app:iiv_icon="faw-envelope"
                     app:iiv_color="@color/black_de"
                     android:layout_alignTop="@+id/textView_mail"
-                    android:layout_toLeftOf="@+id/textView_twitterlink"
-                    android:layout_toStartOf="@+id/textView_twitterlink" />
-                <com.mikepenz.iconics.view.IconicsImageView
+                    android:layout_toLeftOf="@+id/textView_fbLink"
+                    android:layout_toStartOf="@+id/textView_fbLink" /><com.mikepenz.iconics.view.IconicsImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:id="@+id/imageView_email"
