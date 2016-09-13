@@ -136,7 +136,7 @@ public class Login extends Activity {
 
         if (mCounter==2){
             this.finish();
-            System.exit(0);
+            System.exit(2);
         }
 
     }

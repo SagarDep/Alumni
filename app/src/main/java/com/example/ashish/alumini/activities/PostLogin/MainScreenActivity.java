@@ -112,7 +112,7 @@ public class MainScreenActivity extends AppCompatActivity
             if (mBackCounter==2){
                 // exit the application
                 this.finish();
-                System.exit(0);
+                System.exit(2);
             }
         }
 

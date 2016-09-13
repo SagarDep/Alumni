@@ -174,6 +174,7 @@ public class FragmentProfile extends Fragment {
                     mTextViewMail.setText(example.getEmail());
                 }
             }
+            
 
             @Override
             public void onFailure(Call<MemberInstance> call, Throwable t) {

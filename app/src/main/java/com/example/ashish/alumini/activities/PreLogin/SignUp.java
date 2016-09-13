@@ -204,7 +204,7 @@ public class SignUp extends Activity {
 
         if (mBackCounter ==2){
             this.finish();
-            System.exit(0);
+            System.exit(2);
         }
 
     }
