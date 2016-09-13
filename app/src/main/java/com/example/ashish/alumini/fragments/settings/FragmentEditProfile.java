@@ -12,6 +12,7 @@ import android.widget.Spinner;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.fragments.FragmentMainScreen;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import me.drakeet.materialdialog.MaterialDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,7 +38,6 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -190,6 +191,8 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     public void makeServerCalltoPostCompleteData(){
         // getting the id from shared preffernece which was stored during partial signup
         String id = new GlobalPrefs(getContext()).getString(getString(R.string.userid));
+        MaterialDialog materialDialog = new MaterialDialog(getActivity());
+        materialDialog.setTitle("loading").setCanceledOnTouchOutside(true).show();
 
 
         Call<String> call = ApiClient.getServerApi().signupComplete(id,        //id
@@ -210,9 +213,17 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                mPostLoginActivity.changeFragment(new FragmentProfile());
-                TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+                // 201 because it is send by the back end fo a successfull call
+                if (response.code()==201){
+                    mPostLoginActivity.changeFragment(new FragmentProfile());
+                    TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
 
+                    // storing id and name in shared pref
+                    // globalPrefs.putString(getString(R.string.userid),response1.get_id());
+                    new GlobalPrefs(getActivity()).putString(getString(R.string.username),
+                            mEditTextName.getText().toString().trim()                     // name
+                    );
+                }
             }
 
             @Override

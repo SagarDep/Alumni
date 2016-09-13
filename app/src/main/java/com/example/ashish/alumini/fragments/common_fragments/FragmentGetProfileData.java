@@ -200,7 +200,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         String id = new GlobalPrefs(getContext()).getString(getString(R.string.userid));
 
 
-        Call<String> call = ApiClient.getServerApi().signupComplete(id,        //id
+        Call<String> call = ApiClient.getServerApi().signupComplete(id,        // id
                 mEditTextName.getText().toString().trim(),                     // name
                 mEditTextBio.getText().toString().trim(),                      // bio
                 mSpinnerBranch.getSelectedItem().toString().trim(),            // branch
@@ -218,8 +218,15 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                mMainScreenActivity.changeFragment(new FragmentMainScreen().newInstance("",""));
-                TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+               if (response.code()==200){
+                   mMainScreenActivity.changeFragment(new FragmentMainScreen());
+                   TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+                   // storing id and name in shared pref
+//                   globalPrefs.putString(getString(R.string.userid),response1.get_id());
+                   new GlobalPrefs(getActivity()).putString(getString(R.string.username),
+                           mEditTextName.getText().toString().trim()                     // name
+                   );
+               }
 
             }
 
@@ -258,7 +265,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         else if (mEditTextLocationWork.getText().toString().trim().length()==0){
             mEditTextLocationWork.setError("Invalid Location");
             return false;
-        }else if (mEditTextPhone.getText().toString().trim().length()==10){
+        }else if (mEditTextPhone.getText().toString().trim().length()==11){
             mEditTextPhone.setError("Invalid Phone Number");
             return false;
         }

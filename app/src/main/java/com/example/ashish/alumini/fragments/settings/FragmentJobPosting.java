@@ -155,8 +155,8 @@ public class FragmentJobPosting extends Fragment {
 
 
         if (validDeta){
-//            makeServerCallToPostData();
-            makeServerCallToUploadData();
+            makeServerCallToPostData();
+//            makeServerCallToUploadData();
         }
     }
 
