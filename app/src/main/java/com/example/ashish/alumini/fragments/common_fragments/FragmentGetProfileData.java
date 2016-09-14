@@ -218,7 +218,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-               if (response.code()==200){
+               if (response.code()==201){
                    mMainScreenActivity.changeFragment(new FragmentMainScreen());
                    TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
                    // storing id and name in shared pref

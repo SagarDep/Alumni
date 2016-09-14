@@ -83,6 +83,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     // designation and company
     @Bind(R.id.editText_Designation)
     EditText mEditTextDesignation;
+
     @Bind(R.id.editText_company)
     EditText mEditTextCompany;
 

@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.ashish.alumini.job.JobListAdapter;
-import com.example.ashish.alumini.job.JobListInstance;
 import com.example.ashish.alumini.R;
 
 
@@ -43,7 +42,7 @@ public class FragmentJobs extends Fragment {
     @Bind(R.id.listView_jobs)
     ListView mListViewJobs;
 
-    List<JobListInstance> mArrayList = new ArrayList<>();
+
     List<Job> mArrayList2 = new ArrayList<>();
     JobListAdapter mListAdapter;
 

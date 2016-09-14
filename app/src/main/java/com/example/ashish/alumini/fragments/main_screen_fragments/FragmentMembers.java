@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.fragments;
+package com.example.ashish.alumini.fragments.main_screen_fragments;
 
 import android.content.Context;
 import android.os.Bundle;
