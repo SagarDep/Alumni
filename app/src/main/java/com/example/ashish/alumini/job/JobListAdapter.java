@@ -57,7 +57,7 @@ public class JobListAdapter extends ArrayAdapter<Job> {
         mTextViewCompanyName.setText(item.getName());
         mTextViewJobLocation.setText(item.getLocation());
         mTextViewJobPosition.setText(item.getRole());
-        Picasso.with(getContext()).load("http://192.168.43.115/2.jpg").into(mImageView);
+        Picasso.with(getContext()).load("http://172.16.4.107/2.jpg").into(mImageView);
 
 
         return convertView;

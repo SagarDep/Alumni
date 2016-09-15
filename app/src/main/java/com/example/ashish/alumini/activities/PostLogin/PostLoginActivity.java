@@ -134,6 +134,6 @@ public class PostLoginActivity extends AppCompatActivity {
             }
 
         } else
-            super.onBackPressed();
+            finish();
     }
 }

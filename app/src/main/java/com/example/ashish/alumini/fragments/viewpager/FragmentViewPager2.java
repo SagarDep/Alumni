@@ -64,10 +64,12 @@ public class FragmentViewPager2 extends Fragment {
             mArrayList3 = memberLists.list;
         }
 
-        for (int i = 0; i< mArrayList3.size(); i++){
+        if (mArrayList!=null){
+            for (int i = 0; i< mArrayList3.size(); i++){
 //            chgecking the state of isNerd in every item and then adding to the new list
-            if (mArrayList3.get(i).getIsNerd()!=null && mArrayList3.get(i).getIsNerd()){
-                mArrayList.add(mArrayList3.get(i));
+                if (mArrayList3.get(i).getIsNerd()!=null && mArrayList3.get(i).getIsNerd()){
+                    mArrayList.add(mArrayList3.get(i));
+                }
             }
         }
 

@@ -2,6 +2,7 @@ package com.example.ashish.alumini.fragments.settings;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -82,7 +83,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
     // designation and company
     @Bind(R.id.editText_Designation)
-    EditText mEditTextDesignation;
+    TextInputEditText mEditTextDesignation;
 
     @Bind(R.id.editText_company)
     EditText mEditTextCompany;
@@ -92,13 +93,11 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     ArrayList<String> mArrayListBranch = new ArrayList<>();
     ArrayList<String> mArrayListYear = new ArrayList<>();
 
-
     // event bus registering
     Bus mBus = new Bus();
 
     // activities
     PostLoginActivity mPostLoginActivity;
-
 
 
     public FragmentEditProfile() {
@@ -136,7 +135,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
         mPostLoginActivity = (PostLoginActivity) getActivity();
 
-        // getting id from shared pref and initiating ap i call
+        // getting id from shared pref and initiating api call
         String id = new GlobalPrefs(getActivity()).getString(getString(R.string.userid));
         makeServerToGetCompleteData(id);
 
@@ -167,11 +166,14 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     @OnClick(R.id.linearLayout_checkbox)
     public void textChangingOfEditText(){
         if (checkbox.isChecked()){
+            Log.d(TAG,"check box is checked");
             mEditTextDesignation.setHint("Course");
+            mEditTextDesignation.setHintTextColor(getResources().getColor(R.color.appTheme));
             mEditTextCompany.setHint("University / College");
         }
         else if (!checkbox.isChecked()){
-            mEditTextDesignation.setHint("Designation");
+            Log.d(TAG,"check box is not checked");
+            mEditTextDesignation.setHint("DESIG");
             mEditTextCompany.setHint("Organization");
         }
     }

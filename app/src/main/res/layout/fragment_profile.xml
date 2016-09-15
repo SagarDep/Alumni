@@ -169,7 +169,6 @@
             </RelativeLayout>
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view_contact"
             android:layout_gravity="center"
             android:layout_width="match_parent"
@@ -217,7 +216,6 @@
                     android:clickable="true"
                     android:id="@+id/textView_fbLink"
 
-                    android:text="sadfsdf"
                     android:layout_toRightOf="@+id/imageView_email"
                     android:layout_toEndOf="@+id/imageView_email"
                     android:layout_below="@id/textView_Contact"
@@ -237,7 +235,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="adfasdfsdf"
                     android:clickable="true"
                     android:id="@+id/textView_contact"
                     android:layout_below="@+id/textView_fbLink"
@@ -265,8 +262,7 @@
                     android:layout_below="@+id/textView_contact"
                     android:layout_alignLeft="@+id/textView_fbLink"
                     android:layout_alignStart="@+id/textView_fbLink"
-                    android:layout_marginTop="10dp"
-                    android:text="fdasdf" />
+                    android:layout_marginTop="10dp" />
 
                 <com.mikepenz.iconics.view.IconicsImageView
                     android:layout_width="16dp"

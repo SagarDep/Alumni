@@ -10,7 +10,7 @@ public class ApiClient {
 
 //    public static final String BASE_URL = "http://192.168.15.3:3000/"; // library lan
 //    public static final String BASE_URL = "http://192.168.43.115:3000/"; // mobile hotspot
-//    public static final String BASE_URL = "http://192.168.42.179:3000/"; // usb tethring
+//    public static final String BASE_URL = "http://192.168.42.148:3000/"; // usb tethring
 //    public static final String BASE_URL = "http://192.168.137.152:3000/";
     public static final String BASE_URL = "http://172.16.4.107:3000/"; // bangon
     private static Retrofit retrofit = null;
@@ -38,4 +38,5 @@ public class ApiClient {
 
         return retrofit.create(ServerApi.class);
     }
+
 }

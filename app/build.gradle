@@ -96,4 +96,7 @@ dependencies {
     compile 'com.github.lguipeng:AnimCheckBox:1.0.0'
 
 //    compile 'gun0912.ted:tedbottompicker:1.0.3'
+
+    // material progress bar
+    compile 'me.zhanghai.android.materialprogressbar:library:1.1.7'
 }
