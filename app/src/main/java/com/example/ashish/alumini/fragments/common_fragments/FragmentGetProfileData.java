@@ -2,6 +2,7 @@ package com.example.ashish.alumini.fragments.common_fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,6 +84,10 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     EditText mEditTextDesignation;
     @Bind(R.id.editText_company)
     EditText mEditTextCompany;
+
+    @Bind(R.id.textView_memberDesignation)
+    TextInputLayout textInputLayout;
+
 
 
     // event bus registering
@@ -170,11 +175,11 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     @OnClick(R.id.linearLayout_checkbox)
     public void textChangingOfEditText(){
         if (checkbox.isChecked()){
-            mEditTextDesignation.setHint("Course");
+            textInputLayout.setHint("Course");
             mEditTextCompany.setHint("University / College");
         }
         else if (!checkbox.isChecked()){
-            mEditTextDesignation.setHint("Designation");
+            textInputLayout.setHint("DESIG");
             mEditTextCompany.setHint("Organization");
         }
     }
@@ -223,9 +228,14 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
                    TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
                    // storing id and name in shared pref
 //                   globalPrefs.putString(getString(R.string.userid),response1.get_id());
-                   new GlobalPrefs(getActivity()).putString(getString(R.string.username),
+
+                   GlobalPrefs globalPrefs = new GlobalPrefs(getActivity());
+                   globalPrefs.putString(getString(R.string.username),
                            mEditTextName.getText().toString().trim()                     // name
                    );
+
+                   // for session maintaining
+                   globalPrefs.putBooloean(getString(R.string.is_logged_in),true);
                }
 
             }

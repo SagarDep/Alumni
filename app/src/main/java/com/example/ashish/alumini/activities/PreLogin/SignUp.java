@@ -157,8 +157,7 @@ public class SignUp extends Activity {
                 globalPrefs.putString(getString(R.string.username),signupPart.getName());
                 globalPrefs.putString(getString(R.string.useremail),signupPart.getEmail());
 
-                // for session maintaining
-                globalPrefs.putBooloean(getString(R.string.is_logged_in),true);
+
 
                 // function for creating list class to make server class and fetch data
                 mApplication.createListCLass();
