@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.sdsmdg.tastytoast.TastyToast;
@@ -63,6 +64,8 @@ public class FragmentJobPosting extends Fragment {
 
     Bus mBus = new Bus();
 
+    PostLoginActivity mActivity;
+
     public FragmentJobPosting() {
         // Required empty public constructor
     }
@@ -103,6 +106,8 @@ public class FragmentJobPosting extends Fragment {
         ButterKnife.bind(this,view);
         //Bus Registering
         mBus.register(getActivity());
+
+        mActivity = (PostLoginActivity) getActivity();
 
 
         return view;
@@ -184,6 +189,9 @@ public class FragmentJobPosting extends Fragment {
                 * Clear all the textFields
                 * */
                 cleardata();
+
+                mActivity.changeFragment(new FragmentSettings());
+
             }
 
             @Override
