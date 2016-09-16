@@ -77,6 +77,8 @@
     <string name="faqs">FAQs</string>
     <string name="rate_us">Rate Us</string>
     <string name="log_out">Log Out</string>
+    <string name="log_in">Log In</string>
+
 
     <!--Login/signup-->
 

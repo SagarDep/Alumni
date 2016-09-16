@@ -93,6 +93,7 @@ public class FragmentProfile extends Fragment {
         // butterknife binding
         ButterKnife.bind(this,view);
 
+        // start server call
         if (mListInstance==null){
 
             // show the option to edit the profile
@@ -107,6 +108,8 @@ public class FragmentProfile extends Fragment {
 
         //Bus Registering
         mBus.register(getActivity());
+
+
 
         // getting activity instance
         mActivity = (PostLoginActivity) getActivity();
@@ -126,6 +129,8 @@ public class FragmentProfile extends Fragment {
             mTextViewYear.setText(mListInstance.getYear());
         }
 
+        Boolean b = true;
+        mBus.post(b);
 
 
         return view;

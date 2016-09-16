@@ -20,10 +20,10 @@
         android:layout_marginTop="15dp" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/button_login"
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:text="LOGIN"
+        android:text="@string/log_in"
         android:textSize="18sp"
         android:textColor="#fff"
         android:background="@drawable/solid_red_background"

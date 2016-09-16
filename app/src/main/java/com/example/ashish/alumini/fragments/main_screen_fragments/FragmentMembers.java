@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager0;
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager1;
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager2;
@@ -43,6 +45,7 @@ public class FragmentMembers extends Fragment {
     @Bind(R.id.viewpager) ViewPager mViewPager;
     @Bind(R.id.tabLayout)TabLayout mTabLayout;
 
+    ActionBar mActionBar;
 
     // list of all members
     List<MemberInstance> memberInstanceList;
@@ -92,7 +95,6 @@ public class FragmentMembers extends Fragment {
 
         mTabLayout.setupWithViewPager(mViewPager);
 
-//        makeServerCallToGetTheList();
 
 
 
@@ -105,9 +107,7 @@ public class FragmentMembers extends Fragment {
         adapter.addFragment(new FragmentViewPager0(), "ALL");
         adapter.addFragment(new FragmentViewPager1(),"ACE");
         adapter.addFragment(new FragmentViewPager2(),  "NERDS");
-//        adapter.addFragment(CommonData.fragmentViewPager0, "ALL");
-//        adapter.addFragment(CommonData.fragmentViewPager1,"ACE");
-//        adapter.addFragment(CommonData.fragmentViewPager2,  "NERDS");
+
         viewPager.setAdapter(adapter);
     }
 

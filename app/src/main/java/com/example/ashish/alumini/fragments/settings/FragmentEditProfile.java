@@ -199,12 +199,12 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     }
 
     public void makeServerCalltoPostCompleteData(){
-        // getting the id from shared preffernece which was stored during partial signup
-        String id = new GlobalPrefs(getContext()).getString(getString(R.string.userid));
-
         // making the progrss bar visible
         materialProgressBar.setVisibility(View.VISIBLE);
 
+
+        // getting the id from shared preffernece which was stored during partial signup
+        String id = new GlobalPrefs(getContext()).getString(getString(R.string.userid));
 
 
         Call<String> call = ApiClient.getServerApi().signupComplete(id,        //id
@@ -227,6 +227,9 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
             public void onResponse(Call<String> call, Response<String> response) {
                 // 201 because it is send by the back end fo a successfull call
                 if (response.code()==201){
+                    // hiding the progrss bar
+                    materialProgressBar.setVisibility(View.GONE);
+
                     mPostLoginActivity.changeFragment(new FragmentProfile());
                     TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
 
@@ -239,8 +242,6 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
                     // show toast
                     TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
 
-                    // hiding the progrss bar
-                    materialProgressBar.setVisibility(View.GONE);
 
                 }
             }

@@ -1,9 +1,7 @@
 package com.example.ashish.alumini.activities.PreLogin;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -24,18 +22,22 @@ import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.sdsmdg.tastytoast.TastyToast;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import me.drakeet.materialdialog.MaterialDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 //import com.example.ashish.alumini.R;
 
 public class Login extends Activity {
 
     String TAG = getClass().getSimpleName();
-    EditText email,password;
+    @Bind(R.id.editText_login_email)
+    EditText email;
+    EditText password;
     Button loginButton;
 
     // for snack bar
@@ -52,9 +54,9 @@ public class Login extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        email=(EditText)findViewById(R.id.editText_login_email);
+        ButterKnife.bind(this);
         password=(EditText)findViewById(R.id.editText_login_password);
-        loginButton=(Button)findViewById(R.id.login);
+        loginButton=(Button)findViewById(R.id.button_login);
 
         loginButton.setOnClickListener(
                 new View.OnClickListener() {
@@ -78,6 +80,7 @@ public class Login extends Activity {
     }
 
     //body of login method
+    @OnClick(R.id.button_login)
     public void login() {
 
         if (!validate()) {

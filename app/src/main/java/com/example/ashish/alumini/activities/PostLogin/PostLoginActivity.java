@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 
 import com.example.ashish.alumini.R;
@@ -14,6 +16,10 @@ import com.example.ashish.alumini.fragments.settings.FragmentSettings;
 import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import me.zhanghai.android.materialprogressbar.IndeterminateHorizontalProgressDrawable;
 
 public class PostLoginActivity extends AppCompatActivity {
 
@@ -24,6 +30,9 @@ public class PostLoginActivity extends AppCompatActivity {
     public FragmentMembers mFragmentMembers =new FragmentMembers();
 
     String TAG = getClass().getSimpleName();
+
+    @Bind(R.id.material_progressBar)
+    ProgressBar mProgressBar;
 
 
 
@@ -42,7 +51,10 @@ public class PostLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity_member);
-        //Setting the Action Bar
+
+        //butterknife injection
+        ButterKnife.bind(this);
+        //initializing the Action Bar
         mActionBar = getSupportActionBar();
 
 
@@ -62,6 +74,9 @@ public class PostLoginActivity extends AppCompatActivity {
         mFragmentTransaction.add(R.id.fragment_container, mFragmentMembers);
         mFragmentTransaction.commit();
 
+        // making the progress bar indetermined
+        mProgressBar.setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(this));
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -134,6 +149,17 @@ public class PostLoginActivity extends AppCompatActivity {
             }
 
         } else
-            finish();
+            this.finish();
+    }
+
+    @Subscribe
+    public void setmProgressBar(Boolean isVisible) {
+        if (isVisible==true){
+            mProgressBar.setVisibility(View.VISIBLE);
+        }
+        else {
+            mProgressBar.setVisibility(View.GONE);
+        }
+
     }
 }
