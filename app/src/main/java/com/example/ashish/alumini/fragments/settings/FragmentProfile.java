@@ -129,8 +129,8 @@ public class FragmentProfile extends Fragment {
             mTextViewYear.setText(mListInstance.getYear());
         }
 
-        Boolean b = true;
-        mBus.post(b);
+
+        mBus.post(true);
 
 
         return view;
@@ -180,6 +180,10 @@ public class FragmentProfile extends Fragment {
                     mTextViewMail.setText(example.getEmail());
 //                    mTextViewFb.setText(example.get);
                 }
+                if (response.code()==200){
+                    // setting visivility of progress bar to GONE
+                    mBus.post(false);
+                }
             }
             
 
@@ -200,6 +204,7 @@ public class FragmentProfile extends Fragment {
 
                 if (response.code()==200 && response.body()!=null){
                     setCompleteData(response.body());
+                    mBus.post(false);
                 }
                 Log.d(TAG, "API call successful");
             }
