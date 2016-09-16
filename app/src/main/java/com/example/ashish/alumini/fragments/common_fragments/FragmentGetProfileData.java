@@ -79,15 +79,17 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     @Bind(R.id.editText_memberBio)
     EditText mEditTextBio;
 
-    // designation and company
+    // designation and company EditTexts
     @Bind(R.id.editText_Designation)
-    EditText mEditTextDesignation;
+        EditText mEditTextDesignation;
     @Bind(R.id.editText_company)
-    EditText mEditTextCompany;
+        EditText mEditTextCompany;
 
     @Bind(R.id.textView_memberDesignation)
-    TextInputLayout textInputLayout;
-
+    TextInputLayout mTextInputLayoutDesignation;
+    // designation and company
+    @Bind(R.id.textInputLayout_company)
+        TextInputLayout mTextInputLayoutCompany;
 
 
     // event bus registering
@@ -175,12 +177,12 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     @OnClick(R.id.linearLayout_checkbox)
     public void textChangingOfEditText(){
         if (checkbox.isChecked()){
-            textInputLayout.setHint("Course");
-            mEditTextCompany.setHint("University / College");
+            mTextInputLayoutDesignation.setHint("Course");
+            mTextInputLayoutCompany.setHint("University / College");
         }
         else if (!checkbox.isChecked()){
-            textInputLayout.setHint("DESIG");
-            mEditTextCompany.setHint("Organization");
+            mTextInputLayoutDesignation.setHint("Designation");
+            mTextInputLayoutCompany.setHint("Organization");
         }
     }
 

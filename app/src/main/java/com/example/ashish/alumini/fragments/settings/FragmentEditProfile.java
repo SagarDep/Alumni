@@ -3,6 +3,7 @@ package com.example.ashish.alumini.fragments.settings;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +14,12 @@ import android.widget.Spinner;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
-import com.example.ashish.alumini.fragments.FragmentMainScreen;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -81,12 +80,17 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     @Bind(R.id.editText_memberBio)
     EditText mEditTextBio;
 
-    // designation and company
+    // designation and company EditTexts
     @Bind(R.id.editText_Designation)
-    TextInputEditText mEditTextDesignation;
-
+        TextInputEditText mEditTextDesignation;
     @Bind(R.id.editText_company)
-    EditText mEditTextCompany;
+        EditText mEditTextCompany;
+
+    @Bind(R.id.textView_memberDesignation)
+    TextInputLayout mTextInputLayoutDesignation;
+    // designation and company
+    @Bind(R.id.textInputLayout_company)
+        TextInputLayout mTextInputLayoutCompany;
 
     String stringArrayBranch[];
     String stringArrayYear[];
@@ -150,9 +154,6 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
             mArrayListYear.add(a);
         }
 
-
-
-
         return view;
     }
 
@@ -166,17 +167,15 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     @OnClick(R.id.linearLayout_checkbox)
     public void textChangingOfEditText(){
         if (checkbox.isChecked()){
-            Log.d(TAG,"check box is checked");
-            mEditTextDesignation.setHint("Course");
-            mEditTextDesignation.setHintTextColor(getResources().getColor(R.color.appTheme));
-            mEditTextCompany.setHint("University / College");
+            mTextInputLayoutDesignation.setHint("Course");
+            mTextInputLayoutCompany.setHint("University / College");
         }
         else if (!checkbox.isChecked()){
-            Log.d(TAG,"check box is not checked");
-            mEditTextDesignation.setHint("DESIG");
-            mEditTextCompany.setHint("Organization");
+            mTextInputLayoutDesignation.setHint("Designation");
+            mTextInputLayoutCompany.setHint("Organization");
         }
     }
+
 
 
     @Override
