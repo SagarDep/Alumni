@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import com.example.ashish.alumini.R;
@@ -27,6 +28,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.drakeet.materialdialog.MaterialDialog;
+import me.zhanghai.android.materialprogressbar.IndeterminateHorizontalProgressDrawable;
+import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -92,6 +95,9 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     @Bind(R.id.textInputLayout_company)
         TextInputLayout mTextInputLayoutCompany;
 
+    @Bind(R.id.material_progressBar)
+    ProgressBar materialProgressBar ;
+
     String stringArrayBranch[];
     String stringArrayYear[];
     ArrayList<String> mArrayListBranch = new ArrayList<>();
@@ -154,6 +160,8 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
             mArrayListYear.add(a);
         }
 
+        materialProgressBar.setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(getActivity()));
+
         return view;
     }
 
@@ -193,8 +201,10 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     public void makeServerCalltoPostCompleteData(){
         // getting the id from shared preffernece which was stored during partial signup
         String id = new GlobalPrefs(getContext()).getString(getString(R.string.userid));
-        MaterialDialog materialDialog = new MaterialDialog(getActivity());
-        materialDialog.setTitle("loading").setCanceledOnTouchOutside(true).show();
+
+        // making the progrss bar visible
+        materialProgressBar.setVisibility(View.VISIBLE);
+
 
 
         Call<String> call = ApiClient.getServerApi().signupComplete(id,        //id
@@ -225,6 +235,13 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
                     new GlobalPrefs(getActivity()).putString(getString(R.string.username),
                             mEditTextName.getText().toString().trim()                     // name
                     );
+
+                    // show toast
+                    TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+
+                    // hiding the progrss bar
+                    materialProgressBar.setVisibility(View.GONE);
+
                 }
             }
 
@@ -289,6 +306,9 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
                 if (response.code()==200 && response.body()!=null){
                     setCompleteData(response.body());
+
+                    // remove the progress bar
+                    materialProgressBar.setVisibility(View.GONE);
                 }
                 Log.d(TAG, "API call successful");
             }
