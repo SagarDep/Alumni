@@ -10,13 +10,13 @@
         android:layout_height="wrap_content">
 
 
-        <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:id="@+id/material_progressBar"
-            android:indeterminate="true"
-            app:mpb_progressStyle="horizontal"
-            style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
+        <!--<me.zhanghai.android.materialprogressbar.MaterialProgressBar-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="5dp"-->
+            <!--android:id="@+id/material_progressBar"-->
+            <!--android:indeterminate="true"-->
+            <!--app:mpb_progressStyle="horizontal"-->
+            <!--style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />-->
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -126,41 +126,21 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp">
 
-                <!--<LinearLayout-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:id="@+id/linearLayout_checkbox"-->
-                    <!--android:padding="5dp"-->
-                    <!--android:layout_marginLeft="5dp">-->
-                    <!--<com.github.lguipeng.library.animcheckbox.AnimCheckBox-->
-                        <!--android:layout_width="40dp"-->
-                        <!--android:layout_height="40dp"-->
-                        <!--android:id="@+id/checkBox_isNerd"-->
-                        <!--app:stroke_width="4dp"-->
-                        <!--app:stroke_color="@color/appTheme"-->
-                        <!--/>-->
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-                        <!--android:text="I&apos;m doing Higher studies"-->
-                        <!--android:layout_gravity="center"-->
-                        <!--android:layout_marginLeft="10dp"/>-->
-                <!--</LinearLayout>-->
+
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:layout_margin="10dp"
-                    android:id="@+id/checkBox_temp"
-                    android:text="I&apos;m doing Higher studies"/>
+                    android:id="@+id/checkBox_isNerd"
+                    android:text="@string/isNerdCheckBox_text"/>
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Work"
-                    android:layout_below="@+id/checkBox_temp"
+                    android:layout_below="@+id/checkBox_isNerd"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/textView_work"
                     android:layout_marginTop="5dp" />
@@ -191,12 +171,12 @@
                     android:layout_below="@+id/textView_memberDesignation"
                     android:layout_toRightOf="@+id/imageView_work"
                     android:layout_toEndOf="@+id/imageView_work"
-                    android:hint="Company">
+                    android:hint="Organization">
 
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        android:layout_marginLeft="10dp"
                         android:maxLines="1"
                         android:id="@+id/editText_company"
                          />

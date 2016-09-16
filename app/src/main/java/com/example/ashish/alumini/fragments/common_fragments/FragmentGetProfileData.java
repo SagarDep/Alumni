@@ -17,9 +17,7 @@ import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.fragments.FragmentMainScreen;
 import com.example.ashish.alumini.network.ApiClient;
-import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
-import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
@@ -71,7 +69,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
 
     //checkBox
-    @Bind(R.id.checkBox_temp)
+    @Bind(R.id.checkBox_isNerd)
     CheckBox checkbox;
 
     // name and bio
@@ -173,7 +171,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         }
     }
 
-    @OnClick(R.id.checkBox_temp)
+    @OnClick(R.id.checkBox_isNerd)
     public void textChangingOfEditText(){
         if (checkbox.isChecked()){
             mTextInputLayoutDesignation.setHint("Course");

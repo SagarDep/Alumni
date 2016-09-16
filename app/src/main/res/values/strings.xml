@@ -81,4 +81,10 @@
     <!--Login/signup-->
 
     <string name="forget_password">Forget Password</string>
+
+    <string name="isNerdCheckBox_text">I am doing Higher studies</string>
+
+    <string name="designation">Designation</string>
+    <string name="Organization">Organization</string>
+
 </resources>

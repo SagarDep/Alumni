@@ -18,7 +18,6 @@ import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
-import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
@@ -72,7 +71,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
 
     //checkBox
-    @Bind(R.id.checkBox_temp)
+    @Bind(R.id.checkBox_isNerd)
     CheckBox checkbox;
 
     // name and bio
@@ -165,8 +164,8 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         }
     }
 
-    @OnClick(R.id.checkBox_temp)
-    public void textChangingOfEditText(){
+    @OnClick(R.id.checkBox_isNerd)
+    public void checkBoxStateHandler(){
         if (checkbox.isChecked()){
             mTextInputLayoutDesignation.setHint("Course");
             mTextInputLayoutCompany.setHint("University / College");
@@ -307,6 +306,8 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
                 mSpinnerBranch.setSelection(mArrayListBranch.indexOf(completeData.getBranch()));          // branch
                 mSpinnerYear.setSelection(mArrayListYear.indexOf(completeData.getBranch()));            // year
                 checkbox.setChecked(completeData.getIsNerd());                    // isNerd
+                //updating the hint according to checkBox state
+                checkBoxStateHandler();
                 mEditTextDesignation.setText(completeData.getDesignation());       // designation
                 mEditTextCompany.setText(completeData.getCompany());               // company
                 mEditTextLocationHome.setText(completeData.getHome());             // home location
