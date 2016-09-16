@@ -126,34 +126,41 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp">
 
-                <LinearLayout
+                <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/linearLayout_checkbox"-->
+                    <!--android:padding="5dp"-->
+                    <!--android:layout_marginLeft="5dp">-->
+                    <!--<com.github.lguipeng.library.animcheckbox.AnimCheckBox-->
+                        <!--android:layout_width="40dp"-->
+                        <!--android:layout_height="40dp"-->
+                        <!--android:id="@+id/checkBox_isNerd"-->
+                        <!--app:stroke_width="4dp"-->
+                        <!--app:stroke_color="@color/appTheme"-->
+                        <!--/>-->
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                        <!--android:text="I&apos;m doing Higher studies"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:layout_marginLeft="10dp"/>-->
+                <!--</LinearLayout>-->
+                <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/linearLayout_checkbox"
-                    android:padding="5dp"
-                    android:layout_marginLeft="5dp">
-                    <com.github.lguipeng.library.animcheckbox.AnimCheckBox
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:id="@+id/checkBox_isNerd"
-                        app:stroke_width="4dp"
-                        app:stroke_color="@color/appTheme"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="I&apos;m doing Higher studies"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"/>
-                </LinearLayout>
+                    android:checked="true"
+                    android:layout_margin="10dp"
+                    android:id="@+id/checkBox_temp"
+                    android:text="I&apos;m doing Higher studies"/>
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Work"
-                    android:layout_below="@+id/linearLayout_checkbox"
+                    android:layout_below="@+id/checkBox_temp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/textView_work"
                     android:layout_marginTop="5dp" />

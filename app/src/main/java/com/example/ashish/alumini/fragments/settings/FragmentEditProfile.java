@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -71,8 +72,8 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
 
     //checkBox
-    @Bind(R.id.checkBox_isNerd)
-    AnimCheckBox checkbox;
+    @Bind(R.id.checkBox_temp)
+    CheckBox checkbox;
 
     // name and bio
     @Bind(R.id.editText_memberName)
@@ -164,7 +165,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         }
     }
 
-    @OnClick(R.id.linearLayout_checkbox)
+    @OnClick(R.id.checkBox_temp)
     public void textChangingOfEditText(){
         if (checkbox.isChecked()){
             mTextInputLayoutDesignation.setHint("Course");

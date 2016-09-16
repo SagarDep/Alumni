@@ -11,6 +11,7 @@ import com.example.ashish.alumini.network.pojo.SignupPart;
 import java.util.List;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.http.GET;
@@ -102,6 +103,6 @@ public interface ServerApi {
     * */
     @Multipart
     @POST("/routes/upload")
-    Call<String> upload(@Part MultipartBody.Part file);
+    Call<String> upload(@Part("photo") RequestBody phot);
 
 }

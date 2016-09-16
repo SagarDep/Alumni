@@ -3,6 +3,7 @@ package com.example.ashish.alumini.fragments.settings;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -19,12 +20,20 @@ import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
+import java.io.File;
+import java.io.IOException;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okio.BufferedSink;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Multipart;
 
 
 public class FragmentJobPosting extends Fragment {
@@ -214,11 +223,77 @@ public class FragmentJobPosting extends Fragment {
                 mEditTextWebLink.setText("");
                 mEditTextemail.setText("");
     }
-    public void makeServerCallToUploadData(){
+//    public void makeServerCallToUploadData(){
+//
+//        ProgressDialog progressBar = new ProgressDialog( getActivity());
+//        progressBar.setMessage("uploading");
+//        progressBar.show();
+//
+//
+//
+//        File file = new File("/storage/extSdCard/DCIM/Camera/20160901_082158.jpg");
+//
+////        RequestBody requestBody = new RequestBody() {
+////            @Override
+////            public MediaType contentType() {
+////                return null;
+////            }
+////
+////            @Override
+////            public void writeTo(BufferedSink sink) throws IOException {
+////
+////            }
+////        };
+////
+////        Call<String> call = ApiClient.getServerApi().upload(requestBody);
+//        //Create Upload Server Client
+//        ApiService service = RetroClient.getApiService();
+//
+//        //File creating from selected URL
+//        File file = new File(imagePath);
+//
+//        // create RequestBody instance from file
+//        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+//
+//        // MultipartBody.Part is used to send also the actual file name
+//        MultipartBody.Part body =
+//                MultipartBody.Part.createFormData("uploaded_file", file.getName(), requestFile);
+//
+//        Call<Result> resultCall = service.uploadImage(body);
+//
+//        // finally, execute the request
+//        resultCall.enqueue(new Callback<Result>() {
+//            @Override
+//            public void onResponse(Call<Result> call, Response<Result> response) {
+//
+//                progressDialog.dismiss();
+//
+//                // Response Success or Fail
+//                if (response.isSuccessful()) {
+//                    if (response.body().getResult().equals("success"))
+//                        Snackbar.make(parentView, R.string.string_upload_success, Snackbar.LENGTH_LONG).show();
+//                    else
+//                        Snackbar.make(parentView, R.string.string_upload_fail, Snackbar.LENGTH_LONG).show();
+//
+//                } else {
+//                    Snackbar.make(parentView, R.string.string_upload_fail, Snackbar.LENGTH_LONG).show();
+//                }
+//
+//                /**
+//                 * Update Views
+//                 */
+//                imagePath = "";
+//                textView.setVisibility(View.VISIBLE);
+//                imageView.setVisibility(View.INVISIBLE);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Result> call, Throwable t) {
+//                progressDialog.dismiss();
+//            }
+//        });
+//
+//
+//    }
 
-        ProgressDialog progressBar = new ProgressDialog( getActivity());
-        progressBar.setMessage("uploading");
-        progressBar.show();
-
-    }
 }
