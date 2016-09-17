@@ -141,6 +141,7 @@ public class FragmentMainScreen extends android.support.v4.app.Fragment {
 
     @OnClick(R.id.circleButton_member)
     public void startMemberActivity(){
+
         Intent moveToMember=new Intent(getActivity(),PostLoginActivity.class);
         startActivity(moveToMember);
     }

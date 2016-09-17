@@ -104,6 +104,7 @@ public class Login extends Activity {
     public void onLoginSuccess() {
 
 
+        this.finish();
         loginButton.setEnabled(true);
         Intent move=new Intent(Login.this,MainScreenActivity.class);
         startActivity(move);

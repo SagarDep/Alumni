@@ -3,12 +3,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:progressDrawable="@color/lite_blue"
-        android:layout_height="2dp"
-        android:id="@+id/progressBar" />
+    <!--<ProgressBar-->
+        <!--style="?android:attr/progressBarStyleHorizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:progressDrawable="@color/lite_blue"-->
+        <!--android:layout_height="2dp"-->
+        <!--android:id="@+id/progressBar" />-->
 
 
     <com.mikepenz.iconics.view.IconicsImageView
@@ -16,7 +16,6 @@
         android:layout_height="200dp"
         android:layout_gravity="center_horizontal"
         android:id="@+id/imageViewWebViewError"
-        android:layout_below="@+id/progressBar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="68dp" />
 
@@ -24,7 +23,8 @@
     <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/webView">
+        android:id="@+id/webView"
+        android:layout_marginTop="8dp">
 
     </WebView>
 

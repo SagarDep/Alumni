@@ -95,8 +95,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     @Bind(R.id.textInputLayout_company)
         TextInputLayout mTextInputLayoutCompany;
 
-    @Bind(R.id.material_progressBar)
-    ProgressBar materialProgressBar ;
+
 
     String stringArrayBranch[];
     String stringArrayYear[];
@@ -139,6 +138,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_getprofiledata, container, false);
 
+        // butterknife injections
         ButterKnife.bind(this,view);
         //Bus Registering
         mBus.register(getActivity());
@@ -160,7 +160,6 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
             mArrayListYear.add(a);
         }
 
-        materialProgressBar.setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(getActivity()));
 
         return view;
     }
@@ -198,9 +197,12 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
     }
 
+    /**
+    * function is callled whren button is pressed
+    * */
     public void makeServerCalltoPostCompleteData(){
         // making the progrss bar visible
-        materialProgressBar.setVisibility(View.VISIBLE);
+        mBus.post(true);
 
 
         // getting the id from shared preffernece which was stored during partial signup
@@ -228,7 +230,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
                 // 201 because it is send by the back end fo a successfull call
                 if (response.code()==201){
                     // hiding the progrss bar
-                    materialProgressBar.setVisibility(View.GONE);
+                    mBus.post(false);
 
                     mPostLoginActivity.changeFragment(new FragmentProfile());
                     TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
@@ -248,6 +250,9 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
+                // hiding progress bar
+                mBus.post(false);
+
                 Log.d(TAG, "API call failed");
             }
         });
@@ -299,6 +304,11 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     * Method to fetch values from server when the user will press edit option
     * */
     public void makeServerToGetCompleteData(String id){
+
+        // making progress bar visible
+        mBus.post(true);
+
+
         Call<MemberInstance> call = ApiClient.getServerApi().getCompleteProfileData(id);
 
         call.enqueue(new Callback<MemberInstance>() {
@@ -308,8 +318,8 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
                 if (response.code()==200 && response.body()!=null){
                     setCompleteData(response.body());
 
-                    // remove the progress bar
-                    materialProgressBar.setVisibility(View.GONE);
+                    // hiding progress bar
+                   mBus.post(false);
                 }
                 Log.d(TAG, "API call successful");
             }
@@ -317,6 +327,8 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
             @Override
             public void onFailure(Call<MemberInstance> call, Throwable t) {
                 Log.d(TAG, "API call failed");
+                // hiding progress bar
+                mBus.post(false);
             }
         });
     }

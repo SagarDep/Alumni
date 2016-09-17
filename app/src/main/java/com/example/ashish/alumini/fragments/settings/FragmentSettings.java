@@ -176,23 +176,24 @@ public class FragmentSettings extends Fragment  {
         TastyToast.makeText(getActivity(),"You are successfully logged Out", Toast.LENGTH_SHORT,TastyToast.DEFAULT);
 
 
-//        Intent intent = new Intent(getActivity(), MainActivity.class);
-//        startActivity(intent);
+        mActivity.finish();
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        startActivity(intent);
 
 
-        Thread Splashtimer = new Thread(){
-            public void run(){
-                try{
-                    sleep(Toast.LENGTH_SHORT);
-                }catch(InterruptedException e){
-                    e.printStackTrace();
-                }finally{
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
-                }
-            }
-        };
-        Splashtimer.start();
+//        Thread Splashtimer = new Thread(){
+//            public void run(){
+//                try{
+//                    sleep(Toast.LENGTH_SHORT);
+//                }catch(InterruptedException e){
+//                    e.printStackTrace();
+//                }finally{
+//                    Intent intent = new Intent(getActivity(), MainActivity.class);
+//                    startActivity(intent);
+//                }
+//            }
+//        };
+//        Splashtimer.start();
 
     }
 

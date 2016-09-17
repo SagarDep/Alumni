@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.iconics.view.IconicsImageView;
+import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
 import butterknife.Bind;
@@ -41,16 +43,19 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
     /*
     * Butterknife
     * */
-    @Bind(R.id.progressBar)
-    ProgressBar mProgressBar;
+
     @Bind(R.id.webView)
     WebView mWebView;
 
     @Bind(R.id.imageViewWebViewError)
     IconicsImageView mImageView;
 
+    PostLoginActivity mActivity;
+
     Bus mBus = new Bus();
 
+
+    String TAG = getClass().getSimpleName();
 
 
     public FragmentWebView() {
@@ -96,9 +101,12 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
         //Bus Registering
         mBus.register(getActivity());
 
+        // show progress bar
+        mBus.post(true);
 
-        mProgressBar.setVisibility(View.VISIBLE);
-        mProgressBar.setMax(100);
+
+        mActivity = (PostLoginActivity) getActivity();
+
         mWebView.getSettings().setJavaScriptEnabled(true);
 
         // 1st param is url
@@ -110,7 +118,8 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-//                setContentView(R.layout.activity_main);
+                // hiding progress bar
+                mBus.post(false);
             }
 
             @Override
@@ -122,26 +131,19 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
-//                mImageView.setBackgroundDrawable(new IconicsDrawable(getActivity())
-//                        .icon(FontAwesome.Icon.faw_exclamation_triangle)
-//                        .color(Color.RED)
-//                        .sizeDp(200));
+                TastyToast.makeText(mActivity,"Oops! Something went Wrong",
+                        TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+                Log.d(TAG,"Error while loading page" + error.toString());
+
+                // hiding progress bar
+                Boolean aBoolean = false;
+                mBus.post(aBoolean);
             }
         });
 
-        mWebView.setWebChromeClient(new WebChromeClient() {
-            @Override
-            public void onProgressChanged(WebView view, int newProgress) {
-                if (mProgressBar.getVisibility() == View.GONE) {
-                    mProgressBar.setVisibility(View.VISIBLE);
-                }
-                mProgressBar.setProgress(newProgress);
-                if (newProgress == 100) {
-                    mProgressBar.setVisibility(View.GONE);
-                }
-            }
+        // show progress bar
+        mBus.post(true);
 
-        });
 
         return view;
     }
@@ -157,12 +159,13 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mBus.unregister(getActivity());
+
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        mBus.unregister(getActivity());
     }
 
     @Override

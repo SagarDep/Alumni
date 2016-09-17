@@ -175,6 +175,9 @@ public class FragmentJobPosting extends Fragment {
     }
 
     public void makeServerCallToPostData(){
+        // show progress bar
+        mBus.post(true);
+
         Call<String> call = ApiClient.getServerApi().postJob(
                 mInputEditTextCompanyName.getText().toString().trim(),
                 mInputEditTextRole.getText().toString().trim(),
@@ -189,6 +192,9 @@ public class FragmentJobPosting extends Fragment {
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
+                // hiding progress bar
+                mBus.post(false);
+
                 Log.d(TAG,"Successful");
                 /*
                 * Show toast
@@ -210,6 +216,9 @@ public class FragmentJobPosting extends Fragment {
                 * only show toast for now
                 * */
                 TastyToast.makeText(getActivity(),"Posting Failed",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+
+                // hiding progress bar
+                mBus.post(false);
             }
         });
 

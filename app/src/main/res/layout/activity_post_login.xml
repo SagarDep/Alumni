@@ -17,7 +17,7 @@
         android:layout_above="@+id/fragmentMenuContainer"
         android:id="@+id/fragment_container"
         android:layout_alignParentTop="true"
-        android:layout_below="@+id/material_progressBar"/>
+        android:layout_below="@+id/material_progressBar" />
 
 
     <fragment

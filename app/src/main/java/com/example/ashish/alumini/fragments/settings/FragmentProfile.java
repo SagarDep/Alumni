@@ -185,11 +185,13 @@ public class FragmentProfile extends Fragment {
                     mBus.post(false);
                 }
             }
-            
+
 
             @Override
             public void onFailure(Call<MemberInstance> call, Throwable t) {
-                Log.d(TAG, "API call failed");
+                Log.d(TAG, "API call failed " + t.toString());
+                // hiding progress bar
+                mBus.post(false);
             }
         });
     }
@@ -211,7 +213,9 @@ public class FragmentProfile extends Fragment {
 
             @Override
             public void onFailure(Call<MemberInstance> call, Throwable t) {
-                Log.d(TAG, "API call failed");
+                Log.d(TAG, "API call failed " + t.toString());
+                // hiding progress bar
+                mBus.post(false);
             }
         });
     }
