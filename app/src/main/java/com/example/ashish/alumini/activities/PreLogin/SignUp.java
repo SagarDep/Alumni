@@ -188,7 +188,6 @@ public class SignUp extends Activity {
                 * */
         intent.putExtra("SIGNUP",true);
 
-        this.finish();
         startActivity(intent);
     }
 

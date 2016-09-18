@@ -41,16 +41,20 @@ public class MainScreenActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         // if logout from shared prefs then finish this
-        if (!new GlobalPrefs(this).getBoolean(getResources().getString(R.string.is_logged_in))){
-            this.finish();
-        }
+//        if (!new GlobalPrefs(this).getBoolean(getResources().getString(R.string.is_logged_in))){
+//            this.finish();
+//        }
 
 
         setContentView(R.layout.activity_main_screen);
 
+        // getting action bar
         mActionBar = getSupportActionBar();
 
+        // event bus
         mBus.register(this);
+
+        // getting fragment manager
         mFragmentManager = getSupportFragmentManager();
 
         // checking if the activity is started from signup activity or splash activity
@@ -69,10 +73,16 @@ public class MainScreenActivity extends AppCompatActivity
             // show the getData fragment
             mFragmentTransaction.add(R.id.container_main_screen, new FragmentGetProfileData().newInstance("",""));
         }else {
+            // condition to check if the user has come from logout button or not
+            // if shared prefs will show as logged out then finish the activity
+            if (!new GlobalPrefs(this).getBoolean(getResources().getString(R.string.is_logged_in))){
+                this.finish();
+            }
             //else show the min screen fragment
             mFragmentTransaction.add(R.id.container_main_screen, new FragmentMainScreen().newInstance("",""));
         }
         mFragmentTransaction.commit();
+
         mCurrentFragment = new FragmentMainScreen();
 
         mActionBar.hide();
