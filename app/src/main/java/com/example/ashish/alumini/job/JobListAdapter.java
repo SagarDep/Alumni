@@ -63,9 +63,9 @@ public class JobListAdapter extends ArrayAdapter<Job> {
         mTextViewJobPosition.setText(item.getRole());
         Picasso.with(getContext())
                 .load("http://172.16.4.107/2.jpg")
-                .placeholder(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_users)
-                        .color(Color.WHITE)
-                        .sizeDp(25))
+                .placeholder(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_user)
+                        .color(Color.LTGRAY)
+                        .sizeDp(20))
                 .into(mImageView);
 
 
