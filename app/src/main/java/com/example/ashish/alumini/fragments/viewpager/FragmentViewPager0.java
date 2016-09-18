@@ -4,10 +4,10 @@ import android.os.Bundle;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.example.ashish.alumini.application.MyApplication;
 import com.example.ashish.alumini.members.MemberAdapter;
@@ -24,6 +24,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import me.zhanghai.android.materialprogressbar.IndeterminateHorizontalProgressDrawable;
 
 /**
  * Created by ashish on 14/3/16.
@@ -34,6 +35,9 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
 
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
+
+    @Bind(R.id.material_progressBar_viewpager)
+    ProgressBar mProgressBar;
 
     // List and adapter
     private List<MemberInstance> mArrayList = new ArrayList<>();
@@ -67,13 +71,14 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
         }
 
 
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_one, container, false);
+        View view = inflater.inflate(R.layout.fragment_viewpager, container, false);
 
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -81,6 +86,7 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
         //butterknife injections
         ButterKnife.bind(this,view);
 
+        mProgressBar.setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(getActivity()));
 
 
         // to reduce nullification

@@ -22,6 +22,8 @@ public class MemberLists {
 
     public List<MemberInstance> list = new ArrayList<>();
 
+    boolean mApiCallFlag = false;
+
     public MemberLists() {
 //    makeServerCallToGetAllMemberData();
         makeServerCallToGetAllMemberDataPost("0");
@@ -45,6 +47,10 @@ public class MemberLists {
     }
 
     public void makeServerCallToGetAllMemberDataPost(String time){
+
+        // changing the api call flag
+        mApiCallFlag = true;
+
         Log.d(TAG, "Class/API created");
         Call<MemberListResponse> call = ApiClient.getServerApi().getMemberListinChunks(time);
 
@@ -53,17 +59,27 @@ public class MemberLists {
             public void onResponse(Call<MemberListResponse> call, Response<MemberListResponse> response) {
                 Log.d(TAG,"API call successful");
                 MemberListResponse response1 = response.body();
+
+                // preventing nullification
                 if (response1!=null){
+
                     List<MemberInstance> instanceList = response1.getList();
+                    // iterating all the list instances and adding to main list
                     for (MemberInstance memberInstance: instanceList) {
                         list.add(memberInstance);
                     }
                 }
 
+                // checking if this is the last result or not
+                // 99 because it is set by server
                 if (response1.getTime().contentEquals("99")){
+                    // this means no more API calls are required
+
+                    mApiCallFlag = false;
                     return;
                 }
 
+                // start call again
                 makeServerCallToGetAllMemberDataPost(response1.getTime());
             }
 
