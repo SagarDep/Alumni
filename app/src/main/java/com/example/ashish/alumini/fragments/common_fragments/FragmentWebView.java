@@ -16,6 +16,7 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
@@ -51,6 +52,7 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
     IconicsImageView mImageView;
 
     PostLoginActivity mActivity;
+    MainScreenActivity mMainScreenActivity;
 
     Bus mBus = new Bus();
 
@@ -104,8 +106,13 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
         // show progress bar
         mBus.post(true);
 
+        if (getActivity() instanceof PostLoginActivity){
+            mActivity = (PostLoginActivity) getActivity();
+        }
+        else if (getActivity() instanceof MainScreenActivity){
+            mMainScreenActivity = (MainScreenActivity) getActivity();
+        }
 
-        mActivity = (PostLoginActivity) getActivity();
 
         mWebView.getSettings().setJavaScriptEnabled(true);
 

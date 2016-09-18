@@ -4,7 +4,9 @@ import android.util.Log;
 
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
+import com.example.ashish.alumini.network.pojo.MemberListResponse;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -18,11 +20,11 @@ public class MemberLists {
 
     String TAG = getClass().getSimpleName();
 
-    public List<MemberInstance> list;
+    public List<MemberInstance> list = new ArrayList<>();
 
     public MemberLists() {
-    makeServerCallToGetAllMemberData();
-//        makeServerCallToGetAllMemberDataPost();
+//    makeServerCallToGetAllMemberData();
+        makeServerCallToGetAllMemberDataPost("0");
     }
     public void makeServerCallToGetAllMemberData(){
         Log.d(TAG, "Class/API created");
@@ -42,19 +44,31 @@ public class MemberLists {
         });
     }
 
-    public void makeServerCallToGetAllMemberDataPost(){
+    public void makeServerCallToGetAllMemberDataPost(String time){
         Log.d(TAG, "Class/API created");
-        Call<List<MemberInstance>> call = ApiClient.getServerApi().getMemberList();
+        Call<MemberListResponse> call = ApiClient.getServerApi().getMemberListinChunks(time);
 
-        call.enqueue(new Callback<List<MemberInstance>>() {
+        call.enqueue(new Callback<MemberListResponse>() {
             @Override
-            public void onResponse(Call<List<MemberInstance>> call, Response<List<MemberInstance>> response) {
+            public void onResponse(Call<MemberListResponse> call, Response<MemberListResponse> response) {
                 Log.d(TAG,"API call successful");
-                list = response.body();
+                MemberListResponse response1 = response.body();
+                if (response1!=null){
+                    List<MemberInstance> instanceList = response1.getList();
+                    for (MemberInstance memberInstance: instanceList) {
+                        list.add(memberInstance);
+                    }
+                }
+
+                if (response1.getTime().contentEquals("99")){
+                    return;
+                }
+
+                makeServerCallToGetAllMemberDataPost(response1.getTime());
             }
 
             @Override
-            public void onFailure(Call<List<MemberInstance>> call, Throwable t) {
+            public void onFailure(Call<MemberListResponse> call, Throwable t) {
                 Log.d(TAG,"API call failed");
             }
         });

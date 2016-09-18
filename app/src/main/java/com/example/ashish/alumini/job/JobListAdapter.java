@@ -1,6 +1,8 @@
 package com.example.ashish.alumini.job;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,8 @@ import android.widget.TextView;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.Job;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -57,7 +61,12 @@ public class JobListAdapter extends ArrayAdapter<Job> {
         mTextViewCompanyName.setText(item.getName());
         mTextViewJobLocation.setText(item.getLocation());
         mTextViewJobPosition.setText(item.getRole());
-        Picasso.with(getContext()).load("http://172.16.4.107/2.jpg").into(mImageView);
+        Picasso.with(getContext())
+                .load("http://172.16.4.107/2.jpg")
+                .placeholder(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_users)
+                        .color(Color.WHITE)
+                        .sizeDp(25))
+                .into(mImageView);
 
 
         return convertView;

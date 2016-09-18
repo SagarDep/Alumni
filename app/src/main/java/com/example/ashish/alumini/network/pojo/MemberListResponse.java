@@ -10,8 +10,10 @@ import java.util.Map;
 
 public class MemberListResponse {
 
-    private java.util.List<com.example.ashish.alumini.network.pojo.List> list = new ArrayList<List>();
-    private Integer time;
+
+//    private java.util.List<com.example.ashish.alumini.network.pojo.List> list = new ArrayList<com.example.ashish.alumini.network.pojo.List>();
+    private java.util.List<MemberInstance> list = new ArrayList<MemberInstance>();
+    private String time;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
@@ -19,7 +21,7 @@ public class MemberListResponse {
      * @return
      *     The list
      */
-    public java.util.List<com.example.ashish.alumini.network.pojo.List> getList() {
+    public java.util.List<com.example.ashish.alumini.network.pojo.MemberInstance> getList() {
         return list;
     }
 
@@ -28,7 +30,7 @@ public class MemberListResponse {
      * @param list
      *     The list
      */
-    public void setList(java.util.List<com.example.ashish.alumini.network.pojo.List> list) {
+    public void setList(java.util.List<com.example.ashish.alumini.network.pojo.MemberInstance> list) {
         this.list = list;
     }
 
@@ -37,7 +39,7 @@ public class MemberListResponse {
      * @return
      *     The time
      */
-    public Integer getTime() {
+    public String getTime() {
         return time;
     }
 
@@ -46,7 +48,7 @@ public class MemberListResponse {
      * @param time
      *     The time
      */
-    public void setTime(Integer time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -59,3 +61,5 @@ public class MemberListResponse {
     }
 
 }
+
+

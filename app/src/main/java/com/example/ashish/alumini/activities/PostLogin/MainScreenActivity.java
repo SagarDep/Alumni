@@ -6,7 +6,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.ashish.alumini.R;
@@ -17,6 +20,11 @@ import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import me.zhanghai.android.materialprogressbar.IndeterminateHorizontalProgressDrawable;
 
 
 public class MainScreenActivity extends AppCompatActivity
@@ -37,16 +45,21 @@ public class MainScreenActivity extends AppCompatActivity
 
     ActionBar mActionBar;
 
+    @Bind(R.id.material_progressBar)
+    ProgressBar mProgressBar;
+
+    String TAG = getClass().getSimpleName();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
-        // if logout from shared prefs then finish this
-//        if (!new GlobalPrefs(this).getBoolean(getResources().getString(R.string.is_logged_in))){
-//            this.finish();
-//        }
-
 
         setContentView(R.layout.activity_main_screen);
+
+
+        //butterknife injection
+        ButterKnife.bind(this);
 
         // getting action bar
         mActionBar = getSupportActionBar();
@@ -84,6 +97,8 @@ public class MainScreenActivity extends AppCompatActivity
         mFragmentTransaction.commit();
 
         mCurrentFragment = new FragmentMainScreen();
+
+        mProgressBar.setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(this));
 
         mActionBar.hide();
     }
@@ -142,8 +157,15 @@ public class MainScreenActivity extends AppCompatActivity
             changeFragment(new FragmentMainScreen());
 
         }
+    }
 
-
+    @Subscribe
+    public void changeProgressBar(Boolean a){
+        if (a){
+            mProgressBar.setVisibility(View.VISIBLE);
+        }
+        else
+        mProgressBar.setVisibility(View.GONE);
     }
 }
 

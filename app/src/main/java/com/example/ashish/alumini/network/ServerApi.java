@@ -6,6 +6,7 @@ import com.example.ashish.alumini.network.pojo.Job;
 import com.example.ashish.alumini.network.pojo.JobDetail;
 import com.example.ashish.alumini.network.pojo.LoginResponse;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
+import com.example.ashish.alumini.network.pojo.MemberListResponse;
 import com.example.ashish.alumini.network.pojo.SignupPart;
 
 import java.util.List;
@@ -84,7 +85,8 @@ public interface ServerApi {
     @GET("members/")
     Call<List<MemberInstance>> getMemberList();
 
-    
+    @POST("members/getlist/")
+    Call<MemberListResponse> getMemberListinChunks(@Query("time") String time);
 
 
     // login

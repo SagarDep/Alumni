@@ -94,7 +94,8 @@ public class FragmentMainScreen extends android.support.v4.app.Fragment {
 
         ButterKnife.bind(this,view);
         //Bus Registering
-        mBus.register(getActivity());
+//        mBus.register(getActivity());
+
 
         // setting icons to the circular buttons
         mCirecularButtonMembers.setImageDrawable(new IconicsDrawable(getActivity())
@@ -126,12 +127,13 @@ public class FragmentMainScreen extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mBus.unregister(getActivity());
+        mBus.register(getActivity());
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        mBus.unregister(getActivity());
     }
 
     @Override
