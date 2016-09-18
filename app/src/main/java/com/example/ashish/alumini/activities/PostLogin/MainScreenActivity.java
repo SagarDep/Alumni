@@ -14,6 +14,7 @@ import com.example.ashish.alumini.fragments.main_screen_fragments.FragmentEvents
 import com.example.ashish.alumini.fragments.FragmentMainScreen;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
+import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
@@ -39,6 +40,11 @@ public class MainScreenActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
+        // if logout from shared prefs then finish this
+        if (!new GlobalPrefs(this).getBoolean(getResources().getString(R.string.is_logged_in))){
+            this.finish();
+        }
+
 
         setContentView(R.layout.activity_main_screen);
 

@@ -22,6 +22,7 @@ public class MemberLists {
 
     public MemberLists() {
     makeServerCallToGetAllMemberData();
+//        makeServerCallToGetAllMemberDataPost();
     }
     public void makeServerCallToGetAllMemberData(){
         Log.d(TAG, "Class/API created");
@@ -40,4 +41,23 @@ public class MemberLists {
             }
         });
     }
+
+    public void makeServerCallToGetAllMemberDataPost(){
+        Log.d(TAG, "Class/API created");
+        Call<List<MemberInstance>> call = ApiClient.getServerApi().getMemberList();
+
+        call.enqueue(new Callback<List<MemberInstance>>() {
+            @Override
+            public void onResponse(Call<List<MemberInstance>> call, Response<List<MemberInstance>> response) {
+                Log.d(TAG,"API call successful");
+                list = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<List<MemberInstance>> call, Throwable t) {
+                Log.d(TAG,"API call failed");
+            }
+        });
+    }
+
 }

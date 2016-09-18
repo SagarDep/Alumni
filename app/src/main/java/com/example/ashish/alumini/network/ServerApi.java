@@ -84,6 +84,8 @@ public interface ServerApi {
     @GET("members/")
     Call<List<MemberInstance>> getMemberList();
 
+    
+
 
     // login
     @POST("members/login/")
