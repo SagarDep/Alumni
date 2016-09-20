@@ -1,4 +1,21 @@
-package com.example.ashish.alumini.network.pojo;
+package com.example.ashish.alumini.network.models;
+
+/**
+ * Created by ashish on 19/9/16.
+ */
+
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
+
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,25 +24,48 @@ import java.util.Map;
  * Created by ashish on 3/9/16.
  */
 
-public class MemberInstance {
+@Table(name = "members")
+public class Temp extends Model {
 
-
+    @Column(name = "_id")
     private String _id;
 
-
+    @Column(name = "name")
     private String name;
+
+//    @Column(name = "email")
     private String email;
+
+//    @Column(name = "bio")
     private String bio;
+
+//    @Column(name = "isNerd")
     private Boolean isNerd;
+
+//    @Column(name = "phone")
     private String phone;
+
+//    @Column(name = "weblink")
     private String weblink;
+
+//    @Column(name = "branch")
     private String branch;
+
+//    @Column(name = "year")
     private String year;
+
+//    @Column(name = "home")
     private String home;
+
+//    @Column(name = "work")
     private String work;
+
+//    @Column(name = "designation")
     private String designation;
+
+//    @Column(name = "company")
     private String company;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+//    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      *
@@ -261,12 +301,12 @@ public class MemberInstance {
         this.company = company;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+//    public Map<String, Object> getAdditionalProperties() {
+//        return this.additionalProperties;
+//    }
+//
+//    public void setAdditionalProperty(String name, Object value) {
+//        this.additionalProperties.put(name, value);
+//    }
 
 }

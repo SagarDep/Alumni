@@ -12,7 +12,7 @@ public class MemberListResponse {
 
 
 //    private java.util.List<com.example.ashish.alumini.network.pojo.List> list = new ArrayList<com.example.ashish.alumini.network.pojo.List>();
-    private java.util.List<MemberInstance> list = new ArrayList<MemberInstance>();
+    private java.util.List<MemberInstance> list = new ArrayList<>();
     private String time;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

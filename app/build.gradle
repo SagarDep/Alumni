@@ -98,4 +98,6 @@ dependencies {
 
     // material progress bar
     compile 'me.zhanghai.android.materialprogressbar:library:1.1.7'
+
+
 }

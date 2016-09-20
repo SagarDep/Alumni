@@ -1,14 +1,18 @@
 package com.example.ashish.alumini.supporting_classes;
 
+import android.content.ClipData;
 import android.util.Log;
 
+import com.activeandroid.ActiveAndroid;
 import com.example.ashish.alumini.network.ApiClient;
+import com.example.ashish.alumini.network.models.Temp;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.network.pojo.MemberListResponse;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import me.drakeet.materialdialog.MaterialDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,7 +55,6 @@ public class MemberLists {
         // changing the api call flag
         mApiCallFlag = true;
 
-        Log.d(TAG, "Class/API created");
         Call<MemberListResponse> call = ApiClient.getServerApi().getMemberListinChunks(time);
 
         call.enqueue(new Callback<MemberListResponse>() {
@@ -62,12 +65,32 @@ public class MemberLists {
 
                 // preventing nullification
                 if (response1!=null){
-
                     List<MemberInstance> instanceList = response1.getList();
-                    // iterating all the list instances and adding to main list
-                    for (MemberInstance memberInstance: instanceList) {
-                        list.add(memberInstance);
+
+                    // saving the result in active android
+                    ActiveAndroid.beginTransaction();
+
+                    try {
+                        // iterating all the list instances and adding to main list
+                        for (MemberInstance memberInstance: instanceList) {
+                            list.add(memberInstance);
+                            Temp temp = new Temp();
+                            temp.setName(memberInstance.getName());
+                            temp.set_id(memberInstance.get_id());
+                            temp.save();
+                        }
+                        ActiveAndroid.setTransactionSuccessful();
                     }
+                    finally {
+                        ActiveAndroid.endTransaction();
+
+                    }
+
+                    // iterating all the list instances and adding to main list
+//                    for (MemberInstance memberInstance: instanceList) {
+//                        list.add(memberInstance);
+//                    }
+
                 }
 
                 // checking if this is the last result or not
@@ -85,7 +108,7 @@ public class MemberLists {
 
             @Override
             public void onFailure(Call<MemberListResponse> call, Throwable t) {
-                Log.d(TAG,"API call failed");
+                Log.d(TAG,"API call failed" + t.toString());
             }
         });
     }
