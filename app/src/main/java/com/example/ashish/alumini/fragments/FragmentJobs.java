@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.activeandroid.query.Select;
 import com.example.ashish.alumini.job.JobListAdapter;
 import com.example.ashish.alumini.R;
 
@@ -171,6 +172,8 @@ public class FragmentJobs extends Fragment {
 
                 //iterating the list to save in database
                 for (Job model: mJobArrayList ) {
+
+                    // creating a new model + saving in db
                     JobInstanceModel jobModel = new JobInstanceModel();
                     jobModel.setName(model.getName());
                     jobModel.set_id(model.get_id());
@@ -185,7 +188,23 @@ public class FragmentJobs extends Fragment {
 
             @Override
             public void onFailure(Call<List<Job>> call, Throwable t) {
-                Log.d(TAG,"API call Failed");
+
+                // fetch from database
+                List<JobInstanceModel> list = new Select().from(JobInstanceModel.class).execute();
+
+                for (JobInstanceModel model: list ) {
+
+                    Job job = new Job();
+                    job.setLocation(model.getLocation());
+                    job.setName(model.getName());
+                    job.set_id(model.get_id());
+                    job.setRole(model.getDesignation());
+                    mJobArrayList.add(job);
+
+                }
+
+
+                Log.d(TAG,"API call Failed" + t.toString() );
             }
         });
     }

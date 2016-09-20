@@ -9,7 +9,7 @@ import com.activeandroid.annotation.Table;
  */
 @Table(name = "job")
 public class JobInstanceModel extends Model {
-    @Column(name = "_id")
+    @Column(name = "_id" , unique = true , onUniqueConflict = Column.ConflictAction.REPLACE)
     String _id;
 
     @Column(name = "name")
