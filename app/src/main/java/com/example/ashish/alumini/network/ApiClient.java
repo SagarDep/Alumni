@@ -8,8 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ApiClient {
 
-//    public static final String BASE_URL = "http://192.168.15.4:3000/";           // library lan
-    public static final String BASE_URL = "http://" +"10.42.0.1" +":3000/";      // dev
+    public static final String BASE_URL = "http://192.168.15.4:3000/";           // library lan
+//    public static final String BASE_URL = "http://" +"10.42.0.1" +":3000/";      // dev
 //    public static final String BASE_URL = "http://" +"192.168.42.214" +":3000/";      // mobile hotspot
 //    public static final String BASE_URL = "http://" + "192.168.42.8" + ":3000/"; // usb tethring
 //    public static final String BASE_URL = "http://192.168.137.152:3000/";

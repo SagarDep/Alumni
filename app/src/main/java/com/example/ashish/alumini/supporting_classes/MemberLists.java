@@ -131,6 +131,9 @@ public class MemberLists {
                     memberInstance.setDesignation(model.getDesignation());
                     list.add(memberInstance);
                 }
+                if (lst.isEmpty()){
+                    Log.d(TAG,"No data to show");
+                }
 
                 Log.d(TAG,"API call failed" + t.toString());
             }

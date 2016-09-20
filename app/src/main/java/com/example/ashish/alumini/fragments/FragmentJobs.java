@@ -15,9 +15,9 @@ import com.example.ashish.alumini.R;
 
 
 import com.example.ashish.alumini.network.ApiClient;
+import com.example.ashish.alumini.network.models.JobInstanceModel;
 import com.example.ashish.alumini.network.pojo.Job;
 import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
-import com.example.ashish.alumini.supporting_classes.GlobalBus;
 import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
@@ -26,7 +26,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
-import me.drakeet.materialdialog.MaterialDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,7 +43,7 @@ public class FragmentJobs extends Fragment {
     ListView mListViewJobs;
 
 
-    List<Job> mArrayList2 = new ArrayList<>();
+    List<Job> mJobArrayList = new ArrayList<>();
     JobListAdapter mListAdapter;
 
     PostLoginActivity mActivity;
@@ -111,7 +110,7 @@ public class FragmentJobs extends Fragment {
         //Butter knife binding
         ButterKnife.bind(this,view);
 
-        mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job,mArrayList2);
+        mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job, mJobArrayList);
         mListViewJobs.setAdapter(mListAdapter);
         
         return view;
@@ -123,7 +122,7 @@ public class FragmentJobs extends Fragment {
     @OnItemClick(R.id.listView_jobs)
     public void listClickHandler(int position){
         FragmentJobDetails fragmentJobDetails = new FragmentJobDetails();
-        fragmentJobDetails.setData(mArrayList2.get(position));
+        fragmentJobDetails.setData(mJobArrayList.get(position));
         mActivity.changeFragment(fragmentJobDetails);
         mBus.post(8888);
     }
@@ -164,8 +163,23 @@ public class FragmentJobs extends Fragment {
             @Override
             public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
                 Log.d(TAG,"Successfull");
-                mArrayList2 = response.body();
+
+                if (response!=null){
+                    mJobArrayList = response.body();
+                }
                 // TODO : adding the datasetmodify method
+
+                //iterating the list to save in database
+                for (Job model: mJobArrayList ) {
+                    JobInstanceModel jobModel = new JobInstanceModel();
+                    jobModel.setName(model.getName());
+                    jobModel.set_id(model.get_id());
+                    jobModel.setDesignation(model.getRole());
+                    jobModel.setLocation(model.getLocation());
+                    jobModel.save();
+
+                }
+
 
             }
 
