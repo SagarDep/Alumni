@@ -25,9 +25,9 @@ import java.util.Map;
  */
 
 @Table(name = "members")
-public class Temp extends Model {
+public class MemberInstanceModel extends Model {
 
-    @Column(name = "_id")
+    @Column(name = "_id", unique = true, onUniqueConflict = Column.ConflictAction.REPLACE)
     private String _id;
 
     @Column(name = "name")
@@ -39,7 +39,7 @@ public class Temp extends Model {
 //    @Column(name = "bio")
     private String bio;
 
-//    @Column(name = "isNerd")
+    @Column(name = "isNerd")
     private Boolean isNerd;
 
 //    @Column(name = "phone")
@@ -51,16 +51,16 @@ public class Temp extends Model {
 //    @Column(name = "branch")
     private String branch;
 
-//    @Column(name = "year")
+    @Column(name = "year")
     private String year;
 
 //    @Column(name = "home")
     private String home;
 
-//    @Column(name = "work")
+    @Column(name = "work")
     private String work;
 
-//    @Column(name = "designation")
+    @Column(name = "designation")
     private String designation;
 
 //    @Column(name = "company")

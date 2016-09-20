@@ -11,7 +11,7 @@ import com.facebook.stetho.Stetho;
 /**
  * Created by ashish on 1/7/16.
  */
-public class MyApplication extends com.activeandroid.app.Application {
+public class MyApplication extends Application {
 
     public MemberLists memberLists;
     @Override
@@ -26,7 +26,7 @@ public class MyApplication extends com.activeandroid.app.Application {
         /*
         * Active android Init
         * */
-//        ActiveAndroid.initialize(this);
+        ActiveAndroid.initialize(this);
 
 
         /*

@@ -1,19 +1,18 @@
 package com.example.ashish.alumini.supporting_classes;
 
-import android.content.ClipData;
 import android.util.Log;
 
 import com.activeandroid.ActiveAndroid;
+import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 import com.example.ashish.alumini.network.ApiClient;
-import com.example.ashish.alumini.network.models.Temp;
+import com.example.ashish.alumini.network.models.MemberInstanceModel;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.network.pojo.MemberListResponse;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import me.drakeet.materialdialog.MaterialDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -75,10 +74,15 @@ public class MemberLists {
                         // iterating all the list instances and adding to main list
                         for (MemberInstance memberInstance: instanceList) {
                             list.add(memberInstance);
-                            Temp temp = new Temp();
-                            temp.setName(memberInstance.getName());
-                            temp.set_id(memberInstance.get_id());
-                            temp.save();
+                            MemberInstanceModel memberInstanceModel = new MemberInstanceModel();
+                            memberInstanceModel.set_id(memberInstance.get_id());
+                            memberInstanceModel.setName(memberInstance.getName());
+                            memberInstanceModel.setYear(memberInstance.getYear());
+                            memberInstanceModel.setIsNerd(memberInstance.getIsNerd());
+                            memberInstanceModel.setWork(memberInstance.getWork());
+                            memberInstanceModel.setDesignation(memberInstance.getDesignation());
+                            memberInstanceModel.save();
+
                         }
                         ActiveAndroid.setTransactionSuccessful();
                     }
@@ -112,18 +116,22 @@ public class MemberLists {
 
 
                 // API call failed and populate the list from local db
-//                public static List<ClipData.Item> getAll(Category category) {
-//                    return new Select()
-//                            .from(ClipData.Item.class)
-//                            .where("Category = ?", category.getId())
-//                            .orderBy("Name ASC")
-//                            .execute();
-//                }
+//                new Delete().from(MemberInstanceModel.class).executeSingle();
 
-//                list
-                      List<Temp> lst  = new Select()
-                        .from(Temp.class)
+                      List<MemberInstanceModel> lst  = new Select()
+                        .from(MemberInstanceModel.class)
                         .execute();
+                for (MemberInstanceModel model: lst ) {
+                    MemberInstance memberInstance = new MemberInstance();
+                    memberInstance.set_id(model.get_id());
+                    memberInstance.setName(model.getName());
+                    memberInstance.setYear(model.getYear());
+                    memberInstance.setWork(model.getWork());
+                    memberInstance.setIsNerd(model.getIsNerd());
+                    memberInstance.setDesignation(model.getDesignation());
+                    list.add(memberInstance);
+                }
+
                 Log.d(TAG,"API call failed" + t.toString());
             }
         });

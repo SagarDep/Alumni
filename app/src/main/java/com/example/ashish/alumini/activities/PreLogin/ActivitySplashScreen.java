@@ -21,6 +21,8 @@ public class ActivitySplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
 
+//        this.deleteDatabase("alumni.db");
+//        this.deleteDatabase("members.db");
 
 
 

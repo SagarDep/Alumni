@@ -9,10 +9,7 @@ import java.util.Map;
 
 public class MemberInstance {
 
-
     private String _id;
-
-
     private String name;
     private String email;
     private String bio;
