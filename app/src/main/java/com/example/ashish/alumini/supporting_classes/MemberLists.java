@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.util.Log;
 
 import com.activeandroid.ActiveAndroid;
+import com.activeandroid.query.Select;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.models.Temp;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
@@ -108,6 +109,21 @@ public class MemberLists {
 
             @Override
             public void onFailure(Call<MemberListResponse> call, Throwable t) {
+
+
+                // API call failed and populate the list from local db
+//                public static List<ClipData.Item> getAll(Category category) {
+//                    return new Select()
+//                            .from(ClipData.Item.class)
+//                            .where("Category = ?", category.getId())
+//                            .orderBy("Name ASC")
+//                            .execute();
+//                }
+
+//                list
+                      List<Temp> lst  = new Select()
+                        .from(Temp.class)
+                        .execute();
                 Log.d(TAG,"API call failed" + t.toString());
             }
         });
