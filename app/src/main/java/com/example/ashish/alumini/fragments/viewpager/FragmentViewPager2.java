@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.application.MyApplication;
 import com.example.ashish.alumini.fragments.settings.FragmentProfile;
 import com.example.ashish.alumini.members.MemberAdapter;

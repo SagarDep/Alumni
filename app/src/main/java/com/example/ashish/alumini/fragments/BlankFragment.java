@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.squareup.otto.Bus;
 
 import butterknife.ButterKnife;

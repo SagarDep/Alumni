@@ -1,9 +1,7 @@
 package com.example.ashish.alumini.fragments.settings;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -11,29 +9,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
-import java.io.File;
-import java.io.IOException;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
-import okio.BufferedSink;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Multipart;
 
 
 public class FragmentJobPosting extends Fragment {

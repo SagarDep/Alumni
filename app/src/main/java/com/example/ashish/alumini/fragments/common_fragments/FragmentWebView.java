@@ -1,25 +1,19 @@
 package com.example.ashish.alumini.fragments.common_fragments;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
-import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
-import com.mikepenz.fontawesome_typeface_library.FontAwesome;
-import com.mikepenz.iconics.IconicsDrawable;
+import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
+import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.mikepenz.iconics.view.IconicsImageView;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;

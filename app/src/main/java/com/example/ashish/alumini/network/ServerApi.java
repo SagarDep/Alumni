@@ -1,8 +1,6 @@
 package com.example.ashish.alumini.network;
 
-import com.example.ashish.alumini.activities.PreLogin.Login;
-
-import com.example.ashish.alumini.network.pojo.Job;
+import com.example.ashish.alumini.network.pojo.JobListInstance;
 import com.example.ashish.alumini.network.pojo.JobDetail;
 import com.example.ashish.alumini.network.pojo.LoginResponse;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
@@ -11,10 +9,8 @@ import com.example.ashish.alumini.network.pojo.SignupPart;
 
 import java.util.List;
 
-import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -31,7 +27,7 @@ public interface ServerApi {
     * to get the list of job posted
     * */
     @GET("/jobs")
-    Call<List<Job>> getJobList();
+    Call<List<JobListInstance>> getJobList();
 
     @GET("/jobs/detail/{id}")
     Call<JobDetail> getJobDetails(@Path("id") String id);

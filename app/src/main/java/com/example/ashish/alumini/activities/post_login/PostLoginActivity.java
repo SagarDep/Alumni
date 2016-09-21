@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.activities.PostLogin;
+package com.example.ashish.alumini.activities.post_login;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;

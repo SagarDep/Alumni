@@ -4,7 +4,7 @@ package com.example.ashish.alumini.network.pojo;
  * Created by ashish on 8/8/16.
  */
 
-public class Job {
+public class JobListInstance {
 
     private String _id;
     private String name;

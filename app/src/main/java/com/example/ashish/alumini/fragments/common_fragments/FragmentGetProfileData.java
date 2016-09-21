@@ -13,8 +13,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
-import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
+import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.fragments.FragmentMainScreen;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;

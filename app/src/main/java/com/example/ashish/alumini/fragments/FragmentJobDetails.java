@@ -11,9 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.network.ApiClient;
-import com.example.ashish.alumini.network.pojo.Job;
+import com.example.ashish.alumini.network.pojo.JobListInstance;
 import com.example.ashish.alumini.network.pojo.JobDetail;
 import com.squareup.otto.Bus;
 
@@ -36,7 +36,7 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     private String mParam2;
 
 
-    private Job mJobListInstance;
+    private JobListInstance mJobListInstance;
 
     /*
     * Butterknife
@@ -113,7 +113,7 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     /*
     * For setting the data passed from the list
     * */
-    public void setData(Job item){
+    public void setData(JobListInstance item){
         mJobListInstance = item;
     }
 

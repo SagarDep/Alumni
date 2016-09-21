@@ -17,8 +17,8 @@ import com.example.ashish.alumini.R;
 
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.models.JobInstanceModel;
-import com.example.ashish.alumini.network.pojo.Job;
-import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.network.pojo.JobListInstance;
+import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public class FragmentJobs extends Fragment {
     ListView mListViewJobs;
 
 
-    List<Job> mJobArrayList = new ArrayList<>();
+    List<JobListInstance> mJobArrayList = new ArrayList<>();
     JobListAdapter mListAdapter;
 
     PostLoginActivity mActivity;
@@ -156,13 +156,13 @@ public class FragmentJobs extends Fragment {
 
 
     public void makeServerCallToGetTheList(){
-        Call<List<Job>> call = ApiClient.getServerApi().getJobList();
+        Call<List<JobListInstance>> call = ApiClient.getServerApi().getJobList();
 
 
 
-        call.enqueue(new Callback<List<Job>>() {
+        call.enqueue(new Callback<List<JobListInstance>>() {
             @Override
-            public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
+            public void onResponse(Call<List<JobListInstance>> call, Response<List<JobListInstance>> response) {
                 Log.d(TAG,"Successfull");
 
                 if (response!=null){
@@ -171,7 +171,7 @@ public class FragmentJobs extends Fragment {
                 // TODO : adding the datasetmodify method
 
                 //iterating the list to save in database
-                for (Job model: mJobArrayList ) {
+                for (JobListInstance model: mJobArrayList ) {
 
                     // creating a new model + saving in db
                     JobInstanceModel jobModel = new JobInstanceModel();
@@ -187,19 +187,19 @@ public class FragmentJobs extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Job>> call, Throwable t) {
+            public void onFailure(Call<List<JobListInstance>> call, Throwable t) {
 
                 // fetch from database
                 List<JobInstanceModel> list = new Select().from(JobInstanceModel.class).execute();
 
                 for (JobInstanceModel model: list ) {
 
-                    Job job = new Job();
-                    job.setLocation(model.getLocation());
-                    job.setName(model.getName());
-                    job.set_id(model.get_id());
-                    job.setRole(model.getDesignation());
-                    mJobArrayList.add(job);
+                    JobListInstance jobListInstance = new JobListInstance();
+                    jobListInstance.setLocation(model.getLocation());
+                    jobListInstance.setName(model.getName());
+                    jobListInstance.set_id(model.get_id());
+                    jobListInstance.setRole(model.getDesignation());
+                    mJobArrayList.add(jobListInstance);
 
                 }
 

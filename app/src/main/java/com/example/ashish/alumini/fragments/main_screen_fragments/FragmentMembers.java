@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager0;
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager1;
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager2;

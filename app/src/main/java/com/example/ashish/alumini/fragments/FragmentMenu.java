@@ -1,7 +1,6 @@
 package com.example.ashish.alumini.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
@@ -10,9 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.application.MyApplication;
 import com.example.ashish.alumini.fragments.settings.FragmentSettings;
 import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.mikepenz.iconics.view.IconicsImageView;

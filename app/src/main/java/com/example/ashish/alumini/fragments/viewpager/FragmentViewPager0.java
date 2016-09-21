@@ -13,7 +13,7 @@ import com.example.ashish.alumini.application.MyApplication;
 import com.example.ashish.alumini.members.MemberAdapter;
 import com.example.ashish.alumini.members.RecyclerItemClickListener;
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.fragments.settings.FragmentProfile;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.supporting_classes.MemberLists;

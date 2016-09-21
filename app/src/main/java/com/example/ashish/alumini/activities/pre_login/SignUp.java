@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.activities.PreLogin;
+package com.example.ashish.alumini.activities.pre_login;
 
 
 import android.app.Activity;
@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
+import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
 import com.example.ashish.alumini.application.MyApplication;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.SignupPart;

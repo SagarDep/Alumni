@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.PostLogin.PostLoginActivity">
+    tools:context=".activities.post_login.PostLoginActivity">
     <ProgressBar
     android:layout_width="match_parent"
     android:layout_height="10dp"

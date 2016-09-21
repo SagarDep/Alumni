@@ -1,7 +1,6 @@
 package com.example.ashish.alumini.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,10 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
-import com.example.ashish.alumini.activities.PreLogin.Login;
 import com.example.ashish.alumini.members.expandable_list.ExpandableListAdapter;
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.squareup.otto.Bus;
 
 import java.util.ArrayList;

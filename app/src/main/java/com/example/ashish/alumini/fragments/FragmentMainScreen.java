@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.activities.PostLogin.MainScreenActivity;
-import com.example.ashish.alumini.activities.PostLogin.PostLoginActivity;
+import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
+import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
 import com.example.ashish.alumini.fragments.main_screen_fragments.FragmentEvents;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
@@ -143,7 +143,8 @@ public class FragmentMainScreen extends android.support.v4.app.Fragment {
 
     @OnClick(R.id.circleButton_member)
     public void startMemberActivity(){
-
+//        getActivity().finish();
+        // starting the other activity
         Intent moveToMember=new Intent(getActivity(),PostLoginActivity.class);
         startActivity(moveToMember);
     }
