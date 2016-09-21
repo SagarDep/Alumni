@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.fragments.main_screen_fragments.FragmentMembers;
+import com.example.ashish.alumini.fragments.FragmentMembers;
 import com.example.ashish.alumini.fragments.settings.FragmentSettings;
 import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.squareup.otto.Bus;

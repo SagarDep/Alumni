@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,10 @@ import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.fragments.settings.FragmentProfile;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
+import com.example.ashish.alumini.supporting_classes.GlobalBus;
 import com.example.ashish.alumini.supporting_classes.MemberLists;
 import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +52,7 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
     MyApplication mApplication;
     //event bus
     Bus mBus = new Bus();
+    GlobalBus globalBus = GlobalBus.getInstance();
 
     public FragmentViewPager0() {
         // Required empty public constructor
@@ -140,8 +144,16 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        // registering event bus
         mBus.register(getActivity());
+        globalBus.register(this);
+
+        globalBus.post(true);
+
+        // checking if api call is still in progress or not
 
     }
+
+
 
 }

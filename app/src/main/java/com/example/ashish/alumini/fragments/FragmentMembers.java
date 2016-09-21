@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.fragments.main_screen_fragments;
+package com.example.ashish.alumini.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -19,6 +19,7 @@ import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager2;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.supporting_classes.ViewPagerAdapter;
+import com.squareup.otto.Subscribe;
 
 import java.util.List;
 
@@ -137,4 +138,6 @@ public class FragmentMembers extends Fragment {
             }
         });
     }
+
+
 }

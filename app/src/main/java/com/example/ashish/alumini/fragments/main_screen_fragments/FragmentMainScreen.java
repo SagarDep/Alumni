@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.fragments;
+package com.example.ashish.alumini.fragments.main_screen_fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,6 @@ import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
-import com.example.ashish.alumini.fragments.main_screen_fragments.FragmentEvents;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.squareup.otto.Bus;

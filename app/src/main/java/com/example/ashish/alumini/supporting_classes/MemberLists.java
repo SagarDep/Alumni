@@ -9,6 +9,7 @@ import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.models.MemberInstanceModel;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.network.pojo.MemberListResponse;
+import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +29,17 @@ public class MemberLists {
 
     boolean mApiCallFlag = false;
 
+    GlobalBus mGlobalBus = GlobalBus.getInstance();
+
     public MemberLists() {
 //    makeServerCallToGetAllMemberData();
         makeServerCallToGetAllMemberDataPost("0");
+
+        mGlobalBus.register(this);
     }
     public void makeServerCallToGetAllMemberData(){
+
+
         Log.d(TAG, "Class/API created");
         Call<List<MemberInstance>> call = ApiClient.getServerApi().getMemberList();
 
@@ -52,8 +59,9 @@ public class MemberLists {
 
     public void makeServerCallToGetAllMemberDataPost(String time){
 
-        // changing the api call flag
+        // changing the api call flag to get to know that whether api call has finished or not
         mApiCallFlag = true;
+        mGlobalBus.post(true);
 
         Call<MemberListResponse> call = ApiClient.getServerApi().getMemberListinChunks(time);
 
@@ -135,9 +143,17 @@ public class MemberLists {
                     Log.d(TAG,"No data to show");
                 }
 
+                // chnaging flag
+                mApiCallFlag = false;
+
                 Log.d(TAG,"API call failed" + t.toString());
             }
         });
+    }
+
+    @Subscribe
+    public void hide(Boolean a){
+        Log.d(TAG, "Bus working");
     }
 
 }

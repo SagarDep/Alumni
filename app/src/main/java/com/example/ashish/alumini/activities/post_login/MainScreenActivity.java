@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.fragments.main_screen_fragments.FragmentEvents;
-import com.example.ashish.alumini.fragments.FragmentMainScreen;
+import com.example.ashish.alumini.fragments.main_screen_fragments.FragmentMainScreen;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;

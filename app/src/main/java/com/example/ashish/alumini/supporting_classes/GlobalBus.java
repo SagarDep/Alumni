@@ -17,7 +17,7 @@ public class GlobalBus extends Bus {
     private final Handler handler = new Handler(Looper.getMainLooper());
 
     private GlobalBus() {
-        super(ThreadEnforcer.ANY,"default_bus");
+        super(ThreadEnforcer.ANY,"alumni_bus");
     }
 
     public static GlobalBus getInstance() {
