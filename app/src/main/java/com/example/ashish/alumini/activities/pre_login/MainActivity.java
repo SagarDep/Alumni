@@ -8,17 +8,38 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.supporting_classes.GlobalBus;
+import com.squareup.otto.Subscribe;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import me.zhanghai.android.materialprogressbar.IndeterminateHorizontalProgressDrawable;
 
 public class MainActivity extends TabActivity {
     /** Called when the activity is first created. */
+
+    @Bind(R.id.material_progressBar_activity_main)
+    ProgressBar progressBar;
+
+    GlobalBus globalBus = GlobalBus.getInstance();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // butterknife bindings
+        ButterKnife.bind(this);
+
+        globalBus.register(this);
+
+        progressBar.setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(this));
 
         TabHost tabHost = getTabHost();
         TabHost.TabSpec spec;
@@ -52,5 +73,11 @@ public class MainActivity extends TabActivity {
         Log.d("back pressed","yes");
     }
 
+    @Subscribe
+    public void hide(String a){
+
+        progressBar.setVisibility(View.GONE);
+
+    }
 
 }

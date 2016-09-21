@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
@@ -16,6 +17,7 @@ import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.application.MyApplication;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.LoginResponse;
+import com.example.ashish.alumini.supporting_classes.GlobalBus;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.example.ashish.alumini.supporting_classes.RetrofitErrorHandler;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
@@ -35,8 +37,10 @@ import retrofit2.Response;
 public class Login extends Activity {
 
     String TAG = getClass().getSimpleName();
+
     @Bind(R.id.editText_login_email)
     EditText email;
+
     EditText password;
     Button loginButton;
 
@@ -48,13 +52,17 @@ public class Login extends Activity {
 
     MaterialDialog mDialog;
 
-
+    GlobalBus bus = GlobalBus.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+
+        // butterknife binding
         ButterKnife.bind(this);
+        bus.register(this);
+
         password=(EditText)findViewById(R.id.editText_login_password);
         loginButton=(Button)findViewById(R.id.button_login);
 
@@ -197,8 +205,27 @@ public class Login extends Activity {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
+                bus.post("ON");
                 Log.d(TAG, "API failed");
                 TastyToast.makeText(getBaseContext(),"Login Failed",TastyToast.LENGTH_SHORT,TastyToast.WARNING);
+                final MaterialDialog materialDialog = new MaterialDialog(Login.this);
+                materialDialog.setTitle("Network Error")
+                        .setMessage("Can't connect to cloud");
+                materialDialog.setPositiveButton("Retry", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Log.d(TAG,"Positive button encountered");
+
+                            }
+                        });
+                materialDialog.setNegativeButton("Cancel", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.d(TAG, "Negative clicked");
+                        materialDialog.dismiss();
+                    }
+                });
+                materialDialog.show();
             }
         });
 

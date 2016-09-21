@@ -7,9 +7,9 @@
     <ProgressBar
     android:layout_width="match_parent"
     android:layout_height="10dp"
-    android:indeterminate="true"
     android:id="@+id/material_progressBar"
-    style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
+        android:indeterminate="true"
+        style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
 
     <FrameLayout
         android:layout_width="match_parent"
