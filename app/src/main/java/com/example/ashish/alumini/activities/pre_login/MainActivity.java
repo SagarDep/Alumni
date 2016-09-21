@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.supporting_classes.GlobalBus;
+import com.example.ashish.alumini.supporting_classes.ProgressBarVisibility;
 import com.squareup.otto.Subscribe;
 
 import butterknife.Bind;
@@ -37,9 +38,12 @@ public class MainActivity extends TabActivity {
         // butterknife bindings
         ButterKnife.bind(this);
 
+        //event bus registering
         globalBus.register(this);
 
+        // setting progress bar
         progressBar.setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(this));
+        progressBar.setVisibility(View.GONE);
 
         TabHost tabHost = getTabHost();
         TabHost.TabSpec spec;
@@ -74,9 +78,14 @@ public class MainActivity extends TabActivity {
     }
 
     @Subscribe
-    public void hide(String a){
+    public void hide(ProgressBarVisibility a){
 
-        progressBar.setVisibility(View.GONE);
+        if (a.isVisibility()){
+            progressBar.setVisibility(View.VISIBLE);
+        }
+        else {
+            progressBar.setVisibility(View.GONE);
+        }
 
     }
 

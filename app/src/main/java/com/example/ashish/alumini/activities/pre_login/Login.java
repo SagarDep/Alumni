@@ -19,6 +19,7 @@ import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.LoginResponse;
 import com.example.ashish.alumini.supporting_classes.GlobalBus;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
+import com.example.ashish.alumini.supporting_classes.ProgressBarVisibility;
 import com.example.ashish.alumini.supporting_classes.RetrofitErrorHandler;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
@@ -54,6 +55,9 @@ public class Login extends Activity {
 
     GlobalBus bus = GlobalBus.getInstance();
 
+
+     ProgressBarVisibility barVisibility = new ProgressBarVisibility();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,23 +70,12 @@ public class Login extends Activity {
         password=(EditText)findViewById(R.id.editText_login_password);
         loginButton=(Button)findViewById(R.id.button_login);
 
-        loginButton.setOnClickListener(
-                new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
 
         mRelativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout_login);
 
         mApplication  = (MyApplication) getApplication();
 
-        mDialog = new MaterialDialog(this).setTitle("Please Wait");
-        mDialog.setBackground(new IconicsDrawable(this).icon(FontAwesome.Icon.faw_cog)
-                .color(Color.WHITE)
-                .sizeDp(25));
 
 
     }
@@ -168,6 +161,8 @@ public class Login extends Activity {
     public void makeServerCallToLogin(String email, String password){
 //        mDialog.show();
 
+        postHideSignal(true);
+
         Call<LoginResponse> call = ApiClient.getServerApi().login(email, password);
 
         call.enqueue(new Callback<LoginResponse>() {
@@ -205,30 +200,40 @@ public class Login extends Activity {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                bus.post("ON");
+
+                postHideSignal(false);
+
                 Log.d(TAG, "API failed");
                 TastyToast.makeText(getBaseContext(),"Login Failed",TastyToast.LENGTH_SHORT,TastyToast.WARNING);
-                final MaterialDialog materialDialog = new MaterialDialog(Login.this);
-                materialDialog.setTitle("Network Error")
-                        .setMessage("Can't connect to cloud");
-                materialDialog.setPositiveButton("Retry", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Log.d(TAG,"Positive button encountered");
-
-                            }
-                        });
-                materialDialog.setNegativeButton("Cancel", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Log.d(TAG, "Negative clicked");
-                        materialDialog.dismiss();
-                    }
-                });
-                materialDialog.show();
+//                final MaterialDialog materialDialog = new MaterialDialog(Login.this);
+//                materialDialog.setTitle("Network Error")
+//                        .setMessage("Can't connect to cloud");
+//                materialDialog.setPositiveButton("Retry", new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                Log.d(TAG,"Positive button encountered");
+//
+//                            }
+//                        });
+//                materialDialog.setNegativeButton("Cancel", new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Log.d(TAG, "Negative clicked");
+//                        materialDialog.dismiss();
+//                    }
+//                });
+//                materialDialog.show();
             }
         });
 
+
     }
+
+    public void postHideSignal( Boolean state){
+        // bus posting
+        barVisibility.setVisibility(state);
+        bus.post(barVisibility);
+    }
+
 
 }
