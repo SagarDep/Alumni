@@ -1,7 +1,11 @@
 package com.example.ashish.alumini.fragments.common_fragments;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.TextInputLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.example.ashish.alumini.R;
@@ -20,6 +25,8 @@ import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
+
+import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -90,13 +97,17 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     @Bind(R.id.textInputLayout_company)
         TextInputLayout mTextInputLayoutCompany;
 
+    @Bind(R.id.imageView_companyLogo)
+    ImageView imageView;
+
 
     // event bus registering
     Bus mBus = new Bus();
 
     // activities
     MainScreenActivity mMainScreenActivity;
-    PostLoginActivity mPostLoginActivity;
+
+    private int PICK_IMAGE_REQUEST = 1;
 
 
 
@@ -145,9 +156,6 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         if (getActivity() instanceof MainScreenActivity){
             mMainScreenActivity = (MainScreenActivity) getActivity();
         }
-        else {
-            mPostLoginActivity = (PostLoginActivity) getActivity();
-        }
 
         // displaying the data which is strored in shared preference from previous page
         mEditTextName.setText(new GlobalPrefs(getContext()).getString(getString(R.string.username)));
@@ -183,6 +191,15 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         }
     }
 
+    @OnClick(R.id.imageView_companyLogo)
+    public void image(){
+        Intent intent = new Intent();
+// Show only images, no videos or anything else
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+// Always show the chooser (if there are multiple options available)
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -288,6 +305,28 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
 
         return true;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST
+//                && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+
+            Uri uri = data.getData();
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(mMainScreenActivity.getContentResolver(), uri);
+                // Log.d(TAG, String.valueOf(bitmap));
+
+//                ImageView imageView = (ImageView) findViewById(R.id.imageView);
+                imageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 

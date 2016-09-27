@@ -143,6 +143,9 @@ public class SignUp extends Activity {
 
 
     public void makeserverCallToPostSignupPartialData(){
+        // making button un clickable
+        mButtonSignup.setEnabled(false);
+
         // making progress bar visible
         postHideSignal(true);
 
@@ -159,6 +162,9 @@ public class SignUp extends Activity {
 
                 // hiding progress bar
                 postHideSignal(false);
+
+                // making button clickable
+                mButtonSignup.setEnabled(true);
 
                 if (response.code()==600){
                     TastyToast.makeText(getBaseContext(), "Email Already Exists", Toast.LENGTH_LONG,TastyToast.ERROR);
@@ -192,8 +198,17 @@ public class SignUp extends Activity {
             @Override
             public void onFailure(Call<SignupPart> call, Throwable t) {
                 Log.d(TAG,"API failed");
+                // hiding progress bar
                 postHideSignal(false);
+
+                // making button clickable
+                mButtonSignup.setEnabled(true);
+
                 TastyToast.makeText(getBaseContext(),"Signup Failed",TastyToast.LENGTH_SHORT,TastyToast.WARNING);
+
+                Snackbar snackbar = Snackbar
+                        .make(mRelativeLayout, "Can't connect to cloud", Snackbar.LENGTH_LONG);
+                snackbar.show();
 
             }
         });

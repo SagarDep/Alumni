@@ -98,6 +98,7 @@ public class MainScreenActivity extends AppCompatActivity
         mCurrentFragment = new FragmentMainScreen();
 
         mProgressBar.setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(this));
+        mProgressBar.setVisibility(View.GONE);
 
         mActionBar.hide();
     }

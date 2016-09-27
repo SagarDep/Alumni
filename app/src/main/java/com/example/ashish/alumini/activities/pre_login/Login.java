@@ -86,7 +86,7 @@ public class Login extends Activity {
         }
 
 
-//        loginButton.setEnabled(false);
+        loginButton.setEnabled(false);
 
 
 
@@ -112,7 +112,7 @@ public class Login extends Activity {
 //        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
         TastyToast.makeText(getApplicationContext(),"Login Failed",TastyToast.LENGTH_LONG,TastyToast.ERROR);
 
-        loginButton.setEnabled(true);
+
     }
 
     public boolean validate() {
@@ -201,27 +201,14 @@ public class Login extends Activity {
 
                 Log.d(TAG, "API failed");
                 TastyToast.makeText(getBaseContext(),"Login Failed",TastyToast.LENGTH_SHORT,TastyToast.WARNING);
-//                final MaterialDialog materialDialog = new MaterialDialog(Login.this);
-//                materialDialog.setTitle("Network Error")
-//                        .setMessage("Can't connect to cloud");
-//                materialDialog.setPositiveButton("Retry", new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                Log.d(TAG,"Positive button encountered");
-//
-//                            }
-//                        });
-//                materialDialog.setNegativeButton("Cancel", new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Log.d(TAG, "Negative clicked");
-//                        materialDialog.dismiss();
-//                    }
-//                });
-//                materialDialog.show();
+
+                Snackbar snackbar = Snackbar
+                        .make(mRelativeLayout, "Can't connect to cloud", Snackbar.LENGTH_LONG);
+                snackbar.show();
+
+                loginButton.setEnabled(true);
             }
         });
-
 
     }
 
