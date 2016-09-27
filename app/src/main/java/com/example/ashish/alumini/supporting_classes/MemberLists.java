@@ -27,7 +27,7 @@ public class MemberLists {
 
     public List<MemberInstance> list = new ArrayList<>();
 
-    boolean mApiCallFlag = false;
+    public boolean mApiCallFlag = false;
 
     GlobalBus mGlobalBus = GlobalBus.getInstance();
 

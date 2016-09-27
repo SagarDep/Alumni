@@ -156,6 +156,10 @@ public class SignUp extends Activity {
             @Override
             public void onResponse(Call<SignupPart> call, Response<SignupPart> response) {
                 Log.d(TAG,"API successful");
+
+                // hiding progress bar
+                postHideSignal(false);
+
                 if (response.code()==600){
                     TastyToast.makeText(getBaseContext(), "Email Already Exists", Toast.LENGTH_LONG,TastyToast.ERROR);
                 }
@@ -180,6 +184,7 @@ public class SignUp extends Activity {
                 * Start Activity main screen in which the fragments will be displayed
                 * */
                 startMainScreenActivity(signupPart);
+
                 }
 
             }

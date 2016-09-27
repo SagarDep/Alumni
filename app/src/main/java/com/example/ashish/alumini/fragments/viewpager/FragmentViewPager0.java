@@ -54,6 +54,8 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
     Bus mBus = new Bus();
     GlobalBus globalBus = GlobalBus.getInstance();
 
+    MemberLists mMemberLists;
+
     public FragmentViewPager0() {
         // Required empty public constructor
     }
@@ -69,9 +71,9 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
         mActivity = (PostLoginActivity) getActivity();
 
 
-        MemberLists memberLists = mApplication.getMemberLists();
-        if (memberLists!=null){
-            mArrayList = memberLists.list;
+         mMemberLists = mApplication.getMemberLists();
+        if (mMemberLists!=null){
+            mArrayList = mMemberLists.list;
         }
 
 
@@ -151,6 +153,13 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
         globalBus.post(true);
 
         // checking if api call is still in progress or not
+        if (mMemberLists.mApiCallFlag){
+            mProgressBar.setVisibility(View.VISIBLE);
+        }
+        else
+            mProgressBar.setVisibility(View.GONE);
+        globalBus.post(mMemberLists.mApiCallFlag);
+
 
     }
 
