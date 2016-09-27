@@ -17,7 +17,9 @@ import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
 import com.example.ashish.alumini.application.MyApplication;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.SignupPart;
+import com.example.ashish.alumini.supporting_classes.GlobalBus;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
+import com.example.ashish.alumini.supporting_classes.ProgressBarVisibility;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import retrofit2.Call;
@@ -38,11 +40,19 @@ public class SignUp extends Activity {
 
     MyApplication mApplication;
 
+    GlobalBus mGlobalBus;
+
+    ProgressBarVisibility barVisibility = new ProgressBarVisibility();
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
+        //global mGlobalBus registering
+        mGlobalBus = GlobalBus.getInstance();
 
         mEditTextName =(EditText)findViewById(R.id.editText_signup_name);
         mEditTextemail =(EditText)findViewById(R.id.editText_signup_email);
@@ -133,6 +143,10 @@ public class SignUp extends Activity {
 
 
     public void makeserverCallToPostSignupPartialData(){
+        // making progress bar visible
+        postHideSignal(true);
+
+        
         Call<SignupPart> call = ApiClient.getServerApi().signupPartial(
                 mEditTextName.getText().toString().trim(),
                 mEditTextemail.getText().toString().trim(),
@@ -168,12 +182,14 @@ public class SignUp extends Activity {
                 startMainScreenActivity(signupPart);
                 }
 
-
             }
 
             @Override
             public void onFailure(Call<SignupPart> call, Throwable t) {
                 Log.d(TAG,"API failed");
+                postHideSignal(false);
+                TastyToast.makeText(getBaseContext(),"Signup Failed",TastyToast.LENGTH_SHORT,TastyToast.WARNING);
+
             }
         });
     }
@@ -206,5 +222,22 @@ public class SignUp extends Activity {
             System.exit(2);
         }
 
+    }
+    public void postHideSignal( Boolean state){
+        // mGlobalBus posting
+        barVisibility.setVisibility(state);
+        mGlobalBus.post(barVisibility);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mGlobalBus.unregister(this);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mGlobalBus.register(this);
     }
 }

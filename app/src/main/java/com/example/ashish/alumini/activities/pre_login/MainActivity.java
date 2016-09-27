@@ -25,10 +25,12 @@ import me.zhanghai.android.materialprogressbar.IndeterminateHorizontalProgressDr
 public class MainActivity extends TabActivity {
     /** Called when the activity is first created. */
 
-    @Bind(R.id.material_progressBar_activity_main)
-    ProgressBar progressBar;
+    String TAG = getClass().getSimpleName();
 
-    GlobalBus globalBus = GlobalBus.getInstance();
+    @Bind(R.id.material_progressBar_activity_main)
+    ProgressBar mProgressBar;
+
+    GlobalBus mGlobalBus = GlobalBus.getInstance();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,12 +40,12 @@ public class MainActivity extends TabActivity {
         // butterknife bindings
         ButterKnife.bind(this);
 
-        //event bus registering
-        globalBus.register(this);
+        //event mGlobalBus registering
+//        mGlobalBus.register(this);
 
         // setting progress bar
-        progressBar.setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(this));
-        progressBar.setVisibility(View.GONE);
+        mProgressBar.setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(this));
+        mProgressBar.setVisibility(View.INVISIBLE);
 
         TabHost tabHost = getTabHost();
         TabHost.TabSpec spec;
@@ -71,22 +73,32 @@ public class MainActivity extends TabActivity {
 
     }
 
+
     @Override
-    public void onBackPressed() {
-//        finish();
-        Log.d("back pressed","yes");
+    protected void onPause() {
+        super.onPause();
+        mGlobalBus.unregister(this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mGlobalBus.register(this);
+
+    }
     @Subscribe
     public void hide(ProgressBarVisibility a){
 
         if (a.isVisibility()){
-            progressBar.setVisibility(View.VISIBLE);
+            mProgressBar.setVisibility(View.VISIBLE);
         }
         else {
-            progressBar.setVisibility(View.GONE);
+            mProgressBar.setVisibility(View.INVISIBLE);
         }
 
+        Log.d(TAG,"Bus Working");
+
     }
+
 
 }

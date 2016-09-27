@@ -2,14 +2,11 @@ package com.example.ashish.alumini.activities.pre_login;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
@@ -21,8 +18,6 @@ import com.example.ashish.alumini.supporting_classes.GlobalBus;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.example.ashish.alumini.supporting_classes.ProgressBarVisibility;
 import com.example.ashish.alumini.supporting_classes.RetrofitErrorHandler;
-import com.mikepenz.fontawesome_typeface_library.FontAwesome;
-import com.mikepenz.iconics.IconicsDrawable;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import butterknife.Bind;
@@ -53,7 +48,7 @@ public class Login extends Activity {
 
     MaterialDialog mDialog;
 
-    GlobalBus bus = GlobalBus.getInstance();
+    GlobalBus mGlobalBus ;
 
 
      ProgressBarVisibility barVisibility = new ProgressBarVisibility();
@@ -65,7 +60,8 @@ public class Login extends Activity {
 
         // butterknife binding
         ButterKnife.bind(this);
-        bus.register(this);
+
+        mGlobalBus= GlobalBus.getInstance();
 
         password=(EditText)findViewById(R.id.editText_login_password);
         loginButton=(Button)findViewById(R.id.button_login);
@@ -229,10 +225,23 @@ public class Login extends Activity {
 
     }
 
-    public void postHideSignal( Boolean state){
-        // bus posting
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mGlobalBus.unregister(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mGlobalBus.register(this);
+
+    }
+
+    public void postHideSignal(Boolean state){
+        // mGlobalBus posting
         barVisibility.setVisibility(state);
-        bus.post(barVisibility);
+        mGlobalBus.post(barVisibility);
     }
 
 
