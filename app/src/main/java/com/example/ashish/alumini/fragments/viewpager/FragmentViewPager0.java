@@ -150,6 +150,7 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
         mBus.register(getActivity());
         globalBus.register(this);
 
+
         globalBus.post(true);
 
         // checking if api call is still in progress or not

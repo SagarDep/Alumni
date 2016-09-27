@@ -19,7 +19,7 @@ import com.squareup.otto.Bus;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+import me.drakeet.materialdialog.MaterialDialog;
 
 
 public class FragmentSettings extends Fragment  {
@@ -47,15 +47,6 @@ public class FragmentSettings extends Fragment  {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static FragmentSettings newInstance(String param1, String param2) {
         FragmentSettings fragment = new FragmentSettings();
         Bundle args = new Bundle();
@@ -81,8 +72,7 @@ public class FragmentSettings extends Fragment  {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
         ButterKnife.bind(this,view);
-        //Bus Registering
-        mBus.register(getActivity());
+
 
         mActivity = (PostLoginActivity) getActivity();
 
@@ -100,21 +90,30 @@ public class FragmentSettings extends Fragment  {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        //Bus Registering
+        mBus.register(getActivity());
+
+        // hiding progress bar
+        Boolean aBoolean = false;
+        mBus.post(aBoolean);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        //Bus Registering
+        mBus.unregister(getActivity());
+
+
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
     }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-
 
 
     @OnClick(R.id.button_postjob)
@@ -123,36 +122,56 @@ public class FragmentSettings extends Fragment  {
         mActivity.changeFragment(new FragmentJobPosting().newInstance("",""));
 
     }
+
+
     @OnClick(R.id.button_myprofile)
     public void handlerMyProfileButton(){
         mBus.post(9999);
         mActivity.changeFragment(new FragmentProfile());
     }
+
+
     @OnClick(R.id.button_fbPage)
     public void handlerFbButton(){
         mBus.post(9999);
         mActivity.changeFragment(new FragmentWebView().newInstance(getString(R.string.url_facebook_page),""));
     }
+
+
     @OnClick(R.id.button_about_app)
     public void handlerAboutAppButton(){
 //        mBus.post(R.id.button_postjob);
         mBus.post(9999);
         mActivity.changeFragment(new FragmentAboutApp());
     }
+
+
     @OnClick(R.id.button_about_college)
     public void handlerAboutCollegeButton(){
 //        mBus.post(R.id.button_postjob);
         mBus.post(9999);
         mActivity.changeFragment(new FragmentWebView().newInstance(getString(R.string.url_college),""));
     }
+
+
     @OnClick(R.id.button_support)
     public void handlerSupportButton(){
         mBus.post(9999);
     }
+
+
     @OnClick(R.id.button_contact_us)
     public void handlerContactUsButton(){
         mBus.post(9999);
+
+        MaterialDialog materialDialog = new MaterialDialog(mActivity);
+        materialDialog.setTitle("Contact")
+                .setMessage("Feel free to ping for any query" + '\n' + "ashishsurana12345@gmail.com")
+                .setCanceledOnTouchOutside(true)
+                .show();
     }
+
+
     @OnClick(R.id.button_faq)
     public void handlerFaqButton(){
         mBus.post(9999);
@@ -179,19 +198,7 @@ public class FragmentSettings extends Fragment  {
         startActivity(intent);
 
 
-//        Thread Splashtimer = new Thread(){
-//            public void run(){
-//                try{
-//                    sleep(Toast.LENGTH_SHORT);
-//                }catch(InterruptedException e){
-//                    e.printStackTrace();
-//                }finally{
-//                    Intent intent = new Intent(getActivity(), MainActivity.class);
-//                    startActivity(intent);
-//                }
-//            }
-//        };
-//        Splashtimer.start();
+
 
     }
 

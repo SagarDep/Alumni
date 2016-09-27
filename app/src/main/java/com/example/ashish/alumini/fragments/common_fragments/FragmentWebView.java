@@ -132,12 +132,12 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
-                TastyToast.makeText(mActivity,"Oops! Something went Wrong",
-                        TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+
                 Log.d(TAG,"Error while loading page" + error.toString());
 
                 // hiding progress bar
                 Boolean aBoolean = false;
+
                 mBus.post(aBoolean);
             }
         });

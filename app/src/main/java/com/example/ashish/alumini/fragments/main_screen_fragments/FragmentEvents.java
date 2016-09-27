@@ -86,8 +86,6 @@ public class FragmentEvents extends Fragment {
         mActivity = (MainScreenActivity) getActivity();
 
         ButterKnife.bind(this,view);
-        //Bus Registering
-        mBus.register(getActivity());
 
         mActionBar = mActivity.getSupportActionBar();
 
@@ -161,12 +159,16 @@ public class FragmentEvents extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mBus.unregister(getActivity());
+        //Bus Registering
+        mBus.register(getActivity());
+
+        mBus.post(false);
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        mBus.unregister(getActivity());
     }
 
     @Override
