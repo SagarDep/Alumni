@@ -1,7 +1,12 @@
 package com.example.ashish.alumini.fragments.settings;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -9,13 +14,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
+
+import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -60,6 +74,9 @@ public class FragmentJobPosting extends Fragment {
     @Bind(R.id.editText_member_email)
     EditText mEditTextemail;
 
+    @Bind(R.id.imageView_companyLogo)
+    ImageView mImageView;
+
     Bus mBus = new Bus();
 
     PostLoginActivity mActivity;
@@ -93,6 +110,7 @@ public class FragmentJobPosting extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -107,7 +125,7 @@ public class FragmentJobPosting extends Fragment {
 
         mActivity = (PostLoginActivity) getActivity();
 
-
+        Dexter.initialize(mActivity);
         return view;
     }
 
@@ -293,5 +311,65 @@ public class FragmentJobPosting extends Fragment {
 //
 //
 //    }
+
+    @OnClick(R.id.imageView_companyLogo)
+    public void function(){
+
+
+//        Intent intent = new Intent();
+//        // Show only images, no videos or anything else
+//        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        // Always show the chooser (if there are multiple options available)
+//        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+
+        Dexter.checkPermission(new PermissionListener() {
+            @Override
+            public void onPermissionGranted(PermissionGrantedResponse response) {
+                Log.d(TAG, "Permission granted");
+                Intent intent = new Intent();
+                // Show only images, no videos or anything else
+                 intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                 // Always show the chooser (if there are multiple options available)
+                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+
+            }
+
+            @Override
+            public void onPermissionDenied(PermissionDeniedResponse response) {
+                Log.d(TAG, "Permission denied");
+            }
+
+            @Override
+            public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                Log.d(TAG, "Permission RATIONALE");
+            }
+        }, Manifest.permission.READ_EXTERNAL_STORAGE);
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1
+//                && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+
+            Uri uri = data.getData();
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(mActivity.getContentResolver(), uri);
+                // Log.d(TAG, String.valueOf(bitmap));
+
+//                ImageView imageView = (ImageView) findViewById(R.id.imageView);
+                mImageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
 }

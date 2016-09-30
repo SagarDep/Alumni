@@ -37,6 +37,7 @@ android {
 
 }
 
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
@@ -98,6 +99,10 @@ dependencies {
 
     // material progress bar
     compile 'me.zhanghai.android.materialprogressbar:library:1.1.7'
+
+
+    // permission checker
+    compile 'com.karumi:dexter:2.3.1'
 
 
 }

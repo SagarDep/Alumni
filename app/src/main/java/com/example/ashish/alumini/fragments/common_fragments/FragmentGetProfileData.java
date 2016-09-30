@@ -169,6 +169,8 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 //            makeServerToGetCompleteData(id);
         }
 
+
+
         return view;
     }
 
@@ -194,11 +196,12 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     @OnClick(R.id.imageView_companyLogo)
     public void image(){
         Intent intent = new Intent();
-// Show only images, no videos or anything else
+        // Show only images, no videos or anything else
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-// Always show the chooser (if there are multiple options available)
+        // Always show the chooser (if there are multiple options available)
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+
     }
 
     @Override
