@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -161,6 +162,7 @@ public class MainScreenActivity extends AppCompatActivity
 
     @Subscribe
     public void changeProgressBar(Boolean a){
+        Log.d(TAG,"bus recieved value " +a.toString());
         if (a){
             mProgressBar.setVisibility(View.VISIBLE);
         }

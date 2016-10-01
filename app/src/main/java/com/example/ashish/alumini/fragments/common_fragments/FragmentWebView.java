@@ -91,14 +91,14 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_web_view, container, false);
 
-
-
-        ButterKnife.bind(this,view);
         //Bus Registering
         mBus.register(getActivity());
 
+        ButterKnife.bind(this,view);
+
+
         // show progress bar
-        mBus.post(true);
+//        mBus.post(true);
 
         if (getActivity() instanceof PostLoginActivity){
             mActivity = (PostLoginActivity) getActivity();
@@ -119,6 +119,7 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
 
             @Override
             public void onPageFinished(WebView view, String url) {
+                Log.d(TAG, "Page finished");
                 // hiding progress bar
                 mBus.post(false);
             }
@@ -130,6 +131,14 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
             }
 
             @Override
+            public void onLoadResource(WebView view, String url) {
+                super.onLoadResource(view, url);
+
+                Log.d(TAG,"Error while loading page");
+
+            }
+
+            @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
 
@@ -137,7 +146,6 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
 
                 // hiding progress bar
                 Boolean aBoolean = false;
-
                 mBus.post(aBoolean);
             }
         });
@@ -161,6 +169,8 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
     public void onResume() {
         super.onResume();
 
+//        //Bus Registering
+//        mBus.register(getActivity());
     }
 
     @Override

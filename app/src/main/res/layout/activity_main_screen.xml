@@ -17,5 +17,6 @@
         android:id="@+id/container_main_screen"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/material_progressBar" />
 </RelativeLayout>
