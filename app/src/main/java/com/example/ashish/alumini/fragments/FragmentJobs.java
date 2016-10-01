@@ -170,17 +170,19 @@ public class FragmentJobs extends Fragment {
                 }
                 // TODO : adding the datasetmodify method
 
-                //iterating the list to save in database
-                for (JobListInstance model: mJobArrayList ) {
+                if (mJobArrayList!=null){
+                    //iterating the list to save in database
+                    for (JobListInstance model: mJobArrayList ) {
 
-                    // creating a new model + saving in db
-                    JobInstanceModel jobModel = new JobInstanceModel();
-                    jobModel.setName(model.getName());
-                    jobModel.set_id(model.get_id());
-                    jobModel.setDesignation(model.getRole());
-                    jobModel.setLocation(model.getLocation());
-                    jobModel.save();
+                        // creating a new model + saving in db
+                        JobInstanceModel jobModel = new JobInstanceModel();
+                        jobModel.setName(model.getName());
+                        jobModel.set_id(model.get_id());
+                        jobModel.setDesignation(model.getRole());
+                        jobModel.setLocation(model.getLocation());
+                        jobModel.save();
 
+                    }
                 }
 
 

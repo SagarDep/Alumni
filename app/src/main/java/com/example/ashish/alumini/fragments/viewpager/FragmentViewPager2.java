@@ -16,6 +16,7 @@ import com.example.ashish.alumini.members.MemberAdapter;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.members.RecyclerItemClickListener;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
+import com.example.ashish.alumini.supporting_classes.GlobalBus;
 import com.example.ashish.alumini.supporting_classes.MemberLists;
 import com.squareup.otto.Bus;
 
@@ -45,6 +46,7 @@ public class FragmentViewPager2 extends Fragment {
     //event bus
     Bus mBus = new Bus();
 
+    GlobalBus globalBus = GlobalBus.getInstance();
     public FragmentViewPager2() {
         // Required empty public constructor
     }
@@ -129,12 +131,19 @@ public class FragmentViewPager2 extends Fragment {
     public void onPause() {
         super.onPause();
         mBus.unregister(getActivity());
+
+        globalBus.unregister(this);
     }
+
 
     @Override
     public void onResume() {
         super.onResume();
         mBus.register(getActivity());
+
+        globalBus.register(this);
+        globalBus.post(false);
+
 
     }
 

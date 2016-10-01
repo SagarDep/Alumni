@@ -2,7 +2,9 @@ package com.example.ashish.alumini.fragments.settings;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,11 +31,15 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
+import java.io.File;
 import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -364,6 +370,7 @@ public class FragmentJobPosting extends Fragment {
                 // Log.d(TAG, String.valueOf(bitmap));
 
 //                ImageView imageView = (ImageView) findViewById(R.id.imageView);
+                makeServerCallToUploadImage(bitmap, uri);
                 mImageView.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -371,5 +378,62 @@ public class FragmentJobPosting extends Fragment {
         }
     }
 
+    public void makeServerCallToUploadImage(Bitmap bitmap, Uri uri){
 
+        File file = new File(getPath(uri));
+//                File file = new File(uri.getPath());
+
+
+        RequestBody  ph = RequestBody.create(MediaType.parse("image/*"),file);
+
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("photo","imagekaname",ph).build();
+
+        MultipartBody.Part filePart = MultipartBody.Part.createFormData("photo",
+                file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
+
+
+
+        RequestBody requestFile =
+                RequestBody.create(MediaType.parse("multipart/form-data"), file);
+
+        MultipartBody.Part body =
+                MultipartBody.Part.createFormData("picture", file.getName(), requestFile);
+
+        String descriptionString = "hello, this is description speaking";
+        RequestBody description =
+                RequestBody.create(
+                        MediaType.parse("multipart/form-data"), descriptionString);
+
+
+
+
+
+//        MultipartBody.Part part = MultipartBody.Part.create(requestBody);
+        Call<String> call = ApiClient.getServerApi().upload(body);
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.d(TAG, "Upload Successful");
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.d(TAG, "Upload Failed" + t.getMessage());
+            }
+        });
+
+
+    }
+
+    private String getPath(Uri uri) {
+        String[]  data = { MediaStore.Images.Media.DATA };
+        CursorLoader loader = new CursorLoader(mActivity, uri, data, null, null, null);
+        Cursor cursor = loader.loadInBackground();
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
+    }
 }
