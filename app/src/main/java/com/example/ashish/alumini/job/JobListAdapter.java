@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.network.pojo.JobListInstance;
+import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.squareup.picasso.Picasso;
@@ -60,8 +61,10 @@ public class JobListAdapter extends ArrayAdapter<JobListInstance> {
         mTextViewJobLocation.setText(item.getLocation());
         mTextViewJobPosition.setText(item.getRole());
 
+        String name = new GlobalPrefs(getContext()).getString("Userid");
+
         Picasso.with(getContext())
-                .load("http://172.16.4.107/2.jpg")
+                .load("http://10.42.0.1:3000/upload/uploads/thumbs/"+name + "-profile")
                 .placeholder(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_user)
                         .color(Color.LTGRAY)
                         .sizeDp(70))

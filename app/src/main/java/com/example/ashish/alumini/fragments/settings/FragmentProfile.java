@@ -1,6 +1,7 @@
 package com.example.ashish.alumini.fragments.settings;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -17,11 +18,16 @@ import com.example.ashish.alumini.network.ApiClient;
 
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
+import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -55,6 +61,8 @@ public class FragmentProfile extends Fragment {
     @Bind(R.id.textView_mail) TextView mTextViewMail;
     @Bind(R.id.textView_fbLink) TextView mTextViewFb;
 
+    @Bind(R.id.imageView_profilepic)
+    CircleImageView mImageView;
 
     Bus mBus = new Bus();
 
@@ -119,7 +127,15 @@ public class FragmentProfile extends Fragment {
             mImageViewEdit.setVisibility(View.GONE);
 
             // make server call to get more data
-            makeServerCallToGetMoreData();
+            makeServerCallToGetMoreData(mListInstance.get_id().toString());
+
+            // starting picasso image loading
+            Picasso.with(mImageView.getContext())
+                    .load(ApiClient.BASE_URL + "upload/uploads/fullsize/" + mListInstance.get_id().toString())
+                    .placeholder(new IconicsDrawable(mImageView.getContext()).icon(FontAwesome.Icon.faw_user)
+                            .color(Color.LTGRAY)
+                            .sizeDp(70))
+                    .into(mImageView);
 
             // set the data which was transfered from previous recycler view though setData
             mTextView_name.setText(mListInstance.getName());
@@ -161,9 +177,9 @@ public class FragmentProfile extends Fragment {
     }
 
     // whent the user will click on the recycler view in view pager to get more details about the user
-    public void makeServerCallToGetMoreData(){
+    public void makeServerCallToGetMoreData( String id){
         Call<MemberInstance> call = ApiClient.getServerApi().
-                getRemainingDataForRecyclerView(mListInstance.get_id().toString());
+                getRemainingDataForRecyclerView(id);
 
         call.enqueue(new Callback<MemberInstance>() {
             @Override
@@ -191,6 +207,9 @@ public class FragmentProfile extends Fragment {
                 Log.d(TAG, "API call failed " + t.toString());
                 // hiding progress bar
                 mBus.post(false);
+                // display toast
+                TastyToast.makeText(mActivity,"Can't communicate to server",500,TastyToast.ERROR);
+                mActivity.onBackPressed();
             }
         });
     }
@@ -215,6 +234,10 @@ public class FragmentProfile extends Fragment {
                 Log.d(TAG, "API call failed " + t.toString());
                 // hiding progress bar
                 mBus.post(false);
+
+                // display toast
+                TastyToast.makeText(mActivity,"Can't communicate to server",500,TastyToast.ERROR);
+                mActivity.onBackPressed();
             }
         });
     }

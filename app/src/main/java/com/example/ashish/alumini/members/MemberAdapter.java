@@ -1,5 +1,6 @@
 package com.example.ashish.alumini.members;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -61,6 +65,12 @@ public class MemberAdapter  extends RecyclerView.Adapter<MemberAdapter.MyViewHol
         holder.designation.setText(aInstance.getDesignation());
         holder.year.setText(aInstance.getYear());
         holder.location.setText(aInstance.getWork());
+        Picasso.with(holder.mImageView.getContext())
+                .load(ApiClient.BASE_URL + "upload/uploads/thumbs/" + aInstance.get_id())
+                .placeholder(new IconicsDrawable(holder.mImageView.getContext()).icon(FontAwesome.Icon.faw_user)
+                        .color(Color.LTGRAY)
+                        .sizeDp(70))
+                .into(holder.mImageView);
 
     }
 

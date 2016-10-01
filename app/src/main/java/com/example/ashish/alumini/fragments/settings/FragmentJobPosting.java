@@ -245,89 +245,10 @@ public class FragmentJobPosting extends Fragment {
                 mEditTextWebLink.setText("");
                 mEditTextemail.setText("");
     }
-//    public void makeServerCallToUploadData(){
-//
-//        ProgressDialog progressBar = new ProgressDialog( getActivity());
-//        progressBar.setMessage("uploading");
-//        progressBar.show();
-//
-//
-//
-//        File file = new File("/storage/extSdCard/DCIM/Camera/20160901_082158.jpg");
-//
-////        RequestBody requestBody = new RequestBody() {
-////            @Override
-////            public MediaType contentType() {
-////                return null;
-////            }
-////
-////            @Override
-////            public void writeTo(BufferedSink sink) throws IOException {
-////
-////            }
-////        };
-////
-////        Call<String> call = ApiClient.getServerApi().upload(requestBody);
-//        //Create Upload Server Client
-//        ApiService service = RetroClient.getApiService();
-//
-//        //File creating from selected URL
-//        File file = new File(imagePath);
-//
-//        // create RequestBody instance from file
-//        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-//
-//        // MultipartBody.Part is used to send also the actual file name
-//        MultipartBody.Part body =
-//                MultipartBody.Part.createFormData("uploaded_file", file.getName(), requestFile);
-//
-//        Call<Result> resultCall = service.uploadImage(body);
-//
-//        // finally, execute the request
-//        resultCall.enqueue(new Callback<Result>() {
-//            @Override
-//            public void onResponse(Call<Result> call, Response<Result> response) {
-//
-//                progressDialog.dismiss();
-//
-//                // Response Success or Fail
-//                if (response.isSuccessful()) {
-//                    if (response.body().getResult().equals("success"))
-//                        Snackbar.make(parentView, R.string.string_upload_success, Snackbar.LENGTH_LONG).show();
-//                    else
-//                        Snackbar.make(parentView, R.string.string_upload_fail, Snackbar.LENGTH_LONG).show();
-//
-//                } else {
-//                    Snackbar.make(parentView, R.string.string_upload_fail, Snackbar.LENGTH_LONG).show();
-//                }
-//
-//                /**
-//                 * Update Views
-//                 */
-//                imagePath = "";
-//                textView.setVisibility(View.VISIBLE);
-//                imageView.setVisibility(View.INVISIBLE);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Result> call, Throwable t) {
-//                progressDialog.dismiss();
-//            }
-//        });
-//
-//
-//    }
+
 
     @OnClick(R.id.imageView_companyLogo)
-    public void function(){
-
-
-//        Intent intent = new Intent();
-//        // Show only images, no videos or anything else
-//        intent.setType("image/*");
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
-//        // Always show the chooser (if there are multiple options available)
-//        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+    public void imageGettingFunction(){
 
         Dexter.checkPermission(new PermissionListener() {
             @Override
@@ -367,10 +288,7 @@ public class FragmentJobPosting extends Fragment {
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(mActivity.getContentResolver(), uri);
-                // Log.d(TAG, String.valueOf(bitmap));
-
-//                ImageView imageView = (ImageView) findViewById(R.id.imageView);
-                makeServerCallToUploadImage(bitmap, uri);
+                makeServerCallToUploadImage( uri);
                 mImageView.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -378,28 +296,20 @@ public class FragmentJobPosting extends Fragment {
         }
     }
 
-    public void makeServerCallToUploadImage(Bitmap bitmap, Uri uri){
+    public void makeServerCallToUploadImage( Uri uri){
 
+        // getting file from uri
         File file = new File(getPath(uri));
-//                File file = new File(uri.getPath());
 
-
-        RequestBody  ph = RequestBody.create(MediaType.parse("image/*"),file);
-
-        RequestBody requestBody = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart("photo","imagekaname",ph).build();
-
-        MultipartBody.Part filePart = MultipartBody.Part.createFormData("photo",
-                file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
-
-
+        //https://futurestud.io/tutorials/retrofit-2-how-to-upload-files-to-server
 
         RequestBody requestFile =
                 RequestBody.create(MediaType.parse("multipart/form-data"), file);
 
+        String name = new GlobalPrefs(mActivity).getString("Userid");
+
         MultipartBody.Part body =
-                MultipartBody.Part.createFormData("picture", file.getName(), requestFile);
+                MultipartBody.Part.createFormData("picture", name + "-profile", requestFile);
 
         String descriptionString = "hello, this is description speaking";
         RequestBody description =
@@ -407,21 +317,20 @@ public class FragmentJobPosting extends Fragment {
                         MediaType.parse("multipart/form-data"), descriptionString);
 
 
-
-
-
-//        MultipartBody.Part part = MultipartBody.Part.create(requestBody);
-        Call<String> call = ApiClient.getServerApi().upload(body);
+        Call<String> call = ApiClient.getServerApi().uploadJob(body);
 
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 Log.d(TAG, "Upload Successful");
+                TastyToast.makeText(mActivity,"Upload Successful",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 Log.d(TAG, "Upload Failed" + t.getMessage());
+                TastyToast.makeText(mActivity,"Upload Failed",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+
             }
         });
 

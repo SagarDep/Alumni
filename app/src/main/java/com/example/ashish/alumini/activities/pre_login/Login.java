@@ -165,6 +165,13 @@ public class Login extends Activity {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 Log.d(TAG, "API successful");
+
+                //hide the progress bar
+                postHideSignal(false);
+
+                //making button clickable
+                loginButton.setEnabled(true);
+
                 RetrofitErrorHandler errorHandler = new RetrofitErrorHandler();
                 errorHandler.statusCodeHandler(getBaseContext(),response.code());
                 if (response.code()==200){

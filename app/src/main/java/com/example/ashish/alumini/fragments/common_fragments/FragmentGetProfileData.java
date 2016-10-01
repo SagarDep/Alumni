@@ -1,7 +1,10 @@
 package com.example.ashish.alumini.fragments.common_fragments;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,18 +22,27 @@ import android.widget.Spinner;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
-import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.fragments.main_screen_fragments.FragmentMainScreen;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
+import java.io.File;
 import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -98,14 +110,14 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         TextInputLayout mTextInputLayoutCompany;
 
     @Bind(R.id.imageView_companyLogo)
-    ImageView imageView;
+    ImageView mImageView;
 
 
     // event bus registering
     Bus mBus = new Bus();
 
     // activities
-    MainScreenActivity mMainScreenActivity;
+    MainScreenActivity mActivity;
 
     private int PICK_IMAGE_REQUEST = 1;
 
@@ -152,23 +164,17 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         //Bus Registering
         mBus.register(getActivity());
 
-        // initialization of activity
+        // initialization of mActivity
         if (getActivity() instanceof MainScreenActivity){
-            mMainScreenActivity = (MainScreenActivity) getActivity();
+            mActivity = (MainScreenActivity) getActivity();
         }
 
         // displaying the data which is strored in shared preference from previous page
         mEditTextName.setText(new GlobalPrefs(getContext()).getString(getString(R.string.username)));
         mEditTextEmail.setText(new GlobalPrefs(getContext()).getString(getString(R.string.useremail)));
 
-
-
-        // editing
-        if (mParam1=="edit"){
-            String id = new GlobalPrefs(getActivity()).getString(getString(R.string.userid));
-//            makeServerToGetCompleteData(id);
-        }
-
+        // runtime permission checker
+        Dexter.initialize(mActivity);
 
 
         return view;
@@ -194,14 +200,34 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     }
 
     @OnClick(R.id.imageView_companyLogo)
-    public void image(){
-        Intent intent = new Intent();
-        // Show only images, no videos or anything else
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        // Always show the chooser (if there are multiple options available)
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    public void imagePickingFunction(){
 
+        Dexter.checkPermission(new PermissionListener() {
+            @Override
+            public void onPermissionGranted(PermissionGrantedResponse response) {
+                Log.d(TAG, "Permission granted");
+
+                Intent intent = new Intent();
+                // Show only images, no videos or anything else
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                // Always show the chooser (if there are multiple options available)
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+
+            }
+
+            @Override
+            public void onPermissionDenied(PermissionDeniedResponse response) {
+                Log.d(TAG, "Permission denied");
+                TastyToast.makeText(mActivity,"We need permission for uploading your photo",
+                        TastyToast.LENGTH_SHORT,TastyToast.WARNING);
+            }
+
+            @Override
+            public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                Log.d(TAG, "Permission RATIONALE");
+            }
+        }, Manifest.permission.READ_EXTERNAL_STORAGE);
     }
 
     @Override
@@ -245,7 +271,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
                 // hiding the progress bar
 
                if (response.code()==201){
-                   mMainScreenActivity.changeFragment(new FragmentMainScreen());
+                   mActivity.changeFragment(new FragmentMainScreen());
                    TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
                    // storing id and name in shared pref
 //                   globalPrefs.putString(getString(R.string.userid),response1.get_id());
@@ -314,22 +340,66 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_IMAGE_REQUEST
-//                && resultCode == RESULT_OK
-                && data != null && data.getData() != null) {
+        if (requestCode == 1 && data != null && data.getData() != null) {
 
             Uri uri = data.getData();
 
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(mMainScreenActivity.getContentResolver(), uri);
-                // Log.d(TAG, String.valueOf(bitmap));
-
-//                ImageView imageView = (ImageView) findViewById(R.id.imageView);
-                imageView.setImageBitmap(bitmap);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(mActivity.getContentResolver(), uri);
+                makeServerCallToUploadImage( uri);
+                mImageView.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void makeServerCallToUploadImage( Uri uri){
+
+        // getting file from uri
+        File file = new File(getPath(uri));
+
+        //https://futurestud.io/tutorials/retrofit-2-how-to-upload-files-to-server
+
+        RequestBody requestFile =
+                RequestBody.create(MediaType.parse("multipart/form-data"), file);
+
+        String userid = new GlobalPrefs(mActivity).getString("Userid");
+
+        MultipartBody.Part body =
+                MultipartBody.Part.createFormData("picture", userid , requestFile);
+
+//        String descriptionString = "hello, this is description speaking";
+//        RequestBody description =
+//                RequestBody.create(
+//                        MediaType.parse("multipart/form-data"), descriptionString);
+
+        Call<String> call = ApiClient.getServerApi().uploadJob(body);
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.d(TAG, "Upload Successful");
+                TastyToast.makeText(mActivity,"Upload Successful",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.d(TAG, "Upload Failed" + t.getMessage());
+                TastyToast.makeText(mActivity,"Upload Failed",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+
+            }
+        });
+
+
+    }
+    private String getPath(Uri uri) {
+        String[]  data = { MediaStore.Images.Media.DATA };
+        CursorLoader loader = new CursorLoader(mActivity, uri, data, null, null, null);
+        Cursor cursor = loader.loadInBackground();
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
     }
 
 
