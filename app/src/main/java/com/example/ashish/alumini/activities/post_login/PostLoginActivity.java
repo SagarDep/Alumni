@@ -64,8 +64,6 @@ public class PostLoginActivity extends AppCompatActivity {
         mActionBar.setElevation(0);
         mActionBar.setTitle("Members");
 
-        //event bus registering
-        mBus.register(this);
 
         mFragmentManager = getSupportFragmentManager();
 
@@ -94,7 +92,6 @@ public class PostLoginActivity extends AppCompatActivity {
             mFragmentTransaction.replace(R.id.fragment_container, fragment);
             mFragmentTransaction.commit();
         }
-
     }
 
     @Subscribe
@@ -135,6 +132,22 @@ public class PostLoginActivity extends AppCompatActivity {
                 break;
 
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //event bus registering
+        mBus.register(this);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //event bus unregistering
+        mBus.unregister(this);
+
     }
 
     @Override

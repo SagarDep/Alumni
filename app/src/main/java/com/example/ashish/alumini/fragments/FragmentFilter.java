@@ -1,12 +1,15 @@
 package com.example.ashish.alumini.fragments;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import com.example.ashish.alumini.members.expandable_list.ExpandableListAdapter;
 import com.example.ashish.alumini.R;
@@ -52,7 +55,7 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
     android.widget.ExpandableListAdapter listAdapter;
 
     List<String> listHeader;
-    HashMap<String, List<String>> listChild;
+    HashMap<String, List<String>> mHashMap;
 
     Bus mBus = new Bus();
 
@@ -93,10 +96,10 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
         // butterknife injections
         ButterKnife.bind(this,view);
         //Bus Registering
-        mBus.register(getActivity());
+//        mBus.register(getActivity());
 
 
-        listChild = new HashMap<>();
+        mHashMap = new HashMap<>();
 
         // making list of headers
         listHeader = new ArrayList<>();
@@ -120,10 +123,10 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
         }
 
         //adding the list + header to hashmap
-        listChild.put(listHeader.get(0), branch);
-        listChild.put(listHeader.get(1), year);
+        mHashMap.put(listHeader.get(0), branch);
+        mHashMap.put(listHeader.get(1), year);
 
-        listAdapter = new ExpandableListAdapter(getActivity(), listHeader, listChild);
+        listAdapter = new ExpandableListAdapter(getActivity(), listHeader, mHashMap);
 
         // setting list adapter
         mExpListView.setAdapter(listAdapter);
@@ -165,8 +168,15 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                // TODO Auto-generated method stub
-                Log.d(TAG, "clicked" + groupPosition);
+
+                v.setBackgroundColor(Color.BLACK);
+
+                Log.d(TAG, "clicked child" + groupPosition + " " + childPosition + " " +
+                        mHashMap.get(listHeader.get(groupPosition)).get(childPosition));
+
+//                TextView textView = (TextView) v;
+
+                mHashMap.get(listHeader.get(groupPosition)).get(childPosition);
                 return true;
             }
         });
@@ -184,12 +194,15 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mBus.unregister(getActivity());
+        mBus.register(getActivity());
+
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        mBus.unregister(getActivity());
+
     }
 
     @Override
