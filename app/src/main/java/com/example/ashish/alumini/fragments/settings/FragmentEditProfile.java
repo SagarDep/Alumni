@@ -1,7 +1,15 @@
 package com.example.ashish.alumini.fragments.settings;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.CursorLoader;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.util.Log;
@@ -11,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.example.ashish.alumini.R;
@@ -18,14 +27,28 @@ import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -91,7 +114,8 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     @Bind(R.id.textInputLayout_company)
         TextInputLayout mTextInputLayoutCompany;
 
-
+    @Bind(R.id.imageView_companyLogo)
+    ImageView mImageView;
 
     String stringArrayBranch[];
     String stringArrayYear[];
@@ -102,7 +126,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     Bus mBus = new Bus();
 
     // activities
-    PostLoginActivity mPostLoginActivity;
+    PostLoginActivity mActivity;
 
 
     public FragmentEditProfile() {
@@ -139,11 +163,22 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         //Bus Registering
         mBus.register(getActivity());
 
-        mPostLoginActivity = (PostLoginActivity) getActivity();
+        mActivity = (PostLoginActivity) getActivity();
+
+        Dexter.initialize(mActivity);
+
 
         // getting id from shared pref and initiating api call
         String id = new GlobalPrefs(getActivity()).getString(getString(R.string.userid));
         makeServerToGetCompleteData(id);
+
+        // starting picasso image loading
+        Picasso.with(mImageView.getContext())
+                .load(ApiClient.BASE_URL + "upload/uploads/fullsize/" + id)
+                .placeholder(new IconicsDrawable(mImageView.getContext()).icon(FontAwesome.Icon.faw_user)
+                        .color(Color.LTGRAY)
+                        .sizeDp(70))
+                .into(mImageView);
 
 //        fetcing the String array and converting to ArrayList
         stringArrayBranch =  getResources().getStringArray(R.array.branch_array);
@@ -179,6 +214,102 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         }
     }
 
+    @OnClick(R.id.imageView_companyLogo)
+    public void imageUploading(){
+        Dexter.checkPermission(new PermissionListener() {
+            @Override
+            public void onPermissionGranted(PermissionGrantedResponse response) {
+                Log.d(TAG, "Permission granted");
+                Intent intent = new Intent();
+                // Show only images, no videos or anything else
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                // Always show the chooser (if there are multiple options available)
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+
+            }
+
+            @Override
+            public void onPermissionDenied(PermissionDeniedResponse response) {
+                Log.d(TAG, "Permission denied");
+            }
+
+            @Override
+            public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                Log.d(TAG, "Permission RATIONALE");
+            }
+        }, Manifest.permission.READ_EXTERNAL_STORAGE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1
+//                && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+
+            Uri uri = data.getData();
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(mActivity.getContentResolver(), uri);
+                makeServerCallToUploadImage( uri);
+                mImageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void makeServerCallToUploadImage( Uri uri){
+
+        // getting file from uri
+        File file = new File(getPath(uri));
+
+        //https://futurestud.io/tutorials/retrofit-2-how-to-upload-files-to-server
+
+        RequestBody requestFile =
+                RequestBody.create(MediaType.parse("multipart/form-data"), file);
+
+        String userid = new GlobalPrefs(mActivity).getString("Userid");
+
+        MultipartBody.Part body =
+                MultipartBody.Part.createFormData("picture", userid , requestFile);
+
+        String descriptionString = "hello, this is description speaking";
+        RequestBody description =
+                RequestBody.create(
+                        MediaType.parse("multipart/form-data"), descriptionString);
+
+
+        Call<String> call = ApiClient.getServerApi().uploadJob(body);
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.d(TAG, "Upload Successful");
+                TastyToast.makeText(mActivity,"Upload Successful",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.d(TAG, "Upload Failed" + t.getMessage());
+                TastyToast.makeText(mActivity,"Upload Failed",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+
+            }
+        });
+
+
+    }
+
+    private String getPath(Uri uri) {
+        String[]  data = { MediaStore.Images.Media.DATA };
+        CursorLoader loader = new CursorLoader(mActivity, uri, data, null, null, null);
+        Cursor cursor = loader.loadInBackground();
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
+    }
 
 
     @Override
@@ -228,7 +359,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
                     // hiding the progrss bar
                     mBus.post(false);
 
-                    mPostLoginActivity.changeFragment(new FragmentProfile());
+                    mActivity.changeFragment(new FragmentProfile());
                     TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
 
                     // storing id and name in shared pref

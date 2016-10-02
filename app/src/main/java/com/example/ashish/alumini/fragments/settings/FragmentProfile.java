@@ -111,6 +111,14 @@ public class FragmentProfile extends Fragment {
 
             // make server call to get the remaining data of user
             makeServerCallToGetCompleteProfile(id);
+
+            // starting picasso image loading
+            Picasso.with(mImageView.getContext())
+                    .load(ApiClient.BASE_URL + "upload/uploads/fullsize/" + id)
+                    .placeholder(new IconicsDrawable(mImageView.getContext()).icon(FontAwesome.Icon.faw_user)
+                            .color(Color.LTGRAY)
+                            .sizeDp(70))
+                    .into(mImageView);
         }
 
         //Bus Registering
@@ -254,6 +262,8 @@ public class FragmentProfile extends Fragment {
         mTextViewJobLocation.setText(completeData.getWork());
         mTextViewYear.setText(completeData.getYear());
 //        mTextViewFb.setText(completeData.get);
+
+
     }
 
 }
