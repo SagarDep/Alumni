@@ -51,11 +51,16 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
     @Bind(R.id.expandableListView)
     ExpandableListView mExpListView;
 
+    @Bind(R.id.expandableListView2)
+    ExpandableListView mExpListView2;
 
+
+    android.widget.ExpandableListAdapter listAdapter2;
     android.widget.ExpandableListAdapter listAdapter;
 
     List<String> listHeader;
     HashMap<String, List<String>> mHashMap;
+    HashMap<String, List<String>> mHashMap2;
 
     Bus mBus = new Bus();
 
@@ -104,10 +109,11 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
         // making list of headers
         listHeader = new ArrayList<>();
         listHeader.add("Branch");
-        listHeader.add("Graduation Year");
+//        listHeader.add("Graduation Year");
 
         // list of branch
         List<String> branch = new ArrayList<>();
+
         branch.add("CSE");
         branch.add("AE");
         branch.add("ME");
@@ -124,63 +130,29 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
 
         //adding the list + header to hashmap
         mHashMap.put(listHeader.get(0), branch);
-        mHashMap.put(listHeader.get(1), year);
+//        mHashMap.put(listHeader.get(1), year);
 
         listAdapter = new ExpandableListAdapter(getActivity(), listHeader, mHashMap);
 
         // setting list adapter
         mExpListView.setAdapter(listAdapter);
 
-//         Listview Group click listener
-        mExpListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-
-            @Override
-            public boolean onGroupClick(ExpandableListView parent, View v,
-                                        int groupPosition, long id) {
-                Log.d(TAG, "Clicked Header " + groupPosition);
-
-                return false;
-            }
-        });
-
-//         Listview Group expanded listener
-        mExpListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-
-            @Override
-            public void onGroupExpand(int groupPosition) {
-
-            }
-        });
-
-//         Listview Group collasped listener
-        mExpListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-
-            @Override
-            public void onGroupCollapse(int groupPosition) {
 
 
-            }
-        });
+        mHashMap2 = new HashMap<>();
 
-//         Listview on child click listener
-        mExpListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+        // making list of headers
+        listHeader = new ArrayList<>();
+        listHeader.add(0,"Year");
 
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
+//        mHashMap.put(listHeader.get(0), branch);
+        mHashMap2.put(listHeader.get(0), year);
 
-                v.setBackgroundColor(Color.BLACK);
+        listAdapter2 = new ExpandableListAdapter(getActivity(), listHeader, mHashMap2);
 
-                Log.d(TAG, "clicked child" + groupPosition + " " + childPosition + " " +
-                        mHashMap.get(listHeader.get(groupPosition)).get(childPosition));
-
-//                TextView textView = (TextView) v;
-
-                mHashMap.get(listHeader.get(groupPosition)).get(childPosition);
-                return true;
-            }
-        });
-
+        // setting list adapter
+        mExpListView2.setAdapter(listAdapter2);
+//        mExpListView2.setVisibility(View.GONE);
 
         return view;
     }

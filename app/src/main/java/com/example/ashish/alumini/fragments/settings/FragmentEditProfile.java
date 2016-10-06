@@ -264,7 +264,8 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     public void makeServerCallToUploadImage( Uri uri){
 
         // getting file from uri
-        File file = new File(getPath(uri));
+//        File file = new File(getPath(uri));
+        File file = new File(uri.getPath());
 
         //https://futurestud.io/tutorials/retrofit-2-how-to-upload-files-to-server
 
