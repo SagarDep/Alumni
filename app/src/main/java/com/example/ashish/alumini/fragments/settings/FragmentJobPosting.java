@@ -117,8 +117,6 @@ public class FragmentJobPosting extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        throw new RuntimeException("crashli");
-
     }
 
     @Override

@@ -397,9 +397,15 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         String[]  data = { MediaStore.Images.Media.DATA };
         CursorLoader loader = new CursorLoader(mActivity, uri, data, null, null, null);
         Cursor cursor = loader.loadInBackground();
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        return cursor.getString(column_index);
+        // preventing nullificatrion
+        if (cursor!=null){
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        }
+
+        // else return the uri.getPath
+        else  return uri.getPath();
     }
 
 
