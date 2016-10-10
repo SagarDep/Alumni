@@ -154,7 +154,7 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
         globalBus.post(true);
 
         // checking if api call is still in progress or not
-        if (mMemberLists.mApiCallFlag){
+        if ( mMemberLists!=null && mMemberLists.mApiCallFlag){
             mProgressBar.setVisibility(View.VISIBLE);
         }
         else

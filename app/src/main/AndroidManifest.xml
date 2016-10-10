@@ -40,8 +40,12 @@
         <meta-data android:name="AA_DB_VERSION" android:value="3" />
         <meta-data android:name="AA_MODELS" android:value="com.example.ashish.alumini.network.models.MemberInstanceModel,
         com.example.ashish.alumini.network.models.JobInstanceModel" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="da38eee0478ea4410af014a915ab75e80ef63a34" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
 
 

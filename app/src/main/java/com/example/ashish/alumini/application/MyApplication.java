@@ -3,10 +3,12 @@ package com.example.ashish.alumini.application;
 import android.app.Application;
 
 import com.activeandroid.ActiveAndroid;
+import com.crashlytics.android.Crashlytics;
 import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.example.ashish.alumini.supporting_classes.MemberLists;
 import com.facebook.stetho.Stetho;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by ashish on 1/7/16.
@@ -17,6 +19,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
 
         /*
         * Stetho init
