@@ -374,7 +374,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 //                RequestBody.create(
 //                        MediaType.parse("multipart/form-data"), descriptionString);
 
-        Call<String> call = ApiClient.getServerApi().uploadJob(body);
+        Call<String> call = ApiClient.getServerApi().uploadProfileImage(body);
 
         call.enqueue(new Callback<String>() {
             @Override

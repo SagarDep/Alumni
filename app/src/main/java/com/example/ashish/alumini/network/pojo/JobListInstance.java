@@ -12,6 +12,10 @@ public class JobListInstance {
     private String role;
     private String type;
 
+
+
+    private String imagepath;
+
     /**
      *
      * @return
@@ -100,6 +104,14 @@ public class JobListInstance {
      */
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getImagepath() {
+        return imagepath;
+    }
+
+    public void setImagepath(String imagepath) {
+        this.imagepath = imagepath;
     }
 
 }

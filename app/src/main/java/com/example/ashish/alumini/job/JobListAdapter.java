@@ -2,6 +2,7 @@ package com.example.ashish.alumini.job;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.JobListInstance;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
@@ -32,6 +34,8 @@ public class JobListAdapter extends ArrayAdapter<JobListInstance> {
     @Bind(R.id.textView_companyName) TextView mTextViewCompanyName;
     @Bind(R.id.textView_joblocation) TextView mTextViewJobLocation;
     @Bind(R.id.textView_jobPosition) TextView mTextViewJobPosition;
+
+    String TAG = getClass().getSimpleName();
 
 
 
@@ -56,15 +60,18 @@ public class JobListAdapter extends ArrayAdapter<JobListInstance> {
 
         JobListInstance item = getItem(position);
 
+        if (item.getImagepath()!=null){
+            Log.d(TAG, "aa gaya");
+        }
 
         mTextViewCompanyName.setText(item.getName());
         mTextViewJobLocation.setText(item.getLocation());
         mTextViewJobPosition.setText(item.getRole());
 
-        String name = new GlobalPrefs(getContext()).getString("Userid");
+        String imageUrl  = new String(ApiClient.BASE_URL + "upload/uploads/thumbs/"+item.getImagepath());
 
         Picasso.with(getContext())
-                .load("http://10.42.0.1:3000/upload/uploads/thumbs/"+name + "-profile")
+                .load(imageUrl)
                 .placeholder(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_user)
                         .color(Color.LTGRAY)
                         .sizeDp(70))

@@ -102,12 +102,12 @@ public interface ServerApi {
     /*
     * Multipart file uploading
     * */
-//    @Multipart
-//    @POST("/upload")
-//    Call<String> upload(@Part("image") RequestBody photo, @Part("description") RequestBody description);
+    @Multipart
+    @POST("/upload/job")
+    Call<String> uploadJobImage(@Part MultipartBody.Part photo);
 
     @Multipart
     @POST("/upload/image")
-    Call<String> uploadJob(@Part MultipartBody.Part photo);
+    Call<String> uploadProfileImage(@Part MultipartBody.Part photo);
 
 }

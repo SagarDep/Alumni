@@ -307,10 +307,10 @@ public class FragmentJobPosting extends Fragment {
         RequestBody requestFile =
                 RequestBody.create(MediaType.parse("multipart/form-data"), file);
 
-        String name = new GlobalPrefs(mActivity).getString("Userid");
+        String userid = new GlobalPrefs(mActivity).getString("Userid");
 
         MultipartBody.Part body =
-                MultipartBody.Part.createFormData("picture", name + "-profile", requestFile);
+                MultipartBody.Part.createFormData("picture", userid + "-job", requestFile);
 
         String descriptionString = "hello, this is description speaking";
         RequestBody description =
@@ -318,7 +318,7 @@ public class FragmentJobPosting extends Fragment {
                         MediaType.parse("multipart/form-data"), descriptionString);
 
 
-        Call<String> call = ApiClient.getServerApi().uploadJob(body);
+        Call<String> call = ApiClient.getServerApi().uploadJobImage(body);
 
         call.enqueue(new Callback<String>() {
             @Override

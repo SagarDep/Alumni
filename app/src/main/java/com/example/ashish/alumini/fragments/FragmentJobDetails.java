@@ -1,6 +1,7 @@
 package com.example.ashish.alumini.fragments;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +16,11 @@ import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.JobListInstance;
 import com.example.ashish.alumini.network.pojo.JobDetail;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
+import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -34,6 +39,8 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    String TAG = getClass().getSimpleName();
 
 
     private JobListInstance mJobListInstance;
@@ -91,10 +98,6 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -126,15 +129,47 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         mTextViewName.setText(mJobListInstance.getName());
         mTextViewLocation.setText(mJobListInstance.getLocation());
         mTextViewJobDesignation.setText(mJobListInstance.getRole());
+        String imageUrl = new String(ApiClient.BASE_URL + "upload/uploads/thumbs/"+
+                mJobListInstance.getImagepath());
+
+        // picasso image loading
+        Picasso.with(getActivity())
+                .load(mJobListInstance.getImagepath())
+                .placeholder(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_user)
+                        .color(Color.LTGRAY)
+                        .sizeDp(70))
+                .error(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_user)
+                        .color(Color.RED)
+                        .sizeDp(70))
+                .into(imageView_companyImage, new com.squareup.picasso.Callback() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onError() {
+
+                    }
+                });
+
+
     }
     public void makeServerCallToGetRemainingData(){
+
+//        making progress bar visible
+        mBus.post(true);
 
         Call<JobDetail> call = ApiClient.getServerApi().getJobDetails(mJobListInstance.get_id());
 
         call.enqueue(new Callback<JobDetail>() {
             @Override
             public void onResponse(Call<JobDetail> call, Response<JobDetail> response) {
-                Log.d("API cal","Successful");
+
+                //making progress bar invisible
+                mBus.post(false);
+
+                Log.d(TAG,"API cal Successful");
                 JobDetail jobDetail = response.body();
 
                 mTextViewWebsite.setText(jobDetail.getContactweb());
@@ -145,7 +180,11 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
 
             @Override
             public void onFailure(Call<JobDetail> call, Throwable t) {
-                Log.d("API cal","Failed");
+                //making progress bar invisible
+                mBus.post(false);
+                TastyToast.makeText(mActivity, "Failed to connect", TastyToast.LENGTH_SHORT,
+                        TastyToast.ERROR);
+                Log.d(TAG,"API cal Failed" + t.toString());
             }
         });
 
