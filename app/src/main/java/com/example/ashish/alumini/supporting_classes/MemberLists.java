@@ -37,6 +37,10 @@ public class MemberLists {
 
         mGlobalBus.register(this);
     }
+
+    /*
+    * old api to get all data in one call
+    * */
     public void makeServerCallToGetAllMemberData(){
 
 

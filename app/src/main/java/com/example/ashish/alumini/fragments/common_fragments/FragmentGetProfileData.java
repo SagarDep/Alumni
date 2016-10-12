@@ -36,6 +36,7 @@ import com.squareup.otto.Bus;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -76,9 +77,9 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
     //location
     @Bind(R.id.editText_locationHome)
-            EditText mEditTextLocationHome;
+    EditText mEditTextLocationHome;
     @Bind(R.id.editText_locationWork)
-           EditText mEditTextLocationWork;
+    EditText mEditTextLocationWork;
 
     //Spinners
     @Bind(R.id.spinner_branch)
@@ -93,21 +94,21 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
     // name and bio
     @Bind(R.id.editText_memberName)
-            EditText mEditTextName;
+    EditText mEditTextName;
     @Bind(R.id.editText_memberBio)
     EditText mEditTextBio;
 
     // designation and company EditTexts
     @Bind(R.id.editText_Designation)
-        EditText mEditTextDesignation;
+    EditText mEditTextDesignation;
     @Bind(R.id.editText_company)
-        EditText mEditTextCompany;
+    EditText mEditTextCompany;
 
     @Bind(R.id.textView_memberDesignation)
     TextInputLayout mTextInputLayoutDesignation;
     // designation and company
     @Bind(R.id.textInputLayout_company)
-        TextInputLayout mTextInputLayoutCompany;
+    TextInputLayout mTextInputLayoutCompany;
 
     @Bind(R.id.imageView_companyLogo)
     ImageView mImageView;
@@ -120,7 +121,6 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     MainScreenActivity mActivity;
 
     private int PICK_IMAGE_REQUEST = 1;
-
 
 
     public FragmentGetProfileData() {
@@ -160,12 +160,12 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_getprofiledata, container, false);
 
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
         //Bus Registering
         mBus.register(getActivity());
 
         // initialization of mActivity
-        if (getActivity() instanceof MainScreenActivity){
+        if (getActivity() instanceof MainScreenActivity) {
             mActivity = (MainScreenActivity) getActivity();
         }
 
@@ -181,26 +181,25 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     }
 
     @OnClick(R.id.button_save_profile_data)
-    public void saveDataHandler(){
-        if (validate()){
+    public void saveDataHandler() {
+        if (validate()) {
             makeServerCalltoPostCompleteData();
         }
     }
 
     @OnClick(R.id.checkBox_isNerd)
-    public void textChangingOfEditText(){
-        if (checkbox.isChecked()){
+    public void textChangingOfEditText() {
+        if (checkbox.isChecked()) {
             mTextInputLayoutDesignation.setHint("Course");
             mTextInputLayoutCompany.setHint("University / College");
-        }
-        else if (!checkbox.isChecked()){
+        } else if (!checkbox.isChecked()) {
             mTextInputLayoutDesignation.setHint("Designation");
             mTextInputLayoutCompany.setHint("Organization");
         }
     }
 
     @OnClick(R.id.imageView_companyLogo)
-    public void imagePickingFunction(){
+    public void imagePickingFunction() {
 
         Dexter.checkPermission(new PermissionListener() {
             @Override
@@ -219,8 +218,8 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
             @Override
             public void onPermissionDenied(PermissionDeniedResponse response) {
                 Log.d(TAG, "Permission denied");
-                TastyToast.makeText(mActivity,"We need permission for uploading your photo",
-                        TastyToast.LENGTH_SHORT,TastyToast.WARNING);
+                TastyToast.makeText(mActivity, "We need permission for uploading your photo",
+                        TastyToast.LENGTH_SHORT, TastyToast.WARNING);
             }
 
             @Override
@@ -245,7 +244,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     /*
     * Post the edited text
     * */
-    public void makeServerCalltoPostCompleteData(){
+    public void makeServerCalltoPostCompleteData() {
         // getting the id from shared preffernece which was stored during partial signup
         String id = new GlobalPrefs(getContext()).getString(getString(R.string.userid));
 
@@ -263,27 +262,27 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
                 mEditTextPhone.getText().toString().trim(),                    // phone
                 mEditTextWebLink.getText().toString().trim(),                  // web
                 "facebook link"                                                // fb link
-                );
+        );
 
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 // hiding the progress bar
 
-               if (response.code()==201){
-                   mActivity.changeFragment(new FragmentMainScreen());
-                   TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
-                   // storing id and name in shared pref
+                if (response.code() == 201) {
+                    mActivity.changeFragment(new FragmentMainScreen());
+                    TastyToast.makeText(getContext(), "Details Updated", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+                    // storing id and name in shared pref
 //                   globalPrefs.putString(getString(R.string.userid),response1.get_id());
 
-                   GlobalPrefs globalPrefs = new GlobalPrefs(getActivity());
-                   globalPrefs.putString(getString(R.string.username),
-                           mEditTextName.getText().toString().trim()                     // name
-                   );
+                    GlobalPrefs globalPrefs = new GlobalPrefs(getActivity());
+                    globalPrefs.putString(getString(R.string.username),
+                            mEditTextName.getText().toString().trim()                     // name
+                    );
 
-                   // for session maintaining
-                   globalPrefs.putBooloean(getString(R.string.is_logged_in),true);
-               }
+                    // for session maintaining
+                    globalPrefs.putBooloean(getString(R.string.is_logged_in), true);
+                }
 
             }
 
@@ -295,42 +294,36 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
     }
 
-    public boolean validate(){
+    public boolean validate() {
 
 
-        if (mEditTextName.getText().toString().trim().length()<=6){
+        if (mEditTextName.getText().toString().trim().length() <= 6) {
             mEditTextName.setError("Name must be greater than 6 characters");
             return false;
-        }
-        else  if (mEditTextBio.getText().toString().trim().length()==0){
+        } else if (mEditTextBio.getText().toString().trim().length() == 0) {
             mEditTextBio.setError("Make it a little Big");
             return false;
-        }
-        else if (mEditTextDesignation.getText().toString().trim().length()==0){
+        } else if (mEditTextDesignation.getText().toString().trim().length() == 0) {
             mEditTextDesignation.setError("Invalid Designation");
             return false;
-        }
-        else if (mEditTextCompany.getText().toString().trim().length()==0){
+        } else if (mEditTextCompany.getText().toString().trim().length() == 0) {
             mEditTextCompany.setError("Invalid Designation");
             return false;
         }
 
-        if (mEditTextLocationHome.getText().toString().trim().length()==0){
+        if (mEditTextLocationHome.getText().toString().trim().length() == 0) {
             mEditTextLocationHome.setError("Invalid Location");
             return false;
-        }
-        else if (mEditTextLocationWork.getText().toString().trim().length()==0){
+        } else if (mEditTextLocationWork.getText().toString().trim().length() == 0) {
             mEditTextLocationWork.setError("Invalid Location");
             return false;
-        }else if (mEditTextPhone.getText().toString().trim().length()==11){
+        } else if (mEditTextPhone.getText().toString().trim().length() == 11) {
             mEditTextPhone.setError("Invalid Phone Number");
             return false;
-        }
-        else if (false){
+        } else if (false) {
             mEditTextPhone.setError("Invalid Designation");
             return false;
         }
-
 
 
         return true;
@@ -346,7 +339,11 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(mActivity.getContentResolver(), uri);
-                makeServerCallToUploadImage( uri);
+
+                // make server call to upload image
+                makeServerCallToUploadImage(uri);
+
+                // set image to imageview
                 mImageView.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -354,10 +351,12 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         }
     }
 
-    public void makeServerCallToUploadImage( Uri uri){
+    public void makeServerCallToUploadImage(Uri uri) {
+
 
         // getting file from uri
-        File file = new File(getPath(uri));
+        File file = new File(uri.getPath());
+//        File file = new File(getPath(uri));
 
         //https://futurestud.io/tutorials/retrofit-2-how-to-upload-files-to-server
 
@@ -367,12 +366,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         String userid = new GlobalPrefs(mActivity).getString("Userid");
 
         MultipartBody.Part body =
-                MultipartBody.Part.createFormData("picture", userid , requestFile);
-
-//        String descriptionString = "hello, this is description speaking";
-//        RequestBody description =
-//                RequestBody.create(
-//                        MediaType.parse("multipart/form-data"), descriptionString);
+                MultipartBody.Part.createFormData("picture", userid, requestFile);
 
         Call<String> call = ApiClient.getServerApi().uploadProfileImage(body);
 
@@ -380,32 +374,27 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 Log.d(TAG, "Upload Successful");
-                TastyToast.makeText(mActivity,"Upload Successful",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+                TastyToast.makeText(mActivity, "Upload Successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 Log.d(TAG, "Upload Failed" + t.getMessage());
-                TastyToast.makeText(mActivity,"Upload Failed",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+                TastyToast.makeText(mActivity, "Upload Failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
 
             }
         });
 
 
     }
+
     private String getPath(Uri uri) {
-        String[]  data = { MediaStore.Images.Media.DATA };
+        String[] data = {MediaStore.Images.Media.DATA};
         CursorLoader loader = new CursorLoader(mActivity, uri, data, null, null, null);
         Cursor cursor = loader.loadInBackground();
-        // preventing nullificatrion
-        if (cursor!=null){
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            return cursor.getString(column_index);
-        }
-
-        // else return the uri.getPath
-        else  return uri.getPath();
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
     }
 
 

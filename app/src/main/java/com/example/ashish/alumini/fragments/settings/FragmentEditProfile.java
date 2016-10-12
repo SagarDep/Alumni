@@ -41,6 +41,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -263,9 +264,17 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
     public void makeServerCallToUploadImage( Uri uri){
 
+        String path = uri.toString();
         // getting file from uri
-        File file = new File(getPath(uri));
-//        File file = new File(uri.getPath());
+        File file =null;
+// = new File(uri.getPath());
+        try {
+            file = new File(new URI(path));
+        }
+        catch (Exception e){
+
+        }
+         file = new File(getPath(uri));
 
         //https://futurestud.io/tutorials/retrofit-2-how-to-upload-files-to-server
 
@@ -277,10 +286,11 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         MultipartBody.Part body =
                 MultipartBody.Part.createFormData("picture", userid , requestFile);
 
-        String descriptionString = "hello, this is description speaking";
-        RequestBody description =
-                RequestBody.create(
-                        MediaType.parse("multipart/form-data"), descriptionString);
+        // description in form of multipart
+//        String descriptionString = "hello, this is description speaking";
+//        RequestBody description =
+//                RequestBody.create(
+//                        MediaType.parse("multipart/form-data"), descriptionString);
 
 
         Call<String> call = ApiClient.getServerApi().uploadProfileImage(body);
@@ -296,7 +306,6 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
             public void onFailure(Call<String> call, Throwable t) {
                 Log.d(TAG, "Upload Failed" + t.getMessage());
                 TastyToast.makeText(mActivity,"Upload Failed",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
-
             }
         });
 

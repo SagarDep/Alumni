@@ -3,11 +3,13 @@
     package="com.example.ashish.alumini">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="21"/>
+
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
@@ -45,7 +47,7 @@
             android:value="da38eee0478ea4410af014a915ab75e80ef63a34" />
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>
 
 
