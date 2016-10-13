@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.TextInputEditText;
@@ -164,8 +165,10 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         //Bus Registering
         mBus.register(getActivity());
 
+        // getting instance of activity
         mActivity = (PostLoginActivity) getActivity();
 
+        // runtime permission checker
         Dexter.initialize(mActivity);
 
 
@@ -181,7 +184,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
                         .sizeDp(70))
                 .into(mImageView);
 
-//        fetcing the String array and converting to ArrayList
+//        fetching the String array and converting to ArrayList
         stringArrayBranch =  getResources().getStringArray(R.array.branch_array);
         stringArrayYear =  getResources().getStringArray(R.array.year_array);
 
@@ -227,7 +230,6 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 // Always show the chooser (if there are multiple options available)
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
-
             }
 
             @Override
@@ -264,17 +266,13 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
     public void makeServerCallToUploadImage( Uri uri){
 
-        String path = uri.toString();
-        // getting file from uri
-        File file =null;
-// = new File(uri.getPath());
-        try {
-            file = new File(new URI(path));
-        }
-        catch (Exception e){
 
+        File file = new File(getPath(uri));
+
+        if (file==null){
+            Log.d(TAG,"bhai null ho gaya ");
+            return;
         }
-         file = new File(getPath(uri));
 
         //https://futurestud.io/tutorials/retrofit-2-how-to-upload-files-to-server
 
@@ -492,5 +490,22 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
                 mEditTextPhone.setText(completeData.getPhone());                    // phone
                 mEditTextWebLink.setText(completeData.getWeblink());
 
+    }
+
+    public String getImagePath(Uri uri){
+        Cursor cursor = mActivity.getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        String document_id = cursor.getString(0);
+        document_id = document_id.substring(document_id.lastIndexOf(":")+1);
+        cursor.close();
+
+        cursor = mActivity.getContentResolver().query(
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                null, MediaStore.Images.Media._ID + " = ? ", new String[]{document_id}, null);
+        cursor.moveToFirst();
+        String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+        cursor.close();
+
+        return path;
     }
 }

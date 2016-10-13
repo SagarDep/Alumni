@@ -1,5 +1,6 @@
 package com.example.ashish.alumini.activities.post_login;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
@@ -47,10 +48,13 @@ public class PostLoginActivity extends AppCompatActivity {
     Boolean mBackToJobList = true;
 
     ActionBar mActionBar;
+//    Fragment commonFrag = CommonData.CommonData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_post_login);
 
         //butterknife injection
@@ -70,8 +74,13 @@ public class PostLoginActivity extends AppCompatActivity {
 
         //setting first fragement
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.add(R.id.fragment_container, mFragmentMembers);
-        mFragmentTransaction.commit();
+        if (savedInstanceState!=null){
+            changeFragment(CommonData.mCurrent);
+            mActionBar.setTitle("Members");
+        }else {
+            mFragmentTransaction.add(R.id.fragment_container, mFragmentMembers);
+            mFragmentTransaction.commit();
+        }
 
         // making the progress bar indetermined
         mProgressBar.setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(this));
@@ -91,6 +100,7 @@ public class PostLoginActivity extends AppCompatActivity {
             mFragmentTransaction = mFragmentManager.beginTransaction();
             mFragmentTransaction.replace(R.id.fragment_container, fragment);
             mFragmentTransaction.commit();
+            CommonData.mCurrent = fragment;
         }
     }
 
@@ -99,7 +109,6 @@ public class PostLoginActivity extends AppCompatActivity {
         switch (id) {
             case R.id.linearLayout_home:
                 mBackToMainScreen = true;
-
                 break;
 
             case R.id.linearLayout_filter:
@@ -176,5 +185,10 @@ public class PostLoginActivity extends AppCompatActivity {
             Log.d(TAG,"ProgressBar Hidden");
         }
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 }

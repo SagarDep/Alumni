@@ -27,6 +27,5 @@
         android:id="@+id/fragmentMenuContainer"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-
         tools:layout="@layout/fragment_menu_bottom" />
 </RelativeLayout>

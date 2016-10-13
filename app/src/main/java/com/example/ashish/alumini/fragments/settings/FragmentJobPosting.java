@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.TextInputEditText;
@@ -254,12 +255,23 @@ public class FragmentJobPosting extends Fragment {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse response) {
                 Log.d(TAG, "Permission granted");
-                Intent intent = new Intent();
-                // Show only images, no videos or anything else
-                 intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                 // Always show the chooser (if there are multiple options available)
-                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+//                Intent intent = new Intent();
+//                // Show only images, no videos or anything else
+//                 intent.setType("image/*");
+//                intent.setAction(Intent.ACTION_GET_CONTENT);
+//                 // Always show the chooser (if there are multiple options available)
+//                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                    intent.addCategory(Intent.CATEGORY_OPENABLE);
+                    intent.setType("image/*");
+                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+                } else {
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+                }
 
             }
 
@@ -302,6 +314,11 @@ public class FragmentJobPosting extends Fragment {
 //        File file = new File(getPath(uri));
         File file = new File(uri.getPath());
 
+        if (file==null){
+            Log.d(TAG,"bhai null ho gaya ");
+            return;
+        }
+
         //https://futurestud.io/tutorials/retrofit-2-how-to-upload-files-to-server
 
         RequestBody requestFile =
@@ -334,8 +351,6 @@ public class FragmentJobPosting extends Fragment {
 
             }
         });
-
-
     }
 
     private String getPath(Uri uri) {

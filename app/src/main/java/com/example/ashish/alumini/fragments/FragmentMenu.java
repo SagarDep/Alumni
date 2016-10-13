@@ -21,14 +21,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentMenu.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentMenu#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class FragmentMenu extends Fragment {
 
     /*
@@ -115,6 +107,19 @@ public class FragmentMenu extends Fragment {
         mLineViewPrevious = view.findViewById(R.id.view_home);
         mLinearLayoutPrevious = (LinearLayout) view.findViewById(R.id.linearLayout_home);
         mPreviousIconicsImageView = (IconicsImageView) view.findViewById(R.id.button_home);
+
+        if (CommonData.mCurrent instanceof FragmentMembers){
+            setVisibleView(view.findViewById(R.id.view_home),mImageViewMembers);
+        }
+        else if (CommonData.mCurrent instanceof FragmentFilter){
+            setVisibleView(view.findViewById(R.id.view_filter), mImageViewFilter);
+        }
+        else if (CommonData.mCurrent instanceof FragmentJobs){
+            setVisibleView(view.findViewById(R.id.view_jobs),mImageViewJobs);
+        }
+        else if (CommonData.mCurrent!=null){
+            setVisibleView(view.findViewById(R.id.view_settings),mImageViewSettings);
+        }
 
         return view;
     }

@@ -159,7 +159,8 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
         }
         else
             mProgressBar.setVisibility(View.GONE);
-        globalBus.post(mMemberLists.mApiCallFlag);
+//        seems like eritten uselessly
+//        globalBus.post(mMemberLists.mApiCallFlag);
 
 
     }
