@@ -76,7 +76,7 @@ public class FragmentSettings extends Fragment  {
 
         mActivity = (PostLoginActivity) getActivity();
 
-
+        mActivity.getSupportActionBar().setTitle("Settings");
 
         return view;
     }

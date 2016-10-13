@@ -17,6 +17,7 @@ import com.example.ashish.alumini.fragments.main_screen_fragments.FragmentEvents
 import com.example.ashish.alumini.fragments.main_screen_fragments.FragmentMainScreen;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentGetProfileData;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
+import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
@@ -82,19 +83,32 @@ public class MainScreenActivity extends AppCompatActivity
 
 
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        if (isSignup==true){
-            // show the getData fragment
-            mFragmentTransaction.add(R.id.container_main_screen, new FragmentGetProfileData().newInstance("",""));
-        }else {
-            // condition to check if the user has come from logout button or not
-            // if shared prefs will show as logged out then finish the activity
-            if (!new GlobalPrefs(this).getBoolean(getResources().getString(R.string.is_logged_in))){
-                this.finish();
+        if (savedInstanceState==null){
+            if (isSignup==true){
+                // show the getData fragment
+                FragmentGetProfileData fragmentGetProfileData = new FragmentGetProfileData().newInstance("","");
+                mFragmentTransaction.add(R.id.container_main_screen, fragmentGetProfileData );
+                // saving it to common data
+                CommonData.mCurrentFragmentMainScreen = fragmentGetProfileData;
+            }else {
+                // condition to check if the user has come from logout button or not
+                // if shared prefs will show as logged out then finish the activity
+                if (!new GlobalPrefs(this).getBoolean(getResources().getString(R.string.is_logged_in))){
+                    this.finish();
+                }
+                //else show the min screen fragment
+                FragmentMainScreen fragmentMainScreen = new FragmentMainScreen();
+                mFragmentTransaction.add(R.id.container_main_screen,fragmentMainScreen);
+                // saving it to common data
+                CommonData.mCurrentFragmentMainScreen = fragmentMainScreen;
             }
-            //else show the min screen fragment
-            mFragmentTransaction.add(R.id.container_main_screen, new FragmentMainScreen().newInstance("",""));
+            mFragmentTransaction.commit();
+
         }
-        mFragmentTransaction.commit();
+        if (savedInstanceState!=null && CommonData.mCurrentFragmentMainScreen!= null){
+            // case when activity is restarted
+            changeFragment(CommonData.mCurrentFragmentMainScreen);
+        }
 
         mCurrentFragment = new FragmentMainScreen();
 
@@ -108,6 +122,7 @@ public class MainScreenActivity extends AppCompatActivity
         //updating the current fragment
        mPreviousFragment = mCurrentFragment;
         mCurrentFragment = fragment;
+        CommonData.mCurrentFragmentMainScreen = fragment;
 
         //checking if actionbar needs to be hidden or not
         if (mCurrentFragment instanceof FragmentMainScreen){

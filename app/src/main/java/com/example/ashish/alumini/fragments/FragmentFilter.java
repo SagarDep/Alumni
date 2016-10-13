@@ -97,11 +97,12 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
 
         //getting activity instance
         mActivity = (PostLoginActivity) getActivity();
+        // changing title of action bar
+        mActivity.getSupportActionBar().setTitle("Filter");
 
         // butterknife injections
         ButterKnife.bind(this,view);
-        //Bus Registering
-//        mBus.register(getActivity());
+
 
 
         mHashMap = new HashMap<>();

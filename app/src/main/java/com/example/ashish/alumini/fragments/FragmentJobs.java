@@ -90,6 +90,8 @@ public class FragmentJobs extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        mActivity  = (PostLoginActivity) getActivity();
+
 
     }
 
@@ -101,12 +103,16 @@ public class FragmentJobs extends Fragment {
 
         mActivity  = (PostLoginActivity) getActivity();
 
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_jobs,container,false);
+
+        mActivity.getSupportActionBar().setTitle("Jobs");
+
 
         //Butter knife binding
         ButterKnife.bind(this,view);

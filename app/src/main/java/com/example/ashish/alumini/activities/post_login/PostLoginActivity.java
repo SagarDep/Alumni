@@ -1,6 +1,5 @@
 package com.example.ashish.alumini.activities.post_login;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
@@ -74,9 +73,10 @@ public class PostLoginActivity extends AppCompatActivity {
 
         //setting first fragement
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        if (savedInstanceState!=null){
-            changeFragment(CommonData.mCurrent);
-            mActionBar.setTitle("Members");
+
+        if (savedInstanceState!=null && CommonData.mCurrentFragmentPostLogin!=null){
+            // case when the activity is restarted and we have to  put the same fargment again
+            changeFragment(CommonData.mCurrentFragmentPostLogin);
         }else {
             mFragmentTransaction.add(R.id.fragment_container, mFragmentMembers);
             mFragmentTransaction.commit();
@@ -100,7 +100,7 @@ public class PostLoginActivity extends AppCompatActivity {
             mFragmentTransaction = mFragmentManager.beginTransaction();
             mFragmentTransaction.replace(R.id.fragment_container, fragment);
             mFragmentTransaction.commit();
-            CommonData.mCurrent = fragment;
+            CommonData.mCurrentFragmentPostLogin = fragment;
         }
     }
 

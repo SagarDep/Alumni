@@ -108,16 +108,16 @@ public class FragmentMenu extends Fragment {
         mLinearLayoutPrevious = (LinearLayout) view.findViewById(R.id.linearLayout_home);
         mPreviousIconicsImageView = (IconicsImageView) view.findViewById(R.id.button_home);
 
-        if (CommonData.mCurrent instanceof FragmentMembers){
+        if (CommonData.mCurrentFragmentPostLogin instanceof FragmentMembers){
             setVisibleView(view.findViewById(R.id.view_home),mImageViewMembers);
         }
-        else if (CommonData.mCurrent instanceof FragmentFilter){
+        else if (CommonData.mCurrentFragmentPostLogin instanceof FragmentFilter){
             setVisibleView(view.findViewById(R.id.view_filter), mImageViewFilter);
         }
-        else if (CommonData.mCurrent instanceof FragmentJobs){
+        else if (CommonData.mCurrentFragmentPostLogin instanceof FragmentJobs){
             setVisibleView(view.findViewById(R.id.view_jobs),mImageViewJobs);
         }
-        else if (CommonData.mCurrent!=null){
+        else if (CommonData.mCurrentFragmentPostLogin !=null){
             setVisibleView(view.findViewById(R.id.view_settings),mImageViewSettings);
         }
 
