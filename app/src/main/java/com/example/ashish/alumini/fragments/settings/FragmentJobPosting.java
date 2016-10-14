@@ -249,6 +249,7 @@ public class FragmentJobPosting extends Fragment {
                 mInputEditTextJobLocation.setText("");
                 mEditTextWebLink.setText("");
                 mEditTextemail.setText("");
+
     }
 
 

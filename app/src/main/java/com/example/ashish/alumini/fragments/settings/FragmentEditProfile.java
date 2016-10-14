@@ -27,6 +27,7 @@ import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
+import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -267,7 +268,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     public void makeServerCallToUploadImage( Uri uri){
 
 
-        File file = new File(getPath(uri));
+        File file = new File(CommonData.getPath(mActivity,uri));
 
         if (file==null){
             Log.d(TAG,"bhai null ho gaya ");
@@ -307,24 +308,8 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
             }
         });
 
-
     }
 
-    private String getPath(Uri uri) {
-        String[]  data = { MediaStore.Images.Media.DATA };
-        CursorLoader loader = new CursorLoader(mActivity, uri, data, null, null, null);
-        Cursor cursor = loader.loadInBackground();
-
-        // preventing nullificatrion
-        if (cursor!=null){
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            return cursor.getString(column_index);
-        }
-
-        // else return the uri.getPath
-        else  return uri.getPath();
-    }
 
 
     @Override
@@ -492,20 +477,4 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
     }
 
-    public String getImagePath(Uri uri){
-        Cursor cursor = mActivity.getContentResolver().query(uri, null, null, null, null);
-        cursor.moveToFirst();
-        String document_id = cursor.getString(0);
-        document_id = document_id.substring(document_id.lastIndexOf(":")+1);
-        cursor.close();
-
-        cursor = mActivity.getContentResolver().query(
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                null, MediaStore.Images.Media._ID + " = ? ", new String[]{document_id}, null);
-        cursor.moveToFirst();
-        String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
-        cursor.close();
-
-        return path;
-    }
 }

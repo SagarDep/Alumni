@@ -24,6 +24,7 @@ import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
 import com.example.ashish.alumini.fragments.main_screen_fragments.FragmentMainScreen;
 import com.example.ashish.alumini.network.ApiClient;
+import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -355,8 +356,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
 
         // getting file from uri
-        File file = new File(uri.getPath());
-//        File file = new File(getPath(uri));
+        File file = new File(CommonData.getPath(mActivity,uri));
 
         //https://futurestud.io/tutorials/retrofit-2-how-to-upload-files-to-server
 
@@ -386,15 +386,6 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         });
 
 
-    }
-
-    private String getPath(Uri uri) {
-        String[] data = {MediaStore.Images.Media.DATA};
-        CursorLoader loader = new CursorLoader(mActivity, uri, data, null, null, null);
-        Cursor cursor = loader.loadInBackground();
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        return cursor.getString(column_index);
     }
 
 

@@ -22,6 +22,9 @@ import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.example.ashish.alumini.supporting_classes.ProgressBarVisibility;
 import com.sdsmdg.tastytoast.TastyToast;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,9 +34,19 @@ public class SignUp extends Activity {
 
     String TAG = getClass().getSimpleName();
 
-    EditText mEditTextemail, mEditTextName, mEditTextPassword, mEditTextConfirmPassword;
+    @Bind(R.id.editText_signup_email)
+    EditText mEditTextemail;
+
+    @Bind(R.id.editText_signup_name)
+    EditText mEditTextName;
+
+    @Bind(R.id.editText_signup_password)
+    EditText mEditTextPassword;
+
+    @Bind(R.id.button_signup)
     Button mButtonSignup;
 
+    @Bind(R.id.linearLayout_signup)
     LinearLayout mRelativeLayout;
 
     int mBackCounter =0;
@@ -42,6 +55,7 @@ public class SignUp extends Activity {
 
     GlobalBus mGlobalBus;
 
+    // to post within the event bus
     ProgressBarVisibility barVisibility = new ProgressBarVisibility();
 
 
@@ -51,29 +65,33 @@ public class SignUp extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
+
         //global mGlobalBus registering
         mGlobalBus = GlobalBus.getInstance();
 
-        mEditTextName =(EditText)findViewById(R.id.editText_signup_name);
-        mEditTextemail =(EditText)findViewById(R.id.editText_signup_email);
-        mEditTextPassword =(EditText)findViewById(R.id.editText_signup_password);
-        mEditTextConfirmPassword =(EditText)findViewById(R.id.editText_signup_passwordConfirm);
-        mButtonSignup =(Button)findViewById(R.id.button_signup);
-        mRelativeLayout = (LinearLayout) findViewById(R.id.linearLayout_signup);
+        ButterKnife.bind(this);
+
+//        mEditTextName =(EditText)findViewById(R.id.editText_signup_name);
+//        mEditTextemail =(EditText)findViewById(R.id.editText_signup_email);
+//        mEditTextPassword =(EditText)findViewById(R.id.editText_signup_password);
+//        mEditTextConfirmPassword =(EditText)findViewById(R.id.editText_signup_passwordConfirm);
+//        mButtonSignup =(Button)findViewById(R.id.button_signup);
+//        mRelativeLayout = (LinearLayout) findViewById(R.id.linearLayout_signup);
 
 
-        mButtonSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signUp();
-            }
-        });
+//        mButtonSignup.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                signUp();
+//            }
+//        });
 
         mApplication  = (MyApplication) getApplication();
 
     }
 
     //body of signUp method
+    @OnClick(R.id.button_signup)
     public void signUp() {
 
         if (!validate()) {
@@ -85,7 +103,6 @@ public class SignUp extends Activity {
         String emailString = mEditTextemail.getText().toString().trim();
         String passwordString = mEditTextPassword.getText().toString().trim();
         String nameString= mEditTextName.getText().toString().trim();
-        String confirmPasswordString= mEditTextConfirmPassword.getText().toString().trim();
 
 
 //        startMainScreenActivity(null);
@@ -112,7 +129,7 @@ public class SignUp extends Activity {
         String nameString = mEditTextName.getText().toString();
         String emailString = mEditTextemail.getText().toString();
         String passwordString = mEditTextPassword.getText().toString();
-        String confirmPasswordString = mEditTextConfirmPassword.getText().toString();
+//        String confirmPasswordString = mEditTextConfirmPassword.getText().toString();
 
         if (nameString.isEmpty() || nameString.length() < 3) {
             mEditTextName.setError("at least 3 characters");
@@ -128,11 +145,7 @@ public class SignUp extends Activity {
             mEditTextPassword.setError("must be more than 6 characters");
             valid = false;
         }
-        if(confirmPasswordString.isEmpty() || !confirmPasswordString.equals(passwordString))
-        {
-            mEditTextConfirmPassword.setError("Password do not match");
-            valid=false;
-        }
+
 
 
         // TODO : proper validations

@@ -157,6 +157,7 @@ public class PostLoginActivity extends AppCompatActivity {
         //event bus unregistering
         mBus.unregister(this);
 
+        CommonData.mCurrentFragmentPostLogin=null;
     }
 
     @Override
