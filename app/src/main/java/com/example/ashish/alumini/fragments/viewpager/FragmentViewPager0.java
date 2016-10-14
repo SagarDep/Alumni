@@ -2,6 +2,7 @@ package com.example.ashish.alumini.fragments.viewpager;
 
 import android.os.Bundle;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -20,7 +21,6 @@ import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.supporting_classes.GlobalBus;
 import com.example.ashish.alumini.supporting_classes.MemberLists;
 import com.squareup.otto.Bus;
-import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +56,10 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
 
     MemberLists mMemberLists;
 
+    RecyclerView.LayoutManager mLayoutManager;
+
+    ActionBar mActionBar;
+
     public FragmentViewPager0() {
         // Required empty public constructor
     }
@@ -87,7 +91,7 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_viewpager, container, false);
 
 
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        mLayoutManager = new LinearLayoutManager(getActivity());
 
         //butterknife injections
         ButterKnife.bind(this,view);
@@ -116,6 +120,7 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
                         // setting the data of clicked item
                         fragmentProfile.setData(mArrayList.get(position));
 
+
                         // change the fragment
                         mActivity.changeFragment(fragmentProfile);
 
@@ -128,6 +133,25 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
                     }
                 })
         );
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+
+
+
+
+
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
+
         return view;
     }
 

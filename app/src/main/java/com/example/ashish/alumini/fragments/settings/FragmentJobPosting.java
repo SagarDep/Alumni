@@ -1,6 +1,7 @@
 package com.example.ashish.alumini.fragments.settings;
 
 import android.Manifest;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
@@ -9,6 +10,8 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
@@ -22,6 +25,7 @@ import android.widget.ImageView;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.network.ApiClient;
+import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -255,23 +259,12 @@ public class FragmentJobPosting extends Fragment {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse response) {
                 Log.d(TAG, "Permission granted");
-//                Intent intent = new Intent();
-//                // Show only images, no videos or anything else
-//                 intent.setType("image/*");
-//                intent.setAction(Intent.ACTION_GET_CONTENT);
-//                 // Always show the chooser (if there are multiple options available)
-//                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
-                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-                    intent.addCategory(Intent.CATEGORY_OPENABLE);
-                    intent.setType("image/*");
-                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
-                } else {
-                    Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
-                }
+                Intent intent = new Intent();
+                // Show only images, no videos or anything else
+                 intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                 // Always show the chooser (if there are multiple options available)
+                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
 
             }
 
@@ -311,8 +304,8 @@ public class FragmentJobPosting extends Fragment {
     public void makeServerCallToUploadImage( Uri uri){
 
         // getting file from uri
-//        File file = new File(getPath(uri));
-        File file = new File(uri.getPath());
+        File file = new File(CommonData.getPath(mActivity,uri));
+//        File file = new File(uri.getPath());
 
         if (file==null){
             Log.d(TAG,"bhai null ho gaya ");
@@ -346,19 +339,12 @@ public class FragmentJobPosting extends Fragment {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d(TAG, "Upload Failed" + t.getMessage());
+                Log.d(TAG, "Upload Failed" + t.toString());
                 TastyToast.makeText(mActivity,"Upload Failed",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
 
             }
         });
     }
 
-    private String getPath(Uri uri) {
-        String[]  data = { MediaStore.Images.Media.DATA };
-        CursorLoader loader = new CursorLoader(mActivity, uri, data, null, null, null);
-        Cursor cursor = loader.loadInBackground();
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        return cursor.getString(column_index);
-    }
+
 }
