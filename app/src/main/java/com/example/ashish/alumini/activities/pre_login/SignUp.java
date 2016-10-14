@@ -189,7 +189,7 @@ public class SignUp extends Activity {
                 /*
                 * Start Activity main screen in which the fragments will be displayed
                 * */
-                startMainScreenActivity(signupPart);
+                startMainScreenActivityWithGetProfileData();
 
                 }
 
@@ -215,7 +215,7 @@ public class SignUp extends Activity {
     }
 
     // function to start activity through intent
-    public void startMainScreenActivity(SignupPart  signupPart){
+    public void startMainScreenActivityWithGetProfileData(){
         Intent intent=new Intent(SignUp.this,MainScreenActivity.class);
                 /*
                 * SIGNUP is sent beacuse when the login is successful,
@@ -237,9 +237,8 @@ public class SignUp extends Activity {
             snackbar.show();
         }
 
-        if (mBackCounter ==2){
+        if (mBackCounter ==2 ){
             this.finish();
-            System.exit(2);
         }
 
     }

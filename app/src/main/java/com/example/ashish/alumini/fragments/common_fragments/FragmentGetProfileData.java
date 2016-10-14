@@ -273,7 +273,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
                     mActivity.changeFragment(new FragmentMainScreen());
                     TastyToast.makeText(getContext(), "Details Updated", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                     // storing id and name in shared pref
-//                   globalPrefs.putString(getString(R.string.userid),response1.get_id());
+
 
                     GlobalPrefs globalPrefs = new GlobalPrefs(getActivity());
                     globalPrefs.putString(getString(R.string.username),
