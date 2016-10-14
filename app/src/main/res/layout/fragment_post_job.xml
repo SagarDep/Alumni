@@ -35,7 +35,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/editText_companyName"
-                        android:maxLines="1"
+                        android:inputType="textAutoComplete"
                         android:hint="Name Of Company"/>
 
                 </android.support.design.widget.TextInputLayout>
@@ -48,8 +48,7 @@
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLines="1"
-                        android:id="@+id/editText_designation"
+                        android:inputType="textAutoComplete"                        android:id="@+id/editText_designation"
                         android:hint="Role"/>
 
                 </android.support.design.widget.TextInputLayout>
@@ -83,7 +82,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:id="@+id/editText_Designation"
-                        android:maxLines="3"
+                        android:inputType="textMultiLine"
                         android:hint="Description of Job"/>
 
                 </android.support.design.widget.TextInputLayout>
@@ -111,7 +110,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:maxLines="1"
+                        android:inputType="textAutoComplete"
                         android:id="@+id/editText_jobLocation"
                         android:hint="@string/location"/>
 
@@ -200,13 +199,13 @@
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="1"
                     android:inputType="textWebEditText"
                     android:id="@+id/editText_companyWebLink"
                     android:hint="Web Links"
                     android:layout_below="@+id/textView_Contact"
                     android:layout_toRightOf="@+id/icon_webLink"
-                    android:layout_toEndOf="@+id/icon_webLink" />
+                    android:layout_toEndOf="@+id/icon_webLink"
+                    android:layout_marginLeft="5dp" />
 
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
@@ -219,7 +218,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:layout_toRightOf="@+id/icon_webLink"
-                    android:layout_toEndOf="@+id/icon_webLink" />
+                    android:layout_toEndOf="@+id/icon_webLink"
+                    android:layout_marginLeft="5dp" />
 
 
             </RelativeLayout>

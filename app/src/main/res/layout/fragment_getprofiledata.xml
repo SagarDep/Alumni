@@ -35,15 +35,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textInputLayout_memberName"
-                    android:maxLines="1">
+                    >
 
                 <android.support.design.widget.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:maxLines="1"
-                        android:id="@+id/editText_memberName"
-                        android:hint="Name"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/editText_memberName"
+                    android:inputType="textPersonName"
+                    android:hint="Name"/>
 
                 </android.support.design.widget.TextInputLayout>
                 <android.support.design.widget.TextInputLayout
@@ -57,7 +57,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:maxLines="1"
+                        android:inputType="textMultiLine"
                         android:id="@+id/editText_memberBio"
                         android:hint="About Yourself" />
 
@@ -146,14 +146,15 @@
                     android:layout_below="@+id/textView_work"
                     android:layout_toRightOf="@+id/imageView_work"
                     android:layout_toEndOf="@+id/imageView_work"
-                    android:hint="Designation">
+>
 
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:maxLines="1"
                         android:id="@+id/editText_Designation"
+                        android:inputType="textAutoComplete"
+                        android:hint="Designation"
                          />
 
                 </android.support.design.widget.TextInputLayout>
@@ -165,15 +166,15 @@
                     android:layout_below="@+id/textView_memberDesignation"
                     android:layout_toRightOf="@+id/imageView_work"
                     android:layout_toEndOf="@+id/imageView_work"
-                    android:hint="Organization">
+                    >
 
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:maxLines="1"
+                        android:inputType="textAutoComplete"
                         android:id="@+id/editText_company"
-                         />
+                        android:hint="Organization"     />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -198,7 +199,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:maxLines="1"
+                        android:inputType="textAutoComplete"
                         android:id="@+id/editText_locationHome"
                         android:hint="Home Town" />
 
@@ -216,8 +217,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:maxLines="1"
-
+                        android:inputType="textAutoComplete"
                         android:id="@+id/editText_locationWork"
                         android:hint="Current Place" />
 
@@ -229,7 +229,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:id="@+id/imageView_work"
-                    app:iiv_icon="faw-briefcase"
+                    app:iiv_icon="faw-home"
                     app:iiv_color="@color/black_de"
                     android:layout_below="@+id/info_text"
                     android:layout_alignParentLeft="true"
@@ -240,7 +240,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:id="@+id/imageView_home"
-                    app:iiv_icon="faw-home"
+                    app:iiv_icon="faw-briefcase"
                     app:iiv_color="@color/black_de"
                     android:layout_below="@+id/textInputLayout_locationHome"
                     android:layout_alignParentLeft="true"
@@ -294,7 +294,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:maxLines="1"
                         android:inputType="textEmailAddress"
                         android:id="@+id/editText_member_email"
                         android:hint="e-mail address"/>
@@ -331,8 +330,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:maxLines="1"
-                        android:inputType="textWebEditText"
+                        android:inputType="textUri"
                         android:id="@+id/editText_memberWebLink"
+                        android:text="http://"
                         android:hint="Web Links" />
 
                 </android.support.design.widget.TextInputLayout>

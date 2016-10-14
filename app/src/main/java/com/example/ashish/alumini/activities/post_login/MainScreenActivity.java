@@ -56,6 +56,10 @@ public class MainScreenActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
 
+        /*
+        * check if user came after logout then finish it
+        * on back press in login / signuop activity
+        * */
         boolean b = new GlobalPrefs(this).getBoolean(getString(R.string.is_logged_in));
         if (!b && savedInstanceState!=null && !savedInstanceState.getBoolean("SIGNUP") ){
 
