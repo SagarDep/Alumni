@@ -34,8 +34,11 @@
         <activity android:name=".activities.pre_login.Login"/>
         <activity android:name=".activities.pre_login.SignUp"/>
         <activity android:name=".activities.post_login.MainScreenActivity"/>
+
         <activity android:name=".activities.post_login.PostLoginActivity"
-            android:configChanges="orientation|keyboardHidden" />
+            android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
         <activity android:name=".activities.pre_login.MainActivity"/>
 
 

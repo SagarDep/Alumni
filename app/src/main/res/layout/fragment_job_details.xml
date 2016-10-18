@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:text="Job  Description - "
+                android:text="Job Description - "
                 android:id="@+id/textView_jobDescription"
                 android:layout_margin="5dp"/>
 

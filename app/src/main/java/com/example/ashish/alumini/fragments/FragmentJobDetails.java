@@ -85,11 +85,12 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_job_details, container, false);
 
         ButterKnife.bind(this,view);
-        //Bus Registering
-        mBus.register(getActivity());
 
+        // show that data which was recieved by the list
         showData();
-        makeServerCallToGetRemainingData();
+
+        // make server call on resume
+
         return view;
     }
 
@@ -183,6 +184,29 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
             }
         });
 
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        //Bus Registering
+        mBus.register(getActivity());
+
+        // make server call when bus is registered
+        makeServerCallToGetRemainingData();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        //making progress bar invisible
+        mBus.post(false);
+
+        //Bus Registering
+        mBus.unregister(getActivity());
 
     }
 }

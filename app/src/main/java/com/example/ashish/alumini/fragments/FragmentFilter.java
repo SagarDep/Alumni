@@ -48,6 +48,7 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
     * */
 //    @Bind(R.id.button_settings)
 //    Button j
+
     @Bind(R.id.expandableListView)
     ExpandableListView mExpListView;
 
@@ -102,8 +103,6 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
 
         // butterknife injections
         ButterKnife.bind(this,view);
-
-
 
         mHashMap = new HashMap<>();
 

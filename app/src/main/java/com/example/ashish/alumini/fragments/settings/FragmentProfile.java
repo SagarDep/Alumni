@@ -100,7 +100,12 @@ public class FragmentProfile extends Fragment {
         // butterknife binding
         ButterKnife.bind(this,view);
 
-        // start server call
+        //Bus Registering
+        mBus.register(getActivity());
+
+        // start server call to get complete data
+        // this is case - when user opens my profile
+        // hence no data is assigned from previous fragment
         if (mListInstance==null){
 
             // show the option to edit the profile
@@ -121,8 +126,7 @@ public class FragmentProfile extends Fragment {
                     .into(mImageView);
         }
 
-        //Bus Registering
-        mBus.register(getActivity());
+
 
 
 
@@ -130,11 +134,12 @@ public class FragmentProfile extends Fragment {
         mActivity = (PostLoginActivity) getActivity();
 
 
+        // prevent nulification
         if (mListInstance!=null){
             // hiding the edit button
             mImageViewEdit.setVisibility(View.GONE);
 
-            // make server call to get more data
+            // make server call to get more data with id param of clicked element
             makeServerCallToGetMoreData(mListInstance.get_id().toString());
 
             // starting picasso image loading
@@ -153,7 +158,7 @@ public class FragmentProfile extends Fragment {
         }
 
 
-        mBus.post(true);
+
 
 
         return view;
@@ -164,7 +169,22 @@ public class FragmentProfile extends Fragment {
         mActivity.changeFragment(new FragmentEditProfile());
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
 
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        // progress bar visibility
+        mBus.post(false);
+
+        mBus.unregister(this);
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -186,6 +206,10 @@ public class FragmentProfile extends Fragment {
 
     // whent the user will click on the recycler view in view pager to get more details about the user
     public void makeServerCallToGetMoreData( String id){
+
+        // progress bar visibility
+        mBus.post(true);
+
         Call<MemberInstance> call = ApiClient.getServerApi().
                 getRemainingDataForRecyclerView(id);
 
@@ -193,30 +217,34 @@ public class FragmentProfile extends Fragment {
             @Override
             public void onResponse(Call<MemberInstance> call, Response<MemberInstance> response) {
                 Log.d(TAG, "API call successful");
-                MemberInstance example = response.body();
-                if (example!=null){
-                    mTextViewBranch.setText("Branch : " + example.getBranch());
-                    mTextViewDesignationNCompanyName.append( " at "+example.getCompany());
-                    mTextView_bio.setText(example.getBio());
-                    mTextViewContact.setText(example.getPhone());
-                    mTextViewHomeLocation.setText(example.getHome());
-                    mTextViewMail.setText(example.getEmail());
+                MemberInstance instance = response.body();
+                if (instance!=null){
+                    mTextViewBranch.setText("Branch : " + instance.getBranch());
+                    mTextViewDesignationNCompanyName.append( " at "+instance.getCompany());
+                    mTextView_bio.setText(instance.getBio());
+                    mTextViewContact.setText(instance.getPhone());
+                    mTextViewHomeLocation.setText(instance.getHome());
+                    mTextViewMail.setText(instance.getEmail());
 //                    mTextViewFb.setText(example.get);
                 }
-                if (response.code()==200){
+//                if (response.code()==200){
                     // setting visivility of progress bar to GONE
                     mBus.post(false);
-                }
+//                }
             }
 
 
             @Override
             public void onFailure(Call<MemberInstance> call, Throwable t) {
                 Log.d(TAG, "API call failed " + t.toString());
+
                 // hiding progress bar
                 mBus.post(false);
+
                 // display toast
                 TastyToast.makeText(mActivity,"Can't communicate to server",500,TastyToast.ERROR);
+
+                // and come to previous screen
                 mActivity.onBackPressed();
             }
         });
@@ -224,6 +252,10 @@ public class FragmentProfile extends Fragment {
 
     // when the user clicks on my profile options from settings
     public void makeServerCallToGetCompleteProfile(String id){
+
+        // progress bar visibility
+        mBus.post(true);
+
         Call<MemberInstance> call = ApiClient.getServerApi().getCompleteProfileData(id);
 
         call.enqueue(new Callback<MemberInstance>() {
@@ -232,6 +264,8 @@ public class FragmentProfile extends Fragment {
 
                 if (response.code()==200 && response.body()!=null){
                     setCompleteData(response.body());
+
+                    // progress bar visibility
                     mBus.post(false);
                 }
                 Log.d(TAG, "API call successful");
@@ -240,11 +274,14 @@ public class FragmentProfile extends Fragment {
             @Override
             public void onFailure(Call<MemberInstance> call, Throwable t) {
                 Log.d(TAG, "API call failed " + t.toString());
+
                 // hiding progress bar
                 mBus.post(false);
 
                 // display toast
                 TastyToast.makeText(mActivity,"Can't communicate to server",500,TastyToast.ERROR);
+
+                // back to previous screen
                 mActivity.onBackPressed();
             }
         });

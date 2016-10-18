@@ -7,10 +7,10 @@
     android:weightSum="1">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:id="@+id/profileimage"
-        android:layout_margin="10dp"
+        android:layout_margin="13dp"
         android:src="@drawable/image"
         />
 
@@ -57,7 +57,7 @@
         android:layout_height="16dp"
         android:id="@+id/icon_location"
         app:iiv_icon="faw-map-marker"
-        app:iiv_color="@color/black_de"
+        app:iiv_color="@color/grey_icon"
         android:layout_below="@+id/textView_designation"
         android:layout_alignLeft="@+id/briefcase"
         android:layout_alignStart="@+id/briefcase"
@@ -80,7 +80,7 @@
         android:layout_height="16dp"
         android:id="@+id/briefcase"
         app:iiv_icon="faw-briefcase"
-        app:iiv_color="@color/black_de"
+        app:iiv_color="@color/grey_icon"
         android:layout_above="@+id/icon_location"
         android:layout_alignLeft="@+id/textView_name"
         android:layout_alignStart="@+id/textView_name"
@@ -91,7 +91,8 @@
         android:layout_height="1px"
         android:layout_below="@id/profileimage"
         android:background="@color/grey"
-        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="-2dp" />
+        android:layout_marginTop="-2dp"
+        android:layout_toEndOf="@+id/profileimage"
+        android:layout_toRightOf="@+id/profileimage" />
 </RelativeLayout>

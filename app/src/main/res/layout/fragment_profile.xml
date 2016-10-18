@@ -10,12 +10,7 @@
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp" >
-        <ProgressBar
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:indeterminate="true"
-            android:id="@+id/material_progressBar"
-            style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
+
 
         <TextView
             android:layout_width="wrap_content"

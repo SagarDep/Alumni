@@ -141,10 +141,6 @@ public class FragmentEvents extends Fragment {
         mListView.setDivider(null);
         mListView.setAdapter(adapter);
 
-        //ActionBar operations
-        mActionBar.setDisplayHomeAsUpEnabled(true);
-        mActionBar.setTitle("Events");
-        mActionBar.show();
 
         return view;
     }
@@ -159,16 +155,26 @@ public class FragmentEvents extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
         //Bus Registering
         mBus.register(getActivity());
 
         mBus.post(false);
+
+        //ActionBar operations
+        mActionBar.setDisplayHomeAsUpEnabled(true);
+        mActionBar.setTitle("Events");
+        mActionBar.show();
+
     }
 
     @Override
     public void onPause() {
         super.onPause();
+
         mBus.unregister(getActivity());
+
+        mActionBar.hide();
     }
 
     @Override

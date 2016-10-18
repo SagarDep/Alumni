@@ -91,6 +91,9 @@ public class FragmentMainScreen extends android.support.v4.app.Fragment {
 
         mActivity = (MainScreenActivity) getActivity();
 
+        // hiding action bar
+        mActivity.getSupportActionBar().hide();
+
         ButterKnife.bind(this,view);
         //Bus Registering
 //        mBus.register(getActivity());
@@ -157,7 +160,7 @@ public class FragmentMainScreen extends android.support.v4.app.Fragment {
     public void showWebView(){
         mActivity.changeFragment(new FragmentWebView().newInstance("http://aryacollege.in",""));
         mActivity.getSupportActionBar().setTitle("About College");
-        mActivity.getSupportActionBar().show();
+//        mActivity.getSupportActionBar().show();
 
     }
 

@@ -122,4 +122,7 @@ dependencies {
     }
 
 
+
+    compile 'com.pnikosis:materialish-progress:1.7'
+
 }

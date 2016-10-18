@@ -128,15 +128,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static FragmentGetProfileData newInstance(String param1, String param2) {
         FragmentGetProfileData fragment = new FragmentGetProfileData();
         Bundle args = new Bundle();
@@ -162,10 +154,9 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_getprofiledata, container, false);
 
         ButterKnife.bind(this, view);
-        //Bus Registering
-        mBus.register(getActivity());
 
-        // initialization of mActivity
+
+        // initialization of mPostLoginActivity
         if (getActivity() instanceof MainScreenActivity) {
             mActivity = (MainScreenActivity) getActivity();
         }
@@ -268,7 +259,9 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                // hiding the progress bar
+                // making progress bar invisible
+                mBus.post(false);
+
 
                 if (response.code() == 201) {
                     mActivity.changeFragment(new FragmentMainScreen());
@@ -289,7 +282,9 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d(TAG, "API call failed");
+                // making progress bar invisible
+                mBus.post(false);
+                Log.d(TAG, "API call failed makeServerCalltoPostCompleteData");
             }
         });
 
@@ -354,6 +349,8 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
     public void makeServerCallToUploadImage(Uri uri) {
 
+        // making progress bar visible
+        mBus.post(true);
 
         // getting file from uri
         File file = new File(CommonData.getPath(mActivity,uri));
@@ -382,11 +379,24 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
                 Log.d(TAG, "Upload Failed" + t.getMessage());
                 TastyToast.makeText(mActivity, "Upload Failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
 
+
             }
         });
 
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        //Bus Registering
+        mBus.register(getActivity());
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        //Bus Registering
+        mBus.unregister(getActivity());
+    }
 }

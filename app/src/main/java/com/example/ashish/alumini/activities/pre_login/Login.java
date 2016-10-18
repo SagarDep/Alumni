@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
 import com.example.ashish.alumini.R;
@@ -19,6 +22,8 @@ import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.example.ashish.alumini.supporting_classes.ProgressBarVisibility;
 import com.example.ashish.alumini.supporting_classes.RetrofitErrorHandler;
 import com.sdsmdg.tastytoast.TastyToast;
+
+import org.w3c.dom.Text;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -39,6 +44,9 @@ public class Login extends Activity {
 
     EditText password;
     Button loginButton;
+
+    @Bind(R.id.textView_forgetpasswd)
+    TextView mTextViewForgetPassword;
 
     // for snack bar
     RelativeLayout mRelativeLayout;
@@ -74,6 +82,45 @@ public class Login extends Activity {
 
     }
 
+    // forget password
+    @OnClick(R.id.textView_forgetpasswd)
+    public void forgetPasswordListener(){
+
+        Log.d(TAG, "forget clicked");
+
+        final String emailString = email.getText().toString().trim();
+
+        if (emailString.trim().length()<6){
+            TastyToast.makeText(Login.this,"Invalid email",Toast.LENGTH_SHORT,TastyToast.INFO);
+            return;
+        }
+
+
+
+
+
+        loginButton.setEnabled(false);
+
+        final MaterialDialog materialDialog = new MaterialDialog(this);
+        materialDialog.setTitle("Reset Password")
+                .setMessage("Next step will give you a new password on given email id")
+                .setPositiveButton("Reset", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        materialDialog.dismiss();
+
+                        makeServerCallToResetPassword(emailString);
+
+                    }
+                })
+                .setCanceledOnTouchOutside(true)
+                .show();
+
+
+
+    }
+
     //body of login method
     @OnClick(R.id.button_login)
     public void login() {
@@ -95,6 +142,8 @@ public class Login extends Activity {
       makeServerCallToLogin(emailString, password);
 
     }
+
+
 
     public void onLoginSuccess(Intent intent) {
 
@@ -253,6 +302,39 @@ public class Login extends Activity {
         // mGlobalBus posting
         barVisibility.setVisibility(state);
         mGlobalBus.post(barVisibility);
+    }
+
+    public void makeServerCallToResetPassword( String emailString){
+
+        // progress bar visibility
+        postHideSignal(true);
+
+        Call<String> call = ApiClient.getServerApi().resetPassword(emailString);
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                TastyToast.makeText(Login.this,response.body(),Toast.LENGTH_SHORT,TastyToast.INFO);
+
+                // progress bar visibility
+                postHideSignal(false);
+
+                loginButton.setEnabled(true);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Snackbar snackbar = Snackbar
+                        .make(mRelativeLayout, "Can't connect to cloud", Snackbar.LENGTH_LONG);
+                snackbar.show();
+
+                // progress bar visibility
+                postHideSignal(false);
+
+                loginButton.setEnabled(true);
+            }
+        });
+
     }
 
 

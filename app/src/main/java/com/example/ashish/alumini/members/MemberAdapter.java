@@ -69,7 +69,7 @@ public class MemberAdapter  extends RecyclerView.Adapter<MemberAdapter.MyViewHol
                 .load(ApiClient.BASE_URL + "upload/uploads/thumbs/" + aInstance.get_id())
                 .placeholder(new IconicsDrawable(holder.mImageView.getContext()).icon(FontAwesome.Icon.faw_user)
                         .color(Color.LTGRAY)
-                        .sizeDp(70))
+                        .sizeDp(50))
                 .into(holder.mImageView);
 
     }

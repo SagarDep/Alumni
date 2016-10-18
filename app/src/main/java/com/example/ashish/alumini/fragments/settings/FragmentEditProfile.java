@@ -37,6 +37,7 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
+import com.pnikosis.materialishprogress.ProgressWheel;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 import com.squareup.picasso.Picasso;
@@ -120,6 +121,11 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     @Bind(R.id.imageView_companyLogo)
     ImageView mImageView;
 
+    @Bind(R.id.progress_wheel)
+    ProgressWheel mProgressWheel;
+
+    File mFile = null;
+
     String stringArrayBranch[];
     String stringArrayYear[];
     ArrayList<String> mArrayListBranch = new ArrayList<>();
@@ -172,6 +178,9 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         // runtime permission checker
         Dexter.initialize(mActivity);
 
+        // setting progress bar color
+        mProgressWheel.setBarColor(mActivity.getResources().getColor(R.color.appTheme));
+
 
         // getting id from shared pref and initiating api call
         String id = new GlobalPrefs(getActivity()).getString(getString(R.string.userid));
@@ -195,6 +204,9 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         for ( String a : stringArrayYear){
             mArrayListYear.add(a);
         }
+
+
+
 
 
         return view;
@@ -221,6 +233,12 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
     @OnClick(R.id.imageView_companyLogo)
     public void imageUploading(){
+
+        if (mFile!=null){
+            makeServerCallToUploadImage();
+            return;
+        }
+
         Dexter.checkPermission(new PermissionListener() {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse response) {
@@ -257,7 +275,11 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(mActivity.getContentResolver(), uri);
-                makeServerCallToUploadImage( uri);
+
+                mFile = new File(CommonData.getPath(mActivity,uri));
+
+
+                makeServerCallToUploadImage( );
                 mImageView.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -265,20 +287,26 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         }
     }
 
-    public void makeServerCallToUploadImage( Uri uri){
+    public void makeServerCallToUploadImage( ){
+
+        mProgressWheel.spin();
 
 
-        File file = new File(CommonData.getPath(mActivity,uri));
 
-        if (file==null){
+
+        if (mFile==null){
             Log.d(TAG,"bhai null ho gaya ");
+
+            mProgressWheel.stopSpinning();
+
+
             return;
         }
 
         //https://futurestud.io/tutorials/retrofit-2-how-to-upload-files-to-server
 
         RequestBody requestFile =
-                RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                RequestBody.create(MediaType.parse("multipart/form-data"), mFile);
 
         String userid = new GlobalPrefs(mActivity).getString("Userid");
 
@@ -298,19 +326,42 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 Log.d(TAG, "Upload Successful");
+
+                // show toast
                 TastyToast.makeText(mActivity,"Upload Successful",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+
+                mProgressWheel.stopSpinning();
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 Log.d(TAG, "Upload Failed" + t.getMessage());
-                TastyToast.makeText(mActivity,"Upload Failed",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+
+                // show toast
+                TastyToast.makeText(mActivity,"Upload Failed! Tap Image to retry",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+
+                mProgressWheel.stopSpinning();
             }
         });
 
     }
 
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        // hiding progress bar
+        mBus.post(false);
+
+        // unregictering event bus
+        mBus.unregister(this);
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -354,10 +405,12 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
+
+                // hiding the progrss bar
+                mBus.post(false);
+
                 // 201 because it is send by the back end fo a successfull call
                 if (response.code()==201){
-                    // hiding the progrss bar
-                    mBus.post(false);
 
                     mActivity.changeFragment(new FragmentProfile());
                     TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
@@ -377,6 +430,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
+
                 // hiding progress bar
                 mBus.post(false);
 

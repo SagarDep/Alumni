@@ -110,4 +110,7 @@ public interface ServerApi {
     @POST("/upload/image")
     Call<String> uploadProfileImage(@Part MultipartBody.Part photo);
 
+    @POST("/mail")
+    Call<String> resetPassword(@Query("email") String email);
+
 }
