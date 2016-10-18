@@ -34,6 +34,7 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
+import com.pnikosis.materialishprogress.ProgressWheel;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
@@ -89,6 +90,11 @@ public class FragmentJobPosting extends Fragment {
     @Bind(R.id.imageView_companyLogo)
     ImageView mImageView;
 
+    @Bind(R.id.progress_wheel)
+    ProgressWheel mProgressWheel;
+
+    File mFile = null;
+
     Bus mBus = new Bus();
 
     PostLoginActivity mActivity;
@@ -135,7 +141,15 @@ public class FragmentJobPosting extends Fragment {
 
         mActivity = (PostLoginActivity) getActivity();
 
+        //Bus Registering
+        mBus.register(getActivity());
+
         Dexter.initialize(mActivity);
+
+        // setting progress bar color
+        mProgressWheel.setBarColor(mActivity.getResources().getColor(R.color.appTheme));
+
+
         return view;
     }
 
@@ -155,8 +169,7 @@ public class FragmentJobPosting extends Fragment {
     public void onResume() {
         super.onResume();
 
-        //Bus Registering
-        mBus.register(getActivity());
+
 
         mBus.post(new MenuVisibility(false));
 
@@ -276,6 +289,11 @@ public class FragmentJobPosting extends Fragment {
     @OnClick(R.id.imageView_companyLogo)
     public void imageGettingFunction(){
 
+        if (mFile!=null){
+            makeServerCallToUploadImage();
+            return;
+        }
+
         Dexter.checkPermission(new PermissionListener() {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse response) {
@@ -314,7 +332,12 @@ public class FragmentJobPosting extends Fragment {
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(mActivity.getContentResolver(), uri);
-                makeServerCallToUploadImage( uri);
+
+                // getting file from uri
+                mFile = new File(CommonData.getPath(mActivity,uri));
+
+                makeServerCallToUploadImage();
+
                 mImageView.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -322,13 +345,11 @@ public class FragmentJobPosting extends Fragment {
         }
     }
 
-    public void makeServerCallToUploadImage( Uri uri){
+    public void makeServerCallToUploadImage( ){
 
-        // getting file from uri
-        File file = new File(CommonData.getPath(mActivity,uri));
-//        File file = new File(uri.getPath());
+        mProgressWheel.spin();
 
-        if (file==null){
+        if (mFile==null){
             Log.d(TAG,"bhai null ho gaya ");
             return;
         }
@@ -336,7 +357,7 @@ public class FragmentJobPosting extends Fragment {
         //https://futurestud.io/tutorials/retrofit-2-how-to-upload-files-to-server
 
         RequestBody requestFile =
-                RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                RequestBody.create(MediaType.parse("multipart/form-data"), mFile);
 
         String userid = new GlobalPrefs(mActivity).getString("Userid");
 
@@ -355,13 +376,22 @@ public class FragmentJobPosting extends Fragment {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 Log.d(TAG, "Upload Successful");
+
                 TastyToast.makeText(mActivity,"Upload Successful",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+
+                mProgressWheel.stopSpinning();
+
+                mFile = null;
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 Log.d(TAG, "Upload Failed" + t.toString());
+
                 TastyToast.makeText(mActivity,"Upload Failed",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+
+                mProgressWheel.stopSpinning();
+
 
             }
         });
