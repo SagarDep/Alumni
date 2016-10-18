@@ -1,5 +1,6 @@
 package com.example.ashish.alumini.activities.post_login;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.fragments.FragmentMembers;
 import com.example.ashish.alumini.fragments.settings.FragmentSettings;
 import com.example.ashish.alumini.supporting_classes.CommonData;
+import com.example.ashish.alumini.supporting_classes.MenuVisibility;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
@@ -47,7 +49,8 @@ public class PostLoginActivity extends AppCompatActivity {
     Boolean mBackToJobList = true;
 
     ActionBar mActionBar;
-//    Fragment commonFrag = CommonData.CommonData();
+
+    Fragment mFragmentMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +73,7 @@ public class PostLoginActivity extends AppCompatActivity {
 
         mFragmentManager = getSupportFragmentManager();
 
+        mFragmentMenu = mFragmentManager.findFragmentById(R.id.fragmentMenuContainer);
 
         //setting first fragement
         mFragmentTransaction = mFragmentManager.beginTransaction();
@@ -191,5 +195,26 @@ public class PostLoginActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+    }
+
+    @Subscribe
+    public void changeVisibilityOfMenu(MenuVisibility visibility){
+
+        Log.d(TAG, "Menu Visibility" + visibility.getState());
+
+        if (!visibility.getState() && mFragmentMenu!=null){
+
+            mFragmentManager.beginTransaction()
+                    .hide(mFragmentMenu)
+                    .commit();
+
+        } else if (visibility.getState() && mFragmentMenu!=null){
+
+            mFragmentManager.beginTransaction()
+                    .show(mFragmentMenu)
+                    .commit();
+
+        }
+
     }
 }

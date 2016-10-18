@@ -27,6 +27,7 @@ import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
+import com.example.ashish.alumini.supporting_classes.MenuVisibility;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -131,8 +132,6 @@ public class FragmentJobPosting extends Fragment {
         View view = inflater.inflate(R.layout.fragment_post_job, container, false);
 
         ButterKnife.bind(this,view);
-        //Bus Registering
-        mBus.register(getActivity());
 
         mActivity = (PostLoginActivity) getActivity();
 
@@ -149,6 +148,27 @@ public class FragmentJobPosting extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        //Bus Registering
+        mBus.register(getActivity());
+
+        mBus.post(new MenuVisibility(false));
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        mBus.post(new MenuVisibility(true));
+
+        mBus.unregister(this);
 
     }
 

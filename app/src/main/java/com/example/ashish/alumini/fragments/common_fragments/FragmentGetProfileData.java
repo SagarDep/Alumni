@@ -32,6 +32,7 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
+import com.pnikosis.materialishprogress.ProgressWheel;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
@@ -114,6 +115,10 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     @Bind(R.id.imageView_companyLogo)
     ImageView mImageView;
 
+    @Bind(R.id.progress_wheel)
+    ProgressWheel mProgressWheel;
+
+    File mFile = null;
 
     // event bus registering
     Bus mBus = new Bus();
@@ -168,6 +173,10 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         // runtime permission checker
         Dexter.initialize(mActivity);
 
+        // setting progress bar color
+        mProgressWheel.setBarColor(mActivity.getResources().getColor(R.color.appTheme));
+
+
 
         return view;
     }
@@ -192,6 +201,11 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
     @OnClick(R.id.imageView_companyLogo)
     public void imagePickingFunction() {
+
+        if (mFile!=null){
+            makeServerCallToUploadImage();
+            return;
+        }
 
         Dexter.checkPermission(new PermissionListener() {
             @Override
@@ -336,8 +350,11 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(mActivity.getContentResolver(), uri);
 
+                // getting file from uri
+                mFile = new File(CommonData.getPath(mActivity,uri));
+
                 // make server call to upload image
-                makeServerCallToUploadImage(uri);
+                makeServerCallToUploadImage();
 
                 // set image to imageview
                 mImageView.setImageBitmap(bitmap);
@@ -347,18 +364,22 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         }
     }
 
-    public void makeServerCallToUploadImage(Uri uri) {
+    public void makeServerCallToUploadImage() {
 
-        // making progress bar visible
-        mBus.post(true);
+        mProgressWheel.spin();
 
-        // getting file from uri
-        File file = new File(CommonData.getPath(mActivity,uri));
+        if (mFile==null){
+            Log.d(TAG,"bhai null ho gaya ");
+
+            mProgressWheel.stopSpinning();
+
+            return;
+        }
 
         //https://futurestud.io/tutorials/retrofit-2-how-to-upload-files-to-server
 
         RequestBody requestFile =
-                RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                RequestBody.create(MediaType.parse("multipart/form-data"), mFile);
 
         String userid = new GlobalPrefs(mActivity).getString("Userid");
 
@@ -372,6 +393,11 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
             public void onResponse(Call<String> call, Response<String> response) {
                 Log.d(TAG, "Upload Successful");
                 TastyToast.makeText(mActivity, "Upload Successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+
+                mProgressWheel.stopSpinning();
+
+                mFile = null;
+
             }
 
             @Override
@@ -379,6 +405,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
                 Log.d(TAG, "Upload Failed" + t.getMessage());
                 TastyToast.makeText(mActivity, "Upload Failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
 
+                mProgressWheel.stopSpinning();
 
             }
         });

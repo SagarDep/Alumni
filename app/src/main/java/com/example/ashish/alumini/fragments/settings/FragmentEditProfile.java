@@ -29,6 +29,7 @@ import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
+import com.example.ashish.alumini.supporting_classes.MenuVisibility;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -331,6 +332,8 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
                 TastyToast.makeText(mActivity,"Upload Successful",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
 
                 mProgressWheel.stopSpinning();
+
+                mFile = null;
             }
 
             @Override
@@ -350,6 +353,9 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        mBus.post(new MenuVisibility(false));
+
     }
 
     @Override
@@ -359,8 +365,13 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         // hiding progress bar
         mBus.post(false);
 
+        mBus.post(new MenuVisibility(true));
+
         // unregictering event bus
         mBus.unregister(this);
+
+
+
     }
 
     @Override
