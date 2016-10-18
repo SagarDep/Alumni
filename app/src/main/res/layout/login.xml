@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="@dimen/activity_horizontal_margin"
+    android:padding="10dp"
     android:id="@+id/relativeLayout_login"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="@string/forget_password"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textColor="@color/card_background"
         android:id="@+id/textView_forgetpasswd"
         android:layout_below="@+id/linearLayout_password"
@@ -36,7 +36,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/tab_bg"
         android:padding="10dp"
-        android:layout_marginTop="10dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/linearLayout_email">

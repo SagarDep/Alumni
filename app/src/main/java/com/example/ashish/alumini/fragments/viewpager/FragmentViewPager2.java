@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.application.MyApplication;
@@ -34,6 +35,9 @@ public class FragmentViewPager2 extends Fragment {
 
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
+
+    @Bind(R.id.material_progressBar_viewpager)
+    ProgressBar mProgressBar;
 
     private List<MemberInstance> mArrayList3 = new ArrayList<>();
     private List<MemberInstance> mArrayList = new ArrayList<>();
@@ -86,6 +90,10 @@ public class FragmentViewPager2 extends Fragment {
 
         //initialization of adapter
         mAdapter = new MemberAdapter(mArrayList);
+
+        // making progress bar invisible
+        mProgressBar.setVisibility(View.GONE);
+
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
 

@@ -5,11 +5,32 @@
     android:background="@drawable/final_login_screen"
     tools:context=".activities.pre_login.ActivitySplashScreen">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/as"/>
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/as"
+            android:id="@+id/splashscreen_logo"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <com.mikepenz.iconics.view.IconicsTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/splashscreen_logo"
+            android:text="Welcome to\n Alumni Connect App"
+            android:textColor="@android:color/white"
+            android:textAlignment="center"
+            android:shadowColor="@color/black_de"
+            android:textSize="25dp"/>
+    </RelativeLayout>
+
+
 
 </RelativeLayout>
