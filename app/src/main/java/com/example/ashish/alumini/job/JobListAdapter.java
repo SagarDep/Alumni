@@ -60,7 +60,7 @@ public class JobListAdapter extends ArrayAdapter<JobListInstance> {
 
         JobListInstance item = getItem(position);
 
-        if (item.getImagepath()!=null){
+        if (item.getPostedbyid()!=null){
             Log.d(TAG, "aa gaya");
         }
 
@@ -68,7 +68,8 @@ public class JobListAdapter extends ArrayAdapter<JobListInstance> {
         mTextViewJobLocation.setText(item.getLocation());
         mTextViewJobPosition.setText(item.getRole());
 
-        String imageUrl  = new String(ApiClient.BASE_URL + "upload/uploads/thumbs/"+item.getImagepath());
+        String imageUrl  = new String(ApiClient.BASE_URL + "upload/uploads/thumbs/"+item.getPostedbyid() + "-job");
+        Log.d(TAG, imageUrl);
 
         Picasso.with(getContext())
                 .load(imageUrl)

@@ -38,7 +38,8 @@ public interface ServerApi {
     * to post a job from settings menu
     * */
     @POST("jobs/post")
-    Call<String> postJob(@Query("name") String name,
+    Call<String> postJob(@Query("imagepath") String imagepath,
+                         @Query("name") String name,
                          @Query("role") String role,
                          @Query("kahani") String description,
                          @Query("location") String location,
@@ -106,10 +107,14 @@ public interface ServerApi {
     @POST("/upload/job")
     Call<String> uploadJobImage(@Part MultipartBody.Part photo);
 
+    /*
+    * Image uploading for members
+    * */
     @Multipart
     @POST("/upload/image")
     Call<String> uploadProfileImage(@Part MultipartBody.Part photo);
 
+    // forget my password
     @POST("/mail")
     Call<String> resetPassword(@Query("email") String email);
 

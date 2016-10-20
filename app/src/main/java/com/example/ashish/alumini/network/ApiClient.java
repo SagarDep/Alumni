@@ -1,5 +1,8 @@
 package com.example.ashish.alumini.network;
 
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -19,7 +22,7 @@ public class ApiClient {
     private static Retrofit retrofit = null;
 
     // copied from some toutorials
-    public static Retrofit getClient() {
+    public static Retrofit getClientOld() {
         if (retrofit==null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
@@ -29,11 +32,21 @@ public class ApiClient {
         return retrofit;
     }
 
+    //http://stackoverflow.com/questions/26750650/retrofit-sockettimeoutexception-in-sending-multiparty-or-json-data-in-android
+    private static OkHttpClient getClient() {
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(5, TimeUnit.MINUTES)
+                .readTimeout(5, TimeUnit.MINUTES)
+                .build();
+        return client;
+    }
+
     // modified function
     public static ServerApi getServerApi() {
         if (retrofit==null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
+                    .client(getClient())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

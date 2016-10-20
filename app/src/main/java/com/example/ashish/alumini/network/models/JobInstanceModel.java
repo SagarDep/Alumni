@@ -21,6 +21,8 @@ public class JobInstanceModel extends Model {
     @Column(name = "location")
     String location;
 
+
+
     public String get_id() {
         return _id;
     }

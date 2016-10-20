@@ -89,7 +89,12 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         // show that data which was recieved by the list
         showData();
 
-        // make server call on resume
+        //Bus Registering
+        mBus.register(getActivity());
+
+
+        // make server call when bus is registered
+        makeServerCallToGetRemainingData();
 
         return view;
     }
@@ -125,8 +130,8 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         mTextViewName.setText(mJobListInstance.getName());
         mTextViewLocation.setText(mJobListInstance.getLocation());
         mTextViewJobDesignation.setText(mJobListInstance.getRole());
-        String imageUrl = new String(ApiClient.BASE_URL + "upload/uploads/thumbs/"+"57fdc4c81224c7d16c8fcd22-job"
-//                mJobListInstance.getImagepath()
+        String imageUrl = new String(ApiClient.BASE_URL + "upload/uploads/fullsize/"+
+                mJobListInstance.getPostedbyid() + "-job"
         );
 
         // picasso image loading
@@ -163,6 +168,17 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
                 mTextViewemail.setText(jobDetail.getContactemail());
                 mTextViewJobDescription.setText("Job Description : " + jobDetail.getKahani());
                 mTextViewPostedBy.setText("Posted By : " + jobDetail.getPostedby());
+
+//                Picasso.with(getActivity())
+//                        .load(ApiClient.BASE_URL + "upload/uploads/thumbs/"+jobDetail.getPostedbyid()+"-job")
+//                        .placeholder(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_user)
+//                                .color(Color.LTGRAY)
+//                                .sizeDp(70))
+//                        .error(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_user)
+//                                .color(Color.RED)
+//                                .sizeDp(70))
+//                        .into(imageView_companyImage);
+
             }
 
             @Override
@@ -184,11 +200,8 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     public void onResume() {
         super.onResume();
 
-        //Bus Registering
-        mBus.register(this);
 
-        // make server call when bus is registered
-        makeServerCallToGetRemainingData();
+
     }
 
     @Override

@@ -10,11 +10,12 @@ public class JobListInstance {
     private String name;
     private String location;
     private String role;
-    private String type;
 
 
 
-    private String imagepath;
+
+    private String postedbyid;
+
 
     /**
      *
@@ -88,30 +89,12 @@ public class JobListInstance {
         this.role = role;
     }
 
-    /**
-     *
-     * @return
-     * The type
-     */
-    public String getType() {
-        return type;
+
+    public String getPostedbyid() {
+        return postedbyid;
     }
 
-    /**
-     *
-     * @param type
-     * The type
-     */
-    public void setType(String type) {
-        this.type = type;
+    public void setPostedbyid(String postedbyid) {
+        this.postedbyid = postedbyid;
     }
-
-    public String getImagepath() {
-        return imagepath;
-    }
-
-    public void setImagepath(String imagepath) {
-        this.imagepath = imagepath;
-    }
-
 }

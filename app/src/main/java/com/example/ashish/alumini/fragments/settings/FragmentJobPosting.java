@@ -229,7 +229,13 @@ public class FragmentJobPosting extends Fragment {
         // show progress bar
         mBus.post(true);
 
+        String imageName = null;
+        if (mFile!=null){
+            imageName = mFile.getName();
+        }
+
         Call<String> call = ApiClient.getServerApi().postJob(
+                imageName,
                 mInputEditTextCompanyName.getText().toString().trim(),
                 mInputEditTextRole.getText().toString().trim(),
                 mInputEditTextJobDescription.getText().toString().trim(),
@@ -379,9 +385,9 @@ public class FragmentJobPosting extends Fragment {
 
                 TastyToast.makeText(mActivity,"Upload Successful",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
 
+                // make the progress wheel stop spinning
                 mProgressWheel.stopSpinning();
 
-                mFile = null;
             }
 
             @Override
@@ -390,6 +396,7 @@ public class FragmentJobPosting extends Fragment {
 
                 TastyToast.makeText(mActivity,"Upload Failed",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
 
+                // make the progress wheel stop spinning
                 mProgressWheel.stopSpinning();
 
 

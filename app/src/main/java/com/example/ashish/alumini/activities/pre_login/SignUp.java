@@ -71,20 +71,6 @@ public class SignUp extends Activity {
 
         ButterKnife.bind(this);
 
-//        mEditTextName =(EditText)findViewById(R.id.editText_signup_name);
-//        mEditTextemail =(EditText)findViewById(R.id.editText_signup_email);
-//        mEditTextPassword =(EditText)findViewById(R.id.editText_signup_password);
-//        mEditTextConfirmPassword =(EditText)findViewById(R.id.editText_signup_passwordConfirm);
-//        mButtonSignup =(Button)findViewById(R.id.button_signup);
-//        mRelativeLayout = (LinearLayout) findViewById(R.id.linearLayout_signup);
-
-
-//        mButtonSignup.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                signUp();
-//            }
-//        });
 
         mApplication  = (MyApplication) getApplication();
 
@@ -99,10 +85,6 @@ public class SignUp extends Activity {
             return;
         }
         onSignUpSuccess();
-
-        String emailString = mEditTextemail.getText().toString().trim();
-        String passwordString = mEditTextPassword.getText().toString().trim();
-        String nameString= mEditTextName.getText().toString().trim();
 
 
 //        startMainScreenActivity(null);
@@ -182,7 +164,7 @@ public class SignUp extends Activity {
                 if (response.code()==600){
                     TastyToast.makeText(getBaseContext(), "Email Already Exists", Toast.LENGTH_LONG,TastyToast.ERROR);
                 }
-                else {
+                else if (response.code()==200){
 
                 SignupPart signupPart = response.body();
 
