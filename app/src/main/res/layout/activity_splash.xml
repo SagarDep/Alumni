@@ -12,8 +12,8 @@
         android:layout_centerHorizontal="true">
 
         <ImageView
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
             android:background="@drawable/as"
             android:id="@+id/splashscreen_logo"
             android:layout_alignParentTop="true"

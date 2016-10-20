@@ -175,7 +175,7 @@ public class Login extends Activity {
         }
 
         if (passwordString.isEmpty() || passwordString.length() < 6 || passwordString.length() > 255) {
-            password.setError("Enter between 6 and 255 alphanumeric characters");
+            password.setError("Enter a strong password");
             valid = false;
         } else {
             password.setError(null);

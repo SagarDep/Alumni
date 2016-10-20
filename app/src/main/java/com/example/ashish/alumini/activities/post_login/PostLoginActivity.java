@@ -64,8 +64,7 @@ public class PostLoginActivity extends AppCompatActivity {
         //initializing the Action Bar
         mActionBar = getSupportActionBar();
 
-        //event bus registering
-        mBus.register(this);
+
 
         //setting up the bar
         mActionBar.setDisplayHomeAsUpEnabled(true);
@@ -152,6 +151,9 @@ public class PostLoginActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        //event bus registering
+        mBus.register(this);
 
 
     }

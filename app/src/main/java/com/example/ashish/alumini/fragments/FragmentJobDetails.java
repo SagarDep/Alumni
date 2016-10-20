@@ -125,29 +125,20 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         mTextViewName.setText(mJobListInstance.getName());
         mTextViewLocation.setText(mJobListInstance.getLocation());
         mTextViewJobDesignation.setText(mJobListInstance.getRole());
-        String imageUrl = new String(ApiClient.BASE_URL + "upload/uploads/thumbs/"+
-                mJobListInstance.getImagepath());
+        String imageUrl = new String(ApiClient.BASE_URL + "upload/uploads/thumbs/"+"57fdc4c81224c7d16c8fcd22-job"
+//                mJobListInstance.getImagepath()
+        );
 
         // picasso image loading
         Picasso.with(getActivity())
-                .load(mJobListInstance.getImagepath())
+                .load(imageUrl)
                 .placeholder(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_user)
                         .color(Color.LTGRAY)
                         .sizeDp(70))
                 .error(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_user)
                         .color(Color.RED)
                         .sizeDp(70))
-                .into(imageView_companyImage, new com.squareup.picasso.Callback() {
-                    @Override
-                    public void onSuccess() {
-
-                    }
-
-                    @Override
-                    public void onError() {
-
-                    }
-                });
+                .into(imageView_companyImage);
 
 
     }
@@ -178,8 +169,10 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
             public void onFailure(Call<JobDetail> call, Throwable t) {
                 //making progress bar invisible
                 mBus.post(false);
-                TastyToast.makeText(mActivity, "Failed to connect", TastyToast.LENGTH_SHORT,
-                        TastyToast.ERROR);
+                if (getActivity()!=null){
+                    TastyToast.makeText(mActivity, "Failed to connect", TastyToast.LENGTH_SHORT,
+                            TastyToast.ERROR);
+                }
                 Log.d(TAG,"API cal Failed" + t.toString());
             }
         });
@@ -192,7 +185,7 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         super.onResume();
 
         //Bus Registering
-        mBus.register(getActivity());
+        mBus.register(this);
 
         // make server call when bus is registered
         makeServerCallToGetRemainingData();
@@ -205,8 +198,7 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         //making progress bar invisible
         mBus.post(false);
 
-        //Bus Registering
-        mBus.unregister(getActivity());
+
 
     }
 }

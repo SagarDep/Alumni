@@ -169,8 +169,7 @@ public class FragmentJobPosting extends Fragment {
     public void onResume() {
         super.onResume();
 
-
-
+        // make menu invisible
         mBus.post(new MenuVisibility(false));
 
     }
@@ -179,9 +178,10 @@ public class FragmentJobPosting extends Fragment {
     public void onPause() {
         super.onPause();
 
+        // make menu visible
         mBus.post(new MenuVisibility(true));
 
-        mBus.unregister(this);
+
 
     }
 

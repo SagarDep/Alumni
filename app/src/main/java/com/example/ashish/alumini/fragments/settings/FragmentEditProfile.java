@@ -354,6 +354,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     public void onResume() {
         super.onResume();
 
+        // make menu invisible
         mBus.post(new MenuVisibility(false));
 
     }
@@ -365,9 +366,10 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         // hiding progress bar
         mBus.post(false);
 
+        // make menu visible
         mBus.post(new MenuVisibility(true));
 
-        // unregictering event bus
+        // unregistering event bus
         mBus.unregister(this);
 
 
@@ -445,7 +447,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
                 // hiding progress bar
                 mBus.post(false);
 
-                Log.d(TAG, "API call failed");
+                Log.d(TAG, "API call failed makeServerCalltoPostCompleteData");
             }
         });
 
@@ -518,7 +520,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
             @Override
             public void onFailure(Call<MemberInstance> call, Throwable t) {
-                Log.d(TAG, "API call failed");
+                Log.d(TAG, "API call failed makeServerToGetCompleteData");
                 // hiding progress bar
                 mBus.post(false);
             }
