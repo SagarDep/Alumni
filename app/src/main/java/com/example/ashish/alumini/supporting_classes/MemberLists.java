@@ -3,13 +3,11 @@ package com.example.ashish.alumini.supporting_classes;
 import android.util.Log;
 
 import com.activeandroid.ActiveAndroid;
-import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.models.MemberInstanceModel;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.network.pojo.MemberListResponse;
-import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +31,7 @@ public class MemberLists {
 
     public MemberLists() {
 //    makeServerCallToGetAllMemberData();
-        makeServerCallToGetAllMemberDataPost("0");
+        makeServerCallToGetAllMemberData("0");
 
         mGlobalBus.register(this);
     }
@@ -61,18 +59,22 @@ public class MemberLists {
         });
     }
 
-    public void makeServerCallToGetAllMemberDataPost(String time){
+    public void makeServerCallToGetAllMemberData(String time){
+
+        // this will be subscribed by FragmentMembers - for starting the progress bar
+        mGlobalBus.post(true);
+
 
         // changing the api call flag to get to know that whether api call has finished or not
         mApiCallFlag = true;
-        mGlobalBus.post(true);
+
 
         Call<MemberListResponse> call = ApiClient.getServerApi().getMemberListinChunks(time);
 
         call.enqueue(new Callback<MemberListResponse>() {
             @Override
             public void onResponse(Call<MemberListResponse> call, Response<MemberListResponse> response) {
-                Log.d(TAG,"API call successful");
+                Log.d(TAG,"API call successful makeServerCallToGetAllMemberData");
                 MemberListResponse response1 = response.body();
 
                 // preventing nullification
@@ -100,13 +102,14 @@ public class MemberLists {
                     }
                     finally {
                         ActiveAndroid.endTransaction();
-
                     }
 
                     // iterating all the list instances and adding to main list
 //                    for (MemberInstance memberInstance: instanceList) {
 //                        list.add(memberInstance);
 //                    }
+
+
 
                 }
 
@@ -120,7 +123,10 @@ public class MemberLists {
                 }
 
                 // start call again
-                makeServerCallToGetAllMemberDataPost(response1.getTime());
+                makeServerCallToGetAllMemberData(response1.getTime());
+
+                // this will be subscribed by FragmentMembers - for starting the progress bar
+                mGlobalBus.post(false);
             }
 
             @Override
@@ -150,14 +156,12 @@ public class MemberLists {
                 // chnaging flag
                 mApiCallFlag = false;
 
-                Log.d(TAG,"API call failed" + t.toString());
+                Log.d(TAG,"API call failed makeServerCallToGetAllMemberData" + t.toString());
+
+                // this will be subscribed by FragmentMembers - for starting the progress bar
+                mGlobalBus.post(false);
             }
         });
-    }
-
-    @Subscribe
-    public void hide(Boolean a){
-        Log.d(TAG, "Bus working");
     }
 
 }

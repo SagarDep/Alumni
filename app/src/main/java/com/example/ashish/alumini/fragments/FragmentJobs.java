@@ -174,7 +174,6 @@ public class FragmentJobs extends Fragment {
                 if (response!=null){
                     mJobArrayList = response.body();
                 }
-                // TODO : adding the datasetmodify method
 
                 if (mJobArrayList!=null){
                     //iterating the list to save in database

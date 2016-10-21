@@ -21,6 +21,7 @@ import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.supporting_classes.GlobalBus;
 import com.example.ashish.alumini.supporting_classes.MemberLists;
 import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,6 +107,7 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
         }
 
 
+
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(mAdapter);
 
@@ -139,11 +141,6 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
-
-
-
-
-
             }
 
             @Override
@@ -165,6 +162,8 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
     public void onPause() {
         super.onPause();
         mBus.unregister(getActivity());
+
+        globalBus.unregister(this);
     }
 
     @Override
@@ -172,10 +171,8 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
         super.onResume();
         // registering event bus
         mBus.register(getActivity());
+
         globalBus.register(this);
-
-
-        globalBus.post(true);
 
         // checking if api call is still in progress or not
         if ( mMemberLists!=null && mMemberLists.mApiCallFlag){
@@ -183,8 +180,22 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
         }
         else
             mProgressBar.setVisibility(View.GONE);
-//        seems like eritten uselessly
-//        globalBus.post(mMemberLists.mApiCallFlag);
+
+
+    }
+
+    @Subscribe
+    public void ApiCallProgressListemer(Boolean aBoolean){
+//        mProgressBar.setVisibility();
+        Log.d(TAG, "Global Bus working ");
+        if (mProgressBar!=null){
+            if ( mMemberLists!=null){
+                mProgressBar.setVisibility(View.VISIBLE);
+            }
+            else
+                mProgressBar.setVisibility(View.GONE);
+        }
+        mAdapter.notifyDataSetChanged();
 
 
     }

@@ -155,7 +155,6 @@ public class FragmentViewPager1 extends Fragment {
 
         globalBus.register(this);
 
-        globalBus.post(false);
 
     }
 

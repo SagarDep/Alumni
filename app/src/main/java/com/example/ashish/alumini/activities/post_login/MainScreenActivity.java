@@ -102,7 +102,7 @@ public class MainScreenActivity extends AppCompatActivity
                 CommonData.mCurrentFragmentMainScreen = fragmentGetProfileData;
             }else {
                 // condition to check if the user has come from logout button or not
-                // if shared prefs will show as logged out then finish the activity
+                // if shared prefs will show college_logo logged out then finish the activity
                 if (!new GlobalPrefs(this).getBoolean(getResources().getString(R.string.is_logged_in))){
                     this.finish();
                 }

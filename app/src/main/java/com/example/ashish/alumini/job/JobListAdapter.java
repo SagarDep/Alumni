@@ -73,7 +73,7 @@ public class JobListAdapter extends ArrayAdapter<JobListInstance> {
 
         Picasso.with(getContext())
                 .load(imageUrl)
-                .placeholder(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_user)
+                .placeholder(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_cloud_download)
                         .color(Color.LTGRAY)
                         .sizeDp(70))
                 .into(mImageView);

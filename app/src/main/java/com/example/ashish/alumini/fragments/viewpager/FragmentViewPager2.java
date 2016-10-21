@@ -150,7 +150,6 @@ public class FragmentViewPager2 extends Fragment {
         mBus.register(getActivity());
 
         globalBus.register(this);
-        globalBus.post(false);
 
 
     }

@@ -96,8 +96,6 @@ public class FragmentMembers extends Fragment {
         mTabLayout.setupWithViewPager(mViewPager);
 
 
-
-
         return view;
     }
 

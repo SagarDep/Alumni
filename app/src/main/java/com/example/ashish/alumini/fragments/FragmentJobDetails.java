@@ -137,11 +137,11 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         // picasso image loading
         Picasso.with(getActivity())
                 .load(imageUrl)
-                .placeholder(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_user)
+                .placeholder(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_cloud_download)
                         .color(Color.LTGRAY)
                         .sizeDp(70))
-                .error(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_user)
-                        .color(Color.RED)
+                .error(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_cloud_download)
+                        .color(Color.LTGRAY)
                         .sizeDp(70))
                 .into(imageView_companyImage);
 
@@ -169,15 +169,6 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
                 mTextViewJobDescription.setText("Job Description : " + jobDetail.getKahani());
                 mTextViewPostedBy.setText("Posted By : " + jobDetail.getPostedby());
 
-//                Picasso.with(getActivity())
-//                        .load(ApiClient.BASE_URL + "upload/uploads/thumbs/"+jobDetail.getPostedbyid()+"-job")
-//                        .placeholder(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_user)
-//                                .color(Color.LTGRAY)
-//                                .sizeDp(70))
-//                        .error(new IconicsDrawable(getContext()).icon(FontAwesome.Icon.faw_user)
-//                                .color(Color.RED)
-//                                .sizeDp(70))
-//                        .into(imageView_companyImage);
 
             }
 
@@ -186,10 +177,14 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
                 //making progress bar invisible
                 mBus.post(false);
                 if (getActivity()!=null){
-                    TastyToast.makeText(mActivity, "Failed to connect", TastyToast.LENGTH_SHORT,
+                    TastyToast.makeText(getActivity(), "Failed to connect", TastyToast.LENGTH_SHORT,
                             TastyToast.ERROR);
+                    getActivity().onBackPressed();
                 }
                 Log.d(TAG,"API cal Failed" + t.toString());
+
+
+
             }
         });
 
