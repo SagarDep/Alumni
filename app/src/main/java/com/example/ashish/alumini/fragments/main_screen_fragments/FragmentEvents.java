@@ -90,54 +90,55 @@ public class FragmentEvents extends Fragment {
         mActionBar = mActivity.getSupportActionBar();
 
         EventListInstance listInstance = new EventListInstance();
-        listInstance.setName("Tehnika");
-        listInstance.setUrl("http://google.com");
+        listInstance.setName("Tehnika Naitus");
+        listInstance.setUrl("http://www.aryacollege.in/tehnika-naitus.php");
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setName("Microsoft Innovation Center");
-        listInstance.setUrl("http://google.com");
+        listInstance.setName("Shraddhanjali");
+        listInstance.setUrl("http://www.aryacollege.in/shradhanjali.php");
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setName("Sanghosti");
-        listInstance.setUrl("http://google.com");
-        mInstanceArrayList.add(listInstance);
-
-        listInstance = new EventListInstance();
-        listInstance.setName("International Conference");
-        listInstance.setUrl("http://google.com");
-        mInstanceArrayList.add(listInstance);
-
-        listInstance = new EventListInstance();
-        listInstance.setName("Engineer Day");
-        listInstance.setUrl("http://google.com");
+        listInstance.setName("Graduation Day");
+        listInstance.setUrl("http://www.aryacollege.in/graduation-day.php");
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
         listInstance.setName("Zephr");
-        listInstance.setUrl("http://google.com");
+        listInstance.setUrl("http://www.aryacollege.in/zephyr.php");
+        mInstanceArrayList.add(listInstance);
+
+        listInstance = new EventListInstance();
+        listInstance.setName("Victory");
+        listInstance.setUrl("http://www.aryacollege.in/the-annualday.php");
+        mInstanceArrayList.add(listInstance);
+
+        listInstance = new EventListInstance();
+        listInstance.setName("Engineer Day");
+        listInstance.setUrl("http://www.aryacollege.in/engineer-day.php");
         mInstanceArrayList.add(listInstance);
 
 
         listInstance = new EventListInstance();
         listInstance.setName("Auto Ignition");
-        listInstance.setUrl("http://google.com");
+        listInstance.setUrl("http://www.aryacollege.in/autoignition.php");
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setName("TopGun");
-        listInstance.setUrl("http://google.com");
+        listInstance.setName("TopGuns");
+        listInstance.setUrl("http://www.aryacollege.in/the-farewellparty.php");
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
         listInstance.setName("Exergie");
-        listInstance.setUrl("http://google.com");
+        listInstance.setUrl("http://www.aryacollege.in/exergie.php");
         mInstanceArrayList.add(listInstance);
 
 
 
-        EventListAdapter adapter = new EventListAdapter(getActivity(),R.layout.list_layout_events,mInstanceArrayList);
+        EventListAdapter adapter = new EventListAdapter(getActivity(),
+                R.layout.list_layout_events,mInstanceArrayList);
         mListView.setDivider(null);
         mListView.setAdapter(adapter);
 

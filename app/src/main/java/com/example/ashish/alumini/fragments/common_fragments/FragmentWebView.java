@@ -1,6 +1,7 @@
 package com.example.ashish.alumini.fragments.common_fragments;
 
 import android.content.Context;
+import android.graphics.Picture;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -90,14 +91,9 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_web_view, container, false);
 
-        //Bus Registering
-//        mBus.register(getActivity());
-
+        // butterknife binding
         ButterKnife.bind(this,view);
 
-
-        // show progress bar
-//        mBus.post(true);
 
         if (getActivity() instanceof PostLoginActivity){
             mPostLoginActivity = (PostLoginActivity) getActivity();
@@ -106,8 +102,7 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
             mMainScreenActivity = (MainScreenActivity) getActivity();
         }
 
-        // show progress bar
-        mBus.post(true);
+
 
         mWebView.getSettings().setJavaScriptEnabled(true);
 
@@ -135,8 +130,6 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
             public void onLoadResource(WebView view, String url) {
                 super.onLoadResource(view, url);
 
-                Log.d(TAG,"Error while load res");
-
             }
 
             @Override
@@ -146,11 +139,17 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
                 Log.d(TAG,"Error while loading page" + error.toString());
 
                 // hiding progress bar
-                Boolean aBoolean = false;
-                mBus.post(aBoolean);
+                mBus.post(false);
             }
         });
 
+
+        mWebView.setPictureListener(new WebView.PictureListener() {
+            @Override
+            public void onNewPicture(WebView view, Picture picture) {
+                mBus.post(false);
+            }
+        });
 
 
 
@@ -175,6 +174,8 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
         else if (mPostLoginActivity !=null){
             mPostLoginActivity.getSupportActionBar().show();
         }
+
+
         //Bus Registering
         mBus.register(getActivity());
 
@@ -190,9 +191,7 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
         if (mMainScreenActivity!=null){
             mMainScreenActivity.getSupportActionBar().hide();
         }
-        else if (mPostLoginActivity !=null){
-//            mPostLoginActivity.getSupportActionBar().hide();
-        }
+
 
         // show progress bar
         mBus.post(false);

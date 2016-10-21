@@ -159,8 +159,10 @@ public class FragmentMainScreen extends android.support.v4.app.Fragment {
     @OnClick(R.id.circleButton_about)
     public void showWebView(){
         mActivity.changeFragment(new FragmentWebView().newInstance("http://aryacollege.in",""));
+
+        // setting title of action bar
         mActivity.getSupportActionBar().setTitle("About College");
-//        mActivity.getSupportActionBar().show();
+
 
     }
 
