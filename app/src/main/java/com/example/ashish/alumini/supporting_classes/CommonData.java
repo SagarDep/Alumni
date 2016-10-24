@@ -12,14 +12,21 @@ import android.support.v4.app.Fragment;
 
 import com.example.ashish.alumini.fragments.FragmentJobs;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by ashish on 29/7/16.
  */
 public class CommonData {
     public static FragmentJobs fragmentJobs ;
 
+    // to handle the run time change in orientation in both activities
     public static Fragment mCurrentFragmentPostLogin;
     public static Fragment mCurrentFragmentMainScreen;
+
+    public static List<String> listYear = new ArrayList<>();
+    public static List<String> listBranch = new ArrayList<>();
 
     public CommonData(){
         fragmentJobs = new FragmentJobs();

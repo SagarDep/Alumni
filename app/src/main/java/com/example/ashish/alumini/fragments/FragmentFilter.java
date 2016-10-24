@@ -1,9 +1,14 @@
 package com.example.ashish.alumini.fragments;
 
+
+
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +27,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -43,25 +49,9 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
     String TAG = getClass().getSimpleName();
 
 
-    /*
-    * Butterknife
-    * */
-//    @Bind(R.id.button_settings)
-//    Button j
 
-    @Bind(R.id.expandableListView)
-    ExpandableListView mExpListView;
-
-    @Bind(R.id.expandableListView2)
-    ExpandableListView mExpListView2;
-
-
-    android.widget.ExpandableListAdapter listAdapter2;
-    android.widget.ExpandableListAdapter listAdapter;
-
-    List<String> listHeader;
-    HashMap<String, List<String>> mHashMap;
-    HashMap<String, List<String>> mHashMap2;
+    FragmentManager mFragmentManager;
+    FragmentTransaction mFragmentTransaction;
 
     Bus mBus = new Bus();
 
@@ -94,7 +84,7 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_expandable_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_filter, container, false);
 
         //getting activity instance
         mActivity = (PostLoginActivity) getActivity();
@@ -104,55 +94,12 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
         // butterknife injections
         ButterKnife.bind(this,view);
 
-        mHashMap = new HashMap<>();
 
-        // making list of headers
-        listHeader = new ArrayList<>();
-        listHeader.add("Branch");
-//        listHeader.add("Graduation Year");
-
-        // list of branch
-        List<String> branch = new ArrayList<>();
-
-        branch.add("CSE");
-        branch.add("AE");
-        branch.add("ME");
-        branch.add("EICE");
-        branch.add("IT");
-        branch.add("EE");
-        branch.add("ECE");
-
-        // list of years
-        List<String> year = new ArrayList<>();
-        for (int i=2004; i<=2017; i++){
-            year.add("" + i);
-        }
-
-        //adding the list + header to hashmap
-        mHashMap.put(listHeader.get(0), branch);
-//        mHashMap.put(listHeader.get(1), year);
-
-        listAdapter = new ExpandableListAdapter(getActivity(), listHeader, mHashMap);
-
-        // setting list adapter
-        mExpListView.setAdapter(listAdapter);
+        // getting fragment manager for transactions in onclick
+        mFragmentManager = getChildFragmentManager();
 
 
 
-        mHashMap2 = new HashMap<>();
-
-        // making list of headers
-        listHeader = new ArrayList<>();
-        listHeader.add(0,"Year");
-
-//        mHashMap.put(listHeader.get(0), branch);
-        mHashMap2.put(listHeader.get(0), year);
-
-        listAdapter2 = new ExpandableListAdapter(getActivity(), listHeader, mHashMap2);
-
-        // setting list adapter
-        mExpListView2.setAdapter(listAdapter2);
-//        mExpListView2.setVisibility(View.GONE);
 
         return view;
     }
@@ -162,12 +109,69 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
         super.onAttach(context);
 
     }
+    @OnClick(R.id.button_year)
+    public void yearFragmentListener() {
+
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+
+        // getting fragment YEAR
+        Fragment blankFragment1 = mFragmentManager.findFragmentById(R.id.fragment_container_year);
+
+        if (blankFragment1.getView().getVisibility()==View.VISIBLE){
+
+            // HIDE
+            mFragmentTransaction
+                    .hide(blankFragment1)
+                    .commit();
+        } else if (blankFragment1.getView().getVisibility()==View.GONE){
+
+            // SHOW
+            mFragmentTransaction
+                    .show(blankFragment1)
+                    .commit();
+        }
+
+    }
+
+    @OnClick(R.id.button_branch)
+    public void branchFragmentListener() {
+
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+
+        // getting fragment BRANCH
+        Fragment blankFragment1 = mFragmentManager.findFragmentById(R.id.fragment_container_branch);
+
+        if (blankFragment1.getView().getVisibility()==View.VISIBLE){
+            // HIDE
+            mFragmentTransaction
+                    .hide(blankFragment1)
+                    .commit();
+        } else if (blankFragment1.getView().getVisibility()==View.GONE){
+
+            // SHOW
+            mFragmentTransaction
+                    .show(blankFragment1)
+                    .commit();
+        }
+
+    }
+
+    @OnClick(R.id.button_filter)
+    public void buttonFilterHandler(){
+
+        makeServerCallToFilterData();
+
+    }
 
     @Override
     public void onResume() {
         super.onResume();
         mBus.register(getActivity());
 
+        // hiding both the fragments
+        branchFragmentListener();
+
+        yearFragmentListener();
     }
 
     @Override
@@ -182,4 +186,9 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
         super.onDetach();
     }
 
+    public void makeServerCallToFilterData(){
+
+
+
+    }
 }

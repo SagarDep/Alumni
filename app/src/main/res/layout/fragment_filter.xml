@@ -1,0 +1,57 @@
+<RelativeLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.BlankFragment"
+        android:layout_above="@+id/button_filter">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="YEAR"
+                android:id="@+id/button_year"/>
+            >
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout="@layout/fragment_filter_list"
+                android:id="@+id/fragment_container_year"
+
+                android:name = "com.example.ashish.alumini.fragments.FragmentFilterYear"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BRANCH"
+                android:id="@+id/button_branch"
+                android:layout_gravity="center_horizontal|top" />
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout="@layout/fragment_filter_list"
+                android:id="@+id/fragment_container_branch"
+                android:name = "com.example.ashish.alumini.fragments.FragmentFilterBranch"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Filter"
+        android:id="@+id/button_filter"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
+
+
