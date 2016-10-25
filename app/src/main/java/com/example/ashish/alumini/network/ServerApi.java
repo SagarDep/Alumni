@@ -118,4 +118,8 @@ public interface ServerApi {
     @POST("/mail")
     Call<String> resetPassword(@Query("email") String email);
 
+    @POST("/members/filter")
+    Call<List<MemberInstance>> filterMembers(@Query("year") List<String> yearList,
+                                       @Query("branch") List<String> branchList);
+
 }

@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 
 import com.example.ashish.alumini.fragments.FragmentJobs;
+import com.example.ashish.alumini.network.pojo.MemberInstance;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +26,14 @@ public class CommonData {
     public static Fragment mCurrentFragmentPostLogin;
     public static Fragment mCurrentFragmentMainScreen;
 
+    // for filter parameters i.e. check box states
     public static List<String> listYear = new ArrayList<>();
     public static List<String> listBranch = new ArrayList<>();
+
+
+    public static List<MemberInstance> mFilterResultList = new ArrayList<>();
+
+
 
     public CommonData(){
         fragmentJobs = new FragmentJobs();

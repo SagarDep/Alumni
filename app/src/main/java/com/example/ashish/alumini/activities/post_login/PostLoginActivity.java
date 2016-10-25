@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.fragments.FragmentMembers;
 import com.example.ashish.alumini.fragments.settings.FragmentSettings;
+import com.example.ashish.alumini.fragments.viewpager.FragmentFilterResult;
 import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.example.ashish.alumini.supporting_classes.MenuVisibility;
 import com.squareup.otto.Bus;
@@ -47,6 +48,7 @@ public class PostLoginActivity extends AppCompatActivity {
     Boolean mBackToMainScreen = true;
     Boolean mBackToSettings = true;
     Boolean mBackToJobList = true;
+    Boolean mBackToFilter = true;
 
     ActionBar mActionBar;
 
@@ -128,17 +130,30 @@ public class PostLoginActivity extends AppCompatActivity {
                 mBackToMainScreen = true;
                 break;
 
+            // when returning to settings
             case 9999:
                 mBackToSettings = true;
                 mBackToJobList = false;
                 mBackToMainScreen = false;
+                mBackToFilter =false;
                 break;
 
+            // when returning to job
             case 8888:
                 mBackToJobList = true;
                 mBackToSettings = false;
                 mBackToMainScreen = false;
+                mBackToFilter =false;
                 break;
+
+            // when returning to filter
+            case 7777:
+                mBackToFilter = true;
+                mBackToSettings = false;
+                mBackToJobList = false;
+                mBackToMainScreen = false;
+                break;
+
             case R.id.recycler_view:
                 mBackToJobList = null;
                 mBackToSettings = false;
@@ -173,11 +188,13 @@ public class PostLoginActivity extends AppCompatActivity {
         if (!mBackToMainScreen) {
             mBackToMainScreen = true;
             if (mBackToSettings) {
-                changeFragment(new FragmentSettings().newInstance(null, null));
+                changeFragment(new FragmentSettings());
             } else if (mBackToJobList == null) {
                 changeFragment(mFragmentMembers);
             } else if (mBackToJobList) {
                 changeFragment(CommonData.fragmentJobs);
+            } else if (mBackToFilter){
+                changeFragment(new FragmentFilterResult());
             }
 
         } else

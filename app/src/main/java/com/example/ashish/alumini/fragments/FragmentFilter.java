@@ -16,9 +16,14 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
+import com.example.ashish.alumini.fragments.viewpager.FragmentFilterResult;
 import com.example.ashish.alumini.members.expandable_list.ExpandableListAdapter;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
+import com.example.ashish.alumini.network.ApiClient;
+import com.example.ashish.alumini.network.pojo.MemberInstance;
+import com.example.ashish.alumini.supporting_classes.CommonData;
+import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
@@ -28,6 +33,9 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -188,6 +196,50 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
 
     public void makeServerCallToFilterData(){
 
+        if (CommonData.listYear.size()==0 && CommonData.listBranch.size()==0){
+            return;
+        }
+
+        // making progress bar visible
+        mBus.post(true);
+
+
+
+        Call<List<MemberInstance>> call = ApiClient.getServerApi().filterMembers(CommonData.listYear, CommonData.listBranch);
+
+        call.enqueue(new Callback<List<MemberInstance>>() {
+            @Override
+            public void onResponse(Call<List<MemberInstance>> call, Response<List<MemberInstance>> response) {
+                Log.d(TAG, "Api call successful");
+
+
+                if (response.body()!=null && response.body().size()>0){
+
+                    // copying the result to global static var
+                    CommonData.mFilterResultList = response.body();
+
+                    // change the fragment
+                    mActivity.changeFragment(new FragmentFilterResult());
+
+                    // notify to the activity -> to handle back pressed events
+                    mBus.post(7777);
+
+                }
+
+                // making progress bar invisible
+                mBus.post(false);
+            }
+
+            @Override
+            public void onFailure(Call<List<MemberInstance>> call, Throwable t) {
+                Log.d(TAG, "Api call failed");
+
+                TastyToast.makeText(getActivity(), "Can't communicate to server", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+
+                // making progress bar invisible
+                mBus.post(false);
+            }
+        });
 
 
     }
