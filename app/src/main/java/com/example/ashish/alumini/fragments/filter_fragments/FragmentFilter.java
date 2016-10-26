@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.ashish.alumini.fragments.viewpager.FragmentFilterResult;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.network.ApiClient;
@@ -97,9 +96,6 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
 
         // getting fragment manager for transactions in onclick
         mFragmentManager = getChildFragmentManager();
-
-
-
 
         return view;
     }
@@ -203,6 +199,7 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
             @Override
             public void onResponse(Call<List<MemberInstance>> call, Response<List<MemberInstance>> response) {
                 Log.d(TAG, "Api call successful");
+
 
 
                 if (response.body()!=null && response.body().size()>0){

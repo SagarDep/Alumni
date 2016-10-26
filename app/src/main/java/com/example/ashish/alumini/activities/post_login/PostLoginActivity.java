@@ -15,7 +15,7 @@ import android.widget.ProgressBar;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.fragments.FragmentMembers;
 import com.example.ashish.alumini.fragments.settings.FragmentSettings;
-import com.example.ashish.alumini.fragments.viewpager.FragmentFilterResult;
+import com.example.ashish.alumini.fragments.filter_fragments.FragmentFilterResult;
 import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.example.ashish.alumini.supporting_classes.MenuVisibility;
 import com.squareup.otto.Bus;
@@ -154,6 +154,7 @@ public class PostLoginActivity extends AppCompatActivity {
                 mBackToMainScreen = false;
                 break;
 
+            // user clicks on some members from view pager
             case R.id.recycler_view:
                 mBackToJobList = null;
                 mBackToSettings = false;
@@ -203,7 +204,7 @@ public class PostLoginActivity extends AppCompatActivity {
 
     @Subscribe
     public void setmProgressBar(Boolean isVisible) {
-        if (isVisible==true){
+        if (isVisible){
             mProgressBar.setVisibility(View.VISIBLE);
         }
         else {
@@ -225,12 +226,14 @@ public class PostLoginActivity extends AppCompatActivity {
 
         if (!visibility.getState() && mFragmentMenu!=null){
 
+            // HIDE menu
             mFragmentManager.beginTransaction()
                     .hide(mFragmentMenu)
                     .commit();
 
         } else if (visibility.getState() && mFragmentMenu!=null){
 
+            // SHOW menu
             mFragmentManager.beginTransaction()
                     .show(mFragmentMenu)
                     .commit();

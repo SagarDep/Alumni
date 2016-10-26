@@ -87,9 +87,9 @@ public class MainActivity extends TabActivity {
 
     }
     @Subscribe
-    public void hide(ProgressBarVisibility a){
+    public void hidePtogressBar(ProgressBarVisibility barVisibility){
 
-        if (a.isVisibility()){
+        if (barVisibility.isVisibility()){
             mProgressBar.setVisibility(View.VISIBLE);
         }
         else {

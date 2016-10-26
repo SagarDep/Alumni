@@ -106,16 +106,17 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
             mAdapter = new MemberAdapter(mArrayList);
         }
 
-
-
+        // setting layout
         recyclerView.setLayoutManager(mLayoutManager);
+        // and finally adapter
         recyclerView.setAdapter(mAdapter);
 
         // onlick listener of recycler view
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getActivity(), recyclerView ,
                         new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
+                    @Override
+                    public void onItemClick(View view, int position) {
                         // creaing a new fragment
                         FragmentProfile fragmentProfile = new FragmentProfile();
 
@@ -136,18 +137,7 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
                 })
         );
 
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
 
-            }
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-        });
 
         return view;
     }

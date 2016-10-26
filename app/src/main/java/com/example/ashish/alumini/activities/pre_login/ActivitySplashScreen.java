@@ -20,20 +20,12 @@ public class ActivitySplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-
-//        this.deleteDatabase("alumni.db");
-//        this.deleteDatabase("members.db");
-
-
-
         //hide the actionBar
         getSupportActionBar().hide();
 
 
         boolean spLogin = new GlobalPrefs(getApplicationContext())
                 .getBoolean(getString(R.string.is_logged_in));
-
-
 
 
         if (spLogin==true){
@@ -43,11 +35,9 @@ public class ActivitySplashScreen extends AppCompatActivity {
             mIntent = new Intent(this, MainScreenActivity.class);
         }
         else{
-
             // SWITCH TO login/signup screens
             mIntent = new Intent(this,MainActivity.class);
         }
-
 
 
         //creating thread to hold screen for splash
@@ -58,7 +48,6 @@ public class ActivitySplashScreen extends AppCompatActivity {
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }finally{
-
                     startActivity(mIntent);
                 }
             }

@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.fragments.viewpager;
+package com.example.ashish.alumini.fragments.filter_fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -99,7 +99,6 @@ public class FragmentFilterResult extends Fragment {
         // making progress bar invisible
         mProgressBar.setVisibility(View.GONE);
 
-
         mArrayList = CommonData.mFilterResultList;
 
         //initialization of adapter
@@ -124,8 +123,7 @@ public class FragmentFilterResult extends Fragment {
                                 // change the fragment
                                 mActivity.changeFragment(fragmentProfile);
 
-                                // notify to the activity -> to handle back pressed events
-//                                mBus.post(R.id.recycler_view);
+
                             }
 
                             @Override public void onLongItemClick(View view, int position) {
@@ -146,16 +144,21 @@ public class FragmentFilterResult extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+
+        // bus unregister
         mBus.unregister(getActivity());
 
+        // global bus unregister
         globalBus.unregister(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        // bus register
         mBus.register(getActivity());
 
+        // global bus register
         globalBus.register(this);
 
 

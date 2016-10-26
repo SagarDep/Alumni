@@ -93,13 +93,18 @@ public class MainScreenActivity extends AppCompatActivity
 
 
         mFragmentTransaction = mFragmentManager.beginTransaction();
+
         if (savedInstanceState==null){
             if (isSignup==true){
+
                 // show the getData fragment
-                FragmentGetProfileData fragmentGetProfileData = new FragmentGetProfileData().newInstance("","");
+                FragmentGetProfileData fragmentGetProfileData = new FragmentGetProfileData();
+
                 mFragmentTransaction.add(R.id.container_main_screen, fragmentGetProfileData );
+
                 // saving it to common data
                 CommonData.mCurrentFragmentMainScreen = fragmentGetProfileData;
+
             }else {
                 // condition to check if the user has come from logout button or not
                 // if shared prefs will show college_logo logged out then finish the activity
@@ -108,7 +113,9 @@ public class MainScreenActivity extends AppCompatActivity
                 }
                 //else show the min screen fragment
                 FragmentMainScreen fragmentMainScreen = new FragmentMainScreen();
+
                 mFragmentTransaction.add(R.id.container_main_screen,fragmentMainScreen);
+
                 // saving it to common data
                 CommonData.mCurrentFragmentMainScreen = fragmentMainScreen;
             }
@@ -130,15 +137,15 @@ public class MainScreenActivity extends AppCompatActivity
 
     public void changeFragment(Fragment fragment){
         //updating the current fragment
-       mPreviousFragment = mCurrentFragment;
+        mPreviousFragment = mCurrentFragment;
         mCurrentFragment = fragment;
+
+        // mainly for used while orientation
         CommonData.mCurrentFragmentMainScreen = fragment;
 
-
-        // to change the titile in case of onCLick the event listView
+        // to change the titile in case of onCLick the event listView and web view was opened
         if (mPreviousFragment instanceof FragmentEvents && mCurrentFragment instanceof FragmentWebView){
             mActionBar.setTitle("About Event");
-//            mActionBar.show();
         }
 
         //changing the fragment
@@ -154,7 +161,7 @@ public class MainScreenActivity extends AppCompatActivity
         if (item.getItemId()==android.R.id.home)
             onBackPressed();
         return true;
-            }
+    }
 
 
     @Override

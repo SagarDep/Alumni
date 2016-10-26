@@ -68,6 +68,7 @@ public class SignUp extends Activity {
         //global mGlobalBus registering
         mGlobalBus = GlobalBus.getInstance();
 
+        // butterknife binding
         ButterKnife.bind(this);
 
 
