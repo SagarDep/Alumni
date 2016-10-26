@@ -121,7 +121,7 @@ public class FragmentBottomMenu extends Fragment {
         else if (CommonData.mCurrentFragmentPostLogin instanceof FragmentJobs){
             setVisibleView(view.findViewById(R.id.view_jobs),mImageViewJobs);
         }
-        else if (CommonData.mCurrentFragmentPostLogin !=null){
+        else if (CommonData.mCurrentFragmentPostLogin instanceof FragmentSettings){
             setVisibleView(view.findViewById(R.id.view_settings),mImageViewSettings);
         }
 

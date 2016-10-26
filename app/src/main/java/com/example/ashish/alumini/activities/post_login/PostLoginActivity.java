@@ -86,8 +86,9 @@ public class PostLoginActivity extends AppCompatActivity {
             // case when the activity is restarted and we have to  put the same fargment again
             changeFragment(CommonData.mCurrentFragmentPostLogin);
         }else {
-            mFragmentTransaction.add(R.id.fragment_container, mFragmentMembers);
-            mFragmentTransaction.commit();
+//            mFragmentTransaction.add(R.id.fragment_container, mFragmentMembers);
+//            mFragmentTransaction.commit();
+            changeFragment(mFragmentMembers);
         }
 
         // making the progress bar indetermined
@@ -187,7 +188,6 @@ public class PostLoginActivity extends AppCompatActivity {
         //event bus unregistering
         mBus.unregister(this);
 
-        CommonData.mCurrentFragmentPostLogin=null;
     }
 
     @Override
