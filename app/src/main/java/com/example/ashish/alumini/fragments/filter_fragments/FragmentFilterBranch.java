@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 
+import com.example.ashish.alumini.BuildConfig;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.supporting_classes.CommonData;
@@ -112,10 +113,16 @@ public class FragmentFilterBranch extends android.support.v4.app.Fragment {
                         CommonData.listBranch.remove(checkBox.getText().toString());
                     }
 
-                    Log.d(TAG, "String list " + CommonData.listBranch);
+                    if (BuildConfig.DEBUG){
+                        Log.d(TAG, "String list " + CommonData.listBranch);
+                    }
 
                 }
             });
+
+            if (CommonData.listBranch.contains(stringArray[i])){
+                checkBox.setChecked(true);
+            }
             mLinearLayout.addView(checkBox);
         }
 

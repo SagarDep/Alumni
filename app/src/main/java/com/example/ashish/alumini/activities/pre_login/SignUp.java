@@ -19,6 +19,7 @@ import com.example.ashish.alumini.network.pojo.SignupPartial;
 import com.example.ashish.alumini.supporting_classes.GlobalBus;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.example.ashish.alumini.supporting_classes.ProgressBarVisibility;
+import com.example.ashish.alumini.supporting_classes.RetrofitErrorHandler;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import butterknife.Bind;
@@ -129,11 +130,7 @@ public class SignUp extends Activity {
         }
 
 
-
-        // TODO : proper validations
-        return true; // temp during testing
-//        return valid;
-
+        return valid;
     }
 
 
@@ -154,6 +151,11 @@ public class SignUp extends Activity {
             @Override
             public void onResponse(Call<SignupPartial> call, Response<SignupPartial> response) {
                 Log.d(TAG,"API successful");
+
+                // global error handler for code 500
+                RetrofitErrorHandler errorHandler = new RetrofitErrorHandler();
+                errorHandler.statusCodeHandler(getBaseContext(),response.code());
+
 
                 // hiding progress bar
                 postHideSignal(false);

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ashish.alumini.BuildConfig;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.network.ApiClient;
@@ -161,7 +162,9 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
                 //making progress bar invisible
                 mBus.post(false);
 
-                Log.d(TAG,"API cal Successful");
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG,"API cal Successful makeServerCallToGetRemainingData");
+                }
                 JobDetail jobDetail = response.body();
 
                 mTextViewWebsite.setText(jobDetail.getContactweb());
@@ -181,10 +184,10 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
                             TastyToast.ERROR);
                     getActivity().onBackPressed();
                 }
-                Log.d(TAG,"API cal Failed" + t.toString());
 
-
-
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG,"API cal Failed" + t.toString());
+                }
             }
         });
 

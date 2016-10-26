@@ -59,7 +59,7 @@
     <string name="save_data">SAVE CHANGES</string>
 
     <!--Filter-->
-    <string name="filter">FILTER</string>
+    <string name="apply_filter">APPLY</string>
 
     <!--Faq data-->
     <string name="answer1">This is the answer to 1 FAQ</string>

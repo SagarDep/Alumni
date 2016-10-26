@@ -213,8 +213,11 @@ public class Login extends Activity {
                 //making button clickable
                 loginButton.setEnabled(true);
 
+                // global error handler for code 500
                 RetrofitErrorHandler errorHandler = new RetrofitErrorHandler();
                 errorHandler.statusCodeHandler(getBaseContext(),response.code());
+
+
                 if (response.code()==200 ){
                     TastyToast.makeText(getBaseContext(),"Successful",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
                     LoginResponse loginResponse = response.body();
@@ -312,6 +315,11 @@ public class Login extends Activity {
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
+
+                // global error handler for code 500
+                RetrofitErrorHandler errorHandler = new RetrofitErrorHandler();
+                errorHandler.statusCodeHandler(getBaseContext(),response.code());
+
                 TastyToast.makeText(Login.this,response.body(),Toast.LENGTH_SHORT,TastyToast.INFO);
 
                 // progress bar visibility

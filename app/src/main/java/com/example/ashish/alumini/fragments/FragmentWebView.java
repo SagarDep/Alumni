@@ -12,6 +12,7 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.example.ashish.alumini.BuildConfig;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
@@ -42,14 +43,12 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
     @Bind(R.id.webView)
     WebView mWebView;
 
-    @Bind(R.id.imageViewWebViewError)
-    IconicsImageView mImageView;
-
+    // getting actvity instance either postlogin / main screen
     PostLoginActivity mPostLoginActivity;
     MainScreenActivity mMainScreenActivity;
 
+    // event bus
     Bus mBus = new Bus();
-
 
     String TAG = getClass().getSimpleName();
 
@@ -115,7 +114,10 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                Log.d(TAG, "Page finished");
+
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG, "Page finished");
+                }
                 // hiding progress bar
                 mBus.post(false);
             }
@@ -136,7 +138,9 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
 
-                Log.d(TAG,"Error while loading page" + error.toString());
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG,"Error while loading page" + error.toString());
+                }
 
                 // hiding progress bar
                 mBus.post(false);
@@ -150,7 +154,6 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
                 mBus.post(false);
             }
         });
-
 
 
         return view;

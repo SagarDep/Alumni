@@ -38,8 +38,6 @@ public class FragmentFaq extends Fragment {
     /*
     * Butterknife
     * */
-    @Bind(R.id.button_filter)
-    Button mButtonFilter;
     @Bind(R.id.expandableListView)
     ExpandableListView mExpListView;
 
@@ -92,7 +90,7 @@ public class FragmentFaq extends Fragment {
         //Bus Registering
         mBus.register(getActivity());
 
-        mButtonFilter.setVisibility(View.INVISIBLE);
+
 
         mListHeaders = new ArrayList<>();
         mListChild = new HashMap<>();

@@ -99,6 +99,7 @@ public class FragmentMembers extends Fragment {
         mTabLayout.setupWithViewPager(mViewPager);
 
         mActivity = (PostLoginActivity) getActivity();
+
         mActivity.getSupportActionBar().setTitle("Members");
 
 
@@ -118,7 +119,9 @@ public class FragmentMembers extends Fragment {
     }
 
     private void setupViewPager(ViewPager viewPager) {
+
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
+
         adapter.addFragment(new FragmentViewPager0(), "ALL");
         adapter.addFragment(new FragmentViewPager1(),"ACE");
         adapter.addFragment(new FragmentViewPager2(),  "NERDS");
@@ -138,6 +141,7 @@ public class FragmentMembers extends Fragment {
 
     }
 
+    // to get the whole data in single shot
     public void makeServerCallToGetTheList(){
         Call<List<MemberInstance>> call = ApiClient.getServerApi().getMemberList();
 

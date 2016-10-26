@@ -18,12 +18,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import com.example.ashish.alumini.BuildConfig;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
 import com.example.ashish.alumini.fragments.main_screen_fragments.FragmentMainScreen;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
+import com.example.ashish.alumini.supporting_classes.RetrofitErrorHandler;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -54,9 +56,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+
 
     String TAG = getClass().getSimpleName();
 
@@ -143,10 +143,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -270,6 +267,11 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
+
+                // global error handler for code 500
+                RetrofitErrorHandler errorHandler = new RetrofitErrorHandler();
+                errorHandler.statusCodeHandler(getActivity(),response.code());
+
                 // making progress bar invisible
                 mBus.post(false);
 
@@ -295,7 +297,10 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
             public void onFailure(Call<String> call, Throwable t) {
                 // making progress bar invisible
                 mBus.post(false);
-                Log.d(TAG, "API call failed makeServerCalltoPostCompleteData");
+
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG, "API call failed makeServerCalltoPostCompleteData");
+                }
             }
         });
 
@@ -304,8 +309,8 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     public boolean validate() {
 
 
-        if (mEditTextName.getText().toString().trim().length() <= 6) {
-            mEditTextName.setError("Name must be greater than 6 characters");
+        if (mEditTextName.getText().toString().trim().length() <= 5) {
+            mEditTextName.setError("Name must be greater than 5 characters");
             return false;
         } else if (mEditTextBio.getText().toString().trim().length() == 0) {
             mEditTextBio.setError("Make it a little Big");
@@ -314,7 +319,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
             mEditTextDesignation.setError("Invalid Designation");
             return false;
         } else if (mEditTextCompany.getText().toString().trim().length() == 0) {
-            mEditTextCompany.setError("Invalid Designation");
+            mEditTextCompany.setError("Invalid Name");
             return false;
         }
 
@@ -324,7 +329,8 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         } else if (mEditTextLocationWork.getText().toString().trim().length() == 0) {
             mEditTextLocationWork.setError("Invalid Location");
             return false;
-        } else if (mEditTextPhone.getText().toString().trim().length() == 11) {
+        } else if (mEditTextPhone.getText().toString().trim().length() < 5 ||
+                mEditTextPhone.getText().toString().trim().length() > 20) {
             mEditTextPhone.setError("Invalid Phone Number");
             return false;
         } else if (false) {
@@ -363,6 +369,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
     public void makeServerCallToUploadImage() {
 
+
         mProgressWheel.spin();
 
         if (mFile==null){
@@ -388,7 +395,14 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                Log.d(TAG, "Upload Successful");
+
+                // global error handler for code 500
+                RetrofitErrorHandler errorHandler = new RetrofitErrorHandler();
+                errorHandler.statusCodeHandler(getActivity(),response.code());
+
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG, "Upload Successful makeServerCallToUploadImage");
+                }
                 TastyToast.makeText(mActivity, "Upload Successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
 
                 mProgressWheel.stopSpinning();
@@ -399,7 +413,12 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d(TAG, "Upload Failed" + t.getMessage());
+
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG, "Upload Failed makeServerCallToUploadImage" + t.getMessage());
+                }
+
+
                 TastyToast.makeText(mActivity, "Upload Failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
 
                 mProgressWheel.stopSpinning();

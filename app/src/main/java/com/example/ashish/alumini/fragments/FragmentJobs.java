@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.activeandroid.query.Select;
+import com.example.ashish.alumini.BuildConfig;
 import com.example.ashish.alumini.adapters.JobListAdapter;
 import com.example.ashish.alumini.R;
 
@@ -173,7 +174,11 @@ public class FragmentJobs extends Fragment {
         call.enqueue(new Callback<List<JobListInstance>>() {
             @Override
             public void onResponse(Call<List<JobListInstance>> call, Response<List<JobListInstance>> response) {
-                Log.d(TAG,"Successfull");
+
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG," API Call Successfull makeServerCallToGetTheList");
+                }
+
 
                 if (response!=null){
                     mJobArrayList = response.body();
@@ -190,11 +195,8 @@ public class FragmentJobs extends Fragment {
                         jobModel.setDesignation(model.getRole());
                         jobModel.setLocation(model.getLocation());
                         jobModel.save();
-
                     }
                 }
-
-
             }
 
             @Override
@@ -214,8 +216,9 @@ public class FragmentJobs extends Fragment {
 
                 }
 
-
-                Log.d(TAG,"API call Failed" + t.toString() );
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG,"API call Failed makeServerCallToGetTheList" + t.toString() );
+                }
             }
         });
     }

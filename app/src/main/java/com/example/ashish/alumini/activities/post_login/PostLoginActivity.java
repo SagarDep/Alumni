@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.fragments.FragmentMembers;
+import com.example.ashish.alumini.fragments.filter_fragments.FragmentFilter;
 import com.example.ashish.alumini.fragments.settings.FragmentSettings;
 import com.example.ashish.alumini.fragments.filter_fragments.FragmentFilterResult;
 import com.example.ashish.alumini.supporting_classes.CommonData;
@@ -199,7 +200,9 @@ public class PostLoginActivity extends AppCompatActivity {
                 changeFragment(mFragmentMembers);
             } else if (mBackToJobList) {
                 changeFragment(CommonData.fragmentJobs);
-            } else if (mBackToFilter){
+            } else if (CommonData.mCurrentFragmentPostLogin instanceof FragmentFilterResult){
+                changeFragment(new FragmentFilter());
+            }else if (mBackToFilter){
                 changeFragment(new FragmentFilterResult());
             }
 

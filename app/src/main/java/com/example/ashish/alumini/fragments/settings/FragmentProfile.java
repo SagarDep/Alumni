@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.example.ashish.alumini.BuildConfig;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.network.ApiClient;
@@ -40,8 +41,7 @@ public class FragmentProfile extends Fragment {
 
     String  TAG = getClass().getSimpleName();
 
-    private String mParam1;
-    private String mParam2;
+
 
     MemberInstance mListInstance;
 
@@ -85,10 +85,7 @@ public class FragmentProfile extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -112,7 +109,7 @@ public class FragmentProfile extends Fragment {
             mImageViewEdit.setVisibility(View.VISIBLE);
 
             // gettign if of loggedin user from shared prefs
-            String id = new GlobalPrefs(getActivity()).getString(getString(R.string.userid)).toString();
+            String id = new GlobalPrefs(getActivity()).getString(getString(R.string.userid));
 
             // make server call to get the remaining data of user
             makeServerCallToGetCompleteProfile(id);
@@ -268,18 +265,23 @@ public class FragmentProfile extends Fragment {
                     // progress bar visibility
                     mBus.post(false);
                 }
-                Log.d(TAG, "API call successful");
+
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG, "API call successful makeServerCallToGetCompleteProfile");
+                }
             }
 
             @Override
             public void onFailure(Call<MemberInstance> call, Throwable t) {
-                Log.d(TAG, "API call failed " + t.toString());
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG, "API call failed makeServerCallToGetCompleteProfile" + t.toString());
+                }
 
                 // hiding progress bar
                 mBus.post(false);
 
                 // display toast
-                TastyToast.makeText(mActivity,"Can't communicate to server",500,TastyToast.ERROR);
+                TastyToast.makeText(mActivity,"Can't communicate to server",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
 
                 // back to previous screen
                 mActivity.onBackPressed();

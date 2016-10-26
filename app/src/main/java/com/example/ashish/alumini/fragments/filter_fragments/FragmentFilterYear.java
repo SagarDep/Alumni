@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 
+import com.example.ashish.alumini.BuildConfig;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.supporting_classes.CommonData;
@@ -85,11 +86,11 @@ public class FragmentFilterYear extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_filter_list, container, false);
 
+        // getting activity instance
         mActivity = (PostLoginActivity) getActivity();
 
+        // butterknife binding
         ButterKnife.bind(this,view);
-
-
 
 
 
@@ -115,10 +116,16 @@ public class FragmentFilterYear extends android.support.v4.app.Fragment {
                         CommonData.listYear.remove(checkBox.getText().toString());
                     }
 
-                    Log.d(TAG, "String list " + CommonData.listYear);
+                    if (BuildConfig.DEBUG){
+                        Log.d(TAG, "String list " + CommonData.listYear);
+                    }
 
                 }
             });
+
+            if (CommonData.listYear.contains(strings[i])){
+                checkBox.setChecked(true);
+            }
             mLinearLayout.addView(checkBox);
         }
 

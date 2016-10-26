@@ -11,7 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.ashish.alumini.BuildConfig;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.network.ApiClient;
@@ -22,6 +24,7 @@ import com.squareup.otto.Bus;
 
 import java.util.List;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit2.Call;
@@ -42,11 +45,11 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+
     String TAG = getClass().getSimpleName();
 
+    @Bind(R.id.button_apply_filter)
+    Button mButtonFilter;
 
 
     FragmentManager mFragmentManager;
@@ -73,10 +76,7 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -84,6 +84,10 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_filter, container, false);
+
+        // resetting the predefined filters
+//        CommonData.listYear.clear();
+//        CommonData.listBranch.clear();
 
         //getting activity instance
         mActivity = (PostLoginActivity) getActivity();
@@ -99,7 +103,18 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
 
         mActivity.getSupportActionBar().setTitle("Filter");
 
+        if (CommonData.listBranch.size()>0){
+            // this means the filters on branch has been applied before by the user
+            // so make that fragment visible
+            branchFragmentListener();
+        }
 
+
+        if (CommonData.listYear.size()>0){
+            // this means the filters on year has been applied before by the user
+            // so make that fragment visible
+            yearFragmentListener();
+        }
         return view;
     }
 
@@ -114,19 +129,19 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
         mFragmentTransaction = mFragmentManager.beginTransaction();
 
         // getting fragment YEAR
-        Fragment blankFragment1 = mFragmentManager.findFragmentById(R.id.fragment_container_year);
+        Fragment fragment = mFragmentManager.findFragmentById(R.id.fragment_container_year);
 
-        if (blankFragment1.getView().getVisibility()==View.VISIBLE){
+        if (fragment.getView().getVisibility()==View.VISIBLE){
 
             // HIDE
             mFragmentTransaction
-                    .hide(blankFragment1)
+                    .hide(fragment)
                     .commit();
-        } else if (blankFragment1.getView().getVisibility()==View.GONE){
+        } else if (fragment.getView().getVisibility()==View.GONE){
 
             // SHOW
             mFragmentTransaction
-                    .show(blankFragment1)
+                    .show(fragment)
                     .commit();
         }
 
@@ -138,24 +153,24 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
         mFragmentTransaction = mFragmentManager.beginTransaction();
 
         // getting fragment BRANCH
-        Fragment blankFragment1 = mFragmentManager.findFragmentById(R.id.fragment_container_branch);
+        Fragment fragment = mFragmentManager.findFragmentById(R.id.fragment_container_branch);
 
-        if (blankFragment1.getView().getVisibility()==View.VISIBLE){
+        if (fragment.getView().getVisibility()==View.VISIBLE){
             // HIDE
             mFragmentTransaction
-                    .hide(blankFragment1)
+                    .hide(fragment)
                     .commit();
-        } else if (blankFragment1.getView().getVisibility()==View.GONE){
+        } else if (fragment.getView().getVisibility()==View.GONE){
 
             // SHOW
             mFragmentTransaction
-                    .show(blankFragment1)
+                    .show(fragment)
                     .commit();
         }
 
     }
 
-    @OnClick(R.id.button_filter)
+    @OnClick(R.id.button_apply_filter)
     public void buttonFilterHandler(){
 
         makeServerCallToFilterData();
@@ -189,21 +204,33 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
     public void makeServerCallToFilterData(){
 
         if (CommonData.listYear.size()==0 && CommonData.listBranch.size()==0){
+
+            TastyToast.makeText(getActivity(), "Invalid Filter Applied", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+
             return;
         }
 
+        // disabling button until the api call is completed
+        mButtonFilter.setEnabled(false);
+
         // making progress bar visible
         mBus.post(true);
-
-
 
         Call<List<MemberInstance>> call = ApiClient.getServerApi().filterMembers(CommonData.listYear, CommonData.listBranch);
 
         call.enqueue(new Callback<List<MemberInstance>>() {
             @Override
             public void onResponse(Call<List<MemberInstance>> call, Response<List<MemberInstance>> response) {
-                Log.d(TAG, "Api call successful");
 
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG, "Api call successful makeServerCallToFilterData");
+                }
+
+                if (response.body()!=null && response.body().size()==0){
+
+                    TastyToast.makeText(getActivity(), "Oops! No Result Found", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+
+                }
 
 
                 if (response.body()!=null && response.body().size()>0){
@@ -221,16 +248,23 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
 
                 // making progress bar invisible
                 mBus.post(false);
+
+                mButtonFilter.setEnabled(true);
             }
 
             @Override
             public void onFailure(Call<List<MemberInstance>> call, Throwable t) {
-                Log.d(TAG, "Api call failed");
+
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG, "Api call failed makeServerCallToFilterData");
+                }
 
                 TastyToast.makeText(getActivity(), "Can't communicate to server", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
 
                 // making progress bar invisible
                 mBus.post(false);
+
+                mButtonFilter.setEnabled(true);
             }
         });
 
