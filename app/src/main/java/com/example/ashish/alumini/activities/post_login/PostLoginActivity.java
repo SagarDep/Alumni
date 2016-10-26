@@ -68,10 +68,10 @@ public class PostLoginActivity extends AppCompatActivity {
 
 
 
-        //setting up the bar
+        //setting up the action bar
         mActionBar.setDisplayHomeAsUpEnabled(true);
         mActionBar.setElevation(0);
-        mActionBar.setTitle("Members");
+
 
 
         mFragmentManager = getSupportFragmentManager();
@@ -111,6 +111,7 @@ public class PostLoginActivity extends AppCompatActivity {
         }
     }
 
+    // posted from menu fragment initial 4 cases
     @Subscribe
     public void changingFragment(Integer id) {
         switch (id) {
@@ -159,6 +160,10 @@ public class PostLoginActivity extends AppCompatActivity {
                 mBackToJobList = null;
                 mBackToSettings = false;
                 mBackToMainScreen = false;
+                break;
+
+            default :
+                Log.d(TAG, " default case in switch encountered " + id + " recieved");
                 break;
 
         }

@@ -32,6 +32,7 @@ public class ApiClient {
         return retrofit;
     }
 
+    // socket time out exception in image uploading
     //http://stackoverflow.com/questions/26750650/retrofit-sockettimeoutexception-in-sending-multiparty-or-json-data-in-android
     private static OkHttpClient getClient() {
         OkHttpClient client = new OkHttpClient.Builder()

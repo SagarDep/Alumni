@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.ashish.alumini.activities.pre_login.MainActivity;
-import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
+import com.example.ashish.alumini.fragments.FragmentWebView;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
@@ -78,6 +78,7 @@ public class FragmentSettings extends Fragment  {
 
         mActivity.getSupportActionBar().setTitle("Settings");
 
+
         return view;
     }
 
@@ -95,9 +96,11 @@ public class FragmentSettings extends Fragment  {
         //Bus Registering
         mBus.register(getActivity());
 
-        // hiding progress bar
+        // hiding progress bar if in case remained visible
         Boolean aBoolean = false;
         mBus.post(aBoolean);
+
+
     }
 
     @Override
@@ -116,10 +119,17 @@ public class FragmentSettings extends Fragment  {
     }
 
 
+    /*
+    * event fired to Fragment Activity PostLogin to move back to setting
+      fragment on back pressed
+    * */
     @OnClick(R.id.button_postjob)
     public void handlerJobPostButton(){
+
         mBus.post(9999);
-        mActivity.changeFragment(new FragmentJobPosting().newInstance("",""));
+
+        // then change the fragment
+        mActivity.changeFragment(new FragmentJobPosting());
 
     }
 
@@ -140,7 +150,8 @@ public class FragmentSettings extends Fragment  {
 
     @OnClick(R.id.button_about_app)
     public void handlerAboutAppButton(){
-//        mBus.post(R.id.button_postjob);
+
+        //
         mBus.post(9999);
         mActivity.changeFragment(new FragmentAboutApp());
     }
@@ -165,7 +176,8 @@ public class FragmentSettings extends Fragment  {
         mBus.post(9999);
 
         MaterialDialog materialDialog = new MaterialDialog(mActivity);
-        materialDialog.setTitle("Contact")
+        materialDialog
+                .setTitle("Contact")
                 .setMessage("Feel free to ping for any query" + '\n' + "ashishsurana12345@gmail.com")
                 .setCanceledOnTouchOutside(true)
                 .show();
@@ -187,18 +199,17 @@ public class FragmentSettings extends Fragment  {
     @OnClick(R.id.button_logout)
     public void handlerLogoutButton(){
 
-
+        // update value in shared preference
         new GlobalPrefs(getContext()).putBooloean(getString(R.string.is_logged_in),false);
+
 
         TastyToast.makeText(getActivity(),"You are successfully logged Out", Toast.LENGTH_SHORT,TastyToast.DEFAULT);
 
-
         mActivity.finish();
+
+        // back to login / signup activity
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
-
-
-
 
     }
 

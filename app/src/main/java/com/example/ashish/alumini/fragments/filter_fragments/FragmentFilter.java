@@ -97,6 +97,9 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
         // getting fragment manager for transactions in onclick
         mFragmentManager = getChildFragmentManager();
 
+        mActivity.getSupportActionBar().setTitle("Filter");
+
+
         return view;
     }
 
@@ -168,6 +171,7 @@ public class FragmentFilter extends android.support.v4.app.Fragment {
         branchFragmentListener();
 
         yearFragmentListener();
+
     }
 
     @Override

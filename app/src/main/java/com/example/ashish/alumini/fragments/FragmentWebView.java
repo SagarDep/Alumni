@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.fragments.common_fragments;
+package com.example.ashish.alumini.fragments;
 
 import android.content.Context;
 import android.graphics.Picture;

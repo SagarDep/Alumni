@@ -1,10 +1,8 @@
-package com.example.ashish.alumini.fragments.common_fragments;
+package com.example.ashish.alumini.fragments;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -38,7 +36,6 @@ import com.squareup.otto.Bus;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

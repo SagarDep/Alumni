@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager0;
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager1;
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager2;
@@ -48,6 +49,8 @@ public class FragmentMembers extends Fragment {
 
     // list of all members
     List<MemberInstance> memberInstanceList;
+
+    PostLoginActivity mActivity;
 
 
     public FragmentMembers() {
@@ -87,17 +90,32 @@ public class FragmentMembers extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_member, container, false);
 
+        // butterknife binding
         ButterKnife.bind(this,view);
 
-
+        // adding fragment to viewPager Adapter
         setupViewPager(mViewPager);
 
         mTabLayout.setupWithViewPager(mViewPager);
+
+        mActivity = (PostLoginActivity) getActivity();
+        mActivity.getSupportActionBar().setTitle("Members");
+
 
 
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());

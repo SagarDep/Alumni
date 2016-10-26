@@ -29,6 +29,9 @@ public interface ServerApi {
     @GET("/jobs")
     Call<List<JobListInstance>> getJobList();
 
+    /*
+    * To Open the details of job
+    * */
     @GET("/jobs/detail/{id}")
     Call<JobDetail> getJobDetails(@Path("id") String id);
 
@@ -78,10 +81,17 @@ public interface ServerApi {
                                 );
 
 
-    // getting the list of members
+    /*
+    * old approach
+    * getting the list of members in a single shot
+    *
+    * */
     @GET("members/")
     Call<List<MemberInstance>> getMemberList();
 
+    /*
+    * This will give the next 15 member data after the specified time
+    * */
     @POST("members/getlist/")
     Call<MemberListResponse> getMemberListinChunks(@Query("time") String time);
 
@@ -100,7 +110,7 @@ public interface ServerApi {
     Call<MemberInstance> getRemainingDataForRecyclerView(@Query("_id") String id);
 
     /*
-    * Multipart file uploading
+    * Multipart file uploading for jobs
     * */
     @Multipart
     @POST("/upload/job")
@@ -117,6 +127,9 @@ public interface ServerApi {
     @POST("/mail")
     Call<String> resetPassword(@Query("email") String email);
 
+    /*
+    * call to get the member list after applying the filters
+    * */
     @POST("/members/filter")
     Call<List<MemberInstance>> filterMembers(@Query("year") List<String> yearList,
                                        @Query("branch") List<String> branchList);

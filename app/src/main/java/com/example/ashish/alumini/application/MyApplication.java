@@ -38,6 +38,7 @@ public class MyApplication extends Application {
         new GlobalPrefs(getApplicationContext()).mContext = getApplicationContext();
 
         // class will create the fragmentjob instance and later can be accessed anywhere
+        // api calls will be started as soon as the fragment job is created
         CommonData  commonData = new CommonData();
 
     }

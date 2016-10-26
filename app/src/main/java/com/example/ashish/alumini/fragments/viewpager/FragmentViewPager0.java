@@ -150,7 +150,10 @@ public class FragmentViewPager0 extends android.support.v4.app.Fragment {
 
     @Override
     public void onPause() {
+
         super.onPause();
+
+        // unregistering buses
         mBus.unregister(getActivity());
 
         globalBus.unregister(this);

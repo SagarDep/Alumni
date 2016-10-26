@@ -34,8 +34,9 @@ public class BlankFragment extends android.support.v4.app.Fragment {
 //    @Bind(R.id.button_settings)
 //    Button j;
 
-    Bus mBus ;
+    Bus mBus = new Bus();
 
+    // activity instance
     PostLoginActivity mActivity ;
 
     public BlankFragment() {
@@ -78,8 +79,7 @@ public class BlankFragment extends android.support.v4.app.Fragment {
         mActivity = (PostLoginActivity) getActivity();
 
         ButterKnife.bind(this,view);
-        //Bus Registering
-        mBus.register(getActivity());
+
 
 
         return view;
@@ -99,12 +99,16 @@ public class BlankFragment extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mBus.unregister(getActivity());
+
+        // registering
+        mBus.register(getActivity());
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        mBus.unregister(getActivity());
+
     }
 
     @Override

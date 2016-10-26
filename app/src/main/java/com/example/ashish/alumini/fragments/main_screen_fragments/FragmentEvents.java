@@ -12,7 +12,7 @@ import android.widget.ListView;
 import com.example.ashish.alumini.adapters.EventListAdapter;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
-import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
+import com.example.ashish.alumini.fragments.FragmentWebView;
 import com.example.ashish.alumini.supporting_classes.EventListInstance;
 import com.squareup.otto.Bus;
 

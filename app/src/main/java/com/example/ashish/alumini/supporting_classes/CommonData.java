@@ -44,6 +44,7 @@ public class CommonData {
 
 
     /**
+     * To get the image / file from android due to
      * Copied from
     * http://stackoverflow.com/questions/20067508/get-real-path-from-uri-android-kitkat-new-storage-access-framework
     * */

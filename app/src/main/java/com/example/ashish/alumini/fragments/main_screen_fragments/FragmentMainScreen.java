@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
-import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;
+import com.example.ashish.alumini.fragments.FragmentWebView;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.squareup.otto.Bus;

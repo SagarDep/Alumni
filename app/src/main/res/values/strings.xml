@@ -37,11 +37,12 @@
     <string name="contact">Contact</string>
 
     <!--For the About app Fragment-->
-    <string name="developed_by">Designed &amp; Developed By Ashish</string>
+    <!--<string name="developed_by">Designed &amp; Developed By Ashish</string>-->
+    <string name="developed_by"> Developed By Ashish Surana \n ashishsurana.in</string>
 
     <!--Urls used in web views-->
-    <string name="url_facebook_page">https://google.com/</string>
-    <string name="url_college">https://google.com/</string>
+    <string name="url_facebook_page">https://www.facebook.com/aryacollege.in/</string>
+    <string name="url_college">https://aryacollege.in/</string>
 
     <!--Keys used in shared preferences-->
     <string name="is_logged_in">IS_LOGGED_IN</string>

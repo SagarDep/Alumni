@@ -79,6 +79,7 @@ public class FragmentAboutApp extends android.support.v4.app.Fragment {
         //Bus Registering
         mBus.register(getActivity());
 
+        // getting the version name
         try {
             PackageInfo pInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
             mTextViewVersion.setText(pInfo.versionName);

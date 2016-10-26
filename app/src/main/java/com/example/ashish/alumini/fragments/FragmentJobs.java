@@ -119,7 +119,10 @@ public class FragmentJobs extends Fragment {
 
         mListAdapter = new JobListAdapter(getActivity(),R.layout.list_layout_job, mJobArrayList);
         mListViewJobs.setAdapter(mListAdapter);
-        
+
+        mActivity.getSupportActionBar().setTitle("Jobs");
+
+
         return view;
     }
 
@@ -146,6 +149,7 @@ public class FragmentJobs extends Fragment {
 
         //Bus Registering
         mBus.register(getActivity());
+
     }
 
     @Override

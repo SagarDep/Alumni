@@ -22,7 +22,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class FragmentMenu extends Fragment {
+public class FragmentBottomMenu extends Fragment {
 
     /*
     * GLOBAL DECLARATIONS & BUTTERKNIFE INJECTIONS
@@ -39,7 +39,7 @@ public class FragmentMenu extends Fragment {
     @Bind(R.id.button_settings) IconicsImageView mImageViewSettings;
 
     View mLineViewPrevious;
-    LinearLayout mLinearLayoutPrevious;
+
     IconicsImageView mPreviousIconicsImageView;
     View mViewCurrent;
 
@@ -61,7 +61,7 @@ public class FragmentMenu extends Fragment {
 //    FragmentMembers mFragmentMembers = new FragmentMembers();
 
 
-    public FragmentMenu() {
+    public FragmentBottomMenu() {
         // Required empty public constructor
     }
 
@@ -71,11 +71,11 @@ public class FragmentMenu extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentMenu.
+     * @return A new instance of fragment FragmentBottomMenu.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentMenu newInstance(String param1, String param2) {
-        FragmentMenu fragment = new FragmentMenu();
+    public static FragmentBottomMenu newInstance(String param1, String param2) {
+        FragmentBottomMenu fragment = new FragmentBottomMenu();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -102,11 +102,14 @@ public class FragmentMenu extends Fragment {
         //event bus registering
         mBus.register(getActivity());
 
+
         mActivity = (PostLoginActivity) getActivity();
         mActionBar = mActivity.getSupportActionBar();
 
+        // getting default views as previous views - HorizontalBar
         mLineViewPrevious = view.findViewById(R.id.view_home);
-        mLinearLayoutPrevious = (LinearLayout) view.findViewById(R.id.linearLayout_home);
+
+        // Imageview for home
         mPreviousIconicsImageView = (IconicsImageView) view.findViewById(R.id.button_home);
 
         if (CommonData.mCurrentFragmentPostLogin instanceof FragmentMembers){
@@ -125,33 +128,53 @@ public class FragmentMenu extends Fragment {
         return view;
     }
 
+    // when home is clicked
     @OnClick(R.id.linearLayout_home)
     public void changeToHomeFragment(View view){
+
         setVisibleView(getView().findViewById(R.id.view_home),mImageViewMembers);
+
         mActivity.changeFragment(mActivity.mFragmentMembers);
-        mActionBar.setTitle("Members");
+
+        // post to Fragment Activity - PostLoginActivity to manage the backpressed action
         mBus.post(view.getId());
     }
+
+    // when filter is clicked
     @OnClick(R.id.linearLayout_filter)
     public void changeToFilterFragment(View view){
+
         setVisibleView(getView().findViewById(R.id.view_filter),mImageViewFilter);
+
         mActivity.changeFragment(new FragmentFilter());
-        mActionBar.setTitle("Filter");
+
+        // post to Fragment Activity - PostLoginActivity to manage the backpressed action
         mBus.post(view.getId());
     }
+
+    // when jobs is clicked
     @OnClick(R.id.linearLayout_jobs)
     public void changeToJobsFragment(View view){
+
         setVisibleView(getView().findViewById(R.id.view_jobs),mImageViewJobs);
-//        mActivity.changeFragment(mActivity.mFragmentJob);
+
         mActivity.changeFragment(CommonData.fragmentJobs);
-        mActionBar.setTitle("Jobs");
+
+
+
+        // post to Fragment Activity - PostLoginActivity to manage the backpressed action
         mBus.post(view.getId());
     }
+
+    // when setting is clicked
     @OnClick(R.id.linearLayout_settings)
     public void changeFragment(View view){
+
         setVisibleView(getView().findViewById(R.id.view_settings),mImageViewSettings);
+
         mActivity.changeFragment(new FragmentSettings());
-        mActionBar.setTitle("Settings");
+
+        // post to Fragment Activity - PostLoginActivity to manage the backpressed action
         mBus.post(view.getId());
     }
 
@@ -171,8 +194,10 @@ public class FragmentMenu extends Fragment {
 
 
 
-//    public void setVisibleView(View viewUnderLine,LinearLayout layout){
-    public void setVisibleView(View viewUnderLine,IconicsImageView imageView){
+    /*
+    * Making the view color focused - RED (appTheme in this case)
+    * */
+    public void setVisibleView(View horizontalLine,IconicsImageView imageView){
         //setting the previously clicked view to visibility=gone
         mLineViewPrevious.setVisibility(View.GONE);
 
@@ -181,10 +206,10 @@ public class FragmentMenu extends Fragment {
 
         //changing color and visibility
         imageView.setColor(getResources().getColor(R.color.appTheme));
-        viewUnderLine.setVisibility(View.VISIBLE);
+        horizontalLine.setVisibility(View.VISIBLE);
 
         //updating the previous elements for changing the visibility in next click
-        mLineViewPrevious =viewUnderLine;
+        mLineViewPrevious =horizontalLine;
         mPreviousIconicsImageView = imageView;
 
         mBus.post(imageView.getId()); // Posting the clicked layout to the BlankFragment activity (PostLoginActivity)
