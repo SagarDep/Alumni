@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -167,6 +168,25 @@ public class FragmentSettings extends Fragment  {
 
     @OnClick(R.id.button_support)
     public void handlerSupportButton(){
+
+        MaterialDialog materialDialog = new MaterialDialog(getActivity());
+        materialDialog.setTitle("Share App Link")
+                .setMessage("Please help us to reach you more awesome people")
+                .setPositiveButton("Share", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent waIntent = new Intent(Intent.ACTION_SEND);
+                        waIntent.setType("text/plain");
+                        String text = "Get the alumni app through this link and be a part of awesome community";
+
+                        waIntent.putExtra(Intent.EXTRA_TEXT, text);
+                        startActivity(Intent.createChooser(waIntent, "Share with"));
+
+                    }
+                })
+                .show();
+
         mBus.post(9999);
     }
 
