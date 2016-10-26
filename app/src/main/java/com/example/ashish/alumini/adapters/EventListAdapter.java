@@ -1,4 +1,4 @@
-package com.example.ashish.alumini;
+package com.example.ashish.alumini.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 
+import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.supporting_classes.EventListInstance;
 
 import java.util.List;

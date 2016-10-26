@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.R;
+import com.example.ashish.alumini.fragments.filter_fragments.FragmentFilter;
 import com.example.ashish.alumini.fragments.settings.FragmentSettings;
 import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.mikepenz.iconics.view.IconicsImageView;

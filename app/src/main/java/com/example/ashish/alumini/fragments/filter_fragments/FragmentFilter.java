@@ -1,10 +1,8 @@
-package com.example.ashish.alumini.fragments;
+package com.example.ashish.alumini.fragments.filter_fragments;
 
 
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,11 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
-import android.widget.TextView;
 
 import com.example.ashish.alumini.fragments.viewpager.FragmentFilterResult;
-import com.example.ashish.alumini.members.expandable_list.ExpandableListAdapter;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.network.ApiClient;
@@ -26,11 +21,8 @@ import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit2.Call;

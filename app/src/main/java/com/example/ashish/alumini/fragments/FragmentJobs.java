@@ -11,12 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.activeandroid.query.Select;
-import com.example.ashish.alumini.job.JobListAdapter;
+import com.example.ashish.alumini.adapters.JobListAdapter;
 import com.example.ashish.alumini.R;
 
 
 import com.example.ashish.alumini.network.ApiClient;
-import com.example.ashish.alumini.network.models.JobInstanceModel;
+import com.example.ashish.alumini.network.db_models.JobInstanceModel;
 import com.example.ashish.alumini.network.pojo.JobListInstance;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.squareup.otto.Bus;

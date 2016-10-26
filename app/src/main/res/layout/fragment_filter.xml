@@ -25,7 +25,7 @@
                 tools:layout="@layout/fragment_filter_list"
                 android:id="@+id/fragment_container_year"
 
-                android:name = "com.example.ashish.alumini.fragments.FragmentFilterYear"/>
+                android:name = "com.example.ashish.alumini.fragments.filter_fragments.FragmentFilterYear"/>
 
             <Button
                 android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 tools:layout="@layout/fragment_filter_list"
                 android:id="@+id/fragment_container_branch"
-                android:name = "com.example.ashish.alumini.fragments.FragmentFilterBranch"/>
+                android:name = "com.example.ashish.alumini.fragments.filter_fragments.FragmentFilterBranch"/>
 
 
         </LinearLayout>

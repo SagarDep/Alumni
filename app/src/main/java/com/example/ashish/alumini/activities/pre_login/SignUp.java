@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -16,7 +15,7 @@ import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
 import com.example.ashish.alumini.application.MyApplication;
 import com.example.ashish.alumini.network.ApiClient;
-import com.example.ashish.alumini.network.pojo.SignupPart;
+import com.example.ashish.alumini.network.pojo.SignupPartial;
 import com.example.ashish.alumini.supporting_classes.GlobalBus;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.example.ashish.alumini.supporting_classes.ProgressBarVisibility;
@@ -145,14 +144,14 @@ public class SignUp extends Activity {
         postHideSignal(true);
 
         
-        Call<SignupPart> call = ApiClient.getServerApi().signupPartial(
+        Call<SignupPartial> call = ApiClient.getServerApi().signupPartial(
                 mEditTextName.getText().toString().trim(),
                 mEditTextemail.getText().toString().trim(),
                 mEditTextPassword.getText().toString().trim());
 
-        call.enqueue(new Callback<SignupPart>() {
+        call.enqueue(new Callback<SignupPartial>() {
             @Override
-            public void onResponse(Call<SignupPart> call, Response<SignupPart> response) {
+            public void onResponse(Call<SignupPartial> call, Response<SignupPartial> response) {
                 Log.d(TAG,"API successful");
 
                 // hiding progress bar
@@ -166,7 +165,7 @@ public class SignUp extends Activity {
                 }
                 else if (response.code()==200){
 
-                SignupPart signupPart = response.body();
+                SignupPartial signupPart = response.body();
 
                 /*
                 * saving the name, id, email in shared prefs
@@ -191,7 +190,7 @@ public class SignUp extends Activity {
             }
 
             @Override
-            public void onFailure(Call<SignupPart> call, Throwable t) {
+            public void onFailure(Call<SignupPartial> call, Throwable t) {
                 Log.d(TAG,"API failed");
                 // hiding progress bar
                 postHideSignal(false);

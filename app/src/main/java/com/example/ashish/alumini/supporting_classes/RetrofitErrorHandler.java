@@ -6,6 +6,7 @@ import com.sdsmdg.tastytoast.TastyToast;
 
 /**
  * Created by ashish on 9/9/16.
+ * to handle the retrofit errors
  */
 public class RetrofitErrorHandler {
     public void statusCodeHandler(Context context, int errorCode){

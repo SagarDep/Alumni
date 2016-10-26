@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.example.ashish.alumini.EventListAdapter;
+import com.example.ashish.alumini.adapters.EventListAdapter;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
 import com.example.ashish.alumini.fragments.common_fragments.FragmentWebView;

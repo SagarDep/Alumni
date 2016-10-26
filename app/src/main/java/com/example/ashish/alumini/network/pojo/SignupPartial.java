@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by ashish on 25/8/16.
  */
-public class SignupPart {
+public class SignupPartial {
 
     private String name;
     private String email;

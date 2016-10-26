@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.members;
+package com.example.ashish.alumini.supporting_classes;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

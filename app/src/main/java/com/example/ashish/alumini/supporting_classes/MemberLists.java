@@ -5,7 +5,7 @@ import android.util.Log;
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Select;
 import com.example.ashish.alumini.network.ApiClient;
-import com.example.ashish.alumini.network.models.MemberInstanceModel;
+import com.example.ashish.alumini.network.db_models.MemberInstanceModel;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.network.pojo.MemberListResponse;
 
@@ -18,6 +18,7 @@ import retrofit2.Response;
 
 /**
  * Created by ashish on 3/9/16.
+ * this is a class will make the api calls to get the data so that the loading time can be reduced
  */
 public class MemberLists {
 
@@ -30,7 +31,7 @@ public class MemberLists {
     GlobalBus mGlobalBus = GlobalBus.getInstance();
 
     public MemberLists() {
-//    makeServerCallToGetAllMemberData();
+
         makeServerCallToGetAllMemberData("0");
 
         mGlobalBus.register(this);

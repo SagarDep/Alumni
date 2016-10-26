@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.members.expandable_list;
+package com.example.ashish.alumini.adapters;
 import java.util.HashMap;
 import java.util.List;
 

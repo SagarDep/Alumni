@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.network.models;
+package com.example.ashish.alumini.network.db_models;
 
 /**
  * Created by ashish on 19/9/16.
@@ -7,18 +7,6 @@ package com.example.ashish.alumini.network.models;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
-
-import java.util.HashMap;
-import java.util.Map;
-
-
-
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by ashish on 3/9/16.

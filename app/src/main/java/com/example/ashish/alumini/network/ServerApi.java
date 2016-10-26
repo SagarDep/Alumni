@@ -5,12 +5,11 @@ import com.example.ashish.alumini.network.pojo.JobDetail;
 import com.example.ashish.alumini.network.pojo.LoginResponse;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
 import com.example.ashish.alumini.network.pojo.MemberListResponse;
-import com.example.ashish.alumini.network.pojo.SignupPart;
+import com.example.ashish.alumini.network.pojo.SignupPartial;
 
 import java.util.List;
 
 import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
@@ -53,9 +52,9 @@ public interface ServerApi {
     * API call for partial signup
     * */
     @POST("members/signup/partial")
-    Call<SignupPart> signupPartial(@Query("name") String name,
-                                   @Query("email") String email,
-                                   @Query("password") String password
+    Call<SignupPartial> signupPartial(@Query("name") String name,
+                                      @Query("email") String email,
+                                      @Query("password") String password
     );
 
 

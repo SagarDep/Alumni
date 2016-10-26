@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.fragments;
+package com.example.ashish.alumini.fragments.filter_fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -14,9 +14,6 @@ import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.squareup.otto.Bus;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

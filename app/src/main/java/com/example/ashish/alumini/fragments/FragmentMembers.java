@@ -18,8 +18,7 @@ import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager1;
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager2;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
-import com.example.ashish.alumini.supporting_classes.ViewPagerAdapter;
-import com.squareup.otto.Subscribe;
+import com.example.ashish.alumini.adapters.ViewPagerAdapter;
 
 import java.util.List;
 

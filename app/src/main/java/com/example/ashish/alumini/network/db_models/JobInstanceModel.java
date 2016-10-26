@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.network.models;
+package com.example.ashish.alumini.network.db_models;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;

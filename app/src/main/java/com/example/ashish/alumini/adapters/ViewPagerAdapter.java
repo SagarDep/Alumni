@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.supporting_classes;
+package com.example.ashish.alumini.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

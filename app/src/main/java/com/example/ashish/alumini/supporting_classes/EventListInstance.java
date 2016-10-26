@@ -6,7 +6,7 @@ package com.example.ashish.alumini.supporting_classes;
 public class EventListInstance {
     String name;
     String url;
-    String imageurl;
+    String imageUrl;
 
     public String getUrl() {
         return url;
@@ -24,11 +24,11 @@ public class EventListInstance {
         this.name = name;
     }
 
-    public String getImageurl() {
-        return imageurl;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImageurl(String imageurl) {
-        this.imageurl = imageurl;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
