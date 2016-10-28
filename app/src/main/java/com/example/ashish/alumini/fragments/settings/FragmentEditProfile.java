@@ -411,8 +411,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
                 mEditTextLocationHome.getText().toString().trim(),             // home location
                 mEditTextLocationWork.getText().toString().trim(),             // work location
                 mEditTextPhone.getText().toString().trim(),                    // phone
-                mEditTextWebLink.getText().toString().trim(),                  // web
-                "facebook link"                                                // fb link
+                mEditTextWebLink.getText().toString().trim()                  // web
                 );
 
         call.enqueue(new Callback<String>() {
@@ -426,17 +425,18 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
                 if (response.code()==201){
 
                     mActivity.changeFragment(new FragmentProfile());
-                    TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
 
                     // storing id and name in shared pref
                     // globalPrefs.putString(getString(R.string.userid),response1.get_id());
                     new GlobalPrefs(getActivity()).putString(getString(R.string.username),
                             mEditTextName.getText().toString().trim()                     // name
                     );
+                    new GlobalPrefs(getActivity()).putString(getString(R.string.useremail),
+                            mEditTextEmail.getText().toString().trim()                     // email
+                    );
 
                     // show toast
                     TastyToast.makeText(getContext(),"Details Updated",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
-
 
                 }
             }
@@ -455,41 +455,40 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
     public boolean validate(){
 
+        Boolean valid = false;
 
         if (mEditTextName.getText().toString().trim().length()<=6){
             mEditTextName.setError("Name must be greater than 6 characters");
             return false;
         }
-        else  if (mEditTextBio.getText().toString().trim().length()==0){
+         if (mEditTextBio.getText().toString().trim().length()==0){
             mEditTextBio.setError("Make it a little Big");
             return false;
         }
-        else if (mEditTextDesignation.getText().toString().trim().length()==0){
+         if (mEditTextDesignation.getText().toString().trim().length()==0){
             mEditTextDesignation.setError("Invalid Designation");
             return false;
         }
-        else if (mEditTextCompany.getText().toString().trim().length()==0){
+         if (mEditTextCompany.getText().toString().trim().length()==0){
             mEditTextCompany.setError("Invalid Designation");
             return false;
         }
-
         if (mEditTextLocationHome.getText().toString().trim().length()==0){
             mEditTextLocationHome.setError("Invalid Location");
             return false;
         }
-        else if (mEditTextLocationWork.getText().toString().trim().length()==0){
+        if (mEditTextLocationWork.getText().toString().trim().length()==0){
             mEditTextLocationWork.setError("Invalid Location");
             return false;
-        }else if (mEditTextPhone.getText().toString().trim().length()==10){
+        }
+        if (mEditTextPhone.getText().toString().trim().length() <= 5){
             mEditTextPhone.setError("Invalid Phone Number");
             return false;
         }
-        else if (false){
-            mEditTextPhone.setError("Invalid Designation");
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(mEditTextEmail.getText()).matches()){
+            mEditTextEmail.setError("Invalid email");
             return false;
         }
-
-
 
         return true;
     }
@@ -528,19 +527,22 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     }
 
     public void setCompleteData(MemberInstance completeData){
-                mEditTextName.setText(completeData.getName());                     // name
-                mEditTextBio.setText(completeData.getBio());                      // bio
-                mSpinnerBranch.setSelection(mArrayListBranch.indexOf(completeData.getBranch()));          // branch
-                mSpinnerYear.setSelection(mArrayListYear.indexOf(completeData.getBranch()));            // year
-                checkbox.setChecked(completeData.getIsNerd());                    // isNerd
-                //updating the hint according to checkBox state
-                checkBoxStateHandler();
-                mEditTextDesignation.setText(completeData.getDesignation());       // designation
-                mEditTextCompany.setText(completeData.getCompany());               // company
-                mEditTextLocationHome.setText(completeData.getHome());             // home location
-                mEditTextLocationWork.setText(completeData.getWork());             // work location
-                mEditTextPhone.setText(completeData.getPhone());                    // phone
-                mEditTextWebLink.setText(completeData.getWeblink());
+        mEditTextName.setText(completeData.getName());                     // name
+        mEditTextBio.setText(completeData.getBio());                      // bio
+        mSpinnerBranch.setSelection(
+                mArrayListBranch.indexOf(completeData.getBranch()));          // branch
+        mSpinnerYear.setSelection(
+                mArrayListYear.indexOf(completeData.getBranch()));            // year
+        checkbox.setChecked(completeData.getIsNerd());                    // isNerd
+        //updating the hint according to checkBox state
+        checkBoxStateHandler();
+        mEditTextDesignation.setText(completeData.getDesignation());       // designation
+        mEditTextCompany.setText(completeData.getCompany());               // company
+        mEditTextLocationHome.setText(completeData.getHome());             // home location
+        mEditTextLocationWork.setText(completeData.getWork());             // work location
+        mEditTextPhone.setText(completeData.getPhone());                    // phone
+        mEditTextWebLink.setText(completeData.getWeblink());                // web link
+        mEditTextEmail.setText(completeData.getEmail());                    // email
 
     }
 

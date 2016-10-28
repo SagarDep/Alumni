@@ -284,11 +284,13 @@
                     app:iiv_color="@color/black_de"
                     android:layout_alignTop="@+id/textView_mail"
                     android:layout_toLeftOf="@+id/textView_fbLink"
-                    android:layout_toStartOf="@+id/textView_fbLink" /><com.mikepenz.iconics.view.IconicsImageView
+                    android:layout_toStartOf="@+id/textView_fbLink" />
+
+                <com.mikepenz.iconics.view.IconicsImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:id="@+id/imageView_email"
-                    app:iiv_icon="faw-facebook"
+                    app:iiv_icon="faw-link"
                     app:iiv_color="@color/black_de"
                     android:layout_alignTop="@+id/textView_fbLink"
                     android:layout_alignLeft="@+id/textView_Contact"

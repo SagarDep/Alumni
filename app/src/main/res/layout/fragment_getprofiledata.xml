@@ -352,7 +352,7 @@
                         android:inputType="textUri"
                         android:id="@+id/editText_memberWebLink"
                         android:text="http://"
-                        android:hint="Web Links" />
+                        android:hint="Web / Fb / Twitter / Blog Link" />
 
                 </android.support.design.widget.TextInputLayout>
 

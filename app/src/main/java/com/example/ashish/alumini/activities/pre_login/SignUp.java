@@ -112,20 +112,19 @@ public class SignUp extends Activity {
         String nameString = mEditTextName.getText().toString();
         String emailString = mEditTextemail.getText().toString();
         String passwordString = mEditTextPassword.getText().toString();
-//        String confirmPasswordString = mEditTextConfirmPassword.getText().toString();
 
         if (nameString.isEmpty() || nameString.length() < 3) {
-            mEditTextName.setError("at least 3 characters");
+            mEditTextName.setError(getString(R.string.error_name));
             valid = false;
         }
 
-        if (emailString.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(emailString).matches()) {
-            mEditTextemail.setError("enter a valid mEditTextemail address");
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(emailString).matches()) {
+            mEditTextemail.setError(getString(R.string.error_email));
             valid = false;
         }
 
         if ( passwordString.length() < 6 ) {
-            mEditTextPassword.setError("must be more than 6 characters");
+            mEditTextPassword.setError(getString(R.string.error_password));
             valid = false;
         }
 

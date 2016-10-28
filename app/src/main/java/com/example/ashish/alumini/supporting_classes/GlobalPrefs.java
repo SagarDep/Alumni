@@ -10,7 +10,7 @@ import com.example.ashish.alumini.R;
  */
 public class GlobalPrefs {
     public  Context mContext;
-    SharedPreferences.Editor mEditor;
+
 
     public GlobalPrefs(Context context){
         mContext = context;

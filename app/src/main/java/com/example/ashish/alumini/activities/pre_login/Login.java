@@ -90,7 +90,7 @@ public class Login extends Activity {
         final String emailString = email.getText().toString().trim();
 
 
-        if (emailString.trim().length()<6){
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches()){
             TastyToast.makeText(Login.this,"Invalid email",Toast.LENGTH_SHORT,TastyToast.INFO);
             return;
         }
@@ -159,17 +159,17 @@ public class Login extends Activity {
     public boolean validate() {
         boolean valid = true;
 
-        String emailString = email.getText().toString();
-        String passwordString = password.getText().toString();
+        String emailString = email.getText().toString().trim();
+        String passwordString = password.getText().toString().trim();
 
         if (emailString.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(emailString).matches()) {
-            email.setError("enter a valid mEditTextemail address");
+            email.setError("enter a valid email address");
             valid = false;
         } else {
             email.setError(null);
         }
 
-        if (passwordString.isEmpty() || passwordString.length() < 6 || passwordString.length() > 255) {
+        if (passwordString.isEmpty() || passwordString.length() < 6 || passwordString.length() > 30) {
             password.setError("Enter a strong password");
             valid = false;
         } else {

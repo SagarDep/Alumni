@@ -23,6 +23,7 @@
         android:supportsRtl="true"
         android:name=".application.MyApplication"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".activities.pre_login.ActivitySplashScreen"
             android:label="Alumni">

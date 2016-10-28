@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.TextInputLayout;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -260,8 +261,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
                 mEditTextLocationHome.getText().toString().trim(),             // home location
                 mEditTextLocationWork.getText().toString().trim(),             // work location
                 mEditTextPhone.getText().toString().trim(),                    // phone
-                mEditTextWebLink.getText().toString().trim(),                  // web
-                "facebook link"                                                // fb link
+                mEditTextWebLink.getText().toString().trim()                  // web
         );
 
         call.enqueue(new Callback<String>() {
@@ -285,6 +285,9 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
                     GlobalPrefs globalPrefs = new GlobalPrefs(getActivity());
                     globalPrefs.putString(getString(R.string.username),
                             mEditTextName.getText().toString().trim()                     // name
+                    );
+                    new GlobalPrefs(getActivity()).putString(getString(R.string.useremail),
+                            mEditTextEmail.getText().toString().trim()                     // email
                     );
 
                     // for session maintaining
@@ -322,7 +325,6 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
             mEditTextCompany.setError("Invalid Name");
             return false;
         }
-
         if (mEditTextLocationHome.getText().toString().trim().length() == 0) {
             mEditTextLocationHome.setError("Invalid Location");
             return false;
@@ -333,12 +335,12 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
                 mEditTextPhone.getText().toString().trim().length() > 20) {
             mEditTextPhone.setError("Invalid Phone Number");
             return false;
-        } else if (false) {
-            mEditTextPhone.setError("Invalid Designation");
+        } else if (!Patterns.WEB_URL.matcher(mEditTextWebLink.getText()).matches()) {
+            mEditTextPhone.setError("Invalid Link Provided");
             return false;
         }
 
-
+        // when all condition went wrong - i.e. every data is in correct format
         return true;
     }
 

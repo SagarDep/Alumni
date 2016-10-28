@@ -137,11 +137,11 @@ public class FragmentProfile extends Fragment {
             mImageViewEdit.setVisibility(View.GONE);
 
             // make server call to get more data with id param of clicked element
-            makeServerCallToGetMoreData(mListInstance.get_id().toString());
+            makeServerCallToGetMoreData(mListInstance.get_id());
 
             // starting picasso image loading
             Picasso.with(mImageView.getContext())
-                    .load(ApiClient.BASE_URL + "upload/uploads/fullsize/" + mListInstance.get_id().toString())
+                    .load(ApiClient.BASE_URL + "upload/uploads/fullsize/" + mListInstance.get_id())
                     .placeholder(new IconicsDrawable(mImageView.getContext()).icon(FontAwesome.Icon.faw_user)
                             .color(Color.LTGRAY)
                             .sizeDp(70))
@@ -222,7 +222,7 @@ public class FragmentProfile extends Fragment {
                     mTextViewContact.setText(instance.getPhone());
                     mTextViewHomeLocation.setText(instance.getHome());
                     mTextViewMail.setText(instance.getEmail());
-//                    mTextViewFb.setText(example.get);
+                    mTextViewFb.setText(instance.getWeblink());
                 }
 //                if (response.code()==200){
                     // setting visivility of progress bar to GONE
@@ -300,7 +300,7 @@ public class FragmentProfile extends Fragment {
         mTextView_name.setText(completeData.getName());
         mTextViewJobLocation.setText(completeData.getWork());
         mTextViewYear.setText(completeData.getYear());
-//        mTextViewFb.setText(completeData.get);
+        mTextViewFb.setText(completeData.getWeblink());
 
 
     }

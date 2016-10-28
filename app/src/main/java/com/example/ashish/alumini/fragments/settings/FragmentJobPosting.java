@@ -16,6 +16,7 @@ import android.provider.MediaStore;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -208,10 +209,11 @@ public class FragmentJobPosting extends Fragment {
         else if (mInputEditTextJobLocation.getText().toString().length()<3){
             mInputEditTextJobLocation.setError("Invalid details");
         }
-        else if (mEditTextWebLink.getText().toString().length()<6){
+        else if (!Patterns.WEB_URL.matcher(mEditTextemail.getText()).matches()){
             mEditTextWebLink.setError("Invalid WebLink");
         }
-        else if (mEditTextemail.getText().toString().length()<6 && android.util.Patterns.EMAIL_ADDRESS.matcher(mEditTextemail.getText()).matches()){
+        else if (
+                        !android.util.Patterns.EMAIL_ADDRESS.matcher(mEditTextemail.getText()).matches()){
             mEditTextemail.setError("Invalid Email address");
         }
         else {
@@ -220,8 +222,7 @@ public class FragmentJobPosting extends Fragment {
 
 
         if (validDeta){
-            makeServerCallToPostData();
-//            makeServerCallToUploadData();
+            makeServerCallToPostData();;
         }
     }
 

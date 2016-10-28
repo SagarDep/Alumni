@@ -37,7 +37,6 @@
     <string name="contact">Contact</string>
 
     <!--For the About app Fragment-->
-    <!--<string name="developed_by">Designed &amp; Developed By Ashish</string>-->
     <string name="developed_by"> Developed By Ashish Surana \n ashishsurana.in</string>
 
     <!--Urls used in web views-->
@@ -95,6 +94,12 @@
     <string name="isNerdCheckBox_text">I am doing Higher studies</string>
 
     <string name="designation">Designation</string>
-    <string name="Organization">Organization</string>
+
+    <!--Error messages-->
+    <string name="error_email">Enter a valid email address</string>
+    <string name="error_password">Make it a bit stronger</string>
+    <string name="error_name">Please provide full name</string>
+    <string name="error_">Make it a bit stronger</string>
+
 
 </resources>

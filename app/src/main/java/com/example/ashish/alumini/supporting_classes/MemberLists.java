@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Select;
+import com.example.ashish.alumini.BuildConfig;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.db_models.MemberInstanceModel;
 import com.example.ashish.alumini.network.pojo.MemberInstance;
@@ -32,7 +33,9 @@ public class MemberLists {
 
     public MemberLists() {
 
-        makeServerCallToGetAllMemberData("0");
+        // this date is the largest possible date
+        // this makes the sorting easy
+        makeServerCallToGetAllMemberData("3016-09-18T06:25:22.767Z");
 
         mGlobalBus.register(this);
     }
@@ -75,7 +78,9 @@ public class MemberLists {
         call.enqueue(new Callback<MemberListResponse>() {
             @Override
             public void onResponse(Call<MemberListResponse> call, Response<MemberListResponse> response) {
+
                 Log.d(TAG,"API call successful makeServerCallToGetAllMemberData");
+
                 MemberListResponse response1 = response.body();
 
                 // preventing nullification
@@ -105,12 +110,6 @@ public class MemberLists {
                         ActiveAndroid.endTransaction();
                     }
 
-                    // iterating all the list instances and adding to main list
-//                    for (MemberInstance memberInstance: instanceList) {
-//                        list.add(memberInstance);
-//                    }
-
-
 
                 }
 
@@ -135,7 +134,6 @@ public class MemberLists {
 
 
                 // API call failed and populate the list from local db
-//                new Delete().from(MemberInstanceModel.class).executeSingle();
 
                       List<MemberInstanceModel> lst  = new Select()
                         .from(MemberInstanceModel.class)
@@ -154,10 +152,12 @@ public class MemberLists {
                     Log.d(TAG,"No data to show");
                 }
 
-                // chnaging flag
+                // changing flag
                 mApiCallFlag = false;
 
-                Log.d(TAG,"API call failed makeServerCallToGetAllMemberData" + t.toString());
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG,"API call failed makeServerCallToGetAllMemberData" + t.toString());
+                }
 
                 // this will be subscribed by FragmentMembers - for starting the progress bar
                 mGlobalBus.post(false);

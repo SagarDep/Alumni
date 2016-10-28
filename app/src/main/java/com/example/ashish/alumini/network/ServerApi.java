@@ -76,8 +76,7 @@ public interface ServerApi {
                                 @Query("home") String home,
                                 @Query("work") String work,
                                 @Query("phone") String phone,
-                                @Query("weblink") String webLink,
-                                @Query("fblink") String fbLink
+                                @Query("weblink") String webLink
                                 );
 
 

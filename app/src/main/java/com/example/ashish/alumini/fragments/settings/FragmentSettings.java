@@ -111,7 +111,6 @@ public class FragmentSettings extends Fragment  {
         //Bus Registering
         mBus.unregister(getActivity());
 
-
     }
 
     @Override
@@ -160,7 +159,7 @@ public class FragmentSettings extends Fragment  {
 
     @OnClick(R.id.button_about_college)
     public void handlerAboutCollegeButton(){
-//        mBus.post(R.id.button_postjob);
+
         mBus.post(9999);
         mActivity.changeFragment(new FragmentWebView().newInstance(getString(R.string.url_college),""));
     }
@@ -169,7 +168,7 @@ public class FragmentSettings extends Fragment  {
     @OnClick(R.id.button_support)
     public void handlerSupportButton(){
 
-        MaterialDialog materialDialog = new MaterialDialog(getActivity());
+        final MaterialDialog materialDialog = new MaterialDialog(getActivity());
         materialDialog.setTitle("Share App Link")
                 .setMessage("Please help us to reach you more awesome people")
                 .setPositiveButton("Share", new View.OnClickListener() {
@@ -182,9 +181,11 @@ public class FragmentSettings extends Fragment  {
 
                         waIntent.putExtra(Intent.EXTRA_TEXT, text);
                         startActivity(Intent.createChooser(waIntent, "Share with"));
+                        materialDialog.dismiss();
 
                     }
                 })
+                .setCanceledOnTouchOutside(true)
                 .show();
 
         mBus.post(9999);
