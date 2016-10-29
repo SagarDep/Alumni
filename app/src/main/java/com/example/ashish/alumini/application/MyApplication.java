@@ -39,10 +39,11 @@ public class MyApplication extends Application {
 
         // class will create the fragmentjob instance and later can be accessed anywhere
         // api calls will be started as soon as the fragment job is created
-        CommonData  commonData = new CommonData();
+        new CommonData();
 
     }
 
+    // create the list class which will start the API calls
     public void createListCLass(){
         memberLists = new MemberLists();
 

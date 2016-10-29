@@ -63,6 +63,8 @@
     <!--Faq data-->
     <string name="answer1">This is the answer to 1 FAQ</string>
     <string name="answer2">This is the answer to 2 FAQ</string>
+    <string name="answer3">This is the answer to 2 FAQ</string>
+    <string name="answer4">This is the answer to 2 FAQ</string>
 
     <!--Main Screen-->
     <string name="members">Members</string>

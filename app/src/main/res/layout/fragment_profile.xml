@@ -52,7 +52,6 @@
             android:layout_height="150dp"
             android:id="@+id/imageView_profilepic"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/image"
             android:layout_marginTop="20dp" />
 
         <TextView

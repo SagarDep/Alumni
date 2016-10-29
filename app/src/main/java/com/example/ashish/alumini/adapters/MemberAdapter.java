@@ -69,6 +69,9 @@ public class MemberAdapter  extends RecyclerView.Adapter<MemberAdapter.MyViewHol
                 .placeholder(new IconicsDrawable(holder.mImageView.getContext()).icon(FontAwesome.Icon.faw_user)
                         .color(Color.LTGRAY)
                         .sizeDp(50))
+                .error(new IconicsDrawable(holder.mImageView.getContext()).icon(FontAwesome.Icon.faw_user_secret)
+                        .color(Color.LTGRAY)
+                        .sizeDp(50))
                 .into(holder.mImageView);
 
     }

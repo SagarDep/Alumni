@@ -33,6 +33,7 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
+import com.mikepenz.iconics.view.IconicsImageView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
@@ -111,7 +112,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
     TextInputLayout mTextInputLayoutCompany;
 
     @Bind(R.id.imageView_companyLogo)
-    ImageView mImageView;
+    IconicsImageView mImageView;
 
     @Bind(R.id.progress_wheel)
     ProgressWheel mProgressWheel;
@@ -316,7 +317,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
             mEditTextName.setError("Name must be greater than 5 characters");
             return false;
         } else if (mEditTextBio.getText().toString().trim().length() == 0) {
-            mEditTextBio.setError("Make it a little Big");
+            mEditTextBio.setError("Make it a bit Big");
             return false;
         } else if (mEditTextDesignation.getText().toString().trim().length() == 0) {
             mEditTextDesignation.setError("Invalid Designation");
@@ -336,7 +337,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
             mEditTextPhone.setError("Invalid Phone Number");
             return false;
         } else if (!Patterns.WEB_URL.matcher(mEditTextWebLink.getText()).matches()) {
-            mEditTextPhone.setError("Invalid Link Provided");
+            mEditTextWebLink.setError("Invalid Link Provided");
             return false;
         }
 
@@ -387,10 +388,10 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         RequestBody requestFile =
                 RequestBody.create(MediaType.parse("multipart/form-data"), mFile);
 
-        String userid = new GlobalPrefs(mActivity).getString("Userid");
+        String path = new GlobalPrefs(mActivity).getString("Userid");
 
         MultipartBody.Part body =
-                MultipartBody.Part.createFormData("picture", userid, requestFile);
+                MultipartBody.Part.createFormData("picture", path, requestFile);
 
         Call<String> call = ApiClient.getServerApi().uploadProfileImage(body);
 

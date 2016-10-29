@@ -8,7 +8,7 @@
     android:padding="5dp">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -17,11 +17,13 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" >
 
-            <ImageView
+            <com.mikepenz.iconics.view.IconicsImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:id="@+id/imageView_companyLogo"
-                android:src="@drawable/image" />
+                app:iiv_color="@color/grey"
+                app:iiv_icon="faw-file-image-o"
+                 />
 
             <com.pnikosis.materialishprogress.ProgressWheel
                 android:layout_width="50dp"

@@ -19,6 +19,7 @@ import com.example.ashish.alumini.network.pojo.JobListInstance;
 import com.example.ashish.alumini.network.pojo.JobDetail;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.iconics.view.IconicsImageView;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.otto.Bus;
 import com.squareup.picasso.Picasso;
@@ -47,7 +48,8 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
     /*
     * Butterknife
     * */
-    @Bind(R.id.imageView_companyImage) ImageView imageView_companyImage;
+    @Bind(R.id.imageView_companyImage)
+    IconicsImageView imageView_companyImage;
     @Bind(R.id.textView_companyName_jobDetails) TextView mTextViewName;
     @Bind(R.id.textView_location_jobDetails) TextView mTextViewLocation;
     @Bind(R.id.textView_designation_jobDetails) TextView mTextViewJobDesignation;
