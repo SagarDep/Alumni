@@ -3,6 +3,7 @@ package com.example.ashish.alumini.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,16 +42,11 @@ public class FragmentBottomMenu extends Fragment {
     View mLineViewPrevious;
 
     IconicsImageView mPreviousIconicsImageView;
-    View mViewCurrent;
 
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     Bus mBus = new Bus();
 
@@ -73,7 +69,6 @@ public class FragmentBottomMenu extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment FragmentBottomMenu.
      */
-    // TODO: Rename and change types and number of parameters
     public static FragmentBottomMenu newInstance(String param1, String param2) {
         FragmentBottomMenu fragment = new FragmentBottomMenu();
         Bundle args = new Bundle();
@@ -86,10 +81,7 @@ public class FragmentBottomMenu extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -202,10 +194,9 @@ public class FragmentBottomMenu extends Fragment {
         mLineViewPrevious.setVisibility(View.GONE);
 
         //setting the previously clicked Button to default
-        mPreviousIconicsImageView.setColor(getResources().getColor(R.color.black_de));
-
+        mPreviousIconicsImageView.setColor(ContextCompat.getColor(mActivity,R.color.black_de));
         //changing color and visibility
-        imageView.setColor(getResources().getColor(R.color.appTheme));
+        imageView.setColor(ContextCompat.getColor(mActivity,R.color.appTheme));
         horizontalLine.setVisibility(View.VISIBLE);
 
         //updating the previous elements for changing the visibility in next click

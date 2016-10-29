@@ -16,7 +16,6 @@ import com.example.ashish.alumini.BuildConfig;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
-import com.mikepenz.iconics.view.IconicsImageView;
 import com.squareup.otto.Bus;
 
 import butterknife.Bind;
@@ -32,7 +31,6 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
 
     // TODO: Rename and change types of parameters
     private String mParam1;
-    private String mParam2;
 
 
 
@@ -80,7 +78,6 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -148,12 +145,6 @@ public class FragmentWebView extends android.support.v4.app.Fragment {
         });
 
 
-        mWebView.setPictureListener(new WebView.PictureListener() {
-            @Override
-            public void onNewPicture(WebView view, Picture picture) {
-                mBus.post(false);
-            }
-        });
 
 
         return view;

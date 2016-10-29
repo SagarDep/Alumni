@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.example.ashish.alumini.BuildConfig;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.PostLoginActivity;
 import com.example.ashish.alumini.fragments.viewpager.FragmentViewPager0;
@@ -36,19 +36,13 @@ public class FragmentMembers extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private String TAG = getClass().getSimpleName();
 
     @Bind(R.id.viewpager) ViewPager mViewPager;
     @Bind(R.id.tabLayout)TabLayout mTabLayout;
 
-    ActionBar mActionBar;
 
-    // list of all members
-    List<MemberInstance> memberInstanceList;
 
     PostLoginActivity mActivity;
 
@@ -79,10 +73,7 @@ public class FragmentMembers extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -148,12 +139,16 @@ public class FragmentMembers extends Fragment {
         call.enqueue(new Callback<List<MemberInstance>>() {
             @Override
             public void onResponse(Call<List<MemberInstance>> call, Response<List<MemberInstance>> response) {
-                Log.d(TAG,"API call successful");
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG,"API call successful");
+                }
             }
 
             @Override
             public void onFailure(Call<List<MemberInstance>> call, Throwable t) {
-                Log.d(TAG,"API call failed");
+                if (BuildConfig.DEBUG){
+                    Log.d(TAG,"API call failed");
+                }
             }
         });
     }

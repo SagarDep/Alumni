@@ -41,8 +41,6 @@ public class FragmentViewPager1 extends Fragment {
 
     private List<MemberInstance> mArrayList2 = new ArrayList<>();
     private List<MemberInstance> mArrayList = new ArrayList<>();
-    private MemberAdapter mAdapter;
-
 
     // activity
     PostLoginActivity mActivity;
@@ -100,7 +98,7 @@ public class FragmentViewPager1 extends Fragment {
         mProgressBar.setVisibility(View.GONE);
 
         //initialization of adapter
-        mAdapter = new MemberAdapter(mArrayList);
+        MemberAdapter mAdapter = new MemberAdapter(mArrayList);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
 

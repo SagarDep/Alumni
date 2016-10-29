@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
@@ -22,8 +21,6 @@ import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.example.ashish.alumini.supporting_classes.ProgressBarVisibility;
 import com.example.ashish.alumini.supporting_classes.RetrofitErrorHandler;
 import com.sdsmdg.tastytoast.TastyToast;
-
-import org.w3c.dom.Text;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

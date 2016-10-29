@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -16,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.example.ashish.alumini.BuildConfig;
@@ -170,7 +170,7 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         Dexter.initialize(mActivity);
 
         // setting progress bar color
-        mProgressWheel.setBarColor(mActivity.getResources().getColor(R.color.appTheme));
+        mProgressWheel.setBarColor(ContextCompat.getColor(mActivity,R.color.appTheme));
 
 
 

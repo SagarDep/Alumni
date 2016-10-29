@@ -31,6 +31,9 @@ android {
     productFlavors {
         dev {
 
+            jackOptions {
+                enabled true
+            }
         }
         experimental {
 
@@ -39,13 +42,15 @@ android {
             }
         }
         prod {
-
+            jackOptions {
+                enabled true
+            }
         }
     }
     buildTypes {
         release {
-//            shrinkResources true
-            minifyEnabled false
+            shrinkResources true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

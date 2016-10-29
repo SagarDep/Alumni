@@ -15,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="230dp"
         android:src="@drawable/connecting_people"
+        android:contentDescription="image to show a community"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

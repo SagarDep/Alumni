@@ -2,13 +2,11 @@ package com.example.ashish.alumini.fragments;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ashish.alumini.BuildConfig;
@@ -133,9 +131,8 @@ public class FragmentJobDetails extends android.support.v4.app.Fragment {
         mTextViewName.setText(mJobListInstance.getName());
         mTextViewLocation.setText(mJobListInstance.getLocation());
         mTextViewJobDesignation.setText(mJobListInstance.getRole());
-        String imageUrl = new String(ApiClient.BASE_URL + "upload/uploads/fullsize/"+
-                mJobListInstance.getPostedbyid() + "-job"
-        );
+        String imageUrl = ApiClient.BASE_URL + "upload/uploads/fullsize/"+
+                mJobListInstance.getPostedbyid() + "-job";
 
         // picasso image loading
         Picasso.with(getActivity())

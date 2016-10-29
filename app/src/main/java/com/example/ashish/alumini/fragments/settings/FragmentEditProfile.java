@@ -2,17 +2,15 @@ package com.example.ashish.alumini.fragments.settings;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,7 +43,6 @@ import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -65,8 +62,6 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private String mParam1;
-    private String mParam2;
 
     String TAG = getClass().getSimpleName();
 
@@ -156,10 +151,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -180,7 +172,7 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
         Dexter.initialize(mActivity);
 
         // setting progress bar color
-        mProgressWheel.setBarColor(mActivity.getResources().getColor(R.color.appTheme));
+        mProgressWheel.setBarColor(ContextCompat.getColor(mActivity,R.color.appTheme));
 
 
         // getting id from shared pref and initiating api call
@@ -455,7 +447,6 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
     public boolean validate(){
 
-        Boolean valid = false;
 
         if (mEditTextName.getText().toString().trim().length()<=6){
             mEditTextName.setError("Name must be greater than 6 characters");

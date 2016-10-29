@@ -28,20 +28,20 @@ public class ActivitySplashScreen extends AppCompatActivity {
                 .getBoolean(getString(R.string.is_logged_in));
 
 
-        if (spLogin==true){
-            // skip the login/signup tabbed activities
+        if (spLogin){
+            // skip the login/sign up tabbed activities
             MyApplication mApplication = (MyApplication) getApplication();
             mApplication.createListCLass();
             mIntent = new Intent(this, MainScreenActivity.class);
         }
         else{
-            // SWITCH TO login/signup screens
+            // SWITCH TO login/sign up screens
             mIntent = new Intent(this,MainActivity.class);
         }
 
 
         //creating thread to hold screen for splash
-        Thread Splashtimer = new Thread(){
+        Thread splashTimer = new Thread(){
             public void run(){
                 try{
                     sleep(2000);
@@ -52,7 +52,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
                 }
             }
         };
-        Splashtimer.start();
+        splashTimer.start();
     }
 
     @Override

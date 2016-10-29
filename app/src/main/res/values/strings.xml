@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Alumini</string>
+    <string name="app_name">Alumni</string>
     <string-array name="year_array">
         <item>2004</item>
         <item>2005</item>

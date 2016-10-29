@@ -1,20 +1,15 @@
 package com.example.ashish.alumini.fragments.settings;
 
 import android.Manifest;
-import android.content.ContentUris;
 import android.content.Context;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -61,10 +56,6 @@ public class FragmentJobPosting extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     String TAG = getClass().getSimpleName();
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
 
     /*
@@ -125,10 +116,6 @@ public class FragmentJobPosting extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
 
     }
 
@@ -148,7 +135,7 @@ public class FragmentJobPosting extends Fragment {
         Dexter.initialize(mActivity);
 
         // setting progress bar color
-        mProgressWheel.setBarColor(mActivity.getResources().getColor(R.color.appTheme));
+        mProgressWheel.setBarColor(ContextCompat.getColor(mActivity,R.color.appTheme));
 
 
         return view;
@@ -222,7 +209,7 @@ public class FragmentJobPosting extends Fragment {
 
 
         if (validDeta){
-            makeServerCallToPostData();;
+            makeServerCallToPostData();
         }
     }
 

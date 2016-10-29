@@ -1,8 +1,5 @@
 package com.example.ashish.alumini.supporting_classes;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Looper;
 

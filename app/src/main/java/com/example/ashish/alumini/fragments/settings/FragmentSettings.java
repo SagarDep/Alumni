@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,9 +29,6 @@ public class FragmentSettings extends Fragment  {
     private static final String ARG_PARAM2 = "param2";
 
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
 
     /*
@@ -60,10 +56,7 @@ public class FragmentSettings extends Fragment  {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -175,12 +168,12 @@ public class FragmentSettings extends Fragment  {
                     @Override
                     public void onClick(View v) {
 
-                        Intent waIntent = new Intent(Intent.ACTION_SEND);
-                        waIntent.setType("text/plain");
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("text/plain");
                         String text = "Get the alumni app through this link and be a part of awesome community";
 
-                        waIntent.putExtra(Intent.EXTRA_TEXT, text);
-                        startActivity(Intent.createChooser(waIntent, "Share with"));
+                        intent.putExtra(Intent.EXTRA_TEXT, text);
+                        startActivity(Intent.createChooser(intent, "Share with"));
                         materialDialog.dismiss();
 
                     }

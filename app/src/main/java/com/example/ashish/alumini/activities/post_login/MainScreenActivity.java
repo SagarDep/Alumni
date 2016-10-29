@@ -95,7 +95,7 @@ public class MainScreenActivity extends AppCompatActivity
         mFragmentTransaction = mFragmentManager.beginTransaction();
 
         if (savedInstanceState==null){
-            if (isSignup==true){
+            if (isSignup){
 
                 // show the getData fragment
                 FragmentGetProfileData fragmentGetProfileData = new FragmentGetProfileData();

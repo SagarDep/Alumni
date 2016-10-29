@@ -14,6 +14,7 @@
         <ImageView
             android:layout_width="115dp"
             android:layout_height="115dp"
+            android:contentDescription="college logo"
             android:background="@drawable/college_logo"
             android:id="@+id/splashscreen_logo"
             android:layout_alignParentTop="true"

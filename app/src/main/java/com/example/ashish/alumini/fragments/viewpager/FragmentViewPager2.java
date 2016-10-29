@@ -41,7 +41,7 @@ public class FragmentViewPager2 extends Fragment {
 
     private List<MemberInstance> mArrayList3 = new ArrayList<>();
     private List<MemberInstance> mArrayList = new ArrayList<>();
-    private MemberAdapter mAdapter;
+
 
     // activity
     PostLoginActivity mActivity;
@@ -89,7 +89,7 @@ public class FragmentViewPager2 extends Fragment {
         ButterKnife.bind(this,view);
 
         //initialization of adapter
-        mAdapter = new MemberAdapter(mArrayList);
+        MemberAdapter mAdapter = new MemberAdapter(mArrayList);
 
         // making progress bar invisible
         mProgressBar.setVisibility(View.GONE);

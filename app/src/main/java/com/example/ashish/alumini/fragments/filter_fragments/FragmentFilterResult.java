@@ -39,9 +39,8 @@ public class FragmentFilterResult extends Fragment {
     @Bind(R.id.material_progressBar_viewpager)
     ProgressBar mProgressBar;
 
-    private List<MemberInstance> mArrayList2 = new ArrayList<>();
     private List<MemberInstance> mArrayList = new ArrayList<>();
-    private MemberAdapter mAdapter;
+
 
 
     // activity
@@ -102,7 +101,7 @@ public class FragmentFilterResult extends Fragment {
         mArrayList = CommonData.mFilterResultList;
 
         //initialization of adapter
-        mAdapter = new MemberAdapter(mArrayList);
+        MemberAdapter mAdapter = new MemberAdapter(mArrayList);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
 

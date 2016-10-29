@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 
 import com.example.ashish.alumini.R;
-import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.EventListInstance;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
@@ -21,7 +20,6 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by ashish on 11/3/16.

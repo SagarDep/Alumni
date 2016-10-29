@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.network.ApiClient;
 import com.example.ashish.alumini.network.pojo.JobListInstance;
-import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.squareup.picasso.Picasso;
@@ -68,7 +67,7 @@ public class JobListAdapter extends ArrayAdapter<JobListInstance> {
         mTextViewJobLocation.setText(item.getLocation());
         mTextViewJobPosition.setText(item.getRole());
 
-        String imageUrl  = new String(ApiClient.BASE_URL + "upload/uploads/thumbs/"+item.getPostedbyid() + "-job");
+        String imageUrl  = ApiClient.BASE_URL + "upload/uploads/thumbs/"+item.getPostedbyid() + "-job";
         Log.d(TAG, imageUrl);
 
         Picasso.with(getContext())

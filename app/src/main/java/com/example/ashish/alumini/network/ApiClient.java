@@ -15,7 +15,7 @@ public class ApiClient {
 
     private static Retrofit retrofit = null;
 
-    // copied from some toutorials
+    // copied from some tutorials
     public static Retrofit getClientOld() {
         if (retrofit==null) {
             retrofit = new Retrofit.Builder()
