@@ -73,7 +73,6 @@ public class MemberAdapter  extends RecyclerView.Adapter<MemberAdapter.MyViewHol
                         .color(Color.LTGRAY)
                         .sizeDp(50))
                 .into(holder.mImageView);
-
     }
 
     @Override

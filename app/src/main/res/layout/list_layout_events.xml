@@ -11,7 +11,6 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/tehnika1"
         android:id="@+id/imageView_eventPic_list_layout"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
@@ -24,12 +23,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/TextView_eventName"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/imageView_eventPic_list_layout"
-        android:layout_toEndOf="@+id/imageView_eventPic_list_layout"
+        android:layout_toRightOf="@id/imageView_eventPic_list_layout"
+        android:layout_toEndOf="@id/imageView_eventPic_list_layout"
         android:layout_marginLeft="16dp" />
-
-
-
 
 
     <View
@@ -38,8 +34,8 @@
         android:background="@color/grey"
 
         android:id="@+id/linearLayout"
-        android:layout_below="@+id/imageView_eventPic_list_layout"
-        android:layout_alignLeft="@+id/TextView_eventName"
-        android:layout_alignStart="@+id/TextView_eventName" />
+        android:layout_below="@id/imageView_eventPic_list_layout"
+        android:layout_alignLeft="@id/TextView_eventName"
+        android:layout_alignStart="@id/TextView_eventName" />
 
 </RelativeLayout>

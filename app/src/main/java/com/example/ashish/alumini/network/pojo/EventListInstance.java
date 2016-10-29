@@ -1,4 +1,4 @@
-package com.example.ashish.alumini.supporting_classes;
+package com.example.ashish.alumini.network.pojo;
 
 /**
  * Created by ashish on 9/9/16.

@@ -13,7 +13,7 @@ import com.example.ashish.alumini.adapters.EventListAdapter;
 import com.example.ashish.alumini.R;
 import com.example.ashish.alumini.activities.post_login.MainScreenActivity;
 import com.example.ashish.alumini.fragments.FragmentWebView;
-import com.example.ashish.alumini.supporting_classes.EventListInstance;
+import com.example.ashish.alumini.network.pojo.EventListInstance;
 import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
@@ -32,9 +32,6 @@ public class FragmentEvents extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
 
     /*
@@ -70,10 +67,7 @@ public class FragmentEvents extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
 
     }
 
@@ -90,51 +84,59 @@ public class FragmentEvents extends Fragment {
         mActionBar = mActivity.getSupportActionBar();
 
         EventListInstance listInstance = new EventListInstance();
-        listInstance.setName("Tehnika Naitus");
-        listInstance.setUrl("http://www.aryacollege.in/tehnika-naitus.php");
+
+        listInstance.setName(getString(R.string.event_1) );
+        listInstance.setUrl(getString(R.string.event_1_url));
+        listInstance.setImageUrl(getString(R.string.event_1_image_url));
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setName("Shraddhanjali");
-        listInstance.setUrl("http://www.aryacollege.in/shradhanjali.php");
+        listInstance.setName(getString(R.string.event_2) );
+        listInstance.setUrl(getString(R.string.event_2_url));
+        listInstance.setImageUrl(getString(R.string.event_2_image_url));
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setName("Graduation Day");
-        listInstance.setUrl("http://www.aryacollege.in/graduation-day.php");
+        listInstance.setName(getString(R.string.event_3) );
+        listInstance.setUrl(getString(R.string.event_3_url));
+        listInstance.setImageUrl(getString(R.string.event_3_image_url));
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setName("Zephr");
-        listInstance.setUrl("http://www.aryacollege.in/zephyr.php");
+        listInstance.setName(getString(R.string.event_4) );
+        listInstance.setUrl(getString(R.string.event_4_url));
+        listInstance.setImageUrl(getString(R.string.event_4_image_url));
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setName("Victory");
-        listInstance.setUrl("http://www.aryacollege.in/the-annualday.php");
+        listInstance.setName(getString(R.string.event_5) );
+        listInstance.setUrl(getString(R.string.event_5_url));
+        listInstance.setImageUrl(getString(R.string.event_5_image_url));
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setName("Engineer Day");
-        listInstance.setUrl("http://www.aryacollege.in/engineer-day.php");
-        mInstanceArrayList.add(listInstance);
-
-
-        listInstance = new EventListInstance();
-        listInstance.setName("Auto Ignition");
-        listInstance.setUrl("http://www.aryacollege.in/autoignition.php");
+        listInstance.setName(getString(R.string.event_6) );
+        listInstance.setUrl(getString(R.string.event_6_url));
+        listInstance.setImageUrl(getString(R.string.event_6_image_url));
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setName("TopGuns");
-        listInstance.setUrl("http://www.aryacollege.in/the-farewellparty.php");
+        listInstance.setName(getString(R.string.event_7) );
+        listInstance.setUrl(getString(R.string.event_7_url));
+        listInstance.setImageUrl(getString(R.string.event_7_image_url));
         mInstanceArrayList.add(listInstance);
 
         listInstance = new EventListInstance();
-        listInstance.setName("Exergie");
-        listInstance.setUrl("http://www.aryacollege.in/exergie.php");
+        listInstance.setName(getString(R.string.event_8) );
+        listInstance.setUrl(getString(R.string.event_8_url));
+        listInstance.setImageUrl(getString(R.string.event_8_image_url));
         mInstanceArrayList.add(listInstance);
 
+        listInstance = new EventListInstance();
+        listInstance.setName(getString(R.string.event_9) );
+        listInstance.setUrl(getString(R.string.event_9_url));
+        listInstance.setImageUrl(getString(R.string.event_9_image_url));
+        mInstanceArrayList.add(listInstance);
 
 
         EventListAdapter adapter = new EventListAdapter(getActivity(),
