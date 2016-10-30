@@ -17,7 +17,7 @@ repositories {
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '23.0.0'
+    buildToolsVersion '23.0.3'
 
     defaultConfig {
         applicationId "com.example.ashish.alumini"
@@ -31,9 +31,6 @@ android {
     productFlavors {
         dev {
 
-            jackOptions {
-                enabled true
-            }
         }
         experimental {
 
@@ -42,9 +39,7 @@ android {
             }
         }
         prod {
-            jackOptions {
-                enabled true
-            }
+
         }
     }
     buildTypes {

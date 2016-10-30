@@ -170,7 +170,7 @@ public class FragmentSettings extends Fragment  {
 
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
-                        String text = "Get the alumni app through this link and be a part of awesome community";
+                        String text = getString(R.string.app_share_text);
 
                         intent.putExtra(Intent.EXTRA_TEXT, text);
                         startActivity(Intent.createChooser(intent, "Share with"));
@@ -217,7 +217,7 @@ public class FragmentSettings extends Fragment  {
         new GlobalPrefs(getContext()).putBooloean(getString(R.string.is_logged_in),false);
 
 
-        TastyToast.makeText(getActivity(),"You are successfully logged Out", Toast.LENGTH_SHORT,TastyToast.DEFAULT);
+        TastyToast.makeText(getActivity(),getString(R.string.log_out_prompt), Toast.LENGTH_SHORT,TastyToast.DEFAULT);
 
         mActivity.finish();
 

@@ -61,10 +61,17 @@
     <string name="apply_filter">APPLY</string>
 
     <!--Faq data-->
+    <string name="ques_1">Question 1</string>
     <string name="answer1">This is the answer to 1 FAQ</string>
+
+    <string name="ques_2">Question 2</string>
     <string name="answer2">This is the answer to 2 FAQ</string>
-    <string name="answer3">This is the answer to 2 FAQ</string>
-    <string name="answer4">This is the answer to 2 FAQ</string>
+
+    <string name="ques_3">Question 3</string>
+    <string name="answer3">This is the answer to 3 FAQ</string>
+
+    <string name="ques_4">Question 4</string>
+    <string name="answer4">This is the answer to 4 FAQ</string>
 
     <!--Main Screen-->
     <string name="members">Members</string>
@@ -85,6 +92,9 @@
     <string name="log_in">Log In</string>
 
 
+    <string name="log_out_prompt">You are successfully logged Out</string>
+
+    <string name="app_share_text">Get the alumni app through this link and be a part of awesome community</string>
 
 
     <!--Login/signup-->

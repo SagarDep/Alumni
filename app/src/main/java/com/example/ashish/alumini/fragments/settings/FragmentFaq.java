@@ -87,13 +87,25 @@ public class FragmentFaq extends Fragment {
 
         mListHeaders = new ArrayList<>();
         mListChild = new HashMap<>();
-        mListHeaders.add("Why this App?");
-        mListHeaders.add("What we want?");
+        mListHeaders.add(getString(R.string.ques_1));
+        mListHeaders.add(getString(R.string.ques_2));
+        mListHeaders.add(getString(R.string.ques_3));
+        mListHeaders.add(getString(R.string.ques_4));
+
         mListChild = new HashMap<>();
+
         List<String> branch = new ArrayList<>();
         branch.add(getResources().getString(R.string.answer1));
+
         List<String> year = new ArrayList<>();
         year.add(getResources().getString(R.string.answer2));
+
+         year = new ArrayList<>();
+        year.add(getResources().getString(R.string.answer3));
+
+         year = new ArrayList<>();
+        year.add(getResources().getString(R.string.answer4));
+
         mListChild.put(mListHeaders.get(0), branch);
         mListChild.put(mListHeaders.get(1), year);
         mListAdapter = new ExpandableListAdapter(getActivity(), mListHeaders, mListChild);
@@ -108,10 +120,6 @@ public class FragmentFaq extends Fragment {
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-
-    }
 
     @Override
     public void onAttach(Context context) {
