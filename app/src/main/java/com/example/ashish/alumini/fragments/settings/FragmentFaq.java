@@ -94,20 +94,22 @@ public class FragmentFaq extends Fragment {
 
         mListChild = new HashMap<>();
 
-        List<String> branch = new ArrayList<>();
-        branch.add(getResources().getString(R.string.answer1));
+        List<String> ans1 = new ArrayList<>();
+        ans1.add(getResources().getString(R.string.answer1));
 
-        List<String> year = new ArrayList<>();
-        year.add(getResources().getString(R.string.answer2));
+        List<String> ans2 = new ArrayList<>();
+        ans2.add(getResources().getString(R.string.answer2));
 
-         year = new ArrayList<>();
-        year.add(getResources().getString(R.string.answer3));
+        List<String> ans3 = new ArrayList<>();
+        ans3.add(getResources().getString(R.string.answer3));
 
-         year = new ArrayList<>();
-        year.add(getResources().getString(R.string.answer4));
+        List<String> ans4 = new ArrayList<>();
+        ans4.add(getResources().getString(R.string.answer4));
 
-        mListChild.put(mListHeaders.get(0), branch);
-        mListChild.put(mListHeaders.get(1), year);
+        mListChild.put(mListHeaders.get(0), ans1);
+        mListChild.put(mListHeaders.get(1), ans2);
+        mListChild.put(mListHeaders.get(2), ans3);
+        mListChild.put(mListHeaders.get(3), ans4);
         mListAdapter = new ExpandableListAdapter(getActivity(), mListHeaders, mListChild);
 
         // setting list adapter

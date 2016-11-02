@@ -196,11 +196,10 @@ public class FragmentJobPosting extends Fragment {
         else if (mInputEditTextJobLocation.getText().toString().length()<3){
             mInputEditTextJobLocation.setError("Invalid details");
         }
-        else if (!Patterns.WEB_URL.matcher(mEditTextemail.getText()).matches()){
+        else if (!Patterns.WEB_URL.matcher(mEditTextWebLink.getText().toString()).matches()){
             mEditTextWebLink.setError("Invalid WebLink");
         }
-        else if (
-                        !android.util.Patterns.EMAIL_ADDRESS.matcher(mEditTextemail.getText()).matches()){
+        else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(mEditTextemail.getText()).matches()){
             mEditTextemail.setError("Invalid Email address");
         }
         else {
