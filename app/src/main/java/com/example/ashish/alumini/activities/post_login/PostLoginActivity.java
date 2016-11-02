@@ -222,15 +222,12 @@ public class PostLoginActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
 
     @Subscribe
     public void changeVisibilityOfMenu(MenuVisibility visibility){
 
         Log.d(TAG, "Menu Visibility" + visibility.getState());
+
 
         if (!visibility.getState() && mFragmentMenu!=null){
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Alumni</string>
+    <string name="app_name">Arya Alucon</string>
     <string-array name="year_array">
         <item>2004</item>
         <item>2005</item>
@@ -76,15 +76,16 @@
         welcoming space for viewpoints to collide in unexpected ways, and for creative sparks to
         fly. We need a community with these features.</string>
 
-    <string name="ques_3">Question 3</string>
-    <string name="answer3">This is the answer to 3 FAQ</string>
-
-    <string name="ques_4">How can you get benefit?</string>
-    <string name="answer4">Alumni is a former student of an institution, who is an ace experience
+    <string name="ques_3">How can you get benefit?</string>
+    <string name="answer3">Alumni is a former student of an institution, who is an ace experience
         holder and well laid. Having the lore of their experience can be the most useful aid anyone
         can have. Interacting with them can give us an image about the present scenario and can
         help us to grow with the requirements of the ongoing world. This can help us providing a
         good opportunity using the alumni’s reference or having known their proficiency.</string>
+
+    <string name="ques_4">Question 3</string>
+    <string name="answer4">This is the answer to 3 FAQ</string>
+
 
     <!--Main Screen-->
     <string name="members">Members</string>
