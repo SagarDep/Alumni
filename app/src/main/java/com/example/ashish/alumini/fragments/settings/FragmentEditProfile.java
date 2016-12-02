@@ -48,6 +48,7 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import me.drakeet.materialdialog.MaterialDialog;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -133,6 +134,9 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
     // activities
     PostLoginActivity mActivity;
 
+    // for permission rationale
+    MaterialDialog materialDialog;
+
 
     public FragmentEditProfile() {
         // Required empty public constructor
@@ -173,6 +177,9 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
 
         // setting progress bar color
         mProgressWheel.setBarColor(ContextCompat.getColor(mActivity,R.color.appTheme));
+
+        // for permission rationale
+        materialDialog = new MaterialDialog(mActivity);
 
 
         // getting id from shared pref and initiating api call
@@ -247,11 +254,30 @@ public class FragmentEditProfile extends android.support.v4.app.Fragment {
             @Override
             public void onPermissionDenied(PermissionDeniedResponse response) {
                 Log.d(TAG, "Permission denied");
+
             }
 
             @Override
-            public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+            public void onPermissionRationaleShouldBeShown(PermissionRequest permission,final
+                                                           PermissionToken token) {
                 Log.d(TAG, "Permission RATIONALE");
+
+
+                materialDialog.setTitle("Permission Alert")
+                        .setMessage("We just need permission to access image file to upload")
+                        .setPositiveButton("Proceed", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                materialDialog.dismiss();
+
+                                token.continuePermissionRequest();
+
+                            }
+                        })
+                        .setCanceledOnTouchOutside(true)
+                        .show();
+
             }
         }, Manifest.permission.READ_EXTERNAL_STORAGE);
     }

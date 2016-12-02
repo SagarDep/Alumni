@@ -44,6 +44,7 @@ import java.io.IOException;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import me.drakeet.materialdialog.MaterialDialog;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -127,6 +128,10 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
 
     private int PICK_IMAGE_REQUEST = 1;
 
+    // for permission rationale
+    MaterialDialog materialDialog;
+
+
 
     public FragmentGetProfileData() {
         // Required empty public constructor
@@ -172,6 +177,9 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
         // setting progress bar color
         mProgressWheel.setBarColor(ContextCompat.getColor(mActivity,R.color.appTheme));
 
+
+        // for permission rationale
+        materialDialog = new MaterialDialog(mActivity);
 
 
         return view;
@@ -225,8 +233,25 @@ public class FragmentGetProfileData extends android.support.v4.app.Fragment {
             }
 
             @Override
-            public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+            public void onPermissionRationaleShouldBeShown(PermissionRequest permission, final PermissionToken token) {
                 Log.d(TAG, "Permission RATIONALE");
+
+
+                materialDialog.setTitle("Permission Alert")
+                        .setMessage("We just need permission to access image file to upload")
+                        .setPositiveButton("Proceed", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                materialDialog.dismiss();
+
+                                token.continuePermissionRequest();
+
+                            }
+                        })
+                        .setCanceledOnTouchOutside(true)
+                        .show();
+
             }
         }, Manifest.permission.READ_EXTERNAL_STORAGE);
     }

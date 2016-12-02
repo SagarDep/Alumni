@@ -8,6 +8,8 @@ import com.example.ashish.alumini.supporting_classes.CommonData;
 import com.example.ashish.alumini.supporting_classes.GlobalPrefs;
 import com.example.ashish.alumini.supporting_classes.MemberLists;
 import com.facebook.stetho.Stetho;
+import com.mikepenz.iconics.Iconics;
+
 import io.fabric.sdk.android.Fabric;
 
 /**
@@ -31,6 +33,7 @@ public class MyApplication extends Application {
         * */
         ActiveAndroid.initialize(this);
 
+        Iconics.init(getApplicationContext());
 
         /*
         * Global Shared Preferences
